@@ -1,0 +1,108 @@
+/* Adicione estas classes no seu App.css */
+
+/* Cores modernas */
+:root {
+  --primary: #2563eb;
+  --primary-light: #3b82f6;
+  --secondary: #f59e0b;
+  --dark: #1e293b;
+  --light: #f8fafc;
+  --success: #10b981;
+}
+
+/* Layout moderno */
+.fundo-site {
+  background: linear-gradient(135deg, #b5bac9 0,1%, #e2e8f0 100%);
+  min-height: calc(100vh - 140px);
+}
+
+/* Tipografia melhorada */
+* {
+  font-family: "Inter", "Comic Neue", sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* Efeitos modernos */
+.service-card {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Botões modernos */
+.botao-produto {
+  background: var(--primary) !important;
+  color: white !important;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none !important;
+}
+
+.botao-produto:hover {
+  background: var(--primary-light) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Navbar moderna */
+.custom-navbar {
+  background: white !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 1rem 0;
+}
+
+.custom-navbar .nav-link {
+  color: var(--dark);
+  font-weight: 500;
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover {
+  color: var(--primary);
+  background: rgba(37, 99, 235, 0.1);
+}
+
+/* Hero section moderna */
+.hero-section {
+  padding: 5rem 0;
+  background: linear-gradient(to right, #f8fafc, #b5bac9);
+}
+
+/* Estilos para a seção de tecnologias */
+#technologies .tech-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+#technologies .tech-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+#technologies .tech-icon {
+  filter: grayscale(30%);
+  transition: all 0.3s ease;
+}
+
+#technologies .tech-card:hover .tech-icon {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
