@@ -1,16 +1,17 @@
 import { Card, Button } from 'react-bootstrap';
 
-interface Service {
-  image: string;
-  title: string;
-  description: string;
-  price?: string;
-  whatsappLink: string;
-  buttonText?: string;
-  isExternal?: boolean;
-}
+/**
+ * @typedef {Object} Service
+ * @property {string} image
+ * @property {string} title
+ * @property {string} description
+ * @property {string} [price]
+ * @property {string} whatsappLink
+ * @property {string} [buttonText]
+ * @property {boolean} [isExternal]
+ */
 
-const ServiceCard = ({ service }: { service: Service }) => {
+const ServiceCard = ({ service }) => {
   const {
     image,
     title,
