@@ -1,4 +1,5 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import fctecImage from '../../assets/images/imgcapa.jpg';
 
 const Hero = () => {
   return (
@@ -35,12 +36,12 @@ const Hero = () => {
           <Col lg={6}>
             <div className="position-relative">
               <img
-                src="/src/assets/images/FCTEC1.png"
+                src={fctecImage}
                 className="img-fluid rounded-3 shadow"
                 alt="Ilustração de tecnologia"
                 style={{ maxWidth: '100%', height: 'auto' }}
               />
-              <div className="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-10 rounded-3"></div>
+              <div className="position-absolute top-0 start-0 w-100 h-100 opacity-10 rounded-3"></div>
             </div>
           </Col>
         </Row>
