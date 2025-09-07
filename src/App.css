@@ -12,7 +12,13 @@
 
 /* Layout moderno */
 .fundo-site {
-  background: linear-gradient(135deg, #b5bac9 0,1%, #e2e8f0 100%);
+  margin: 0;
+  padding: 0;
+  background-image: url("/src/assets/images/3DLogoLab.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   min-height: calc(100vh - 140px);
 }
 
@@ -60,7 +66,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Navbar moderna */
 .custom-navbar {
-  background: white !important;
+  background: #d3d3d3 !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   padding: 1rem 0;
 }
@@ -82,7 +88,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero section moderna */
 .hero-section {
   padding: 5rem 0;
-  background: linear-gradient(to right, #f8fafc, #b5bac9);
+  background: #f8fafc;
+  opacity: 0.8;
 }
 
 /* Estilos para a seção de tecnologias */

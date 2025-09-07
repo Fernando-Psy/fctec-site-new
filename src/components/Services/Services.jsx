@@ -4,25 +4,32 @@ import ServiceCard from './ServiceCard';
 const Services = () => {
   const mainServices = [
     {
-      image: "/src/assets/images/web-development.jpg",
-      title: "Desenvolvimento Web",
-      description: "Sites e aplicações web personalizadas com React, Django e outras tecnologias modernas. Design responsivo, performance otimizada e experiência do usuário excepcional.",
-      price: "A partir de R$ 1.500,00",
-      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre desenvolvimento web."
+      image: "/src/assets/images/google_maps.jpeg",
+      title: "Google Empresas",
+      description: "Configuração completa do Google Meu Negócio para aumentar sua visibilidade e atrair clientes da sua região.",
+      price: "A partir de R$ 350,00",
+      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Google Empresas."
     },
     {
-      image: "/src/assets/images/seo.jpg",
-      title: "Otimização SEO",
-      description: "Melhore seu posicionamento nos mecanismos de busca com nossa estratégia completa de SEO técnico e de conteúdo.",
+      image: "/src/assets/images/site1.jpeg",
+      title: "Página de Conversão Essencial",
+      description: "Landing page profissional e otimizada para destacar sua marca e captar contatos de forma rápida e eficiente.",
+      price: "A partir de R$ 400,00",
+      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Página de Conversão Essencial."
+    },
+    {
+      image: "/src/assets/images/site_google_maps.jpeg",
+      title: "Visibilidade e Conversão",
+      description: "Combine o poder do Google Meu Negócio com uma landing page moderna para atrair e converter clientes em um só pacote.",
+      price: "A partir de R$ 700,00",
+      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Visibilidade e Conversão."
+    },
+    {
+      image: "/src/assets/images/site.jpg",
+      title: "Presença Online Profissional",
+      description: "Google Meu Negócio, landing page personalizada e domínio exclusivo por um ano. Sua marca com credibilidade e alcance digital.",
       price: "A partir de R$ 800,00",
-      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre SEO."
-    },
-    {
-      image: "/src/assets/images/social-media.jpg",
-      title: "Gestão de Redes Sociais",
-      description: "Estratégia completa para redes sociais incluindo criação de conteúdo, gestão de comunidade e análise de resultados.",
-      price: "A partir de R$ 1.200,00/mês",
-      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre gestão de redes sociais."
+      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Presença Online Profissional."
     }
   ];
 
