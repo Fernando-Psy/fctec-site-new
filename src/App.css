@@ -88,8 +88,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero section moderna */
 .hero-section {
   padding: 5rem 0;
-  background: #f8fafc;
-  opacity: 0.8;
+  background: #000;
+  opacity: 0.5;
 }
 
 /* Estilos para a seção de tecnologias */
