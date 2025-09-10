@@ -39,7 +39,7 @@ const Hero = () => {
                 src={fctecImage}
                 className="img-fluid rounded-3 shadow"
                 alt="Ilustração de tecnologia"
-                style={{ maxWidth: '100%', height: 'auto' }}
+                style={{ maxWidth: '100%', height: 'auto', boxShadow: '6px 6px 12px rgba(0, 0, 0, 0.8)' }}
               />
               <div className="position-absolute top-0 start-0 w-100 h-100 opacity-10 rounded-3"></div>
             </div>
