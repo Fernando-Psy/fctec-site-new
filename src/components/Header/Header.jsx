@@ -1,18 +1,13 @@
+// Header.jsx (apenas as partes modificadas)
 import { useState } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
-
-  const handleNavClick = () => {
-    setExpanded(false);
-  };
-
+  const handleNavClick = () => setExpanded(false);
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
     handleNavClick();
   };
 
@@ -31,7 +26,8 @@ const Header = () => {
             className="d-flex align-items-center"
             onClick={() => scrollToSection('home')}
           >
-            <span className="fw-bold fs-4 text-dark">FCTEC</span>
+            {/* Badge com efeito neumo */}
+            <span className="brand-badge">FCTEC</span>
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="navbar-nav" className="border-0">
@@ -53,7 +49,7 @@ const Header = () => {
                 href="https://wa.me/5521968810478"
                 target="_blank"
                 variant="primary"
-                className="ms-lg-3 mt-3 mt-lg-0"
+                className="ms-lg-3 mt-3 mt-lg-0 neumo-btn"
               >
                 Orçamento
               </Button>
