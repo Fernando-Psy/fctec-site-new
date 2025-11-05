@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <main className="fundo-site">
+      <main>
         <div className="container">
           <Hero />
           <Services />

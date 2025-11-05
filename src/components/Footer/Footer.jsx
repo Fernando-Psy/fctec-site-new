@@ -1,4 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
+import './Footer.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -7,97 +8,187 @@ const Footer = () => {
     { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
     { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
     { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-    {name: 'jQuery', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg'},
-    {name:'SASS', icon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg'},
-    {name: "Gulp", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gulp/gulp-plain.svg"},
-    {name: "Grunt", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grunt/grunt-original.svg"},
-    {name: "ES6+", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"},
-    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-    {name: "Vue.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"},
     { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
     { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-    { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
     { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
     { name: 'Django', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
-    {name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"},
     { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
     { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
   ];
 
+  const quickLinks = [
+    { label: 'Sobre', href: '#about' },
+    { label: 'Serviços', href: '#products' },
+    { label: 'Contato', href: '#location' }
+  ];
+
+  const socialLinks = [
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/fcbj.dev?igsh=MXNvczl0a2Uzcjkybw==',
+      icon: 'bi-instagram'
+    },
+    {
+      name: 'Facebook',
+      url: 'https://www.facebook.com/share/1CC9521Qrs/',
+      icon: 'bi-facebook'
+    },
+    {
+      name: 'WhatsApp',
+      url: 'https://wa.me/5521968810478',
+      icon: 'bi-whatsapp'
+    }
+  ];
+
+  const handleScroll = (e, href) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <footer className="bg-dark text-white py-5">
+    <footer className="footer-wrapper">
       <Container>
-        <Row>
-          <Col lg={4} className="mb-4 mb-lg-0">
-            <h3 className="h5 mb-3">FCTEC</h3>
-            <p className="text-white">
-              Soluções digitais inovadoras para impulsionar seu negócio.
-            </p>
-          </Col>
+        {/* Main Footer Content */}
+        <div className="footer-main">
+          <Row className="g-4">
+            {/* Company Info */}
+            <Col lg={4} md={6}>
+              <div className="footer-section">
+                <div className="footer-brand">
+                  <h3 className="brand-name">FCTEC</h3>
+                  <div className="brand-tagline">Soluções Digitais Premium</div>
+                </div>
+                <p className="footer-description">
+                  Transformamos ideias em experiências digitais excepcionais,
+                  combinando design moderno com tecnologia de ponta.
+                </p>
+                {/* Social Links */}
+                <div className="footer-social">
+                  <span className="social-label">Siga-nos:</span>
+                  <div className="social-icons">
+                    {socialLinks.map((social, index) => (
+                      <a
+                        key={index}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="social-link"
+                        aria-label={social.name}
+                      >
+                        <i className={`bi ${social.icon}`}></i>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Col>
 
-          <Col lg={2} className="mb-4 mb-lg-0">
-            <h4 className="h6 mb-3">Links</h4>
-            <ul className="list-unstyled">
-              <li className="mb-2"><a href="#about" className="text-white">Sobre</a></li>
-              <li className="mb-2"><a href="#products" className="text-white">Serviços</a></li>
-              <li className="mb-2"><a href="#location" className="text-white">Contato</a></li>
-            </ul>
-          </Col>
+            {/* Quick Links */}
+            <Col lg={2} md={6}>
+              <div className="footer-section">
+                <h4 className="footer-title">Links Rápidos</h4>
+                <ul className="footer-links">
+                  {quickLinks.map((link, index) => (
+                    <li key={index}>
+                      <a
+                        href={link.href}
+                        onClick={(e) => handleScroll(e, link.href)}
+                        className="footer-link"
+                      >
+                        <span className="link-icon">→</span>
+                        <span className="link-text">{link.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Col>
 
-          <Col lg={3} className="mb-4 mb-lg-0">
-            <h4 className="h6 mb-3">Contato</h4>
-            <ul className="list-unstyled text-white">
-              <li className="mb-2">fernando.cbj.tec@gmail.com</li>
-              <li className="mb-2">(21) 96881-0478</li>
-              <li>Belford Roxo, RJ</li>
-            </ul>
-          </Col>
+            {/* Contact Info */}
+            <Col lg={3} md={6}>
+              <div className="footer-section">
+                <h4 className="footer-title">Contato</h4>
+                <ul className="footer-contact">
+                  <li className="contact-item">
+                    <i className="bi bi-envelope contact-icon"></i>
+                    <a href="mailto:fernando.cbj.tec@gmail.com" className="contact-link">
+                      fernando.cbj.tec@gmail.com
+                    </a>
+                  </li>
+                  <li className="contact-item">
+                    <i className="bi bi-phone contact-icon"></i>
+                    <a href="tel:+5521968810478" className="contact-link">
+                      (21) 96881-0478
+                    </a>
+                  </li>
+                  <li className="contact-item">
+                    <i className="bi bi-geo-alt contact-icon"></i>
+                    <span className="contact-text">Belford Roxo, RJ</span>
+                  </li>
+                </ul>
+              </div>
+            </Col>
 
-          <Col lg={3}>
-            <h4 className="h6 mb-3">Redes Sociais</h4>
-            <div className="d-flex gap-3">
-              <a href="https://www.instagram.com/fcbj.dev?igsh=MXNvczl0a2Uzcjkybw==" className="text-white" target='_blank'>
-                <i className="bi bi-instagram fs-5"></i>
-              </a>
-              <a href="https://www.facebook.com/share/1CC9521Qrs/" className="text-white" target='_blank'>
-                <i className="bi bi-facebook fs-5"></i>
-              </a>
-              <a href="https://wa.me/5521968810478" className="text-white" target='_blank'>
-                <i className="bi bi-whatsapp fs-5"></i>
-              </a>
-            </div>
-          </Col>
-        </Row>
+            {/* CTA */}
+            <Col lg={3} md={6}>
+              <div className="footer-section">
+                <h4 className="footer-title">Pronto para começar?</h4>
+                <p className="cta-text">
+                  Entre em contato e transforme sua presença digital hoje mesmo.
+                </p>
+                <a
+                  href="https://wa.me/5521968810478"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-cta-button"
+                >
+                  <span className="cta-button-text">Falar no WhatsApp</span>
+                  <i className="bi bi-arrow-right cta-button-icon"></i>
+                </a>
+              </div>
+            </Col>
+          </Row>
+        </div>
 
-        <hr className="my-4 bg-secondary opacity-10" />
-
-        <Row className="justify-content-center mb-4">
-          <Col xs="auto" className="text-center">
-            <h6 className="mb-3 text-uppercase text-white">Nossas Tecnologias</h6>
-            <div className="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
-              {techStack.map((tech) => (
+        {/* Tech Stack */}
+        <div className="footer-tech">
+          <h5 className="tech-title">Tecnologias que Dominamos</h5>
+          <div className="tech-grid">
+            {techStack.map((tech, index) => (
+              <div key={index} className="tech-item" title={tech.name}>
                 <img
-                  key={tech.name}
                   src={tech.icon}
                   alt={tech.name}
-                  title={tech.name}
                   width={32}
                   height={32}
-                  className="filter-white"
+                  className="tech-icon"
                 />
-              ))}
-            </div>
-          </Col>
-        </Row>
+              </div>
+            ))}
+          </div>
+        </div>
 
-        <Row>
-          <Col className="text-center text-md-start">
-            <p className="small text-white mb-0">
-              &copy; {currentYear} FCTEC. Todos os direitos reservados.
+        {/* Bottom Bar */}
+        <div className="footer-bottom">
+          <div className="footer-copyright">
+            <p className="copyright-text">
+              © {currentYear} <strong>FCTEC</strong>. Todos os direitos reservados.
             </p>
-          </Col>
-        </Row>
+          </div>
+          <div className="footer-legal">
+            <a href="#privacy" className="legal-link">Política de Privacidade</a>
+            <span className="legal-divider">•</span>
+            <a href="#terms" className="legal-link">Termos de Uso</a>
+          </div>
+        </div>
       </Container>
+
+      {/* Background Decoration */}
+      <div className="footer-bg-pattern"></div>
     </footer>
   );
 };

@@ -1,125 +1,425 @@
-/* src/styles/neumorphism.css */
+/* FCTEC - Neumorphism Empresarial Refinado */
+
 :root {
-  --bg: #e9f0f6;           /* fundo geral (azulado-claro) */
-  --card: #eef5fb;         /* cor dos cards/inputs */
-  --text: #213042;         /* texto principal */
-  --primary: #3b82f6;      /* cor principal (botão) */
-  --shadow-dark: rgba(18, 35, 55, 0.12);
-  --shadow-light: rgba(255, 255, 255, 0.9);
+  /* Cores Base Corporativas */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --card-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent-primary: #2563eb;
+  --accent-secondary: #3b82f6;
+
+  /* Sombras Neumórficas Profissionais */
+  --shadow-neumo-light: -8px -8px 16px rgba(255, 255, 255, 0.8);
+  --shadow-neumo-dark: 8px 8px 16px rgba(15, 23, 42, 0.08);
+  --shadow-inset-light: inset -4px -4px 12px rgba(255, 255, 255, 0.7);
+  --shadow-inset-dark: inset 4px 4px 12px rgba(15, 23, 42, 0.06);
+
+  /* Sombras Corporativas */
+  --shadow-elevated: 0 4px 16px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 12px 28px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.08);
 }
 
-/* Base neuomorphism styles */
+/* ===== BASE STYLES ===== */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== UTILITY CLASSES ===== */
 .neu {
-  box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+  box-shadow: var(--shadow-neumo-light), var(--shadow-neumo-dark);
 }
 
 .neu-inset {
-  box-shadow: inset 6px 6px 14px var(--shadow-dark), inset -6px -6px 14px var(--shadow-light);
+  box-shadow: var(--shadow-inset-light), var(--shadow-inset-dark);
 }
 
-/* Geral */
-html, body, #root {
-  height: 100%;
-}
-body {
-  background: linear-gradient(180deg, var(--bg) 0%, #dfeaf5 100%);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+.neu-flat {
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
 }
 
-/* Remover sombras Bootstrap que conflitam */
-.shadow {
-  box-shadow: none !important;
+/* Remover conflitos com Bootstrap */
+.shadow,
+.shadow-sm,
+.shadow-lg {
+  box-shadow: var(--shadow-elevated) !important;
 }
 
-/* Cartões e blocos principais */
+/* ===== CARDS EMPRESARIAIS ===== */
 .neumo-card {
-  background: var(--card);
+  background: var(--card-bg);
   border-radius: 16px;
-  box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
-  border: 1px solid rgba(255,255,255,0.5);
+  box-shadow: var(--shadow-elevated);
+  border: 1px solid rgba(241, 245, 249, 0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
-/* Inputs with pill style */
+.neumo-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+/* Card com gradiente sutil */
+.neumo-card-gradient {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: var(--shadow-elevated);
+  border: 1px solid rgba(241, 245, 249, 0.8);
+  border-radius: 16px;
+}
+
+/* ===== INPUTS PROFISSIONAIS ===== */
 .neumo-input {
-  background: var(--card);
-  border-radius: 999px;
-  padding: .6rem 1rem;
-  border: none;
-  outline: none;
-  box-shadow: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
-  color: var(--text);
+  background: var(--card-bg);
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.875rem 1.25rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
   width: 100%;
-  transition: transform .12s ease, box-shadow .12s;
-  &:focus {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(59,130,246,0.16), -6px -6px 14px rgba(255,255,255,0.6);
-  }
+  transition: all 0.2s ease;
+  outline: none;
+  font-family: inherit;
 }
 
-/* Botões estilo neumo */
+.neumo-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+  background: #ffffff;
+}
+
+.neumo-input::placeholder {
+  color: #94a3b8;
+}
+
+/* Input com ícone */
+.neumo-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.neumo-input-group .neumo-input {
+  padding-left: 3rem;
+}
+
+.neumo-input-group .input-icon {
+  position: absolute;
+  left: 1rem;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+/* ===== BOTÕES CORPORATIVOS ===== */
 .neumo-btn {
-  background: linear-gradient(180deg, var(--primary), #3474dd);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #1e40af 100%);
   color: white;
   border: none;
-  border-radius: 20px;
-  padding: .62rem 1.1rem;
-  font-weight: 700;
-  box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
-  transition: transform .12s ease, box-shadow .12s ease;
+  border-radius: 12px;
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  &:hover { transform: translateY(-3px); }
-  &:active { box-shadow: inset 4px 4px 10px var(--shadow-dark), inset -4px -4px 10px var(--shadow-light); transform: translateY(1px); }
-}
-
-/* Header / brand */
-.brand-badge {
-  box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
-  padding: .25rem .6rem;
-  border-radius: 12px;
-  display: inline-block;
-  font-weight: 700;
-  color: var(--text);
-}
-
-/* Hero image com card neumo */
-.hero-neumo {
-  box-shadow: 12px 12px 28px var(--shadow-dark), -12px -12px 28px var(--shadow-light);
-  border-radius: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  position: relative;
   overflow: hidden;
-  img { display:block; width:100%; height:100%; object-fit: cover; }
-  padding: 6px; /* leve borda interior */
 }
 
-/* Ajuste dos cards de serviço (sobrescreve bootstrap) */
-.service-card {
-  background: transparent; /* Card interna fica na .neumo-card abaixo */
+.neumo-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
 }
-.service-card .card-body {
-  padding: 1.25rem;
+
+.neumo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
 }
-.service-card .card-img-top {
+
+.neumo-btn:hover::before {
+  left: 100%;
+}
+
+.neumo-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Botão secundário */
+.neumo-btn-secondary {
+  background: white;
+  color: var(--accent-primary);
+  border: 2px solid #e2e8f0;
+  box-shadow: var(--shadow-elevated);
+}
+
+.neumo-btn-secondary:hover {
+  border-color: var(--accent-primary);
+  background: #eff6ff;
+  box-shadow: var(--shadow-hover);
+}
+
+/* Botão outline */
+.neumo-btn-outline {
+  background: transparent;
+  color: var(--accent-primary);
+  border: 2px solid var(--accent-primary);
+  box-shadow: none;
+}
+
+.neumo-btn-outline:hover {
+  background: var(--accent-primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* ===== HEADER / NAVBAR ===== */
+.brand-badge {
+  background: white;
+  box-shadow: var(--shadow-elevated);
+  padding: 0.5rem 1.25rem;
   border-radius: 12px;
-  height: 200px;
-  object-fit: cover;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  border: 1px solid rgba(241, 245, 249, 0.8);
+  transition: all 0.3s ease;
+  letter-spacing: -0.02em;
 }
 
-/* Usar neumo para as colunas internas */
+.brand-badge:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+/* ===== HERO IMAGE ===== */
+.hero-neumo {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-elevated);
+  border: 1px solid rgba(241, 245, 249, 0.8);
+  background: white;
+  padding: 0.5rem;
+}
+
+.hero-neumo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.hero-neumo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===== SERVICE CARDS ===== */
+.service-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
 .service-card .neumo-card {
   height: 100%;
   display: flex;
   flex-direction: column;
+  background: white;
 }
 
-/* Texto e títulos */
-.display-5, .display-4 {
-  color: var(--text);
+.service-card .card-img-top {
+  border-radius: 14px;
+  height: 220px;
+  object-fit: cover;
+  margin: 0.75rem 0.75rem 0;
+  border: 1px solid rgba(241, 245, 249, 0.8);
 }
 
-/* Responsividade — reduzir sombras em telas pequenas */
+.service-card .card-body {
+  padding: 1.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card .card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.service-card .card-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.service-card .promocao {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+/* ===== ESTATÍSTICAS / STATS ===== */
+.stats-card {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #1e40af 100%);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  color: white;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+  text-align: center;
+}
+
+.stats-card .stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.stats-card .stat-label {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* ===== BADGES E TAGS ===== */
+.neumo-badge {
+  background: #eff6ff;
+  color: var(--accent-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ===== DIVISORES ===== */
+.neumo-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+  margin: 2rem 0;
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ===== TOOLTIPS CUSTOMIZADOS ===== */
+.neumo-tooltip {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-elevated);
+  font-size: 0.875rem;
+  border: 1px solid rgba(241, 245, 249, 0.8);
+}
+
+/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 768px) {
-  .neumo-card { box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light); }
-  .neumo-btn { padding: .5rem .9rem; }
+  .neumo-card {
+    border-radius: 12px;
+  }
+
+  .neumo-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .brand-badge {
+    font-size: 1.1rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .hero-neumo {
+    border-radius: 12px;
+  }
+
+  .stats-card .stat-value {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .neumo-card {
+    margin: 0.5rem;
+  }
+
+  .service-card .card-body {
+    padding: 1.25rem;
+  }
+}
+
+/* ===== ESTADOS DE CARREGAMENTO ===== */
+.neumo-skeleton {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===== ACESSIBILIDADE ===== */
+.neumo-btn:focus-visible,
+.neumo-input:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* ===== DARK MODE SUPORTE (Opcional) ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --card-bg: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+  }
 }

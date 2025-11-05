@@ -1,5 +1,5 @@
-// ServiceCard.jsx
 import { Card, Button } from 'react-bootstrap';
+import './ServiceCard.css';
 
 const ServiceCard = ({ service }) => {
   const {
@@ -7,34 +7,81 @@ const ServiceCard = ({ service }) => {
     title,
     description,
     price,
+    features = [],
     whatsappLink,
-    buttonText = "Entre em Contato ➤"
+    buttonText = "Solicitar Orçamento",
+    badge,
+    icon
   } = service;
 
   return (
-    <Card className="h-100 service-card">
-      {/* dentro do Card, usamos um bloco com neumo-card para aplicar o efeito */}
-      <div className="neumo-card">
+    <Card className="service-card-wrapper">
+      {/* Badge de Destaque */}
+      {badge && (
+        <div className="service-badge">
+          <span className="badge-text">{badge}</span>
+        </div>
+      )}
+
+      {/* Imagem do Serviço */}
+      <div className="service-image-container">
         <Card.Img
           variant="top"
           src={image}
           alt={title}
-          className="card-img-top"
+          className="service-image"
         />
-        <Card.Body className="d-flex flex-column">
-          <Card.Title className="promocao fs-5 fw-bold">{title}</Card.Title>
-          <Card.Text className="flex-grow-1 mb-3">{description}</Card.Text>
+        <div className="image-overlay">
+          <span className="service-icon">{icon}</span>
+        </div>
+      </div>
 
-          {price && <p className="promocao mb-3">{price}</p>}
+      {/* Conteúdo do Card */}
+      <Card.Body className="service-body">
+        {/* Título */}
+        <Card.Title className="service-title">
+          {title}
+        </Card.Title>
 
+        {/* Descrição */}
+        <Card.Text className="service-description">
+          {description}
+        </Card.Text>
+
+        {/* Features List */}
+        {features.length > 0 && (
+          <ul className="service-features">
+            {features.map((feature, index) => (
+              <li key={index} className="feature-item">
+                <span className="feature-check">✓</span>
+                <span className="feature-text">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {/* Footer do Card */}
+        <div className="service-footer">
+          {/* Preço */}
+          <div className="service-price-container">
+            <span className="price-label">Investimento</span>
+            <span className="service-price">{price}</span>
+          </div>
+
+          {/* Botão de Ação */}
           <Button
-            className="botao-produto mt-auto border-0 neumo-btn"
+            className="service-button"
             onClick={() => window.open(whatsappLink, '_blank', 'noopener,noreferrer')}
           >
-            {buttonText}
+            <span className="button-text">{buttonText}</span>
+            <span className="button-arrow">→</span>
+            <div className="button-shine"></div>
           </Button>
-        </Card.Body>
-      </div>
+        </div>
+      </Card.Body>
+
+      {/* Efeito de Brilho no Hover */}
+      <div className="card-glow"></div>
     </Card>
   );
 };
