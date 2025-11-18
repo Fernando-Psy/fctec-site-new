@@ -29,7 +29,7 @@
 .badge-dot {
   width: 8px;
   height: 8px;
-  background: #2563eb;
+  background: #0d5996;
   border-radius: 50%;
   animation: pulse-dot 2s ease-in-out infinite;
 }
@@ -51,7 +51,7 @@
 }
 
 .title-highlight {
-  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #0d5996 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -79,7 +79,7 @@
 }
 
 .cta-card {
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #0d5996 100%);
   border-radius: 16px;
   padding: 3rem 2rem;
   display: flex;
@@ -129,7 +129,7 @@
   position: relative;
   z-index: 1;
   background: white;
-  color: #2563eb;
+  color: #0d5996;
   padding: 1rem 2.5rem;
   border-radius: 12px;
   font-weight: 600;
@@ -145,7 +145,7 @@
 .cta-button:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-  color: #1e40af;
+  color: #0d5996;
 }
 
 .cta-button-icon {

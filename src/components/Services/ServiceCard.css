@@ -183,7 +183,7 @@
 .service-price {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #2563eb;
+  color: #0d5996;
   letter-spacing: -0.02em;
 }
 
@@ -191,7 +191,7 @@
 .service-button {
   position: relative;
   width: 100%;
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%) !important;
+  background: linear-gradient(135deg, #2563eb 0%, #0d5996 100%) !important;
   border: none !important;
   color: white !important;
   font-weight: 600;
@@ -282,12 +282,12 @@
 
 /* ===== ESTADOS ESPECIAIS ===== */
 .service-card-wrapper.featured {
-  border: 2px solid #2563eb;
+  border: 2px solid #0d5996;
   box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
 }
 
 .service-card-wrapper.featured .service-title {
-  color: #2563eb;
+  color: #0d5996;
 }
 
 /* ===== RESPONSIVIDADE ===== */

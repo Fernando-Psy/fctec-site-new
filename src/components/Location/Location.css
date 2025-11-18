@@ -45,7 +45,7 @@
 }
 
 .title-gradient {
-  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #0d5996 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -87,7 +87,7 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: var(--accent-color, #2563eb);
+  background: var(--accent-color, #0d5996);
   transform: scaleY(0);
   transition: transform 0.3s ease;
 }
@@ -95,7 +95,7 @@
 .contact-card:hover {
   transform: translateX(4px);
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.1);
-  border-color: var(--accent-color, #2563eb);
+  border-color: var(--accent-color, #0d5996);
 }
 
 .contact-card:hover::before {
@@ -115,13 +115,13 @@
 }
 
 .contact-card:hover .contact-icon-wrapper {
-  background: var(--accent-color, #2563eb);
+  background: var(--accent-color, #0d5996);
   transform: scale(1.1);
 }
 
 .contact-icon {
   font-size: 1.5rem;
-  color: var(--accent-color, #2563eb);
+  color: var(--accent-color, #0d5996);
   transition: color 0.3s ease;
 }
 
@@ -156,7 +156,7 @@
 }
 
 .contact-card:hover .contact-arrow {
-  color: var(--accent-color, #2563eb);
+  color: var(--accent-color, #0d5996);
   transform: translateX(4px);
 }
 
@@ -252,7 +252,7 @@
 .map-info-icon {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #0d5996 100%);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -300,7 +300,7 @@
 
 .hours-icon {
   font-size: 2rem;
-  color: #2563eb;
+  color: #0d5996;
 }
 
 .hours-title {
@@ -337,7 +337,7 @@
 
 .hours-time {
   font-weight: 700;
-  color: #2563eb;
+  color: #0d5996;
   font-size: 0.95rem;
 }
 
@@ -345,7 +345,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #0d5996 100%);
   color: white;
   padding: 1rem 1.75rem;
   border-radius: 12px;

@@ -8,8 +8,8 @@ const Services = () => {
       image: "/src/assets/images/google_maps.jpeg",
       title: "Google Meu Negócio",
       description: "Configuração estratégica completa do Google Meu Negócio para maximizar sua visibilidade local e atrair clientes qualificados da sua região.",
-      price: "A partir de R$ 350",
-      features: ["Otimização de perfil", "Gestão de avaliações", "Posts regulares"],
+      price: "A partir de R$ 300",
+      features: ["Otimização de perfil", "Gestão de avaliações", "Landing Page básica"],
       whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Google Empresas.",
       badge: "Mais Popular",
       icon: "🎯"
@@ -18,7 +18,7 @@ const Services = () => {
       image: "/src/assets/images/site1.jpeg",
       title: "Landing Page Premium",
       description: "Página de conversão profissional com design moderno e otimizada para captar leads de forma eficiente e aumentar suas vendas.",
-      price: "A partir de R$ 400",
+      price: "A partir de R$ 550",
       features: ["Design responsivo", "SEO otimizado", "Formulários integrados"],
       whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Página de Conversão Essencial.",
       icon: "🚀"

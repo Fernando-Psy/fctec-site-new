@@ -130,7 +130,7 @@ const Location = () => {
               <h4 className="hours-title">Horário de Atendimento</h4>
               <div className="hours-list">
                 <div className="hours-item">
-                  <span className="hours-day">Segunda - Sexta</span>
+                  <span className="hours-day">Quarta - Sexta</span>
                   <span className="hours-time">9:00 - 18:00</span>
                 </div>
                 <div className="hours-item">

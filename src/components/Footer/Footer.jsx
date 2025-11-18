@@ -59,7 +59,7 @@ const Footer = () => {
             <Col lg={4} md={6}>
               <div className="footer-section">
                 <div className="footer-brand">
-                  <h3 className="brand-name">FCTEC</h3>
+                  <h3 className="brand-name">FCBJ Desenvolvimento</h3>
                   <div className="brand-tagline">Soluções Digitais Premium</div>
                 </div>
                 <p className="footer-description">
@@ -176,7 +176,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-copyright">
             <p className="copyright-text">
-              © {currentYear} <strong>FCTEC</strong>. Todos os direitos reservados.
+              © {currentYear} <strong>FCBJ Desenvolvimento</strong>. Todos os direitos reservados.
             </p>
           </div>
           <div className="footer-legal">

@@ -34,7 +34,7 @@ const Header = () => {
             }}
           >
             <div className="brand-logo">
-              <span className="brand-text">FCTEC</span>
+              <img src="/src/assets/logo/logo2-removebg.png" alt="FCBJ Desenvolvimento" className="logo-img" />
               <div className="brand-underline"></div>
             </div>
           </Navbar.Brand>
