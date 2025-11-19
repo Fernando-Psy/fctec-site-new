@@ -176,7 +176,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-copyright">
             <p className="copyright-text">
-              © {currentYear} <strong>FCBJ Desenvolvimento</strong>. Todos os direitos reservados.
+              © {currentYear} <strong>FCBJ Desenvolvimento</strong> — CNPJ: 56.323.525/0001-12. Todos os direitos reservados.
             </p>
           </div>
           <div className="footer-legal">

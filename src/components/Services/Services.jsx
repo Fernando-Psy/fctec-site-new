@@ -1,11 +1,15 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import ServiceCard from './ServiceCard';
 import './Services.css';
+import googleMapsImage from "../../assets/images/google_maps.jpeg";
+import site1Image from "../../assets/images/site1.jpeg";
+import siteGoogleMapsImage from "../../assets/images/site_google_maps.jpeg";
+import siteImage from "../../assets/images/site.jpg";
 
 const Services = () => {
   const mainServices = [
     {
-      image: "/src/assets/images/google_maps.jpeg",
+      image: googleMapsImage,
       title: "Google Meu Negócio",
       description: "Configuração estratégica completa do Google Meu Negócio para maximizar sua visibilidade local e atrair clientes qualificados da sua região.",
       price: "A partir de R$ 300",
@@ -15,7 +19,7 @@ const Services = () => {
       icon: "🎯"
     },
     {
-      image: "/src/assets/images/site1.jpeg",
+      image: site1Image,
       title: "Landing Page Premium",
       description: "Página de conversão profissional com design moderno e otimizada para captar leads de forma eficiente e aumentar suas vendas.",
       price: "A partir de R$ 550",
@@ -24,7 +28,7 @@ const Services = () => {
       icon: "🚀"
     },
     {
-      image: "/src/assets/images/site_google_maps.jpeg",
+      image: siteGoogleMapsImage,
       title: "Visibilidade Completa",
       description: "Solução integrada que combina o poder do Google Meu Negócio com uma landing page moderna para máxima conversão de clientes.",
       price: "A partir de R$ 700",
@@ -34,7 +38,7 @@ const Services = () => {
       icon: "💼"
     },
     {
-      image: "/src/assets/images/site.jpg",
+      image: siteImage,
       title: "Presença Digital Pro",
       description: "Pacote completo: Google Meu Negócio, landing page personalizada e domínio exclusivo. Sua marca com credibilidade total no digital.",
       price: "A partir de R$ 800",
