@@ -41,7 +41,7 @@ const Services = () => {
       image: siteAutomacao,
       title: "Automação de Processos",
       description: "Criamos scripts ou miniaplicativos que conectam suas planilhas, e-mails, formulários e redes sociais.",
-      price: "A partir de R$ 800",
+      price: "A partir de R$ 450",
       features: ["Integração com Google Sheets, WhatsApp, e-mail", "Roda na nuvem", "Manutenção inclusa por 30 dias"],
       whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Automação de Processos.",
       badge: "Premium",
