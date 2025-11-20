@@ -3,7 +3,7 @@ import ServiceCard from './ServiceCard';
 import './Services.css';
 import googleMapsImage from "../../assets/images/google_maps.jpeg";
 import site1Image from "../../assets/images/site1.jpeg";
-import siteGoogleMapsImage from "../../assets/images/site_google_maps.jpeg";
+import siteAutomacao from "../../assets/images/site.jpeg";
 import siteImage from "../../assets/images/site.jpg";
 
 const Services = () => {
@@ -13,39 +13,39 @@ const Services = () => {
       title: "Google Meu Negócio",
       description: "Configuração estratégica completa do Google Meu Negócio para maximizar sua visibilidade local e atrair clientes qualificados da sua região.",
       price: "A partir de R$ 300",
-      features: ["Otimização de perfil", "Gestão de avaliações", "Landing Page básica"],
+      features: ["Otimização de perfil", "Landing Page básica", "Deploy grátis"],
       whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Google Empresas.",
       badge: "Mais Popular",
       icon: "🎯"
     },
     {
       image: site1Image,
-      title: "Landing Page Premium",
-      description: "Página de conversão profissional com design moderno e otimizada para captar leads de forma eficiente e aumentar suas vendas.",
-      price: "A partir de R$ 550",
-      features: ["Design responsivo", "SEO otimizado", "Formulários integrados"],
-      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Página de Conversão Essencial.",
-      icon: "🚀"
-    },
-    {
-      image: siteGoogleMapsImage,
-      title: "Visibilidade Completa",
-      description: "Solução integrada que combina o poder do Google Meu Negócio com uma landing page moderna para máxima conversão de clientes.",
-      price: "A partir de R$ 700",
-      features: ["Google + Landing Page", "Análise de métricas", "Suporte 30 dias"],
-      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Visibilidade e Conversão.",
-      badge: "Melhor Custo-Benefício",
-      icon: "💼"
+      title: "Sistema Web Personalizado",
+      description: "Ideal para clínicas, consultórios, escolas ou pequenos negócios que precisam automatizar agendas, cadastros ou relatórios.",
+      price: "A partir de R$ 1.800",
+      features: ["Backend robusto (Python + Django)", "Frontend moderno (React)", "Banco de dados PostgreSQL", "Deploy profissional (Docker + AWS/Heroku)"],
+      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Sistema Web Personalizado.",
+      icon: "⚙️"
     },
     {
       image: siteImage,
-      title: "Presença Digital Pro",
-      description: "Pacote completo: Google Meu Negócio, landing page personalizada e domínio exclusivo. Sua marca com credibilidade total no digital.",
+      title: "Presença Digital Inteligente",
+      description: "Site institucional ou portfólio com CMS integrado (você edita o conteúdo sem depender de programador).",
+      price: "A partir de R$ 750",
+      features: ["Totalmente responsivo", "Painel de atualização fácil", "Hospedagem segura", "Integrado ao WhatsApp"],
+      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Presença Digital Inteligente.",
+      badge: "Melhor Custo-Benefício",
+      icon: "🌐"
+    },
+    {
+      image: siteAutomacao,
+      title: "Automação de Processos",
+      description: "Criamos scripts ou miniaplicativos que conectam suas planilhas, e-mails, formulários e redes sociais.",
       price: "A partir de R$ 800",
-      features: ["Domínio 1 ano grátis", "E-mail profissional", "SSL incluso"],
-      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Presença Online Profissional.",
+      features: ["Integração com Google Sheets, WhatsApp, e-mail", "Roda na nuvem", "Manutenção inclusa por 30 dias"],
+      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Automação de Processos.",
       badge: "Premium",
-      icon: "⭐"
+      icon: "🤖"
     }
   ];
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import './Header.css';
+import logoImage from '../../assets/logo/logo2-removebg.png';
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
@@ -34,7 +35,7 @@ const Header = () => {
             }}
           >
             <div className="brand-logo">
-              <img src="/src/assets/logo/logo2-removebg.png" alt="FCBJ Desenvolvimento" className="logo-img" />
+              <img src={logoImage} alt="FCBJ Desenvolvimento" className="logo-img" />
               <div className="brand-underline"></div>
             </div>
           </Navbar.Brand>
