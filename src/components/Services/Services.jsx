@@ -3,7 +3,7 @@ import ServiceCard from './ServiceCard';
 import './Services.css';
 import googleMapsImage from "../../assets/images/google_maps.jpeg";
 import site1Image from "../../assets/images/site1.jpeg";
-import siteAutomacao from "../../assets/images/site.jpeg";
+import siteManutencao from "../../assets/images/manutencao.jpg";
 import siteImage from "../../assets/images/site.jpg";
 
 const Services = () => {
@@ -12,7 +12,7 @@ const Services = () => {
       image: googleMapsImage,
       title: "Google Meu Negócio",
       description: "Configuração estratégica completa do Google Meu Negócio para maximizar sua visibilidade local e atrair clientes qualificados da sua região.",
-      price: "A partir de R$ 300",
+      price: "A partir de R$ 450",
       features: ["Otimização de perfil", "Landing Page básica", "Deploy grátis"],
       whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Google Empresas.",
       badge: "Mais Popular",
@@ -22,30 +22,30 @@ const Services = () => {
       image: site1Image,
       title: "Sistema Web Personalizado",
       description: "Ideal para clínicas, consultórios, escolas ou pequenos negócios que precisam automatizar agendas, cadastros ou relatórios.",
-      price: "A partir de R$ 1.800",
+      price: "A partir de R$ 8.000",
       features: ["Backend robusto (Python + Django)", "Frontend moderno (React)", "Banco de dados PostgreSQL", "Deploy profissional (Docker + AWS/Heroku)"],
       whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Sistema Web Personalizado.",
+      badge: "Premium",
       icon: "⚙️"
     },
     {
       image: siteImage,
       title: "Presença Digital Inteligente",
       description: "Site institucional ou portfólio com CMS integrado (você edita o conteúdo sem depender de programador).",
-      price: "A partir de R$ 750",
+      price: "A partir de R$ 1.800",
       features: ["Totalmente responsivo", "Painel de atualização fácil", "Hospedagem segura", "Integrado ao WhatsApp"],
       whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Presença Digital Inteligente.",
       badge: "Melhor Custo-Benefício",
       icon: "🌐"
     },
     {
-      image: siteAutomacao,
-      title: "Automação de Processos",
-      description: "Criamos scripts ou miniaplicativos que conectam suas planilhas, e-mails, formulários e redes sociais.",
-      price: "A partir de R$ 450",
-      features: ["Integração com Google Sheets, WhatsApp, e-mail", "Roda na nuvem", "Manutenção inclusa por 30 dias"],
-      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Automação de Processos.",
-      badge: "Premium",
-      icon: "🤖"
+      image: siteManutencao,
+      title: "Manutenção Básica de Sistemas",
+      description: "90% dos sistemas quebram por falta de atualização. Garanta que seu sistema esteja sempre atualizado.",
+      price: "A partir de R$ 350/mês",
+      features: ["Correções", "Ajustes", "Trocas de imagens", "Atualizações de segurança", "Melhorias de performance"],
+      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Manutenção Básica.",
+      icon: "⚙️"
     }
   ];
 
