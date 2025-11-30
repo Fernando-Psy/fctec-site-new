@@ -1,35 +1,104 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/assets/logo/logo2-removebg.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="FCTEC - Desenvolvimento de soluções digitais inovadoras com React e Python/Django. Criação de sites, Google Meu Negócio e artes para redes sociais." />
-    <meta name="keywords" content="desenvolvimento web, react, python, django, sites responsivos, google meu negócio, redes sociais" />
-    <meta name="author" content="FCTEC" />
+<head>
+  <!-- ========================================
+       META TAGS ESSENCIAIS (Não mudam dinamicamente)
+       ======================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://fctec.com.br/" />
-    <meta property="og:title" content="FCBJ - Soluções Digitais Inovadoras" />
-    <meta property="og:description" content="Desenvolvemos soluções digitais inovadoras e escaláveis com React e Python/Django." />
-    <meta property="og:image" content="/src/assets/logo/logo2.png" />
+  <!-- DNS Prefetch para melhorar performance -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://fctec.com.br/" />
-    <meta property="twitter:title" content="FCBJ - Soluções Digitais Inovadoras" />
-    <meta property="twitter:description" content="Desenvolvemos soluções digitais inovadoras e escaláveis com React e Python/Django." />
-    <meta property="twitter:image" content="/src/assets/logo/logo2.png" />
+  <!-- Preconnect para recursos externos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <!-- ========================================
+       FAVICON E ÍCONES
+       ======================================== -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+  <!-- ========================================
+       FONTES E ÍCONES
+       ======================================== -->
+  <!-- Google Fonts - Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Google Analytics -->
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+  <!-- ========================================
+       META TAGS DINÂMICAS
+       (Serão atualizadas pelo componente SEO)
+       ======================================== -->
+  <title>FCBJ Desenvolvimento - Carregando...</title>
+  <meta name="description" content="Desenvolvimento web profissional em Belford Roxo RJ" />
+  <meta name="keywords" content="desenvolvimento web, belford roxo, rio de janeiro" />
+
+  <!-- ========================================
+       META TAGS ADICIONAIS PARA SEO
+       ======================================== -->
+  <meta name="author" content="FCBJ Desenvolvimento" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="google" content="notranslate" />
+  <meta name="format-detection" content="telephone=yes" />
+
+  <!-- Verificação Google Search Console (Adicione seu código) -->
+  <meta name="google-site-verification" content="rm7KdLxObqjURT6089HE8rHBsJcbmZxxLWqbVVnnLrE" />
+
+  <!-- ========================================
+       PWA E MOBILE
+       ======================================== -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="FCBJ Dev" />
+  <meta name="theme-color" content="#2563eb" />
+  <meta name="msapplication-TileColor" content="#2563eb" />
+
+  <!-- ========================================
+       PERFORMANCE E SEGURANÇA
+       ======================================== -->
+  <!-- Preload de recursos críticos -->
+  <link rel="preload" href="/src/main.jsx" as="script" />
+
+  <!-- Security Headers -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
+  <!-- ========================================
+       STRUCTURED DATA BÁSICO
+       (Complementado pelo componente SEO)
+       ======================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "FCBJ Desenvolvimento",
+    "url": "https://fctec.dev.br",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://fctec.dev.br/busca?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- ========================================
+       OPEN GRAPH PADRÃO
+       (Atualizados dinamicamente pelo SEO component)
+       ======================================== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FCBJ Desenvolvimento" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3ZCPCVGYH"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -38,10 +107,51 @@
       gtag('config', 'G-F3ZCPCVGYH');
     </script>
 
-    <title>FCBJ Desenvolvimento</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <!-- ========================================
+       FACEBOOK PIXEL (Opcional)
+       ======================================== -->
+  <!--
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'SEU_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1" />
+  </noscript>
+  -->
+</head>
+
+<body>
+  <!-- ========================================
+       ROOT ELEMENT
+       ======================================== -->
+  <div id="root"></div>
+
+  <!-- ========================================
+       NOSCRIPT FALLBACK
+       ======================================== -->
+  <noscript>
+    <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+      <h1>FCBJ Desenvolvimento</h1>
+      <p>Este site requer JavaScript para funcionar corretamente.</p>
+      <p>Por favor, habilite o JavaScript no seu navegador.</p>
+      <br>
+      <p>Entre em contato pelo WhatsApp: <a href="https://wa.me/5521968810478">(21) 96881-0478</a></p>
+    </div>
+  </noscript>
+
+  <!-- ========================================
+       REACT SCRIPT (Vite injeta automaticamente)
+       ======================================== -->
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 </html>
