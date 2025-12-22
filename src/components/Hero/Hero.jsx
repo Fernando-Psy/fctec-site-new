@@ -315,7 +315,7 @@ const HeroImproved = () => {
               </div>
             </div>
 
-            {/* Depoimento Rápido
+            {/* Depoimento Rápido*/}
             <div style={{
               marginTop: '1.5rem',
               background: 'white',
@@ -331,7 +331,7 @@ const HeroImproved = () => {
                 marginBottom: '0.75rem'
               }}>
                 <img
-                  src="https://ui-avatars.com/api/?name=Maria+Silva&background=10b981&color=fff&size=48"
+                  src="https://ui-avatars.com/api/?name=Vanuce+Regina&background=10b981&color=fff&size=48"
                   alt="Cliente"
                   style={{
                     width: '48px',
@@ -346,13 +346,13 @@ const HeroImproved = () => {
                     fontWeight: '700',
                     color: '#0f172a'
                   }}>
-                    Maria Silva
+                    Vanuce Regina
                   </div>
                   <div style={{
                     fontSize: '0.8rem',
                     color: '#64748b'
                   }}>
-                    Clínica Estética Bella
+                    Psicóloga
                   </div>
                 </div>
                 <div style={{
@@ -370,9 +370,9 @@ const HeroImproved = () => {
                 margin: 0,
                 lineHeight: '1.5'
               }}>
-                "Em 2 meses aumentei 250% os agendamentos. O melhor investimento que fiz!"
+                "To muito feliz !!!!!! Você arrebentouuuuuuuuu"
               </p>
-            </div>*/}
+            </div>
           </div>
         </div>
       </div>

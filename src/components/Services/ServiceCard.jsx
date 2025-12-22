@@ -1,18 +1,24 @@
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import './ServiceCard.css';
 
 const ServiceCard = ({ service }) => {
+  const navigate = useNavigate();
+
   const {
+    id,
     image,
     title,
     description,
     price,
     features = [],
-    whatsappLink,
-    buttonText = "Solicitar Orçamento",
     badge,
     icon
   } = service;
+
+  const handleClick = () => {
+    navigate(`/servicos/${id}`);
+  };
 
   return (
     <Card className="service-card-wrapper">
@@ -48,15 +54,21 @@ const ServiceCard = ({ service }) => {
           {description}
         </Card.Text>
 
-        {/* Features List */}
+        {/* Features List (limitado a 3) */}
         {features.length > 0 && (
           <ul className="service-features">
-            {features.map((feature, index) => (
+            {features.slice(0, 3).map((feature, index) => (
               <li key={index} className="feature-item">
                 <span className="feature-check">✓</span>
                 <span className="feature-text">{feature}</span>
               </li>
             ))}
+            {features.length > 3 && (
+              <li className="feature-item" style={{ fontStyle: 'italic', color: '#2563eb' }}>
+                <span className="feature-check">+</span>
+                <span className="feature-text">E mais {features.length - 3} benefícios...</span>
+              </li>
+            )}
           </ul>
         )}
 
@@ -69,14 +81,14 @@ const ServiceCard = ({ service }) => {
           </div>
 
           {/* Botão de Ação */}
-          <Button
+          <button
             className="service-button"
-            onClick={() => window.open(whatsappLink, '_blank', 'noopener,noreferrer')}
+            onClick={handleClick}
           >
-            <span className="button-text">{buttonText}</span>
+            <span className="button-text">Ver Detalhes</span>
             <span className="button-arrow">→</span>
             <div className="button-shine"></div>
-          </Button>
+          </button>
         </div>
       </Card.Body>
 

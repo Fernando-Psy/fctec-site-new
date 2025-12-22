@@ -1,54 +1,9 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import ServiceCard from './ServiceCard';
+import { servicesData } from './servicesData';
 import './Services.css';
-import googleMapsImage from "../../assets/images/google_maps.jpeg";
-import site1Image from "../../assets/images/site1.jpeg";
-import siteManutencao from "../../assets/images/manutencao.jpg";
-import siteImage from "../../assets/images/site.jpg";
 
 const Services = () => {
-  const mainServices = [
-    {
-      image: googleMapsImage,
-      title: "Google Meu Negócio",
-      description: "Configuração estratégica completa do Google Meu Negócio para maximizar sua visibilidade local e atrair clientes qualificados da sua região.",
-      price: "A partir de R$ 450",
-      features: ["Otimização de perfil", "Landing Page básica", "Deploy grátis"],
-      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Google Empresas.",
-      badge: "Mais Popular",
-      icon: "🎯"
-    },
-    {
-      image: site1Image,
-      title: "Sistema Web Personalizado",
-      description: "Ideal para clínicas, consultórios, escolas ou pequenos negócios que precisam automatizar agendas, cadastros ou relatórios.",
-      price: "A partir de R$ 8.000",
-      features: ["Backend robusto (Python + Django)", "Frontend moderno (React)", "Banco de dados PostgreSQL", "Deploy profissional (Docker + AWS/Heroku)"],
-      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Sistema Web Personalizado.",
-      badge: "Premium",
-      icon: "⚙️"
-    },
-    {
-      image: siteImage,
-      title: "Presença Digital Inteligente",
-      description: "Site institucional ou portfólio com CMS integrado (você edita o conteúdo sem depender de programador).",
-      price: "A partir de R$ 1.800",
-      features: ["Totalmente responsivo", "Painel de atualização fácil", "Hospedagem segura", "Integrado ao WhatsApp"],
-      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Presença Digital Inteligente.",
-      badge: "Melhor Custo-Benefício",
-      icon: "🌐"
-    },
-    {
-      image: siteManutencao,
-      title: "Manutenção Básica de Sistemas",
-      description: "90% dos sistemas quebram por falta de atualização. Garanta que seu sistema esteja sempre atualizado.",
-      price: "A partir de R$ 350/mês",
-      features: ["Correções", "Ajustes", "Trocas de imagens", "Atualizações de segurança", "Melhorias de performance"],
-      whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Manutenção Básica.",
-      icon: "⚙️"
-    }
-  ];
-
   return (
     <section id="products" className="services-section">
       <Container>
@@ -65,16 +20,16 @@ const Services = () => {
           </h2>
 
           <p className="services-description">
-            Escolha o pacote ideal para transformar sua presença digital e
+            Escolha o serviço ideal para transformar sua presença digital e
             alcançar resultados extraordinários no mercado online.
           </p>
         </div>
 
         {/* Grid de Serviços */}
         <Row className="g-4 services-grid">
-          {mainServices.map((service, index) => (
+          {servicesData.map((service, index) => (
             <Col
-              key={index}
+              key={service.id}
               lg={6}
               md={6}
               className="service-col"
@@ -92,7 +47,7 @@ const Services = () => {
               <h3 className="cta-title">
                 Não encontrou o que procura?
               </h3>
-              <p className="cta-text">
+              <p className="cta-text text-white">
                 Entre em contato e criaremos uma solução personalizada
                 especialmente para suas necessidades.
               </p>

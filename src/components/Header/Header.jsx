@@ -1,17 +1,41 @@
 import { useState } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';
 import logoImage from '../../assets/logo/logo2-removebg.png';
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNavClick = () => setExpanded(false);
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Se não estiver na home, navegar primeiro
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    handleNavClick();
+  };
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     handleNavClick();
   };
@@ -27,12 +51,9 @@ const Header = () => {
       >
         <Container>
           <Navbar.Brand
-            href="#home"
+            href="/"
             className="brand-container"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('home');
-            }}
+            onClick={handleLogoClick}
           >
             <div className="brand-logo">
               <img src={logoImage} alt="FCBJ Desenvolvimento" className="logo-img" />
