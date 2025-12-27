@@ -1,16 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
+import { createPublicLead, getServices } from '../../services/api';
 import './ContactModal.css';
 
-const ContactModal = ({ show, onHide, serviceName }) => {
+const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    serviceId: serviceId || ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [errors, setErrors] = useState({});
+  const [services, setServices] = useState([]);
+
+  // Carregar serviços ao montar o componente
+  useEffect(() => {
+    const loadServices = async () => {
+      const result = await getServices();
+      if (result.success) {
+        setServices(result.data.results || result.data);
+      }
+    };
+    loadServices();
+  }, []);
+
+  // Atualizar serviceId quando serviceId prop mudar
+  useEffect(() => {
+    if (serviceId) {
+      setFormData(prev => ({ ...prev, serviceId }));
+    }
+  }, [serviceId]);
 
   const validateForm = () => {
     const newErrors = {};
@@ -31,6 +54,10 @@ const ContactModal = ({ show, onHide, serviceName }) => {
       newErrors.phone = 'Telefone inválido';
     }
 
+    if (!formData.serviceId) {
+      newErrors.serviceId = 'Selecione um serviço';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -41,6 +68,7 @@ const ContactModal = ({ show, onHide, serviceName }) => {
       ...prev,
       [name]: value
     }));
+
     // Limpar erro do campo quando o usuário começar a digitar
     if (errors[name]) {
       setErrors(prev => ({
@@ -50,7 +78,7 @@ const ContactModal = ({ show, onHide, serviceName }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -58,32 +86,62 @@ const ContactModal = ({ show, onHide, serviceName }) => {
     }
 
     setIsSubmitting(true);
+    setShowError(false);
 
-    const message = `🎯 *Nova Solicitação de Contato*\n\n` +
-      `📋 *Serviço:* ${serviceName}\n` +
-      `👤 *Nome:* ${formData.name}\n` +
-      `📧 *Email:* ${formData.email}\n` +
-      `📱 *Telefone:* ${formData.phone}`;
+    // Preparar dados para API
+    const leadData = {
+      nome: formData.name,
+      email: formData.email,
+      telefone: formData.phone,
+      servico_interessado: parseInt(formData.serviceId)
+    };
 
-    const whatsappURL = `https://wa.me/5521968810478?text=${encodeURIComponent(message)}`;
+    // Enviar para API
+    const result = await createPublicLead(leadData);
 
-    setTimeout(() => {
-      window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+    if (result.success) {
       setIsSubmitting(false);
       setShowSuccess(true);
 
+      // Abrir WhatsApp com mensagem
+      const message = `🎯 *Nova Solicitação de Contato*\n\n` +
+        `📋 *Serviço:* ${serviceName}\n` +
+        `👤 *Nome:* ${formData.name}\n` +
+        `📧 *Email:* ${formData.email}\n` +
+        `📱 *Telefone:* ${formData.phone}`;
+
+      //const whatsappURL = `https://wa.me/5521968810478?text=${encodeURIComponent(message)}`;
+
+      setTimeout(() => {
+        window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+      }, 500);
+
+      // Resetar formulário e fechar modal após 3 segundos
       setTimeout(() => {
         setShowSuccess(false);
-        setFormData({ name: '', email: '', phone: '' });
+        setFormData({ name: '', email: '', phone: '', serviceId: serviceId || '' });
         onHide();
-      }, 2000);
-    }, 500);
+      }, 3000);
+    } else {
+      setIsSubmitting(false);
+      setShowError(true);
+      setErrorMessage(
+        result.error?.email?.[0] ||
+        result.error?.telefone?.[0] ||
+        result.error?.message ||
+        'Erro ao enviar solicitação. Tente novamente.'
+      );
+
+      // Esconder erro após 5 segundos
+      setTimeout(() => setShowError(false), 5000);
+    }
   };
 
   const handleClose = () => {
-    setFormData({ name: '', email: '', phone: '' });
+    setFormData({ name: '', email: '', phone: '', serviceId: serviceId || '' });
     setErrors({});
     setShowSuccess(false);
+    setShowError(false);
     onHide();
   };
 
@@ -223,10 +281,29 @@ const ContactModal = ({ show, onHide, serviceName }) => {
                 </button>
               </div>
 
+              {/* Mensagem de Erro */}
+              {showError && (
+                <div style={{
+                  background: '#fee2e2',
+                  border: '1px solid #ef4444',
+                  borderRadius: '8px',
+                  padding: '0.875rem',
+                  marginBottom: '1.5rem',
+                  color: '#991b1b',
+                  fontSize: '0.875rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  <span>⚠️</span>
+                  <span>{errorMessage}</span>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit}>
                 {/* Nome */}
                 <div style={{ marginBottom: '1.5rem' }}>
-                  <label style={{
+                  <label htmlFor="contact-name" style={{
                     display: 'block',
                     fontSize: '0.875rem',
                     fontWeight: '600',
@@ -236,6 +313,7 @@ const ContactModal = ({ show, onHide, serviceName }) => {
                     Nome Completo *
                   </label>
                   <input
+                    id="contact-name"
                     type="text"
                     name="name"
                     value={formData.name}
@@ -275,7 +353,7 @@ const ContactModal = ({ show, onHide, serviceName }) => {
 
                 {/* Email */}
                 <div style={{ marginBottom: '1.5rem' }}>
-                  <label style={{
+                  <label htmlFor="contact-email" style={{
                     display: 'block',
                     fontSize: '0.875rem',
                     fontWeight: '600',
@@ -285,6 +363,7 @@ const ContactModal = ({ show, onHide, serviceName }) => {
                     Email *
                   </label>
                   <input
+                    id="contact-email"
                     type="email"
                     name="email"
                     value={formData.email}
@@ -323,8 +402,8 @@ const ContactModal = ({ show, onHide, serviceName }) => {
                 </div>
 
                 {/* Telefone */}
-                <div style={{ marginBottom: '2rem' }}>
-                  <label style={{
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <label htmlFor="contact-phone" style={{
                     display: 'block',
                     fontSize: '0.875rem',
                     fontWeight: '600',
@@ -334,6 +413,7 @@ const ContactModal = ({ show, onHide, serviceName }) => {
                     Telefone/WhatsApp *
                   </label>
                   <input
+                    id="contact-phone"
                     type="tel"
                     name="phone"
                     value={formData.phone}
@@ -370,6 +450,65 @@ const ContactModal = ({ show, onHide, serviceName }) => {
                     </div>
                   )}
                 </div>
+
+                {/* Serviço (hidden se já definido) */}
+                {!serviceId && services.length > 0 && (
+                  <div style={{ marginBottom: '2rem' }}>
+                    <label htmlFor="contact-service" style={{
+                      display: 'block',
+                      fontSize: '0.875rem',
+                      fontWeight: '600',
+                      color: '#475569',
+                      marginBottom: '0.5rem'
+                    }}>
+                      Serviço de Interesse *
+                    </label>
+                    <select
+                      id="contact-service"
+                      name="serviceId"
+                      value={formData.serviceId}
+                      onChange={handleChange}
+                      style={{
+                        width: '100%',
+                        padding: '0.875rem 1rem',
+                        border: errors.serviceId ? '2px solid #ef4444' : '2px solid #e2e8f0',
+                        borderRadius: '10px',
+                        fontSize: '0.95rem',
+                        color: '#0f172a',
+                        transition: 'all 0.2s ease',
+                        outline: 'none',
+                        cursor: 'pointer',
+                        backgroundColor: 'white'
+                      }}
+                      onFocus={(e) => {
+                        if (!errors.serviceId) {
+                          e.target.style.borderColor = '#2563eb';
+                          e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
+                        }
+                      }}
+                      onBlur={(e) => {
+                        e.target.style.borderColor = errors.serviceId ? '#ef4444' : '#e2e8f0';
+                        e.target.style.boxShadow = 'none';
+                      }}
+                    >
+                      <option value="">Selecione um serviço...</option>
+                      {services.map((service) => (
+                        <option key={service.id} value={service.id}>
+                          {service.nome}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.serviceId && (
+                      <div style={{
+                        fontSize: '0.75rem',
+                        color: '#ef4444',
+                        marginTop: '0.25rem'
+                      }}>
+                        {errors.serviceId}
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 {/* Botão Submit */}
                 <button
@@ -479,7 +618,7 @@ const ContactModal = ({ show, onHide, serviceName }) => {
               lineHeight: '1.6',
               maxWidth: '400px'
             }}>
-              Redirecionando para o WhatsApp... Entraremos em contato em breve!
+              Seu lead foi registrado com sucesso! Redirecionando para o WhatsApp...
             </p>
           </div>
         )}

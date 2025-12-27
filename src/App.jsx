@@ -14,7 +14,6 @@ import Location from './components/Location/Location';
 import Footer from './components/Footer/Footer';
 import WhatsAppFloat from './components/WhatsAppFloat/WhatsAppFloat';
 import Testimonials from './components/Testimonials/Testimonials';
-import QuickQuoteForm from './components/QuickQuoteForm/QuickQuoteForm';
 import SubscriptionPlans from './components/SubscriptionPlans/SubscriptionPlans';
 import BenefitsResults from './components/BenefitsResults/BenefitsResults';
 import ClientsShowcase from './components/ClientsShowcase/ClientsShowcase';
@@ -39,7 +38,6 @@ function App() {
                 <SubscriptionPlans />
                 <Testimonials />
                 <FAQ />
-                <QuickQuoteForm />
                 </div>
                 <div className="container">
                   <Location />

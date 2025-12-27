@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { createPublicLead, getServices } from '../../services/api';
 
 const QuickQuoteForm = () => {
   const [formData, setFormData] = useState({
@@ -9,24 +10,27 @@ const QuickQuoteForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [services, setServices] = useState([]);
   const timeoutRefs = useRef([]);
 
   useEffect(() => {
+    // Carregar serviços da API
+    const loadServices = async () => {
+      const result = await getServices();
+      if (result.success) {
+        setServices(result.data.results || result.data);
+      }
+    };
+    loadServices();
+
     return () => {
       // Limpar todos os timeouts ao desmontar
       timeoutRefs.current.forEach((t) => clearTimeout(t));
       timeoutRefs.current = [];
     };
   }, []);
-
-  const services = [
-    { value: 'google', label: '📍 Google Meu Negócio', icon: '🎯' },
-    { value: 'site', label: '🌐 Site Institucional', icon: '💻' },
-    { value: 'sistema', label: '⚙️ Sistema Personalizado', icon: '🚀' },
-    { value: 'assinatura', label: '📦 Plano de Assinatura', icon: '💎' },
-    { value: 'manutencao', label: '🔧 Manutenção', icon: '⚙️' },
-    { value: 'outro', label: '💡 Outro Serviço', icon: '✨' }
-  ];
 
   const handleChange = (e) => {
     setFormData({
@@ -35,39 +39,74 @@ const QuickQuoteForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setShowError(false);
 
-    const message = `🎯 *Novo Pedido de Orçamento*\n\n` +
-      `👤 *Nome:* ${formData.name}\n` +
-      `📱 *Telefone:* ${formData.phone}\n` +
-      `🏢 *Negócio:* ${formData.business}\n` +
-      `💼 *Serviço:* ${services.find(s => s.value === formData.service)?.label || formData.service}`;
+    // Validação básica
+    if (!formData.name || !formData.phone || !formData.service) {
+      setShowError(true);
+      setErrorMessage('Por favor, preencha todos os campos obrigatórios');
+      setIsSubmitting(false);
+      return;
+    }
 
-    const whatsappURL = `https://wa.me/5521968810478?text=${encodeURIComponent(message)}`;
+    // Preparar dados para API
+    const leadData = {
+      nome: formData.name,
+      email: formData.business || `${formData.phone}@temp.com`, // Email temporário se não fornecido
+      telefone: formData.phone,
+      servico_interessado: parseInt(formData.service)
+    };
 
-    const openTimeout = setTimeout(() => {
-      const newWin = window.open(whatsappURL, '_blank');
-      // tornar mais seguro: remover referência ao opener quando possível
-      try {
-        if (newWin) newWin.opener = null;
-      } catch (err) {
-        // ignora se não for possível
-      }
+    // Enviar para API
+    const result = await createPublicLead(leadData);
 
+    if (result.success) {
       setIsSubmitting(false);
       setShowSuccess(true);
 
-      const resetTimeout = setTimeout(() => {
-        setFormData({ name: '', phone: '', business: '', service: '' });
-        setShowSuccess(false);
-      }, 3000);
+      // Mensagem para WhatsApp
+      const selectedService = services.find(s => s.id === parseInt(formData.service));
+      const message = `🎯 *Novo Pedido de Orçamento*\n\n` +
+        `👤 *Nome:* ${formData.name}\n` +
+        `📱 *Telefone:* ${formData.phone}\n` +
+        `🏢 *Negócio:* ${formData.business}\n` +
+        `💼 *Serviço:* ${selectedService?.nome || formData.service}`;
 
-      timeoutRefs.current.push(resetTimeout);
-    }, 500);
+      const whatsappURL = `https://wa.me/5521968810478?text=${encodeURIComponent(message)}`;
 
-    timeoutRefs.current.push(openTimeout);
+      const openTimeout = setTimeout(() => {
+        const newWin = window.open(whatsappURL, '_blank');
+        try {
+          if (newWin) newWin.opener = null;
+        } catch (err) {
+          // ignora se não for possível
+        }
+
+        const resetTimeout = setTimeout(() => {
+          setFormData({ name: '', phone: '', business: '', service: '' });
+          setShowSuccess(false);
+        }, 3000);
+
+        timeoutRefs.current.push(resetTimeout);
+      }, 500);
+
+      timeoutRefs.current.push(openTimeout);
+    } else {
+      setIsSubmitting(false);
+      setShowError(true);
+      setErrorMessage(
+        result.error?.email?.[0] ||
+        result.error?.telefone?.[0] ||
+        'Erro ao enviar solicitação. Tente novamente.'
+      );
+
+      // Esconder erro após 5 segundos
+      const errorTimeout = setTimeout(() => setShowError(false), 5000);
+      timeoutRefs.current.push(errorTimeout);
+    }
   };
 
   return (
@@ -261,6 +300,25 @@ const QuickQuoteForm = () => {
                   Solicite Seu Orçamento
                 </h3>
 
+                {/* Mensagem de Erro */}
+                {showError && (
+                  <div style={{
+                    background: '#fee2e2',
+                    border: '1px solid #ef4444',
+                    borderRadius: '8px',
+                    padding: '0.875rem',
+                    marginBottom: '1.5rem',
+                    color: '#991b1b',
+                    fontSize: '0.875rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}>
+                    <span>⚠️</span>
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
                 {/* Name Input */}
                 <div style={{ marginBottom: '1.25rem' }}>
                   <label htmlFor="qq-name" style={{
@@ -350,7 +408,7 @@ const QuickQuoteForm = () => {
                     color: '#475569',
                     marginBottom: '0.5rem'
                   }}>
-                    Tipo de Negócio *
+                    Tipo de Negócio
                   </label>
                   <input
                     id="qq-business"
@@ -358,7 +416,6 @@ const QuickQuoteForm = () => {
                     name="business"
                     value={formData.business}
                     onChange={handleChange}
-                    required
                     placeholder="Ex: Clínica de Estética, Restaurante..."
                     style={{
                       width: '100%',
@@ -421,8 +478,8 @@ const QuickQuoteForm = () => {
                   >
                     <option value="">Selecione um serviço...</option>
                     {services.map((service) => (
-                      <option key={service.value} value={service.value}>
-                        {service.label}
+                      <option key={service.id} value={service.id}>
+                        {service.nome}
                       </option>
                     ))}
                   </select>
