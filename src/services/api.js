@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-// URL base da API - altere conforme necessário
-const API_BASE_URL = 'http://localhost:8000/api';
+// URL base da API - usa variável de ambiente
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
+
+console.log('🔌 API URL configurada:', API_BASE_URL); // Debug
 
 // Criar instância do axios
 const api = axios.create({
@@ -9,50 +11,70 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 10000, // 10 segundos
+  timeout: 10000,
 });
 
-// Interceptor para tratamento de erros
-api.interceptors.response.use(
-  (response) => response,
+// Interceptor para debug
+api.interceptors.request.use(
+  (config) => {
+    console.log('📤 Enviando requisição:', config.method?.toUpperCase(), config.url);
+    return config;
+  },
   (error) => {
-    console.error('Erro na requisição:', error);
+    console.error('❌ Erro na requisição:', error);
     return Promise.reject(error);
   }
 );
 
-// Funções da API
+// Interceptor de resposta
+api.interceptors.response.use(
+  (response) => {
+    console.log('✅ Resposta recebida:', response.status, response.data);
+    return response;
+  },
+  (error) => {
+    console.error('❌ Erro na resposta:', {
+      status: error.response?.status,
+      data: error.response?.data,
+      message: error.message
+    });
+    return Promise.reject(error);
+  }
+);
 
 /**
  * Criar um novo lead público
- * @param {Object} leadData - Dados do lead
- * @param {string} leadData.nome - Nome do lead
- * @param {string} leadData.email - Email do lead
- * @param {string} leadData.telefone - Telefone do lead
- * @param {number} leadData.servico_interessado - ID do serviço
- * @returns {Promise}
  */
 export const createPublicLead = async (leadData) => {
   try {
+    console.log('🚀 Criando lead:', leadData);
     const response = await api.post('/lead-publico/', leadData);
     return { success: true, data: response.data };
   } catch (error) {
-    return {
+    console.error('💥 Erro ao criar lead:', error);
+
+    // Tratamento de erro detalhado
+    const errorDetail = {
       success: false,
-      error: error.response?.data || 'Erro ao criar lead',
+      error: error.response?.data || {
+        message: error.message || 'Erro ao criar lead',
+        status: error.response?.status
+      }
     };
+
+    return errorDetail;
   }
 };
 
 /**
  * Listar serviços disponíveis
- * @returns {Promise}
  */
 export const getServices = async () => {
   try {
     const response = await api.get('/servicos/');
     return { success: true, data: response.data };
   } catch (error) {
+    console.error('💥 Erro ao buscar serviços:', error);
     return {
       success: false,
       error: error.response?.data || 'Erro ao buscar serviços',
@@ -62,8 +84,6 @@ export const getServices = async () => {
 
 /**
  * Obter um serviço específico
- * @param {number} serviceId - ID do serviço
- * @returns {Promise}
  */
 export const getServiceById = async (serviceId) => {
   try {

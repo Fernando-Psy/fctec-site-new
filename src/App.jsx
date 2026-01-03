@@ -31,7 +31,6 @@ function App() {
               <main>
                 <div className="container">
                   <Hero />
-
                 <Services />
                 <ClientsShowcase />
                 <BenefitsResults />
