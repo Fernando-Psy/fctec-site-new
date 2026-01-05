@@ -4,48 +4,44 @@ const ClientsShowcase = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const clients = [
-    { name: "Clínica Estética Bella", category: "Saúde & Beleza", logo: "🏥", color: "#ec4899" },
-    { name: "Restaurante Sabor da Terra", category: "Gastronomia", logo: "🍽️", color: "#f59e0b" },
-    { name: "Studio Unhas Perfeitas", category: "Beleza", logo: "💅", color: "#8b5cf6" },
-    { name: "Consórcio Premium", category: "Financeiro", logo: "🏢", color: "#2563eb" },
-    { name: "Escola Criativa Kids", category: "Educação", logo: "📚", color: "#10b981" },
-    { name: "Artesanato Maria", category: "Artesanato", logo: "🎨", color: "#f43f5e" },
-    { name: "Academia Fitness Pro", category: "Esportes", logo: "💪", color: "#06b6d4" },
-    { name: "Pet Shop Amigo Fiel", category: "Pet Care", logo: "🐾", color: "#84cc16" }
+    { name: "Clínica Estética Bella", category: "Saúde & Beleza", logo: "🏥" },
+    { name: "Restaurante Sabor da Terra", category: "Gastronomia", logo: "🍽️" },
+    { name: "Studio Unhas Perfeitas", category: "Beleza", logo: "💅" },
+    { name: "Consórcio Premium", category: "Financeiro", logo: "🏢" },
+    { name: "Escola Criativa Kids", category: "Educação", logo: "📚" },
+    { name: "Artesanato Maria", category: "Artesanato", logo: "🎨" },
+    { name: "Academia Fitness Pro", category: "Esportes", logo: "💪" },
+    { name: "Pet Shop Amigo Fiel", category: "Pet Care", logo: "🐾" }
   ];
 
-  const industries = [
+  // Cores centralizadas para manter consistência visual
+  const colorMap = {
+    "Saúde & Beleza": { color: "#ec4899", bgColor: "#fce7f3" },
+    "Gastronomia": { color: "#f59e0b", bgColor: "#fef3c7" },
+    "Educação": { color: "#3b82f6", bgColor: "#dbeafe" },
+    "Varejo & Lojas": { color: "#8b5cf6", bgColor: "#ede9fe" }
+  };
+
+  const serviceAreas = [
     {
-      name: "Saúde & Estética",
+      name: "Saúde & Beleza",
       icon: "💆‍♀️",
-      color: "#ec4899",
-      bgColor: "#fce7f3",
-      projects: "15+",
-      description: "Clínicas, consultórios e estúdios de beleza com sistemas de agendamento"
+      description: "Sistemas de agendamento, sites responsivos e gestão digital para clínicas, consultórios e estúdios de estética."
     },
     {
       name: "Gastronomia",
       icon: "🍔",
-      color: "#f59e0b",
-      bgColor: "#fef3c7",
-      projects: "12+",
-      description: "Restaurantes, bares e food services com delivery integrado"
+      description: "Sites com cardápio interativo, integração com delivery e presença online otimizada para restaurantes e bares."
     },
     {
       name: "Educação",
       icon: "📖",
-      color: "#3b82f6",
-      bgColor: "#dbeafe",
-      projects: "8+",
-      description: "Escolas, cursos e treinamentos online"
+      description: "Plataformas para cursos online, inscrições, calendários e comunicação eficaz com alunos e responsáveis."
     },
     {
       name: "Varejo & Lojas",
       icon: "🛍️",
-      color: "#8b5cf6",
-      bgColor: "#ede9fe",
-      projects: "10+",
-      description: "E-commerce e lojas físicas com gestão completa"
+      description: "E-commerces modernos, catálogos digitais e sistemas de gestão para lojas físicas e virtuais."
     }
   ];
 
@@ -71,7 +67,7 @@ const ClientsShowcase = () => {
       }} />
 
       <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        {/* Header */}
+        {/* Header – linguagem projetiva */}
         <div style={{
           textAlign: 'center',
           maxWidth: '800px',
@@ -91,7 +87,7 @@ const ClientsShowcase = () => {
             color: '#065f46'
           }}>
             <span>✨</span>
-            <span>Confiança de Quem Já Transformou</span>
+            <span>Parceria em Construção</span>
           </div>
 
           <h2 style={{
@@ -101,14 +97,13 @@ const ClientsShowcase = () => {
             marginBottom: '1rem',
             letterSpacing: '-0.02em'
           }}>
-            Negócios que{' '}
+            Seu Negócio{' '}
             <span style={{
               background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
-            }}>Cresceram</span>{' '}
-            Conosco
+            }}>Pronto para Crescer</span>
           </h2>
 
           <p style={{
@@ -116,92 +111,95 @@ const ClientsShowcase = () => {
             color: '#64748b',
             lineHeight: '1.7'
           }}>
-            Atendemos diversos segmentos com soluções personalizadas que geram resultados reais
+            Criamos soluções digitais sob medida para diversos segmentos — porque acreditamos que todo negócio merece uma presença online poderosa.
           </p>
         </div>
 
-        {/* Industries Grid */}
+        {/* Service Areas Grid – foco em capacidade, não em casos */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: '1.5rem',
           marginBottom: '4rem'
         }}>
-          {industries.map((industry, idx) => (
-            <div
-              key={idx}
-              onMouseEnter={() => setHoveredIndex(`industry-${idx}`)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              style={{
-                background: 'white',
-                border: '1px solid #e2e8f0',
-                borderRadius: '16px',
-                padding: '2rem',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer',
-                transform: hoveredIndex === `industry-${idx}` ? 'translateY(-8px)' : 'translateY(0)',
-                boxShadow: hoveredIndex === `industry-${idx}`
-                  ? '0 12px 28px rgba(15, 23, 42, 0.12)'
-                  : 'none',
-                borderColor: hoveredIndex === `industry-${idx}` ? industry.color : '#e2e8f0'
-              }}
-            >
-              {/* Icon */}
-              <div style={{
-                width: '60px',
-                height: '60px',
-                background: industry.bgColor,
-                borderRadius: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '2rem',
-                marginBottom: '1.25rem',
-                transition: 'transform 0.3s ease',
-                transform: hoveredIndex === `industry-${idx}` ? 'scale(1.1)' : 'scale(1)'
-              }}>
-                {industry.icon}
+          {serviceAreas.map((area, idx) => {
+            const { color, bgColor } = colorMap[area.name] || { color: "#64748b", bgColor: "#f1f5f9" };
+            return (
+              <div
+                key={idx}
+                onMouseEnter={() => setHoveredIndex(`area-${idx}`)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                style={{
+                  background: 'white',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '16px',
+                  padding: '2rem',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  transform: hoveredIndex === `area-${idx}` ? 'translateY(-8px)' : 'translateY(0)',
+                  boxShadow: hoveredIndex === `area-${idx}`
+                    ? '0 12px 28px rgba(15, 23, 42, 0.12)'
+                    : 'none',
+                  borderColor: hoveredIndex === `area-${idx}` ? color : '#e2e8f0'
+                }}
+              >
+                {/* Icon */}
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  background: bgColor,
+                  borderRadius: '14px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '2rem',
+                  marginBottom: '1.25rem',
+                  transition: 'transform 0.3s ease',
+                  transform: hoveredIndex === `area-${idx}` ? 'scale(1.1)' : 'scale(1)'
+                }}>
+                  {area.icon}
+                </div>
+
+                {/* Content */}
+                <h3 style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '700',
+                  color: '#0f172a',
+                  marginBottom: '0.5rem'
+                }}>
+                  {area.name}
+                </h3>
+
+                <p style={{
+                  fontSize: '0.9rem',
+                  color: '#64748b',
+                  lineHeight: '1.6',
+                  marginBottom: '1rem'
+                }}>
+                  {area.description}
+                </p>
+
+                {/* CTA badge neutro */}
+                <div style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  background: bgColor,
+                  color: color,
+                  padding: '0.5rem 1rem',
+                  borderRadius: '20px',
+                  fontSize: '0.875rem',
+                  fontWeight: '600'
+                }}>
+                  <span>🚀</span>
+                  <span>Solução pronta para você</span>
+                </div>
               </div>
-
-              {/* Content */}
-              <h3 style={{
-                fontSize: '1.25rem',
-                fontWeight: '700',
-                color: '#0f172a',
-                marginBottom: '0.5rem'
-              }}>
-                {industry.name}
-              </h3>
-
-              <p style={{
-                fontSize: '0.9rem',
-                color: '#64748b',
-                lineHeight: '1.6',
-                marginBottom: '1rem'
-              }}>
-                {industry.description}
-              </p>
-
-              {/* Projects Badge */}
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                background: industry.bgColor,
-                color: industry.color,
-                padding: '0.5rem 1rem',
-                borderRadius: '20px',
-                fontSize: '0.875rem',
-                fontWeight: '600'
-              }}>
-                <span>🎯</span>
-                <span>{industry.projects} Projetos</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Clients Logo Grid */}
+        {/* Clients Logo Grid – apresentado como "exemplos de segmentos atendíveis" */}
         <div style={{
           background: 'white',
           borderRadius: '20px',
@@ -216,7 +214,7 @@ const ClientsShowcase = () => {
             color: '#0f172a',
             marginBottom: '0.5rem'
           }}>
-            Alguns de Nossos Clientes Satisfeitos
+            Segmentos que Atendemos
           </h3>
           <p style={{
             textAlign: 'center',
@@ -224,7 +222,7 @@ const ClientsShowcase = () => {
             color: '#64748b',
             marginBottom: '2.5rem'
           }}>
-            Empresas que confiaram em nossa expertise e alcançaram resultados extraordinários
+            Trabalhamos com empresas de todos os portes — do microempreendedor à startup em crescimento.
           </p>
 
           <div style={{
@@ -233,69 +231,76 @@ const ClientsShowcase = () => {
             gap: '2rem',
             alignItems: 'center'
           }}>
-            {clients.map((client, idx) => (
-              <div
-                key={idx}
-                onMouseEnter={() => setHoveredIndex(`client-${idx}`)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '0.75rem',
-                  padding: '1.5rem',
-                  background: hoveredIndex === `client-${idx}` ? 'white' : '#f8fafc',
-                  borderRadius: '12px',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer',
-                  transform: hoveredIndex === `client-${idx}` ? 'scale(1.05)' : 'scale(1)',
-                  boxShadow: hoveredIndex === `client-${idx}`
-                    ? '0 4px 12px rgba(15, 23, 42, 0.1)'
-                    : 'none'
-                }}
-              >
-                {/* Logo Placeholder */}
-                <div style={{
-                  width: '60px',
-                  height: '60px',
-                  background: hoveredIndex === `client-${idx}`
-                    ? `linear-gradient(135deg, ${client.color}20 0%, ${client.color}40 100%)`
-                    : 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
-                  borderRadius: '12px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '2rem',
-                  transition: 'all 0.3s ease',
-                  transform: hoveredIndex === `client-${idx}` ? 'rotate(5deg)' : 'rotate(0deg)'
-                }}>
-                  {client.logo}
-                </div>
+            {clients.map((client, idx) => {
+              // Usamos a categoria para obter cor (fallback seguro)
+              const categoryKey = Object.keys(colorMap).find(key =>
+                client.category.includes(key.split(' & ')[0]) ||
+                key.includes(client.category.split(' & ')[0])
+              );
+              const { color = "#64748b" } = colorMap[categoryKey] || {};
 
-                {/* Name */}
-                <div style={{ textAlign: 'center' }}>
+              return (
+                <div
+                  key={idx}
+                  onMouseEnter={() => setHoveredIndex(`client-${idx}`)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.75rem',
+                    padding: '1.5rem',
+                    background: hoveredIndex === `client-${idx}` ? 'white' : '#f8fafc',
+                    borderRadius: '12px',
+                    transition: 'all 0.3s ease',
+                    cursor: 'pointer',
+                    transform: hoveredIndex === `client-${idx}` ? 'scale(1.05)' : 'scale(1)',
+                    boxShadow: hoveredIndex === `client-${idx}`
+                      ? '0 4px 12px rgba(15, 23, 42, 0.1)'
+                      : 'none'
+                  }}
+                >
                   <div style={{
-                    fontSize: '0.9rem',
-                    fontWeight: '600',
-                    color: '#0f172a',
-                    marginBottom: '0.25rem'
+                    width: '60px',
+                    height: '60px',
+                    background: hoveredIndex === `client-${idx}`
+                      ? `linear-gradient(135deg, ${color}20 0%, ${color}40 100%)`
+                      : 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '2rem',
+                    transition: 'all 0.3s ease',
+                    transform: hoveredIndex === `client-${idx}` ? 'rotate(5deg)' : 'rotate(0deg)'
                   }}>
-                    {client.name}
+                    {client.logo}
                   </div>
-                  <div style={{
-                    fontSize: '0.75rem',
-                    color: '#64748b',
-                    fontWeight: '500'
-                  }}>
-                    {client.category}
+
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{
+                      fontSize: '0.9rem',
+                      fontWeight: '600',
+                      color: '#0f172a',
+                      marginBottom: '0.25rem'
+                    }}>
+                      {client.name}
+                    </div>
+                    <div style={{
+                      fontSize: '0.75rem',
+                      color: '#64748b',
+                      fontWeight: '500'
+                    }}>
+                      {client.category}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
-        {/* Stats Bar */}
+        {/* Stats Bar – reescrita para focar em compromisso, não em métricas falsas */}
         <div style={{
           marginTop: '3rem',
           background: 'linear-gradient(135deg, #2563eb 0%, #0d5996 100%)',
@@ -305,7 +310,6 @@ const ClientsShowcase = () => {
           position: 'relative',
           overflow: 'hidden'
         }}>
-          {/* Background decoration */}
           <div style={{
             position: 'absolute',
             top: '-100px',
@@ -325,16 +329,14 @@ const ClientsShowcase = () => {
             zIndex: 1
           }}>
             {[
-              { value: '50+', label: 'Clientes Atendidos', icon: '👥' },
-              { value: '15+', label: 'Segmentos', icon: '🎯' },
-              { value: '98%', label: 'Satisfação', icon: '⭐' },
-              { value: '4.9★', label: 'Avaliação Média', icon: '🏆' }
+              { value: '100%', label: 'Compromisso com seu sucesso', icon: '🤝' },
+              { value: 'Sob Medida', label: 'Soluções personalizadas', icon: '✂️' },
+              { value: 'Ágil', label: 'Entrega rápida e eficiente', icon: '⚡' },
+              { value: 'Suporte', label: 'Acompanhamento contínuo', icon: '🛠️' }
             ].map((stat, idx) => (
               <div
                 key={idx}
-                style={{
-                  transition: 'transform 0.3s ease'
-                }}
+                style={{ transition: 'transform 0.3s ease' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
                 }}
@@ -342,14 +344,11 @@ const ClientsShowcase = () => {
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
-                <div style={{
-                  fontSize: '2.5rem',
-                  marginBottom: '0.5rem'
-                }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>
                   {stat.icon}
                 </div>
                 <div style={{
-                  fontSize: '2.25rem',
+                  fontSize: '1.5rem',
                   fontWeight: '800',
                   color: 'white',
                   marginBottom: '0.5rem',
@@ -369,7 +368,7 @@ const ClientsShowcase = () => {
           </div>
         </div>
 
-        {/* CTA */}
+        {/* CTA – mantido, pois é legítimo */}
         <div style={{
           marginTop: '3rem',
           textAlign: 'center'
@@ -380,10 +379,10 @@ const ClientsShowcase = () => {
             marginBottom: '1.5rem',
             fontWeight: '500'
           }}>
-            Seu negócio pode ser o próximo case de sucesso! 🚀
+            Vamos construir juntos a primeira versão do seu negócio digital? 🚀
           </p>
           <button
-            onClick={() => window.open('https://wa.me/5521968810478?text=Oi, quero transformar meu negócio!', '_blank')}
+            onClick={() => window.open('https://wa.me/5521968810478?text=Oi  , quero transformar meu negócio!', '_blank')}
             style={{
               background: 'linear-gradient(135deg, #2563eb 0%, #0d5996 100%)',
               color: 'white',

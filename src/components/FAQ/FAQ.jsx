@@ -19,6 +19,32 @@ const FAQ = () => {
         {
           question: "Preciso ter conhecimento técnico para usar o site?",
           answer: "Não! Nossos sites vêm com painel de administração intuitivo. Você consegue atualizar textos, imagens e conteúdos sem precisar programar. Oferecemos treinamento completo."
+        },
+        {
+          question: "Como funciona o início do projeto?",
+          answer: "Começamos com uma reunião gratuita para entender suas necessidades. Depois, enviamos uma proposta detalhada com escopo, prazos e valores. Só iniciamos após sua aprovação — sem surpresas e sem cobranças ocultas."
+        }
+      ]
+    },
+    {
+      category: "Transparência e Controle",
+      icon: "🔐",
+      questions: [
+        {
+          question: "O que acontece se eu quiser cancelar a assinatura?",
+          answer: "Você pode cancelar a qualquer momento. Nós exportamos todos os seus dados (clientes, agendas, conteúdos) em formato aberto e desfazemos toda a infraestrutura. Nada fica retido — é seu por direito."
+        },
+        {
+          question: "Quem fica com o domínio e as redes sociais?",
+          answer: "Você! O domínio (.com.br, .com etc.) é registrado diretamente em seu nome ou CNPJ. As redes sociais (Instagram, Facebook, Google Meu Negócio) são vinculadas à sua conta — nós apenas configuramos, mas você sempre tem acesso total."
+        },
+        {
+          question: "É como alugar um serviço digital?",
+          answer: "Exatamente. Enquanto você paga, mantemos tudo funcionando, atualizado e seguro. Se parar, você leva seus dados e o sistema é desativado — sem multas, sem surpresas. É liberdade com responsabilidade."
+        },
+        {
+          question: "Preciso de cartão de crédito para começar?",
+          answer: "Não! Primeiro fazemos uma conversa sem compromisso. Só após sua aprovação enviamos um link seguro para pagamento (PIX, boleto ou cartão). Não há cobrança automática sem autorização."
         }
       ]
     },
@@ -33,10 +59,6 @@ const FAQ = () => {
         {
           question: "O que está incluso no preço?",
           answer: "Todos os pacotes incluem: design personalizado, desenvolvimento completo, domínio (.com.br) por 1 ano, hospedagem por 1 ano, SSL (segurança), otimização mobile, treinamento e 30 dias de suporte pós-lançamento."
-        },
-        {
-          question: "Posso testar antes de contratar?",
-          answer: "Com certeza! Nos planos de assinatura, você tem 7 DIAS GRÁTIS para testar tudo. Para projetos personalizados, agendamos uma reunião para entender suas necessidades e mostramos cases similares."
         },
         {
           question: "Existe algum custo adicional depois da entrega?",
@@ -292,7 +314,7 @@ const FAQ = () => {
             Nossa equipe está pronta para te atender e esclarecer qualquer questão!
           </p>
           <button
-            onClick={() => window.open('https://wa.me/5521968810478?text=Oi, tenho algumas dúvidas sobre os serviços', '_blank')}
+            onClick={() => window.open('https://wa.me/5521968810478?text=Oi  , tenho algumas dúvidas sobre os serviços', '_blank')}
             style={{
               background: 'linear-gradient(135deg, #2563eb 0%, #0d5996 100%)',
               color: 'white',

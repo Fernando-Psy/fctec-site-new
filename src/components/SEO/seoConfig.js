@@ -7,7 +7,7 @@ export const SEOPages = {
 
   googleMeuNegocio: {
     title: "Google Meu Negócio - Otimização Completa | FCBJ",
-    description: "Configuração estratégica do Google Meu Negócio em Belford Roxo RJ. Aumente visibilidade local e atraia mais clientes. A partir de R$ 450.",
+    description: "Configuração estratégica do Google Meu Negócio em Belford Roxo RJ. Aumente visibilidade local e atraia mais clientes. A partir de R$ 900.",
     keywords: "google meu negócio belford roxo, otimização google empresas, marketing local rj, aparecer no google"
   },
 

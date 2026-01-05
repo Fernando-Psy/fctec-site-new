@@ -3,6 +3,7 @@ import { useState } from 'react';
 const SubscriptionPlans = () => {
   const [billingCycle, setBillingCycle] = useState('monthly');
   const [hoveredPlan, setHoveredPlan] = useState(null);
+  const [openFaq, setOpenFaq] = useState(null);
 
   const plans = [
     {
@@ -22,7 +23,7 @@ const SubscriptionPlans = () => {
         "Relatório mensal de visitantes"
       ],
       highlight: false,
-      cta: "Começar Teste Grátis",
+      cta: "Quero o Presença Digital",
       badge: null
     },
     {
@@ -44,7 +45,7 @@ const SubscriptionPlans = () => {
         "Backup diário automático"
       ],
       highlight: true,
-      cta: "Teste 30 Dias Grátis",
+      cta: "Quero o Crescimento Pro",
       badge: "Mais Popular"
     },
     {
@@ -56,18 +57,18 @@ const SubscriptionPlans = () => {
       targetAudience: "Empresas, Redes, Franquias, Consórcios",
       features: [
         "Tudo do Crescimento Pro +",
-        "Sistema ERP personalizado",
+        "Sistema de gestão modular (ERP)",
         "Dashboard administrativo completo",
         "Emails ilimitados",
         "API para integrações",
-        "App mobile (iOS + Android)",
+        "Aplicativo Web (PWA) com ícone na tela inicial",
         "Suporte 24/7 via WhatsApp",
         "Gerente de conta dedicado",
         "Treinamento da equipe incluso",
         "Desenvolvimento sob demanda (4h/mês)"
       ],
       highlight: false,
-      cta: "Agendar Demonstração",
+      cta: "Solicitar Proposta Personalizada",
       badge: "Premium"
     }
   ];
@@ -79,14 +80,14 @@ const SubscriptionPlans = () => {
         { name: "Site Institucional", basic: true, pro: true, enterprise: true },
         { name: "Google Meu Negócio", basic: true, pro: true, enterprise: true },
         { name: "Blog/Notícias", basic: false, pro: true, enterprise: true },
-        { name: "App Mobile", basic: false, pro: false, enterprise: true }
+        { name: "Aplicativo Web (PWA)", basic: false, pro: false, enterprise: true }
       ]
     },
     {
       category: "Funcionalidades",
       features: [
         { name: "Agendamento Online", basic: false, pro: true, enterprise: true },
-        { name: "Sistema de Gestão (ERP)", basic: false, pro: false, enterprise: true },
+        { name: "Sistema de Gestão Modular", basic: false, pro: false, enterprise: true },
         { name: "Integração Redes Sociais", basic: false, pro: true, enterprise: true },
         { name: "API Personalizada", basic: false, pro: false, enterprise: true }
       ]
@@ -98,6 +99,25 @@ const SubscriptionPlans = () => {
         { name: "Prioritário (24h)", basic: false, pro: true, enterprise: false },
         { name: "24/7 + Gerente Dedicado", basic: false, pro: false, enterprise: true }
       ]
+    }
+  ];
+
+  const faqItems = [
+    {
+      question: "O que acontece se eu quiser cancelar?",
+      answer: "Você pode cancelar a qualquer momento. Nós exportamos todos os seus dados (clientes, agendas, conteúdos) em formato aberto e desfazemos toda a infraestrutura. Nada fica retido — é seu por direito."
+    },
+    {
+      question: "Quem fica com o domínio e as redes sociais?",
+      answer: "Você! O domínio (.com.br, .com etc.) é registrado em seu nome ou CNPJ desde o início. As redes sociais (Instagram, Facebook, Google Meu Negócio) são vinculadas à sua conta — nós apenas configuramos, mas você sempre tem acesso total."
+    },
+    {
+      question: "É como alugar um serviço digital?",
+      answer: "Exatamente. Enquanto você paga, mantemos tudo funcionando, atualizado e seguro. Se parar, você leva seus dados e o sistema é desativado — sem multas, sem surpresas. É liberdade com responsabilidade."
+    },
+    {
+      question: "Preciso de cartão de crédito para começar?",
+      answer: "Não exigimos cartão para conversar! Primeiro alinhamos suas necessidades. Só após sua aprovação enviamos um link seguro para pagamento (boleto ou cartão). Sem cobrança automática sem consentimento."
     }
   ];
 
@@ -152,14 +172,21 @@ const SubscriptionPlans = () => {
             }}>Crescimento</span>
           </h2>
 
-          <p style={{
+          <div style={{
             fontSize: '1.125rem',
             color: '#64748b',
             lineHeight: '1.7',
-            marginBottom: '2rem'
+            marginBottom: '2rem',
+            maxWidth: '700px',
+            margin: '0 auto'
           }}>
-            Planos recorrentes com tudo incluído. Sem surpresas, sem taxas escondidas. Cancele quando quiser.
-          </p>
+            <p style={{ margin: '0 0 1rem 0' }}>
+              Trabalhamos no modelo de <strong>aluguel digital</strong>: nós criamos, mantemos e atualizamos sua presença online enquanto você precisar.
+            </p>
+            <p style={{ margin: '0' }}>
+              Se um dia decidir sair, <strong>exportamos seus dados e desfazemos toda a infraestrutura</strong> — sem multas, sem surpresas. Você mantém o controle.
+            </p>
+          </div>
 
           {/* Billing Toggle */}
           <div style={{
@@ -252,7 +279,6 @@ const SubscriptionPlans = () => {
                 transition: 'all 0.3s ease'
               }}
             >
-              {/* Badge */}
               {plan.badge && (
                 <div style={{
                   position: 'absolute',
@@ -273,7 +299,6 @@ const SubscriptionPlans = () => {
                 </div>
               )}
 
-              {/* Icon */}
               <div style={{
                 width: '60px',
                 height: '60px',
@@ -288,7 +313,6 @@ const SubscriptionPlans = () => {
                 {plan.icon}
               </div>
 
-              {/* Plan Name */}
               <h3 style={{
                 fontSize: '1.5rem',
                 fontWeight: '700',
@@ -298,7 +322,6 @@ const SubscriptionPlans = () => {
                 {plan.name}
               </h3>
 
-              {/* Target Audience */}
               <p style={{
                 fontSize: '0.85rem',
                 color: '#2563eb',
@@ -308,7 +331,6 @@ const SubscriptionPlans = () => {
                 {plan.targetAudience}
               </p>
 
-              {/* Description */}
               <p style={{
                 fontSize: '0.9rem',
                 color: '#64748b',
@@ -318,7 +340,6 @@ const SubscriptionPlans = () => {
                 {plan.description}
               </p>
 
-              {/* Price */}
               <div style={{ marginBottom: '1.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
                   <span style={{
@@ -342,11 +363,10 @@ const SubscriptionPlans = () => {
                 )}
               </div>
 
-              {/* Features */}
               <ul style={{
                 listStyle: 'none',
                 padding: 0,
-                margin: '0 0 2rem 0'
+                margin: '0 0 1.5rem 0'
               }}>
                 {plan.features.map((feature, i) => (
                   <li key={i} style={{
@@ -367,9 +387,8 @@ const SubscriptionPlans = () => {
                 ))}
               </ul>
 
-              {/* CTA Button */}
               <button
-                onClick={() => window.open('https://wa.me/5521968810478?text=Oi, gostaria de conhecer o plano ' + plan.name, '_blank')}
+                onClick={() => window.open('https://wa.me/5521968810478?text=Oi  , gostaria de conhecer o plano ' + plan.name, '_blank')}
                 style={{
                   width: '100%',
                   background: plan.highlight
@@ -400,6 +419,16 @@ const SubscriptionPlans = () => {
               >
                 {plan.cta}
               </button>
+
+              <p style={{
+                fontSize: '0.8rem',
+                color: '#64748b',
+                textAlign: 'center',
+                marginTop: '1rem',
+                fontStyle: 'italic'
+              }}>
+                🔄 Modelo de aluguel: cancele a qualquer momento e leve seus dados
+              </p>
             </div>
           ))}
         </div>
@@ -410,7 +439,8 @@ const SubscriptionPlans = () => {
           borderRadius: '20px',
           padding: '3rem 2rem',
           boxShadow: '0 4px 12px rgba(15, 23, 42, 0.06)',
-          border: '1px solid #e2e8f0'
+          border: '1px solid #e2e8f0',
+          marginBottom: '4rem'
         }}>
           <h3 style={{
             fontSize: '1.75rem',
@@ -526,9 +556,68 @@ const SubscriptionPlans = () => {
           </div>
         </div>
 
+        {/* FAQ de Transparência */}
+        <div style={{
+          maxWidth: '800px',
+          margin: '0 auto 4rem',
+          background: 'white',
+          borderRadius: '16px',
+          padding: '2.5rem',
+          boxShadow: '0 4px 12px rgba(15, 23, 42, 0.04)',
+          border: '1px solid #e2e8f0'
+        }}>
+          <h3 style={{
+            fontSize: '1.75rem',
+            fontWeight: '700',
+            color: '#0f172a',
+            textAlign: 'center',
+            marginBottom: '2rem'
+          }}>
+            Perguntas Frequentes
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            {faqItems.map((item, idx) => (
+              <div key={idx}>
+                <div
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  style={{
+                    fontSize: '1.1rem',
+                    fontWeight: '600',
+                    color: '#0f172a',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                  }}
+                >
+                  {item.question}
+                  <span style={{
+                    fontSize: '1.2rem',
+                    transition: 'transform 0.3s ease',
+                    transform: openFaq === idx ? 'rotate(180deg)' : 'rotate(0deg)'
+                  }}>
+                    ▼
+                  </span>
+                </div>
+                {openFaq === idx && (
+                  <p style={{
+                    marginTop: '0.75rem',
+                    fontSize: '1rem',
+                    color: '#64748b',
+                    lineHeight: '1.6',
+                    paddingLeft: '1.5rem'
+                  }}>
+                    {item.answer}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* CTA Footer */}
         <div style={{
-          marginTop: '4rem',
+          marginTop: '2rem',
           textAlign: 'center',
           background: 'linear-gradient(135deg, #2563eb 0%, #0d5996 100%)',
           padding: '3rem 2rem',
@@ -540,17 +629,17 @@ const SubscriptionPlans = () => {
             fontWeight: '700',
             marginBottom: '1rem'
           }}>
-            Ainda tem dúvidas sobre qual plano escolher?
+            Vamos construir sua presença digital com liberdade?
           </h3>
           <p style={{
             fontSize: '1.05rem',
             marginBottom: '2rem',
             opacity: 0.9
           }}>
-            Fale com nosso time e receba uma consultoria gratuita para encontrar a solução perfeita
+            Fale com nosso time e receba uma proposta personalizada, sem compromisso.
           </p>
           <button
-            onClick={() => window.open('https://wa.me/5521968810478?text=Oi, gostaria de uma consultoria sobre os planos', '_blank')}
+            onClick={() => window.open('https://wa.me/5521968810478?text=Oi  , gostaria de uma consultoria sobre os planos', '_blank')}
             style={{
               background: 'white',
               color: '#2563eb',

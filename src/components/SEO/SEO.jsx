@@ -6,7 +6,7 @@ const SEO = ({
   keywords = "desenvolvimento web belford roxo, criação de sites rj, sistema web para clínicas, site com cms, google meu negócio, manutenção de sites, desenvolvedor web rio de janeiro",
   author = "FCBJ Desenvolvimento",
   url = window.location.href,
-  image = "/og-image.jpg", // Coloque uma imagem 1200x630px em public/
+  image = "/logo.png", // Coloque uma imagem 1200x630px em public/
   type = "website"
 }) => {
   useEffect(() => {
@@ -84,7 +84,7 @@ const SEO = ({
       "name": "FCBJ Desenvolvimento",
       "image": image,
       "description": description,
-      "url": "https://seudominio.com.br",
+      "url": "https://fctec.dev.br",
       "telephone": "+5521968810478",
       "email": "fernando.cbj.tec@gmail.com",
       "address": {

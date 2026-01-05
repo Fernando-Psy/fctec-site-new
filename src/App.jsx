@@ -31,12 +31,12 @@ function App() {
               <main>
                 <div className="container">
                   <Hero />
-                <Services />
-                <ClientsShowcase />
-                <BenefitsResults />
-                <SubscriptionPlans />
-                <Testimonials />
-                <FAQ />
+                  <Services />
+                  <ClientsShowcase />
+                  <BenefitsResults />
+                  <SubscriptionPlans />
+                  <Testimonials />
+                  <FAQ />
                 </div>
                 <div className="container">
                   <Location />

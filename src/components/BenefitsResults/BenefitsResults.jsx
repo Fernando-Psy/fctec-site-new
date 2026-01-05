@@ -288,7 +288,8 @@ const BenefitsResults = () => {
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: '800',
               marginBottom: '1rem',
-              letterSpacing: '-0.02em'
+              letterSpacing: '-0.02em',
+              color: '#cbd5e1'
             }}>
               Como Funciona a{' '}
               <span style={{

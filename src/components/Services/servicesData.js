@@ -10,7 +10,7 @@ export const servicesData = [
     title: "Google Meu Negócio",
     description: "Configuração estratégica completa do Google Meu Negócio para maximizar sua visibilidade local e atrair clientes qualificados da sua região.",
     detailedDescription: "Otimize sua presença no Google e apareça quando seus clientes estão procurando pelos seus serviços. Configuração profissional que aumenta sua visibilidade local e atrai mais clientes qualificados para seu negócio.",
-    price: "A partir de R$ 600",
+    price: "Apenas R$ 900",
     features: [
       "Otimização completa do perfil no Google",
       "Landing Page profissional integrada",
@@ -31,7 +31,7 @@ export const servicesData = [
     title: "Sistema Web Personalizado",
     description: "Sistema sob medida com backend robusto e frontend moderno. Ideal para clínicas, consultórios, escolas ou negócios que precisam automatizar processos.",
     detailedDescription: "Solução completa desenvolvida especialmente para as necessidades do seu negócio. Sistema profissional com tecnologia de ponta, seguro, escalável e fácil de usar. Perfeito para automatizar agendamentos, cadastros, gestão e relatórios.",
-    price: "A partir de R$ 6.500",
+    price: "A partir de R$ 8.000",
     features: [
       "Backend robusto com Python + Django",
       "Frontend moderno e responsivo com React",
@@ -56,7 +56,7 @@ export const servicesData = [
     title: "Site Institucional com CMS",
     description: "Site profissional com painel de administração. Você mesmo atualiza textos, imagens e conteúdos sem precisar programar.",
     detailedDescription: "Seu negócio merece um site profissional que transmita credibilidade. Site completo com sistema de gerenciamento de conteúdo intuitivo, permitindo que você faça atualizações sem depender de programadores. Design moderno, responsivo e otimizado para conversão.",
-    price: "A partir de R$ 2.000",
+    price: "A partir de R$ 3.000",
     features: [
       "Design moderno e responsivo",
       "Painel de administração intuitivo (CMS)",
@@ -78,37 +78,33 @@ export const servicesData = [
     icon: "🌐"
   },
   {
-    id: "manutencao-sistemas",
-    image: siteManutencao,
-    title: "Manutenção de Sites e Sistemas",
-    description: "Mantenha seu site sempre atualizado, seguro e funcionando perfeitamente. 90% dos problemas acontecem por falta de manutenção.",
-    detailedDescription: "Proteja seu investimento com manutenção profissional regular. Mantemos seu site ou sistema sempre atualizado, seguro e com máxima performance. Evite problemas, perda de dados e quedas que podem custar clientes e vendas.",
-    price: "A partir de R$ 350/mês",
-    features: [
-      "Atualizações de segurança",
-      "Correção de bugs e erros",
-      "Ajustes de layout e design",
-      "Troca de imagens e textos",
-      "Otimização de performance",
-      "Backup semanal automatizado",
-      "Monitoramento de uptime 24/7",
-      "Atualizações de plugins/bibliotecas",
-      "Suporte técnico prioritário",
-      "Relatório mensal de atividades",
-      "Até 4 horas de desenvolvimento/mês",
-      "Resposta em até 24 horas"
-    ],
-    whatsappLink: "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Manutenção de Sistemas.",
-    badge: null,
-    icon: "🔧"
-  },
+  id: "manutencao-sob-demanda",
+  image: siteManutencao,
+  title: "Manutenção Sob Demanda",
+  description: "Precisa de ajustes, correções ou melhorias? Contrate horas técnicas quando precisar — sem mensalidade, sem fidelidade.",
+  detailedDescription: "Oferecemos suporte técnico especializado por hora, ideal para quem já tem um sistema estável, mas precisa de pequenas intervenções ocasionais. Cada hora contratada inclui diagnóstico, execução e documentação. Você acompanha todo o trabalho em tempo real e só paga pelo que realmente usar.",
+  price: "R$ 150/hora",
+  features: [
+    "Atualizações de segurança (CMS, plugins, bibliotecas)",
+    "Correção de bugs e erros funcionais",
+    "Ajustes de layout, texto ou imagens",
+    "Otimização de performance (carregamento, SEO técnico)",
+    "Backup e restauração de emergência",
+    "Integrações simples (WhatsApp, redes sociais, formulários)",
+    "Suporte técnico via WhatsApp ou e-mail",
+    "Relatório detalhado de horas e tarefas executadas",
+    "Sem taxa de adesão ou mensalidade",
+    "Mínimo de 1 hora por solicitação"
+  ],
+  cta: "Contratar Horas Técnicas"
+},
   {
     id: "e-commerce",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
     title: "Loja Virtual (E-commerce)",
     description: "Venda online 24/7 com loja virtual completa. Sistema de pagamento integrado, gestão de estoque e painel administrativo.",
     detailedDescription: "Expanda suas vendas com uma loja virtual profissional. Sistema completo para vender online com integração de pagamentos, gestão de produtos, controle de estoque, envio automático e muito mais. Comece a vender online hoje mesmo!",
-    price: "A partir de R$ 4.000",
+    price: "A partir de R$ 5.000",
     features: [
       "Catálogo ilimitado de produtos",
       "Carrinho de compras inteligente",
@@ -135,7 +131,7 @@ export const servicesData = [
     title: "Landing Page de Conversão",
     description: "Página focada em conversão para captar leads e vender seus serviços. Design persuasivo e otimizado para resultados.",
     detailedDescription: "Transforme visitantes em clientes com uma landing page profissional focada em conversão. Design estratégico, copywriting persuasivo e otimizações para maximizar seus resultados. Ideal para campanhas, lançamentos e captação de leads.",
-    price: "A partir de R$ 1.200",
+    price: "A partir de R$ 1.500",
     features: [
       "Design focado em conversão",
       "Copywriting estratégico",
