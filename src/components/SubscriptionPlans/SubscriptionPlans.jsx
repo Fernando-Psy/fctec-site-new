@@ -9,7 +9,7 @@ const SubscriptionPlans = () => {
     {
       name: "Presença Digital",
       icon: "🌟",
-      price: { monthly: 297, yearly: 2970 },
+      price: { monthly: 397, yearly: 3970 },
       discount: "Economize 17%",
       description: "Ideal para quem está começando e quer presença online profissional",
       targetAudience: "Autônomos, MEIs, Profissionais Liberais",
@@ -29,7 +29,7 @@ const SubscriptionPlans = () => {
     {
       name: "Crescimento Pro",
       icon: "🚀",
-      price: { monthly: 597, yearly: 5970 },
+      price: { monthly: 797, yearly: 7970 },
       discount: "Economize 17%",
       description: "Para negócios que querem crescer e se destacar da concorrência",
       targetAudience: "Clínicas, Restaurantes, Lojas, Estéticas",
@@ -51,7 +51,7 @@ const SubscriptionPlans = () => {
     {
       name: "Enterprise",
       icon: "💎",
-      price: { monthly: 1197, yearly: 11970 },
+      price: { monthly: 1397, yearly: 13970 },
       discount: "Economize 17%",
       description: "Solução completa para empresas que buscam máximo desempenho",
       targetAudience: "Empresas, Redes, Franquias, Consórcios",
@@ -99,25 +99,6 @@ const SubscriptionPlans = () => {
         { name: "Prioritário (24h)", basic: false, pro: true, enterprise: false },
         { name: "24/7 + Gerente Dedicado", basic: false, pro: false, enterprise: true }
       ]
-    }
-  ];
-
-  const faqItems = [
-    {
-      question: "O que acontece se eu quiser cancelar?",
-      answer: "Você pode cancelar a qualquer momento. Nós exportamos todos os seus dados (clientes, agendas, conteúdos) em formato aberto e desfazemos toda a infraestrutura. Nada fica retido — é seu por direito."
-    },
-    {
-      question: "Quem fica com o domínio e as redes sociais?",
-      answer: "Você! O domínio (.com.br, .com etc.) é registrado em seu nome ou CNPJ desde o início. As redes sociais (Instagram, Facebook, Google Meu Negócio) são vinculadas à sua conta — nós apenas configuramos, mas você sempre tem acesso total."
-    },
-    {
-      question: "É como alugar um serviço digital?",
-      answer: "Exatamente. Enquanto você paga, mantemos tudo funcionando, atualizado e seguro. Se parar, você leva seus dados e o sistema é desativado — sem multas, sem surpresas. É liberdade com responsabilidade."
-    },
-    {
-      question: "Preciso de cartão de crédito para começar?",
-      answer: "Não exigimos cartão para conversar! Primeiro alinhamos suas necessidades. Só após sua aprovação enviamos um link seguro para pagamento (boleto ou cartão). Sem cobrança automática sem consentimento."
     }
   ];
 
@@ -553,65 +534,6 @@ const SubscriptionPlans = () => {
                 ))}
               </tbody>
             </table>
-          </div>
-        </div>
-
-        {/* FAQ de Transparência */}
-        <div style={{
-          maxWidth: '800px',
-          margin: '0 auto 4rem',
-          background: 'white',
-          borderRadius: '16px',
-          padding: '2.5rem',
-          boxShadow: '0 4px 12px rgba(15, 23, 42, 0.04)',
-          border: '1px solid #e2e8f0'
-        }}>
-          <h3 style={{
-            fontSize: '1.75rem',
-            fontWeight: '700',
-            color: '#0f172a',
-            textAlign: 'center',
-            marginBottom: '2rem'
-          }}>
-            Perguntas Frequentes
-          </h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            {faqItems.map((item, idx) => (
-              <div key={idx}>
-                <div
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  style={{
-                    fontSize: '1.1rem',
-                    fontWeight: '600',
-                    color: '#0f172a',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                  }}
-                >
-                  {item.question}
-                  <span style={{
-                    fontSize: '1.2rem',
-                    transition: 'transform 0.3s ease',
-                    transform: openFaq === idx ? 'rotate(180deg)' : 'rotate(0deg)'
-                  }}>
-                    ▼
-                  </span>
-                </div>
-                {openFaq === idx && (
-                  <p style={{
-                    marginTop: '0.75rem',
-                    fontSize: '1rem',
-                    color: '#64748b',
-                    lineHeight: '1.6',
-                    paddingLeft: '1.5rem'
-                  }}>
-                    {item.answer}
-                  </p>
-                )}
-              </div>
-            ))}
           </div>
         </div>
 
