@@ -108,6 +108,7 @@ function App() {
             path="/servicos/:serviceId"
             element={
               <>
+                <SEO {...SEOPages.services} />
                 <main>
                   <Suspense fallback={<LoadingFallback />}>
                     <ServiceDetails />

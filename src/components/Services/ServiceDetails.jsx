@@ -365,6 +365,7 @@ const ServiceDetails = () => {
         show={showModal}
         onHide={() => setShowModal(false)}
         serviceName={service.title}
+        serviceId={service.id}
       />
     </>
   );

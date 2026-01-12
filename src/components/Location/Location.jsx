@@ -6,8 +6,8 @@ const Location = () => {
     {
       icon: 'bi-envelope',
       title: 'Email',
-      value: 'fernando.cbj.tec@gmail.com',
-      link: 'mailto:fernando.cbj.tec@gmail.com',
+      value: 'fcbj.dev@gmail.com',
+      link: 'mailto:fcbj.dev@gmail.com',
       color: '#2563eb'
     },
     {
@@ -73,7 +73,7 @@ const Location = () => {
 
               {/* WhatsApp CTA */}
               <a
-                href="https://wa.me/5521968810478"
+                href="https://wa.me/5521968810478?text=Olá, gostaria de conversar sobre soluções digitais."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="whatsapp-cta"

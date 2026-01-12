@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
-import { createPublicLead, getServices } from '../../services/api.js';
+import { useState, useRef } from 'react';
 
 const QuickQuoteForm = () => {
   const [formData, setFormData] = useState({
@@ -12,25 +11,20 @@ const QuickQuoteForm = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [services, setServices] = useState([]);
   const timeoutRefs = useRef([]);
 
-  useEffect(() => {
-    // Carregar serviços da API
-    const loadServices = async () => {
-      const result = await getServices();
-      if (result.success) {
-        setServices(result.data.results || result.data);
-      }
-    };
-    loadServices();
-
-    return () => {
-      // Limpar todos os timeouts ao desmontar
-      timeoutRefs.current.forEach((t) => clearTimeout(t));
-      timeoutRefs.current = [];
-    };
-  }, []);
+  // Lista de serviços diretamente no componente
+  const services = [
+    { id: '1', nome: 'Site Institucional' },
+    { id: '2', nome: 'E-commerce' },
+    { id: '3', nome: 'Landing Page' },
+    { id: '4', nome: 'Sistema Web' },
+    { id: '5', nome: 'Aplicativo Mobile' },
+    { id: '6', nome: 'Design Gráfico' },
+    { id: '7', nome: 'Marketing Digital' },
+    { id: '8', nome: 'Consultoria' },
+    { id: '9', nome: 'Outro' }
+  ];
 
   const handleChange = (e) => {
     setFormData({
@@ -39,7 +33,7 @@ const QuickQuoteForm = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setShowError(false);
@@ -52,95 +46,46 @@ const QuickQuoteForm = () => {
       return;
     }
 
-    // Preparar dados para API
-    //const leadData = {
-    //nome: formData.name,
-    //email: formData.business || `${formData.phone}@temp.com`, // Email temporário se não fornecido
-    //telefone: formData.phone,
-    //servico_interessado: parseInt(formData.service)
-    //};
+    try {
+      // Encontrar nome do serviço selecionado
+      const selectedService = services.find(s => s.id === formData.service);
 
-    // Validar Email
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      setIsSubmitting(true);
-      setShowError(false);
+      // Montar mensagem para WhatsApp
+      const message = `🎯 *Novo Pedido de Orçamento*\n\n` +
+        `👤 *Nome:* ${formData.name}\n` +
+        `📱 *Telefone:* ${formData.phone}\n` +
+        `🏢 *Negócio:* ${formData.business || 'Não informado'}\n` +
+        `💼 *Serviço:* ${selectedService?.nome || 'Não especificado'}`;
 
-      // Validação básica
-      if (!formData.name || !formData.phone || !formData.service) {
-        setShowError(true);
-        setErrorMessage('Por favor, preencha todos os campos obrigatórios');
-        setIsSubmitting(false);
-        return;
-      }
+      const whatsappURL = `https://wa.me/5521968810478?text=${encodeURIComponent(message)}`;
 
-      // Email: Se não fornecido, gerar email temporário
-      const emailToUse = formData.business && formData.business.includes('@')
-        ? formData.business
-        : `lead_${Date.now()}_${formData.phone.replace(/\D/g, '')}@fctec.temp`;
+      setIsSubmitting(false);
+      setShowSuccess(true);
 
-      // Preparar dados para API
-      const leadData = {
-        nome: formData.name,
-        email: emailToUse,
-        telefone: formData.phone.replace(/\D/g, ''),
-        servico_interessado: parseInt(formData.service)
-      };
-      console.log('🚀 Dados para API:', leadData);
+      // Abrir WhatsApp após pequeno delay
+      const openTimeout = setTimeout(() => {
+        window.open(whatsappURL, '_blank', 'noopener,noreferrer');
 
-      // Enviar para API
-      const result = await createPublicLead(leadData);
+        // Resetar formulário após 3 segundos
+        const resetTimeout = setTimeout(() => {
+          setFormData({ name: '', phone: '', business: '', service: '' });
+          setShowSuccess(false);
+        }, 3000);
 
-      if (result.success) {
-        console.log('🚀 Lead criado com sucesso:', result.data);
-        setIsSubmitting(false);
-        setShowSuccess(true);
+        timeoutRefs.current.push(resetTimeout);
+      }, 500);
 
-        // Mensagem para WhatsApp
-        const selectedService = services.find(s => s.id === parseInt(formData.service));
-        const message = `🎯 *Novo Pedido de Orçamento*\n\n` +
-          `👤 *Nome:* ${formData.name}\n` +
-          `📱 *Telefone:* ${formData.phone}\n` +
-          `🏢 *Negócio:* ${formData.business}\n` +
-          `💼 *Serviço:* ${selectedService?.nome || formData.service}`;
+      timeoutRefs.current.push(openTimeout);
+    } catch (error) {
+      setIsSubmitting(false);
+      setShowError(true);
+      setErrorMessage('Erro ao abrir WhatsApp. Tente novamente.');
 
-        const whatsappURL = `https://wa.me/5521968810478?text=${encodeURIComponent(message)}`;
-
-        const openTimeout = setTimeout(() => {
-          const newWin = window.open(whatsappURL, '_blank');
-          try {
-            if (newWin) newWin.opener = null;
-          } catch (err) {
-            // ignora se não for possível
-          }
-
-          const resetTimeout = setTimeout(() => {
-            setFormData({ name: '', phone: '', business: '', service: '' });
-            setShowSuccess(false);
-          }, 3000);
-
-          timeoutRefs.current.push(resetTimeout);
-        }, 500);
-
-        timeoutRefs.current.push(openTimeout);
-      } else {
-        console.error('💥 Erro ao criar lead:', result.error);
-        setIsSubmitting(false);
-        setShowError(true);
-
-        const errorMsg =
-          result.error?.email?.[0] ||
-          result.error?.telefone?.[0] ||
-          result.error?.nome?.[0] ||
-          result.error?.message ||
-          'Erro ao enviar solicitação. Tente novamente.'
-        setErrorMessage(errorMsg);
-
-        // Esconder erro após 5 segundos
-        const errorTimeout = setTimeout(() => setShowError(false), 5000);
-        timeoutRefs.current.push(errorTimeout);
-      }
-    };
+      // Esconder erro após 5 segundos
+      const errorTimeout = setTimeout(() => setShowError(false), 5000);
+      timeoutRefs.current.push(errorTimeout);
+    }
+  };
 
     return (
       <section style={{

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { createPublicLead } from "../../services/api";
 import "./ContactForm.css";
 
 const ContactForm = () => {
@@ -54,45 +53,48 @@ const ContactForm = () => {
     }
 
     try {
-      const result = await createPublicLead({
-        name: formData.name,
-        phone: formData.phone,
-        email: formData.email,
-        business: formData.company,
-        message: formData.message,
-        service: "Contato Institucional",
+      // Montar mensagem para WhatsApp
+      const whatsappMessage =
+        `📨 *Nova Mensagem de Contato*\n\n` +
+        `👤 *Nome:* ${formData.name}\n` +
+        `📧 *Email:* ${formData.email}\n` +
+        `📱 *Telefone:* ${formData.phone || "Não informado"}\n` +
+        `🏢 *Empresa:* ${formData.company || "Não informada"}\n\n` +
+        `💬 *Mensagem:*\n${formData.message}`;
+
+      const whatsappURL = `https://wa.me/5521968810478?text=${encodeURIComponent(
+        whatsappMessage
+      )}`;
+
+      // Abrir WhatsApp
+      window.open(whatsappURL, "_blank", "noopener,noreferrer");
+
+      setStatus({
+        submitting: false,
+        success: true,
+        error: false,
+        message: "Redirecionando para o WhatsApp! Complete o envio por lá.",
       });
 
-      if (result.success) {
-        setStatus({
-          submitting: false,
-          success: true,
-          error: false,
-          message:
-            "Mensagem enviada com sucesso! Em breve entraremos em contato.",
-        });
-        // Limpar formulário
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          company: "",
-          message: "",
-        });
-        // Limpar mensagem de sucesso após 5 segundos
-        setTimeout(() => {
-          setStatus((prev) => ({ ...prev, success: false, message: "" }));
-        }, 5000);
-      } else {
-        throw new Error(result.error || "Erro ao enviar mensagem");
-      }
+      // Limpar formulário
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      });
+
+      // Limpar mensagem de sucesso após 5 segundos
+      setTimeout(() => {
+        setStatus((prev) => ({ ...prev, success: false, message: "" }));
+      }, 5000);
     } catch (error) {
       setStatus({
         submitting: false,
         success: false,
         error: true,
-        message:
-          "Não foi possível enviar sua mensagem. Tente novamente ou entre em contato via WhatsApp.",
+        message: "Não foi possível abrir o WhatsApp. Tente novamente.",
       });
     }
   };
@@ -137,7 +139,7 @@ const ContactForm = () => {
                 <div className="method-icon email">✉️</div>
                 <div className="method-content">
                   <h3 className="method-title">Email</h3>
-                  <p className="method-text">contato@fctec.com.br</p>
+                  <p className="method-text">fcbj.dev@gmail.com</p>
                 </div>
               </div>
 
