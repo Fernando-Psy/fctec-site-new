@@ -1,53 +1,86 @@
-import { Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import './Footer.css';
+import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "./Footer.css";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const techStack = [
-  { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-  { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-  { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-  { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-  { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-  { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-  { name: 'Django', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
-  { name: 'FastAPI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-plain.svg' },
-  { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-  { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-];
+    {
+      name: "HTML5",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    },
+    {
+      name: "CSS3",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+    },
+    {
+      name: "JavaScript",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    },
+    {
+      name: "React",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    },
+    {
+      name: "TypeScript",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    },
+    {
+      name: "Node.js",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    },
+    {
+      name: "Python",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    },
+    {
+      name: "Django",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg",
+    },
+    {
+      name: "FastAPI",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-plain.svg",
+    },
+    {
+      name: "PostgreSQL",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    },
+    {
+      name: "Docker",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    },
+  ];
 
   const quickLinks = [
-    { label: 'Sobre', href: '#about' },
-    { label: 'Serviços', href: '#products' },
-    { label: 'Contato', href: '#location' }
+    { label: "Sobre", href: "#about" },
+    { label: "Serviços", href: "#products" },
+    { label: "Contato", href: "#location" },
   ];
 
   const socialLinks = [
     {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/fcbj.dev?igsh=MXNvczl0a2Uzcjkybw==',
-      icon: 'bi-instagram'
+      name: "Instagram",
+      url: "https://www.instagram.com/fcbj.dev?igsh=MXNvczl0a2Uzcjkybw==",
+      icon: "bi-instagram",
     },
     {
-      name: 'Facebook',
-      url: 'https://www.facebook.com/share/1CC9521Qrs/',
-      icon: 'bi-facebook'
+      name: "Facebook",
+      url: "https://www.facebook.com/share/1CC9521Qrs/",
+      icon: "bi-facebook",
     },
     {
-      name: 'WhatsApp',
-      url: 'https://wa.me/5521968810478',
-      icon: 'bi-whatsapp'
-    }
+      name: "WhatsApp",
+      url: "https://wa.me/5521968810478",
+      icon: "bi-whatsapp",
+    },
   ];
 
   const handleScroll = (e, href) => {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -117,7 +150,10 @@ const Footer = () => {
                 <ul className="footer-contact">
                   <li className="contact-item">
                     <i className="bi bi-envelope contact-icon"></i>
-                    <a href="mailto:fernando.cbj.tec@gmail.com" className="contact-link">
+                    <a
+                      href="mailto:fernando.cbj.tec@gmail.com"
+                      className="contact-link"
+                    >
                       fernando.cbj.tec@gmail.com
                     </a>
                   </li>
@@ -178,13 +214,18 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-copyright">
             <p className="copyright-text">
-              © {currentYear} <strong>FCBJ Desenvolvimento</strong> — CNPJ: 56.323.525/0001-12. Todos os direitos reservados.
+              © {currentYear} <strong>FCBJ Desenvolvimento</strong> — CNPJ:
+              56.323.525/0001-12. Todos os direitos reservados.
             </p>
           </div>
           <div className="footer-legal">
-            <Link to="/politica-privacidade" className="legal-link">Política de Privacidade</Link>
+            <Link to="/politica-privacidade" className="legal-link">
+              Política de Privacidade
+            </Link>
             <span className="legal-divider">•</span>
-            <a href="#terms" className="legal-link">Termos de Uso</a>
+            <a href="#terms" className="legal-link">
+              Termos de Uso
+            </a>
           </div>
         </div>
       </Container>

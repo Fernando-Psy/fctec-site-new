@@ -11,27 +11,29 @@ import Hero from "./components/Hero/Hero";
 import WhatsAppFloat from "./components/WhatsAppFloat/WhatsAppFloat";
 
 // Lazy loading para componentes pesados
-const AboutCompany = lazy(() =>
-  import("./components/AboutCompany/AboutCompany")
+const AboutCompany = lazy(
+  () => import("./components/AboutCompany/AboutCompany"),
 );
 const Services = lazy(() => import("./components/Services/Services"));
-const ServiceDetails = lazy(() =>
-  import("./components/Services/ServiceDetails")
+const ServiceDetails = lazy(
+  () => import("./components/Services/ServiceDetails"),
 );
-const ClientsShowcase = lazy(() =>
-  import("./components/ClientsShowcase/ClientsShowcase")
+const ClientsShowcase = lazy(
+  () => import("./components/ClientsShowcase/ClientsShowcase"),
 );
-const BenefitsResults = lazy(() =>
-  import("./components/BenefitsResults/BenefitsResults")
+const BenefitsResults = lazy(
+  () => import("./components/BenefitsResults/BenefitsResults"),
 );
-const Testimonials = lazy(() =>
-  import("./components/Testimonials/Testimonials")
+const Testimonials = lazy(
+  () => import("./components/Testimonials/Testimonials"),
 );
 const ContactForm = lazy(() => import("./components/ContactForm/ContactForm"));
 const FAQ = lazy(() => import("./components/FAQ/FAQ"));
 const Location = lazy(() => import("./components/Location/Location"));
 const Footer = lazy(() => import("./components/Footer/Footer"));
-const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy/PrivacyPolicy"));
+const PrivacyPolicy = lazy(
+  () => import("./components/PrivacyPolicy/PrivacyPolicy"),
+);
 
 // Loading component
 const LoadingFallback = () => (
