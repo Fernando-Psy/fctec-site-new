@@ -83,22 +83,6 @@
   box-sizing: border-box;
 }
 
-/* Preservar ícones do Bootstrap Icons */
-i.bi::before,
-i[class^="bi-"]::before,
-i[class*=" bi-"]::before {
-  display: inline-block;
-  font-family: bootstrap-icons !important;
-  font-style: normal;
-  font-weight: normal !important;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  vertical-align: -.125em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 /* Animação de Loading */
 @keyframes spin {
   to {
