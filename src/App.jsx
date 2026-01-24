@@ -9,6 +9,7 @@ import { SEOPages } from "./components/SEO/seoConfig";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import WhatsAppFloat from "./components/WhatsAppFloat/WhatsAppFloat";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Lazy loading para componentes pesados
 const AboutCompany = lazy(
@@ -33,6 +34,9 @@ const Location = lazy(() => import("./components/Location/Location"));
 const Footer = lazy(() => import("./components/Footer/Footer"));
 const PrivacyPolicy = lazy(
   () => import("./components/PrivacyPolicy/PrivacyPolicy"),
+);
+const TermsOfService = lazy(
+  () => import("./components/TermsOfService/TermsOfService"),
 );
 
 // Loading component
@@ -62,6 +66,7 @@ const LoadingFallback = () => (
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Header />
         <Routes>
@@ -133,6 +138,24 @@ function App() {
                 <main>
                   <Suspense fallback={<LoadingFallback />}>
                     <PrivacyPolicy />
+                  </Suspense>
+                </main>
+              </>
+            }
+          />
+
+          {/* Termos de Uso */}
+          <Route
+            path="/termos-de-uso"
+            element={
+              <>
+                <SEO
+                  title="Termos de Uso | FCBJ Desenvolvimento"
+                  description="Conheça os termos e condições de uso dos nossos serviços e site."
+                />
+                <main>
+                  <Suspense fallback={<LoadingFallback />}>
+                    <TermsOfService />
                   </Suspense>
                 </main>
               </>

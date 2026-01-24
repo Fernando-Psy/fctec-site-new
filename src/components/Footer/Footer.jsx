@@ -223,9 +223,9 @@ const Footer = () => {
               Política de Privacidade
             </Link>
             <span className="legal-divider">•</span>
-            <a href="#terms" className="legal-link">
+            <Link to="/termos-de-uso" className="legal-link">
               Termos de Uso
-            </a>
+            </Link>
           </div>
         </div>
       </Container>
