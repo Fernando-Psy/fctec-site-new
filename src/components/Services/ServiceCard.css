@@ -16,7 +16,7 @@
 .service-card-wrapper:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
-  border-color: rgba(37, 99, 235, 0.3);
+  border-color: rgba(78, 131, 175, 0.4);
 }
 
 .service-card-wrapper:hover .card-glow {
@@ -66,12 +66,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(37, 99, 235, 0.15) 0%,
-    rgba(37, 99, 235, 0.05) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(78, 131, 175, 0.2) 0%,
+      rgba(6, 182, 212, 0.1) 50%,
+      transparent 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
   display: flex;
@@ -183,7 +181,7 @@
 .service-price {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #0d5996;
+  color: #3a5f7d;
   letter-spacing: -0.02em;
 }
 
@@ -191,14 +189,14 @@
 .service-button {
   position: relative;
   width: 100%;
-  background: linear-gradient(135deg, #2563eb 0%, #0d5996 100%) !important;
+  background: linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%) !important;
   border: none !important;
   color: white !important;
   font-weight: 600;
   font-size: 0.95rem;
   padding: 0.875rem 1.5rem !important;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 12px rgba(78, 131, 175, 0.35);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   display: flex;
@@ -209,7 +207,7 @@
 
 .service-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 8px 20px rgba(78, 131, 175, 0.45);
 }
 
 .service-button:active {
@@ -239,12 +237,10 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent);
   transition: left 0.6s;
 }
 
@@ -259,11 +255,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
-    circle at 50% 0%,
-    rgba(37, 99, 235, 0.15) 0%,
-    transparent 60%
-  );
+  background: radial-gradient(circle at 50% 0%,
+      rgba(78, 131, 175, 0.15) 0%,
+      transparent 60%);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -272,9 +266,12 @@
 
 /* ===== ANIMAÇÕES ===== */
 @keyframes pulse-badge {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
@@ -282,12 +279,12 @@
 
 /* ===== ESTADOS ESPECIAIS ===== */
 .service-card-wrapper.featured {
-  border: 2px solid #0d5996;
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+  border: 2px solid #4e83af;
+  box-shadow: 0 8px 24px rgba(78, 131, 175, 0.2);
 }
 
 .service-card-wrapper.featured .service-title {
-  color: #0d5996;
+  color: #3a5f7d;
 }
 
 /* ===== RESPONSIVIDADE ===== */

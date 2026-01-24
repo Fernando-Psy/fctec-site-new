@@ -1,5 +1,5 @@
  <section style={{
-        background: 'linear-gradient(135deg, #1e40af 0%, #2563eb 100%)',
+        background: 'linear-gradient(135deg, #3a5f7d 0%, #4e83af 100%)',
         borderRadius: '16px',
         padding: '3rem',
         marginBottom: '2rem',

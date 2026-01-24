@@ -2,13 +2,16 @@
 
 :root {
   /* Cores Base Corporativas */
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
+  --bg-primary: #f6fafe;
+  --bg-secondary: #ecf5fa;
   --card-bg: #ffffff;
   --text-primary: #0f172a;
   --text-secondary: #475569;
-  --accent-primary: #2563eb;
-  --accent-secondary: #3b82f6;
+  --accent-primary: #4e83af;
+  --accent-secondary: #6a9dc4;
+  --accent-coral: #f97316;
+  --accent-turquoise: #06b6d4;
+  --accent-violet: #7c3aed;
 
   /* Sombras Neumórficas Profissionais */
   --shadow-neumo-light: -8px -8px 16px rgba(255, 255, 255, 0.8);
@@ -22,14 +25,16 @@
 }
 
 /* ===== BASE STYLES ===== */
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 body {
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, #ecfeff 50%, var(--bg-secondary) 100%);
   color: var(--text-primary);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -69,7 +74,7 @@ body {
 .neumo-card:hover {
   box-shadow: var(--shadow-hover);
   transform: translateY(-4px);
-  border-color: rgba(37, 99, 235, 0.2);
+  border-color: rgba(78, 131, 175, 0.3);
 }
 
 /* Card com gradiente sutil */
@@ -96,7 +101,7 @@ body {
 
 .neumo-input:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 4px rgba(78, 131, 175, 0.15);
   background: #ffffff;
 }
 
@@ -124,7 +129,7 @@ body {
 
 /* ===== BOTÕES CORPORATIVOS ===== */
 .neumo-btn {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, #1e40af 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #3a5f7d 100%);
   color: white;
   border: none;
   border-radius: 12px;
@@ -133,7 +138,7 @@ body {
   font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 12px rgba(78, 131, 175, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -145,13 +150,13 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s;
 }
 
 .neumo-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 8px 20px rgba(78, 131, 175, 0.4);
 }
 
 .neumo-btn:hover::before {
@@ -160,7 +165,7 @@ body {
 
 .neumo-btn:active {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 2px 8px rgba(78, 131, 175, 0.3);
 }
 
 /* Botão secundário */
@@ -173,7 +178,7 @@ body {
 
 .neumo-btn-secondary:hover {
   border-color: var(--accent-primary);
-  background: #eff6ff;
+  background: #ecf5fa;
   box-shadow: var(--shadow-hover);
 }
 
@@ -188,7 +193,7 @@ body {
 .neumo-btn-outline:hover {
   background: var(--accent-primary);
   color: white;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 12px rgba(78, 131, 175, 0.3);
 }
 
 /* ===== HEADER / NAVBAR ===== */
@@ -208,7 +213,7 @@ body {
 .brand-badge:hover {
   box-shadow: var(--shadow-hover);
   transform: translateY(-2px);
-  border-color: rgba(37, 99, 235, 0.2);
+  border-color: rgba(78, 131, 175, 0.2);
 }
 
 /* ===== HERO IMAGE ===== */
@@ -237,7 +242,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(78, 131, 175, 0.05) 0%, transparent 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -295,11 +300,11 @@ body {
 
 /* ===== ESTATÍSTICAS / STATS ===== */
 .stats-card {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, #1e40af 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #3a5f7d 100%);
   border-radius: 16px;
   padding: 3rem 2rem;
   color: white;
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 8px 24px rgba(78, 131, 175, 0.3);
   text-align: center;
 }
 
@@ -318,13 +323,13 @@ body {
 
 /* ===== BADGES E TAGS ===== */
 .neumo-badge {
-  background: #eff6ff;
+  background: #ecf5fa;
   color: var(--accent-primary);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
-  border: 1px solid rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(78, 131, 175, 0.15);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -339,8 +344,15 @@ body {
 
 /* ===== ANIMAÇÕES ===== */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .float-animation {
@@ -402,8 +414,13 @@ body {
 }
 
 @keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* ===== ACESSIBILIDADE ===== */

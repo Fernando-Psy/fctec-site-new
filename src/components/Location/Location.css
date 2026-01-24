@@ -2,7 +2,7 @@
 
 .location-section {
   padding: 6rem 0;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f6fafe 50%, #ecfeff 100%);
   position: relative;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .title-gradient {
-  background: linear-gradient(135deg, #2563eb 0%, #0d5996 100%);
+  background: linear-gradient(135deg, #4e83af 0%, #06b6d4 50%, #7c3aed 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -87,7 +87,7 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: var(--accent-color, #0d5996);
+  background: var(--accent-color, #4e83af);
   transform: scaleY(0);
   transition: transform 0.3s ease;
 }
@@ -95,7 +95,7 @@
 .contact-card:hover {
   transform: translateX(4px);
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.1);
-  border-color: var(--accent-color, #0d5996);
+  border-color: var(--accent-color, #4e83af);
 }
 
 .contact-card:hover::before {
@@ -115,13 +115,13 @@
 }
 
 .contact-card:hover .contact-icon-wrapper {
-  background: var(--accent-color, #0d5996);
+  background: var(--accent-color, #4e83af);
   transform: scale(1.1);
 }
 
 .contact-icon {
   font-size: 1.5rem;
-  color: var(--accent-color, #0d5996);
+  color: var(--accent-color, #4e83af);
   transition: color 0.3s ease;
 }
 
@@ -156,7 +156,7 @@
 }
 
 .contact-card:hover .contact-arrow {
-  color: var(--accent-color, #0d5996);
+  color: var(--accent-color, #4e83af);
   transform: translateX(4px);
 }
 
@@ -252,7 +252,7 @@
 .map-info-icon {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #2563eb 0%, #0d5996 100%);
+  background: linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -291,7 +291,7 @@
 .hours-icon-wrapper {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  background: linear-gradient(135deg, #ecf5fa 0%, #d9eaf4 100%);
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
@@ -300,7 +300,7 @@
 
 .hours-icon {
   font-size: 2rem;
-  color: #0d5996;
+  color: #3a5f7d;
 }
 
 .hours-title {
@@ -337,7 +337,7 @@
 
 .hours-time {
   font-weight: 700;
-  color: #0d5996;
+  color: #3a5f7d;
   font-size: 0.95rem;
 }
 
@@ -345,20 +345,20 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: linear-gradient(135deg, #2563eb 0%, #0d5996 100%);
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
   color: white;
   padding: 1rem 1.75rem;
   border-radius: 12px;
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hours-cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.45);
   color: white;
 }
 
@@ -368,6 +368,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -379,6 +380,7 @@
     opacity: 0;
     transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);

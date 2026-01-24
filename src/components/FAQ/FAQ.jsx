@@ -124,14 +124,14 @@ const FAQ = () => {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.5rem',
-            background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
+            background: 'linear-gradient(135deg, #ecf5fa 0%, #d9eaf4 100%)',
             border: '1px solid rgba(37, 99, 235, 0.2)',
             padding: '0.5rem 1.25rem',
             borderRadius: '50px',
             marginBottom: '1.5rem',
             fontSize: '0.875rem',
             fontWeight: '600',
-            color: '#1e40af'
+            color: '#3a5f7d'
           }}>
             <span>❓</span>
             <span>Tire suas dúvidas</span>
@@ -145,7 +145,7 @@ const FAQ = () => {
             letterSpacing: '-0.02em'
           }}>
             Perguntas <span style={{
-              background: 'linear-gradient(135deg, #2563eb 0%, #0d5996 100%)',
+              background: 'linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -233,7 +233,7 @@ const FAQ = () => {
                       <span style={{
                         fontSize: '1.05rem',
                         fontWeight: '600',
-                        color: isOpen ? '#2563eb' : '#0f172a',
+                        color: isOpen ? '#4e83af' : '#0f172a',
                         transition: 'color 0.2s ease'
                       }}>
                         {faq.question}
@@ -243,7 +243,7 @@ const FAQ = () => {
                         width: '32px',
                         height: '32px',
                         background: isOpen
-                          ? 'linear-gradient(135deg, #2563eb 0%, #0d5996 100%)'
+                          ? 'linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)'
                           : '#f1f5f9',
                         borderRadius: '50%',
                         display: 'flex',
@@ -293,7 +293,7 @@ const FAQ = () => {
         <div style={{
           marginTop: '4rem',
           padding: '2.5rem',
-          background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
+          background: 'linear-gradient(135deg, #ecf5fa 0%, #d9eaf4 100%)',
           borderRadius: '16px',
           textAlign: 'center',
           border: '1px solid rgba(37, 99, 235, 0.2)'
@@ -316,7 +316,7 @@ const FAQ = () => {
           <button
             onClick={() => window.open('https://wa.me/5521968810478?text=Oi  , tenho algumas dúvidas sobre os serviços', '_blank')}
             style={{
-              background: 'linear-gradient(135deg, #2563eb 0%, #0d5996 100%)',
+              background: 'linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)',
               color: 'white',
               border: 'none',
               padding: '1rem 2rem',

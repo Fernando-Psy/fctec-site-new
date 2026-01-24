@@ -149,7 +149,7 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
             {/* Coluna Esquerda - Informações */}
             <div
               style={{
-                background: "linear-gradient(135deg, #2563eb 0%, #0d5996 100%)",
+                background: "linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)",
                 padding: "3rem 2rem",
                 color: "white",
                 display: "flex",
@@ -367,7 +367,7 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
                     }}
                     onFocus={(e) => {
                       if (!errors.name) {
-                        e.target.style.borderColor = "#2563eb";
+                        e.target.style.borderColor = "#4e83af";
                         e.target.style.boxShadow =
                           "0 0 0 4px rgba(37, 99, 235, 0.1)";
                       }
@@ -427,7 +427,7 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
                     }}
                     onFocus={(e) => {
                       if (!errors.email) {
-                        e.target.style.borderColor = "#2563eb";
+                        e.target.style.borderColor = "#4e83af";
                         e.target.style.boxShadow =
                           "0 0 0 4px rgba(37, 99, 235, 0.1)";
                       }
@@ -487,7 +487,7 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
                     }}
                     onFocus={(e) => {
                       if (!errors.phone) {
-                        e.target.style.borderColor = "#2563eb";
+                        e.target.style.borderColor = "#4e83af";
                         e.target.style.boxShadow =
                           "0 0 0 4px rgba(37, 99, 235, 0.1)";
                       }
@@ -548,7 +548,7 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
                       }}
                       onFocus={(e) => {
                         if (!errors.serviceId) {
-                          e.target.style.borderColor = "#2563eb";
+                          e.target.style.borderColor = "#4e83af";
                           e.target.style.boxShadow =
                             "0 0 0 4px rgba(37, 99, 235, 0.1)";
                         }
@@ -590,7 +590,7 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
                     padding: "1rem",
                     background: isSubmitting
                       ? "#cbd5e1"
-                      : "linear-gradient(135deg, #2563eb 0%, #0d5996 100%)",
+                      : "linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)",
                     color: "white",
                     border: "none",
                     borderRadius: "10px",

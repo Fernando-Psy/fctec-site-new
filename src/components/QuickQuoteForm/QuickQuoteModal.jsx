@@ -135,7 +135,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
               {/* Coluna Esquerda - Informações */}
               {window.innerWidth > 991 && (
                 <div style={{
-                  background: 'linear-gradient(135deg, #2563eb 0%, #0d5996 100%)',
+                  background: 'linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)',
                   padding: '3rem 2rem',
                   color: 'white',
                   display: 'flex',
@@ -285,7 +285,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                         outline: 'none'
                       }}
                       onFocus={(e) => {
-                        e.target.style.borderColor = '#2563eb';
+                        e.target.style.borderColor = '#4e83af';
                         e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
                       }}
                       onBlur={(e) => {
@@ -325,7 +325,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                         outline: 'none'
                       }}
                       onFocus={(e) => {
-                        e.target.style.borderColor = '#2563eb';
+                        e.target.style.borderColor = '#4e83af';
                         e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
                       }}
                       onBlur={(e) => {
@@ -365,7 +365,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                         outline: 'none'
                       }}
                       onFocus={(e) => {
-                        e.target.style.borderColor = '#2563eb';
+                        e.target.style.borderColor = '#4e83af';
                         e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
                       }}
                       onBlur={(e) => {
@@ -405,7 +405,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                         backgroundColor: 'white'
                       }}
                       onFocus={(e) => {
-                        e.target.style.borderColor = '#2563eb';
+                        e.target.style.borderColor = '#4e83af';
                         e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
                       }}
                       onBlur={(e) => {
@@ -431,7 +431,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                       padding: '1rem',
                       background: isSubmitting
                         ? '#cbd5e1'
-                        : 'linear-gradient(135deg, #2563eb 0%, #0d5996 100%)',
+                        : 'linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)',
                       color: 'white',
                       border: 'none',
                       borderRadius: '10px',
@@ -582,7 +582,7 @@ const App = () => {
           }}
           style={{
             padding: '1rem 2rem',
-            background: '#2563eb',
+            background: '#4e83af',
             color: 'white',
             border: 'none',
             borderRadius: '8px',

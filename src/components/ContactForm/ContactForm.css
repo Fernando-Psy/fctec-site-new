@@ -1,7 +1,7 @@
 .contact-form-section {
     padding: 5rem 0;
     position: relative;
-    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+    background: linear-gradient(135deg, #ecfeff 0%, #ffffff 50%, #f6fafe 100%);
     overflow: hidden;
 }
 
@@ -32,20 +32,20 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(37, 99, 235, 0.1);
-    border: 1px solid rgba(37, 99, 235, 0.2);
+    background: rgba(78, 131, 175, 0.12);
+    border: 1px solid rgba(78, 131, 175, 0.3);
     padding: 0.5rem 1rem;
     border-radius: 50px;
     margin-bottom: 1.5rem;
     font-size: 0.875rem;
     font-weight: 600;
-    color: #2563eb;
+    color: #3a5f7d;
 }
 
 .badge-dot {
     width: 8px;
     height: 8px;
-    background: #2563eb;
+    background: #f97316;
     border-radius: 50%;
     animation: pulse 2s ease-in-out infinite;
 }
@@ -72,7 +72,7 @@
 }
 
 .title-highlight {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, #4e83af 0%, #06b6d4 50%, #f97316 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -106,8 +106,8 @@
 
 .contact-method:hover {
     transform: translateX(8px);
-    box-shadow: 0 8px 16px -4px rgba(37, 99, 235, 0.15);
-    border-color: rgba(37, 99, 235, 0.3);
+    box-shadow: 0 8px 16px -4px rgba(78, 131, 175, 0.2);
+    border-color: rgba(78, 131, 175, 0.4);
 }
 
 .method-icon {
@@ -126,7 +126,7 @@
 }
 
 .method-icon.email {
-    background: rgba(37, 99, 235, 0.1);
+    background: rgba(78, 131, 175, 0.12);
 }
 
 .method-icon.location {
@@ -201,8 +201,8 @@
 .form-input:focus,
 .form-textarea:focus {
     outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    border-color: #4e83af;
+    box-shadow: 0 0 0 3px rgba(78, 131, 175, 0.15);
 }
 
 .form-input::placeholder,
@@ -250,7 +250,7 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
     color: white;
     border: none;
     border-radius: 8px;
@@ -258,11 +258,12 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
 
 .submit-button:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px -4px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 12px 28px -4px rgba(249, 115, 22, 0.5);
 }
 
 .submit-button:disabled {
@@ -306,7 +307,7 @@
 .contact-bg-1 {
     width: 400px;
     height: 400px;
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    background: linear-gradient(135deg, #4e83af, #06b6d4);
     top: -200px;
     left: -200px;
 }
@@ -314,7 +315,7 @@
 .contact-bg-2 {
     width: 500px;
     height: 500px;
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    background: linear-gradient(135deg, #f97316, #ea580c);
     bottom: -250px;
     right: -250px;
 }

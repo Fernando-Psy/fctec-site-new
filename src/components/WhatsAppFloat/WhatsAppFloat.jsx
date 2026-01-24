@@ -146,7 +146,7 @@ const WhatsAppFloat = () => {
           <div style={{
             width: '40px',
             height: '40px',
-            background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
+            background: 'linear-gradient(135deg, #d9eaf4 0%, #bfdbfe 100%)',
             borderRadius: '50%',
             display: 'flex',
             alignItems: 'center',

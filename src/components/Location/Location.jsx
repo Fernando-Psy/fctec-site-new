@@ -8,7 +8,7 @@ const Location = () => {
       title: 'Email',
       value: 'fcbj.dev@gmail.com',
       link: 'mailto:fcbj.dev@gmail.com',
-      color: '#2563eb'
+      color: '#4e83af'
     },
     {
       icon: 'bi-phone',

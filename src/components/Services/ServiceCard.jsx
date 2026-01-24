@@ -46,7 +46,7 @@ const ServiceCard = ({ service }) => {
             {features.length > 4 && (
               <li
                 className="feature-item"
-                style={{ fontStyle: "italic", color: "#2563eb" }}
+                style={{ fontStyle: "italic", color: "#4e83af" }}
               >
                 <span className="feature-check">+</span>
                 <span className="feature-text">

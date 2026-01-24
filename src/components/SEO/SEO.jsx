@@ -49,7 +49,7 @@ const SEO = ({
       'format-detection': 'telephone=yes',
 
       // Theme Color
-      'theme-color': '#2563eb'
+      'theme-color': '#4e83af'
     };
 
     // Criar/Atualizar Meta Tags

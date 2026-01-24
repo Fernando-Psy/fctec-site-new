@@ -46,14 +46,14 @@ const HeroImproved = () => {
                 marginBottom: "1.5rem",
                 fontSize: "0.875rem",
                 fontWeight: "600",
-                color: "#2563eb",
+                color: "#4e83af",
               }}
             >
               <span
                 style={{
                   width: "8px",
                   height: "8px",
-                  background: "#2563eb",
+                  background: "#4e83af",
                   borderRadius: "50%",
                 }}
               />
@@ -75,7 +75,7 @@ const HeroImproved = () => {
               <span
                 style={{
                   background:
-                    "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
+                    "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -144,7 +144,7 @@ const HeroImproved = () => {
                       transition: "all 0.3s ease",
                     }}
                     onMouseOver={(e) => {
-                      e.currentTarget.style.background = "#eff6ff";
+                      e.currentTarget.style.background = "#ecf5fa";
                       e.currentTarget.style.transform = "translateY(-2px)";
                     }}
                     onMouseOut={(e) => {
@@ -186,7 +186,7 @@ const HeroImproved = () => {
                 }
                 style={{
                   background:
-                    "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
+                    "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
                   border: "none",
                   padding: "1.125rem 2rem",
                   borderRadius: "10px",
@@ -227,7 +227,7 @@ const HeroImproved = () => {
                 style={{
                   background: "white",
                   border: "2px solid #e2e8f0",
-                  color: "#2563eb",
+                  color: "#4e83af",
                   padding: "1rem 2rem",
                   borderRadius: "10px",
                   fontSize: "0.95rem",
@@ -242,8 +242,8 @@ const HeroImproved = () => {
                   width: "100%",
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.borderColor = "#2563eb";
-                  e.currentTarget.style.background = "#eff6ff";
+                  e.currentTarget.style.borderColor = "#4e83af";
+                  e.currentTarget.style.background = "#ecf5fa";
                   e.currentTarget.style.transform = "translateY(-2px)";
                 }}
                 onMouseOut={(e) => {
@@ -279,7 +279,7 @@ const HeroImproved = () => {
                     style={{
                       fontSize: "1.5rem",
                       fontWeight: "800",
-                      color: "#2563eb",
+                      color: "#4e83af",
                       lineHeight: "1",
                       marginBottom: "0.25rem",
                     }}
@@ -348,7 +348,7 @@ const HeroImproved = () => {
                     style={{
                       width: "48px",
                       height: "48px",
-                      background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
+                      background: "linear-gradient(135deg, #f97316, #ea580c)",
                       borderRadius: "10px",
                       display: "flex",
                       alignItems: "center",

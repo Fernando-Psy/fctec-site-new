@@ -18,7 +18,7 @@ const ClientsShowcase = () => {
   const colorMap = {
     "Saúde & Beleza": { color: "#ec4899", bgColor: "#fce7f3" },
     "Gastronomia": { color: "#f59e0b", bgColor: "#fef3c7" },
-    "Educação": { color: "#3b82f6", bgColor: "#dbeafe" },
+    "Educação": { color: "#6a9dc4", bgColor: "#d9eaf4" },
     "Varejo & Lojas": { color: "#8b5cf6", bgColor: "#ede9fe" }
   };
 
@@ -265,7 +265,7 @@ const ClientsShowcase = () => {
                     height: '60px',
                     background: hoveredIndex === `client-${idx}`
                       ? `linear-gradient(135deg, ${color}20 0%, ${color}40 100%)`
-                      : 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
+                      : 'linear-gradient(135deg, #d9eaf4 0%, #bfdbfe 100%)',
                     borderRadius: '12px',
                     display: 'flex',
                     alignItems: 'center',
@@ -303,7 +303,7 @@ const ClientsShowcase = () => {
         {/* Stats Bar – reescrita para focar em compromisso, não em métricas falsas */}
         <div style={{
           marginTop: '3rem',
-          background: 'linear-gradient(135deg, #2563eb 0%, #0d5996 100%)',
+          background: 'linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)',
           borderRadius: '16px',
           padding: '2.5rem 2rem',
           boxShadow: '0 8px 24px rgba(37, 99, 235, 0.3)',
@@ -384,7 +384,7 @@ const ClientsShowcase = () => {
           <button
             onClick={() => window.open('https://wa.me/5521968810478?text=Oi  , quero transformar meu negócio!', '_blank')}
             style={{
-              background: 'linear-gradient(135deg, #2563eb 0%, #0d5996 100%)',
+              background: 'linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)',
               color: 'white',
               border: 'none',
               padding: '1rem 2.5rem',

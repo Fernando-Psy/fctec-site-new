@@ -42,7 +42,7 @@ const ServiceDetails = () => {
           >
             <span
               onClick={() => navigate("/")}
-              style={{ cursor: "pointer", color: "#2563eb" }}
+              style={{ cursor: "pointer", color: "#4e83af" }}
             >
               Início
             </span>
@@ -56,7 +56,7 @@ const ServiceDetails = () => {
                     ?.scrollIntoView({ behavior: "smooth" });
                 }, 100);
               }}
-              style={{ cursor: "pointer", color: "#2563eb" }}
+              style={{ cursor: "pointer", color: "#4e83af" }}
             >
               Serviços
             </span>
@@ -99,14 +99,14 @@ const ServiceDetails = () => {
                   alignItems: "center",
                   gap: "0.5rem",
                   background:
-                    "linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)",
+                    "linear-gradient(135deg, #ecf5fa 0%, #d9eaf4 100%)",
                   border: "1px solid rgba(37, 99, 235, 0.2)",
                   padding: "0.5rem 1.25rem",
                   borderRadius: "50px",
                   marginBottom: "1.5rem",
                   fontSize: "0.875rem",
                   fontWeight: "600",
-                  color: "#1e40af",
+                  color: "#3a5f7d",
                 }}
               >
                 <span style={{ fontSize: "1.25rem" }}>{service.icon}</span>
@@ -148,7 +148,7 @@ const ServiceDetails = () => {
                   onClick={() => setShowModal(true)}
                   style={{
                     background:
-                      "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
+                      "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
                     color: "white",
                     border: "none",
                     padding: "1.125rem 2.5rem",
@@ -255,7 +255,7 @@ const ServiceDetails = () => {
                   }}
                   onMouseOver={(e) => {
                     e.currentTarget.style.background = "white";
-                    e.currentTarget.style.borderColor = "#2563eb";
+                    e.currentTarget.style.borderColor = "#4e83af";
                     e.currentTarget.style.transform = "translateX(4px)";
                   }}
                   onMouseOut={(e) => {
@@ -303,7 +303,7 @@ const ServiceDetails = () => {
       <section
         style={{
           padding: "4rem 2rem",
-          background: "linear-gradient(135deg, #2563eb 0%, #0d5996 100%)",
+          background: "linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)",
           textAlign: "center",
         }}
       >
@@ -335,7 +335,7 @@ const ServiceDetails = () => {
             onClick={() => setShowModal(true)}
             style={{
               background: "white",
-              color: "#2563eb",
+              color: "#4e83af",
               border: "none",
               padding: "1rem 2.5rem",
               borderRadius: "12px",

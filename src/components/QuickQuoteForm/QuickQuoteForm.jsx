@@ -158,7 +158,7 @@ const QuickQuoteForm = () => {
               }}>
                 Receba Seu Orçamento{' '}
                 <span style={{
-                  background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)',
+                  background: 'linear-gradient(135deg, #85b5d5 0%, #6a9dc4 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text'
@@ -241,7 +241,7 @@ const QuickQuoteForm = () => {
                       <div style={{
                         fontSize: '1.75rem',
                         fontWeight: '800',
-                        color: '#60a5fa',
+                        color: '#85b5d5',
                         marginBottom: '0.25rem'
                       }}>
                         {stat.value}
@@ -327,7 +327,7 @@ const QuickQuoteForm = () => {
                         outline: 'none'
                       }}
                       onFocus={(e) => {
-                        e.target.style.borderColor = '#2563eb';
+                        e.target.style.borderColor = '#4e83af';
                         e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
                       }}
                       onBlur={(e) => {
@@ -367,7 +367,7 @@ const QuickQuoteForm = () => {
                         outline: 'none'
                       }}
                       onFocus={(e) => {
-                        e.target.style.borderColor = '#2563eb';
+                        e.target.style.borderColor = '#4e83af';
                         e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
                       }}
                       onBlur={(e) => {
@@ -406,7 +406,7 @@ const QuickQuoteForm = () => {
                         outline: 'none'
                       }}
                       onFocus={(e) => {
-                        e.target.style.borderColor = '#2563eb';
+                        e.target.style.borderColor = '#4e83af';
                         e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
                       }}
                       onBlur={(e) => {
@@ -446,7 +446,7 @@ const QuickQuoteForm = () => {
                         backgroundColor: 'white'
                       }}
                       onFocus={(e) => {
-                        e.target.style.borderColor = '#2563eb';
+                        e.target.style.borderColor = '#4e83af';
                         e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
                       }}
                       onBlur={(e) => {
@@ -472,7 +472,7 @@ const QuickQuoteForm = () => {
                       padding: '1rem',
                       background: isSubmitting
                         ? '#cbd5e1'
-                        : 'linear-gradient(135deg, #2563eb 0%, #0d5996 100%)',
+                        : 'linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)',
                       color: 'white',
                       border: 'none',
                       borderRadius: '10px',
