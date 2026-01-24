@@ -1,4 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
@@ -181,7 +182,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="footer-legal">
-            <a href="#privacy" className="legal-link">Política de Privacidade</a>
+            <Link to="/politica-privacidade" className="legal-link">Política de Privacidade</Link>
             <span className="legal-divider">•</span>
             <a href="#terms" className="legal-link">Termos de Uso</a>
           </div>

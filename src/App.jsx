@@ -31,6 +31,7 @@ const ContactForm = lazy(() => import("./components/ContactForm/ContactForm"));
 const FAQ = lazy(() => import("./components/FAQ/FAQ"));
 const Location = lazy(() => import("./components/Location/Location"));
 const Footer = lazy(() => import("./components/Footer/Footer"));
+const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy/PrivacyPolicy"));
 
 // Loading component
 const LoadingFallback = () => (
@@ -112,6 +113,24 @@ function App() {
                 <main>
                   <Suspense fallback={<LoadingFallback />}>
                     <ServiceDetails />
+                  </Suspense>
+                </main>
+              </>
+            }
+          />
+
+          {/* Política de Privacidade */}
+          <Route
+            path="/politica-privacidade"
+            element={
+              <>
+                <SEO
+                  title="Política de Privacidade | FCBJ Desenvolvimento"
+                  description="Conheça nossa política de privacidade e como protegemos seus dados em conformidade com a LGPD."
+                />
+                <main>
+                  <Suspense fallback={<LoadingFallback />}>
+                    <PrivacyPolicy />
                   </Suspense>
                 </main>
               </>
