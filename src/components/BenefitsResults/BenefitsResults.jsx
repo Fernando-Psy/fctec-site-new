@@ -1,4 +1,7 @@
+import { useIsMobile } from '../../hooks/useWindowSize';
+
 const BenefitsResults = () => {
+  const isMobile = useIsMobile(); // Hook otimizado para evitar reflow forçado
   const benefits = [
     {
       icon: "📈",
@@ -402,7 +405,7 @@ const BenefitsResults = () => {
                       background:
                         "linear-gradient(90deg, rgba(96, 165, 250, 0.3) 0%, rgba(96, 165, 250, 0.1) 100%)",
                       zIndex: 0,
-                      display: window.innerWidth > 768 ? "block" : "none",
+                      display: !isMobile ? "block" : "none",
                     }}
                   />
                 )}

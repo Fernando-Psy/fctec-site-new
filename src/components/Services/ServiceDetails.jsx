@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import ContactModal from "./ContactModal";
 import { servicesData } from "./servicesData";
+import { scrollToElement } from "../../utils/scrollUtils";
 import "./ServiceDetails.css";
 
 const ServiceDetails = () => {
@@ -15,7 +16,10 @@ const ServiceDetails = () => {
     const foundService = servicesData.find((s) => s.id === serviceId);
     if (foundService) {
       setService(foundService);
-      window.scrollTo(0, 0);
+      // Usar requestAnimationFrame para evitar reflow forçado após setState
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      });
     } else {
       navigate("/");
     }
@@ -50,11 +54,12 @@ const ServiceDetails = () => {
             <span
               onClick={() => {
                 navigate("/");
-                setTimeout(() => {
-                  document
-                    .getElementById("products")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }, 100);
+                // Usar função otimizada que aguarda DOM atualizar
+                requestAnimationFrame(() => {
+                  requestAnimationFrame(() => {
+                    scrollToElement("products", { behavior: "smooth" });
+                  });
+                });
               }}
               style={{ cursor: "pointer", color: "#4e83af" }}
             >

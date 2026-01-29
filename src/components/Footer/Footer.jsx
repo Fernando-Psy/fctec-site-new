@@ -1,5 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { scrollToElement } from "../../utils/scrollUtils";
 import "./Footer.css";
 
 const Footer = () => {
@@ -78,9 +79,10 @@ const Footer = () => {
 
   const handleScroll = (e, href) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    // Extrair o ID do href (ex: "#products" -> "products")
+    const elementId = href.replace('#', '');
+    if (elementId) {
+      scrollToElement(elementId, { behavior: "smooth" });
     }
   };
 

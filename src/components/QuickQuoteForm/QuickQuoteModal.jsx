@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
+import { useIsDesktop } from '../../hooks/useWindowSize';
 
 const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
+  const isDesktop = useIsDesktop(); // Hook otimizado para evitar reflow forçado
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -129,11 +131,11 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
           {!showSuccess ? (
             <div style={{
               display: 'grid',
-              gridTemplateColumns: window.innerWidth > 991 ? '40% 60%' : '1fr',
+              gridTemplateColumns: isDesktop ? '40% 60%' : '1fr',
               minHeight: '500px'
             }}>
               {/* Coluna Esquerda - Informações */}
-              {window.innerWidth > 991 && (
+              {isDesktop && (
                 <div style={{
                   background: 'linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)',
                   padding: '3rem 2rem',

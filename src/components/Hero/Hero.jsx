@@ -1,3 +1,5 @@
+import { scrollToElement } from '../../utils/scrollUtils';
+
 const HeroImproved = () => {
   const stats = [
     { icon: "⚡", value: "10+", label: "Anos de Experiência" },
@@ -219,11 +221,7 @@ const HeroImproved = () => {
 
               {/* CTA Secundário */}
               <button
-                onClick={() =>
-                  document
-                    .getElementById("products")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => scrollToElement("products", { behavior: "smooth" })}
                 style={{
                   background: "white",
                   border: "2px solid #e2e8f0",

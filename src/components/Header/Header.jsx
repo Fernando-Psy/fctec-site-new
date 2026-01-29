@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { scrollToElement, scrollToTop } from '../../utils/scrollUtils';
 import './Header.css';
 import logoImage from '../../assets/logo/logo2-removebg.png';
 
@@ -15,17 +16,16 @@ const Header = () => {
     // Se não estiver na home, navegar primeiro
     if (location.pathname !== '/') {
       navigate('/');
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
+      // Usar scrollAfterNavigation para aguardar DOM atualizar
+      // requestAnimationFrame garante que não há reflow forçado
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          scrollToElement(sectionId, { behavior: 'smooth', block: 'start' });
+        });
+      });
     } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      // Scroll imediato usando função otimizada
+      scrollToElement(sectionId, { behavior: 'smooth', block: 'start' });
     }
     handleNavClick();
   };
@@ -35,7 +35,8 @@ const Header = () => {
     if (location.pathname !== '/') {
       navigate('/');
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Usar função otimizada para scroll ao topo
+      scrollToTop('smooth');
     }
     handleNavClick();
   };
