@@ -13,13 +13,16 @@ const ServiceCard = ({ service }) => {
 
   return (
     <Card className="service-card-wrapper">
-      {/* Imagem do Serviço */}
+      {/* Imagem do Serviço - Otimizada */}
       <div className="service-image-container">
         <Card.Img
           variant="top"
           src={image}
           alt={title}
           className="service-image"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
         />
         <div className="image-overlay">
           <span className="service-icon">{icon}</span>

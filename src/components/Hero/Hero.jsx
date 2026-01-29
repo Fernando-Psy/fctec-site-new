@@ -310,20 +310,27 @@ const HeroImproved = () => {
                 border: "1px solid #e2e8f0",
               }}
             >
-              <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
-                alt="Desenvolvimento de software"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-                width="800"
-                height="600"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  display: "block",
-                }}
-              />
+              {/* Imagem otimizada com WebP e tamanhos responsivos */}
+              <picture>
+                <source
+                  srcSet="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&fm=webp"
+                  type="image/webp"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+                  alt="Desenvolvimento de software"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  width="800"
+                  height="600"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    display: "block",
+                  }}
+                />
+              </picture>
 
               {/* Overlay de destaque */}
               <div

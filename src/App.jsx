@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+// Bootstrap CSS - será otimizado pelo Vite (tree-shaking)
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/neumorphism.css";
 import "./App.css";

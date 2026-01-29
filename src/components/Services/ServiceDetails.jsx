@@ -87,6 +87,8 @@ const ServiceDetails = () => {
                   src={service.image}
                   alt={service.title}
                   loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
                   style={{
                     width: "100%",
                     height: "auto",
