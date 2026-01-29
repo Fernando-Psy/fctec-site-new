@@ -28,11 +28,13 @@
   <!-- ========================================
        FONTES E ÍCONES
        ======================================== -->
-  <!-- Google Fonts - Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Google Fonts - Inter (defer para não bloquear renderização) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
 
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <!-- Bootstrap Icons (defer para não bloquear renderização) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" /></noscript>
 
   <!-- ========================================
        META TAGS DINÂMICAS
@@ -100,14 +102,7 @@
   <meta property="og:site_name" content="FCBJ Desenvolvimento" />
   <meta property="og:locale" content="pt_BR" />
 
-  <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3ZCPCVGYH"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-F3ZCPCVGYH');
-    </script>
+  <!-- Google Analytics será carregado após renderização inicial -->
 
   <!-- ========================================
        FACEBOOK PIXEL (Opcional)
@@ -155,5 +150,40 @@
        REACT SCRIPT (Vite injeta automaticamente)
        ======================================== -->
   <script type="module" src="/src/main.jsx"></script>
+
+  <!-- ========================================
+       SCRIPTS DEFERRED (Carregam após renderização inicial)
+       ======================================== -->
+  <!-- Google Analytics - Carrega após renderização inicial para não bloquear LCP -->
+  <script>
+    // Função para carregar Google Analytics de forma não bloqueante
+    function loadGoogleAnalytics() {
+      // Carregar script do Google Analytics
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-F3ZCPCVGYH';
+      document.head.appendChild(script);
+
+      // Inicializar após o script carregar
+      script.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-F3ZCPCVGYH');
+      };
+    }
+
+    // Usar requestIdleCallback se disponível (melhor performance)
+    // Caso contrário, usar setTimeout após o load
+    if ('requestIdleCallback' in window) {
+      window.addEventListener('load', function() {
+        requestIdleCallback(loadGoogleAnalytics, { timeout: 2000 });
+      });
+    } else {
+      window.addEventListener('load', function() {
+        setTimeout(loadGoogleAnalytics, 1000);
+      });
+    }
+  </script>
 </body>
 </html>

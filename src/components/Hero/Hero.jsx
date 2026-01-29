@@ -315,7 +315,11 @@ const HeroImproved = () => {
               <img
                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
                 alt="Desenvolvimento de software"
-                loading="eager"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                width="800"
+                height="600"
                 style={{
                   width: "100%",
                   height: "auto",

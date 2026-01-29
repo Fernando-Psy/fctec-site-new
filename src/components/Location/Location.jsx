@@ -1,7 +1,38 @@
 import { Container, Row, Col } from 'react-bootstrap';
+import { useState, useEffect, useRef } from 'react';
 import './Location.css';
 
 const Location = () => {
+  const [mapLoaded, setMapLoaded] = useState(false);
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    // Carregar o mapa apenas quando o componente estiver visível
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !mapLoaded) {
+            setMapLoaded(true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: '100px', // Carregar 100px antes de ficar visível
+      }
+    );
+
+    if (mapRef.current) {
+      observer.observe(mapRef.current);
+    }
+
+    return () => {
+      if (mapRef.current) {
+        observer.disconnect();
+      }
+    };
+  }, [mapLoaded]);
+
   const contactInfo = [
     {
       icon: 'bi-envelope',
@@ -91,17 +122,35 @@ const Location = () => {
 
           {/* Map */}
           <Col lg={8}>
-            <div className="map-container">
+            <div className="map-container" ref={mapRef}>
               <div className="map-wrapper">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.123456789!2d-43.4123456!3d-22.754321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9999999999999999%3A0x9999999999999999!2sRua%20Jo%C3%A3o%20Fernandes%20Neto%2C%201166%20-%20Centro%2C%20Belford%20Roxo%20-%20RJ%2C%2026100-000%2C%20Brasil!5e0!3m2!1spt-BR!2sbr!4v1601234567890!5m2!1spt-BR!2sbr"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Localização FCTEC"
-                  className="map-iframe"
-                />
+                {mapLoaded ? (
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.123456789!2d-43.4123456!3d-22.754321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9999999999999999%3A0x9999999999999999!2sRua%20Jo%C3%A3o%20Fernandes%20Neto%2C%201166%20-%20Centro%2C%20Belford%20Roxo%20-%20RJ%2C%2026100-000%2C%20Brasil!5e0!3m2!1spt-BR!2sbr!4v1601234567890!5m2!1spt-BR!2sbr"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Localização FCTEC"
+                    className="map-iframe"
+                  />
+                ) : (
+                  <div
+                    style={{
+                      width: '100%',
+                      height: '400px',
+                      background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: '12px',
+                      color: '#64748b',
+                      fontSize: '0.95rem',
+                    }}
+                  >
+                    Carregando mapa...
+                  </div>
+                )}
               </div>
 
               {/* Map Overlay Info */}
