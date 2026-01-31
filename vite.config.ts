@@ -1,9 +1,34 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import viteCompression from 'vite-plugin-compression'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    // Compressão Brotli (melhor compressão)
+    viteCompression({
+      algorithm: 'brotliCompress',
+      ext: '.br',
+      threshold: 1024, // Apenas arquivos > 1KB
+      deleteOriginFile: false,
+    }),
+    // Compressão Gzip (fallback para navegadores antigos)
+    viteCompression({
+      algorithm: 'gzip',
+      ext: '.gz',
+      threshold: 1024,
+      deleteOriginFile: false,
+    }),
+    // Visualizador de bundle (abre automaticamente após build)
+    visualizer({
+      open: false, // Mudar para true se quiser abrir automaticamente
+      gzipSize: true,
+      brotliSize: true,
+      filename: 'dist/stats.html',
+    }),
+  ],
   server: {
     port: 3000,
     open: true

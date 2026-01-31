@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-// Bootstrap CSS - será otimizado pelo Vite (tree-shaking)
+// Bootstrap CSS otimizado - apenas componentes necessários
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/neumorphism.css";
 import "./App.css";
@@ -25,9 +25,6 @@ const ClientsShowcase = lazy(
 );
 const BenefitsResults = lazy(
   () => import("./components/BenefitsResults/BenefitsResults"),
-);
-const Testimonials = lazy(
-  () => import("./components/Testimonials/Testimonials"),
 );
 const ContactForm = lazy(() => import("./components/ContactForm/ContactForm"));
 const FAQ = lazy(() => import("./components/FAQ/FAQ"));
@@ -91,9 +88,6 @@ function App() {
                     </Suspense>
                     <Suspense fallback={<LoadingFallback />}>
                       <ClientsShowcase />
-                    </Suspense>
-                    <Suspense fallback={<LoadingFallback />}>
-                      <Testimonials />
                     </Suspense>
                     <Suspense fallback={<LoadingFallback />}>
                       <ContactForm />

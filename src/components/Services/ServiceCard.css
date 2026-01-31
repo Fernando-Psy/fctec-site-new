@@ -98,6 +98,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  min-height: 0;
+  /* Fix para flex container */
 }
 
 .service-title {
@@ -107,6 +109,8 @@
   margin-bottom: 0.875rem;
   letter-spacing: -0.01em;
   line-height: 1.3;
+  min-height: 3.5rem;
+  /* Altura mínima para 2 linhas */
 }
 
 .service-description {
@@ -114,7 +118,10 @@
   color: #64748b;
   line-height: 1.65;
   margin-bottom: 1.25rem;
-  flex-grow: 1;
+  flex-grow: 0;
+  /* Não expandir */
+  min-height: 4.5rem;
+  /* Altura mínima para consistência */
 }
 
 /* ===== FEATURES LIST ===== */
@@ -122,6 +129,10 @@
   list-style: none;
   padding: 0;
   margin: 0 0 1.5rem 0;
+  flex-grow: 1;
+  /* Ocupar espaço disponível */
+  display: flex;
+  flex-direction: column;
 }
 
 .feature-item {
@@ -159,8 +170,11 @@
 /* ===== FOOTER DO CARD ===== */
 .service-footer {
   margin-top: auto;
+  /* Empurra para o final */
   padding-top: 1.25rem;
   border-top: 1px solid #f1f5f9;
+  flex-shrink: 0;
+  /* Não encolher */
 }
 
 .service-price-container {
