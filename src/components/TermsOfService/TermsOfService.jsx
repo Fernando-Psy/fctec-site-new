@@ -1,4 +1,3 @@
-import React from "react";
 import "./TermsOfService.css";
 
 const TermsOfService = () => {
@@ -35,12 +34,12 @@ const TermsOfService = () => {
             <p>Para os fins destes Termos de Uso, consideram-se:</p>
             <ul>
               <li>
-                <strong>"Empresa"</strong>: FCBJ
-                Desenvolvimento, prestadora dos serviços
+                <strong>"Empresa"</strong>: FCBJ Desenvolvimento, prestadora dos
+                serviços
               </li>
               <li>
-                <strong>"Usuário"</strong>: Qualquer
-                pessoa que acesse ou utilize o site
+                <strong>"Usuário"</strong>: Qualquer pessoa que acesse ou
+                utilize o site
               </li>
               <li>
                 <strong>"Cliente"</strong>: Pessoa física ou jurídica que

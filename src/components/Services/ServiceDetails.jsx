@@ -18,7 +18,7 @@ const ServiceDetails = () => {
       setService(foundService);
       // Usar requestAnimationFrame para evitar reflow forçado após setState
       requestAnimationFrame(() => {
-        window.scrollTo({ top: 0, behavior: 'auto' });
+        window.scrollTo({ top: 0, behavior: "auto" });
       });
     } else {
       navigate("/");
@@ -88,7 +88,7 @@ const ServiceDetails = () => {
                   alt={service.title}
                   loading="lazy"
                   decoding="async"
-                  fetchpriority="low"
+                  fetchPriority="low"
                   style={{
                     width: "100%",
                     height: "auto",

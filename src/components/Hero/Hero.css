@@ -252,31 +252,6 @@
   padding: 1rem;
 }
 
-/* Decorações de Fundo */
-.image-decoration {
-  position: absolute;
-  border-radius: 16px;
-  z-index: 0;
-}
-
-.decoration-1 {
-  top: -10px;
-  right: -10px;
-  width: calc(100% - 40px);
-  height: calc(100% - 40px);
-  background: linear-gradient(135deg, #d9eaf4 0%, #c1dceb 100%);
-  opacity: 0.5;
-}
-
-.decoration-2 {
-  top: -20px;
-  right: -20px;
-  width: calc(100% - 60px);
-  height: calc(100% - 60px);
-  background: linear-gradient(135deg, #ecf5fa 0%, #d9eaf4 100%);
-  opacity: 0.3;
-}
-
 .hero-image-container {
   position: relative;
   border-radius: 16px;
@@ -301,78 +276,6 @@
   bottom: 0;
   background: linear-gradient(135deg, rgba(78, 131, 175, 0.05) 0%, transparent 100%);
   pointer-events: none;
-}
-
-/* Floating Card */
-.floating-card {
-  position: absolute;
-  bottom: 2rem;
-  left: -1rem;
-  background: white;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
-  border: 1px solid #e2e8f0;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  z-index: 2;
-  animation: float 3s ease-in-out infinite;
-}
-
-.floating-card-icon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: white;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.25rem;
-}
-
-.floating-card-content {
-  flex: 1;
-}
-
-.floating-card-title {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 0.125rem;
-}
-
-.floating-card-text {
-  font-size: 0.75rem;
-  color: #64748b;
-}
-
-/* ===== BACKGROUND ELEMENTS ===== */
-.hero-bg-circle {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(78, 131, 175, 0.1) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hero-bg-circle-1 {
-  width: 600px;
-  height: 600px;
-  top: -200px;
-  right: -200px;
-  animation: pulse 8s ease-in-out infinite;
-}
-
-.hero-bg-circle-2 {
-  width: 400px;
-  height: 400px;
-  bottom: -100px;
-  left: -100px;
-  animation: pulse 10s ease-in-out infinite;
-  animation-delay: 2s;
 }
 
 /* ===== ANIMATIONS ===== */
@@ -479,12 +382,6 @@
   .hero-social-proof {
     justify-content: space-around;
   }
-
-  .floating-card {
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 1rem;
-  }
 }
 
 @media (max-width: 576px) {
@@ -524,12 +421,5 @@
 
   .proof-number {
     font-size: 1.5rem;
-  }
-
-  .floating-card {
-    padding: 0.875rem 1.25rem;
-    left: 1rem;
-    right: 1rem;
-    transform: none;
   }
 }

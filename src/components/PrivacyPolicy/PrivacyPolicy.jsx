@@ -1,4 +1,3 @@
-import React from "react";
 import "./PrivacyPolicy.css";
 
 const PrivacyPolicy = () => {
@@ -16,11 +15,12 @@ const PrivacyPolicy = () => {
           <section className="privacy-section">
             <h2 className="section-title">1. Introdução</h2>
             <p>
-              A <strong>FCBJ Desenvolvimento</strong> respeita a privacidade dos visitantes e clientes de
-              nosso site. Esta Política de Privacidade descreve como coletamos,
-              usamos, armazenamos e protegemos suas informações pessoais em
-              conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº
-              13.709/2018) e demais legislações aplicáveis.
+              A <strong>FCBJ Desenvolvimento</strong> respeita a privacidade dos
+              visitantes e clientes de nosso site. Esta Política de Privacidade
+              descreve como coletamos, usamos, armazenamos e protegemos suas
+              informações pessoais em conformidade com a Lei Geral de Proteção
+              de Dados (LGPD - Lei nº 13.709/2018) e demais legislações
+              aplicáveis.
             </p>
             <p>
               Ao utilizar nosso site e serviços, você concorda com a coleta e
@@ -530,9 +530,7 @@ const PrivacyPolicy = () => {
                 <div className="contact-icon">📧</div>
                 <h4>E-mail</h4>
                 <a href="mailto:fcbj.dev@gmail.com">fcbj.dev@gmail.com</a>
-                <a href="mailto:fcbj.dev@gmail.com">
-                  fcbj.dev@gmail.com
-                </a>
+                <a href="mailto:fcbj.dev@gmail.com">fcbj.dev@gmail.com</a>
               </div>
 
               <div className="contact-card">

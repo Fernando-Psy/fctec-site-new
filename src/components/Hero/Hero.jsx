@@ -1,4 +1,4 @@
-import { scrollToElement } from '../../utils/scrollUtils';
+import { scrollToElement } from "../../utils/scrollUtils";
 
 const HeroImproved = () => {
   const stats = [
@@ -183,7 +183,7 @@ const HeroImproved = () => {
                 onClick={() =>
                   window.open(
                     "https://wa.me/5521968810478?text=Olá, gostaria de conversar sobre soluções digitais.",
-                    "_blank"
+                    "_blank",
                   )
                 }
                 style={{
@@ -221,7 +221,9 @@ const HeroImproved = () => {
 
               {/* CTA Secundário */}
               <button
-                onClick={() => scrollToElement("products", { behavior: "smooth" })}
+                onClick={() =>
+                  scrollToElement("products", { behavior: "smooth" })
+                }
                 style={{
                   background: "white",
                   border: "2px solid #e2e8f0",
@@ -321,7 +323,7 @@ const HeroImproved = () => {
                   alt="Desenvolvimento de software"
                   loading="lazy"
                   decoding="async"
-                  fetchpriority="low"
+                  fetchPriority="low"
                   width="800"
                   height="600"
                   style={{

@@ -1,9 +1,13 @@
-import { lazy, Suspense } from "react";
-// Bootstrap CSS otimizado - apenas componentes necessários
-import "bootstrap/dist/css/bootstrap.min.css";
+import { lazy, Suspense, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// CSS Crítico (carregado imediatamente)
+import "./styles/bootstrap-critical.css"; // Bootstrap mínimo para Hero/Header
 import "./styles/neumorphism.css";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Utilitário para carregar CSS não bloqueante
+import { loadCSSIdle } from "./utils/loadCSS";
 
 import SEO from "./components/SEO/SEO";
 import { SEOPages } from "./components/SEO/seoConfig";
@@ -25,6 +29,9 @@ const ClientsShowcase = lazy(
 );
 const BenefitsResults = lazy(
   () => import("./components/BenefitsResults/BenefitsResults"),
+);
+const FreeResources = lazy(
+  () => import("./components/FreeResources/FreeResources"),
 );
 const ContactForm = lazy(() => import("./components/ContactForm/ContactForm"));
 const FAQ = lazy(() => import("./components/FAQ/FAQ"));
@@ -62,6 +69,15 @@ const LoadingFallback = () => (
 );
 
 function App() {
+  // Carregar Bootstrap CSS de forma assíncrona após renderização inicial
+  useEffect(() => {
+    // Carregar Bootstrap de forma idle para não bloquear LCP
+    loadCSSIdle(
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
+      "bootstrap-css",
+    );
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />
@@ -88,6 +104,9 @@ function App() {
                     </Suspense>
                     <Suspense fallback={<LoadingFallback />}>
                       <ClientsShowcase />
+                    </Suspense>
+                    <Suspense fallback={<LoadingFallback />}>
+                      <FreeResources />
                     </Suspense>
                     <Suspense fallback={<LoadingFallback />}>
                       <ContactForm />

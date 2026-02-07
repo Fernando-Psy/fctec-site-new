@@ -27,6 +27,28 @@ export const servicesData = [
     icon: "🎯",
   },
   {
+    id: "capacitacao-digital-gratuita",
+    image:
+      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop",
+    title: "Capacitação Digital Gratuita",
+    description:
+      "Encontro presencial gratuito para configurar um LinkedIn profissional e criar um currículo em HTML/CSS que se destaca.",
+    detailedDescription:
+      "Sessão presencial guiada e 100% gratuita para empreendedores e profissionais que querem fortalecer sua marca pessoal online. Configuramos um LinkedIn otimizado e montamos um currículo responsivo em HTML/CSS que você pode hospedar ou enviar em PDF.",
+    features: [
+      "Encontro presencial com especialista",
+      "Checklist para perfil completo no LinkedIn",
+      "Headline, sobre e portfólio com palavras-chave",
+      "Modelo de currículo responsivo em HTML/CSS",
+      "Publicação no GitHub Pages ou envio em PDF",
+      "Orientação para provas sociais e recomendações",
+      "Plano de conteúdo rápido para 30 dias",
+    ],
+    whatsappLink:
+      "https://wa.me/5521968810478?text=Oi! Quero agendar um encontro presencial para a Capacitação Digital Gratuita (LinkedIn + currículo HTML/CSS).",
+    icon: "🎓",
+  },
+  {
     id: "sistema-web-personalizado",
     image: site1Image,
     title: "Sistema Web Personalizado",

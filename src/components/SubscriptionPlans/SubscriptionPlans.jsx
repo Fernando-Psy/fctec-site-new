@@ -3,7 +3,6 @@ import { useState } from "react";
 const SubscriptionPlans = () => {
   const [billingCycle, setBillingCycle] = useState("monthly");
   const [hoveredPlan, setHoveredPlan] = useState(null);
-  const [openFaq, setOpenFaq] = useState(null);
 
   const plans = [
     {

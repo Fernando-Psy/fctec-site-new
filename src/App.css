@@ -98,7 +98,8 @@
 @font-face {
   font-family: 'Inter Fallback';
   src: local('Segoe UI');
-  size-adjust: 107.4%; /* Ajusta Segoe UI para ter métricas similares à Inter */
+  size-adjust: 107.4%;
+  /* Ajusta Segoe UI para ter métricas similares à Inter */
   ascent-override: 90%;
   descent-override: 22%;
   line-gap-override: 0%;
@@ -150,12 +151,6 @@ h3 {
 
 h4 {
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-}
-
-.display-4,
-.display-5 {
-  font-weight: 800;
-  letter-spacing: -0.03em;
 }
 
 p {
@@ -210,25 +205,8 @@ p {
   background: var(--primary-50);
 }
 
-.custom-navbar .nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--primary-600);
-  transition: all var(--transition-base);
-  transform: translateX(-50%);
-}
-
-.custom-navbar .nav-link:hover::after {
-  width: 60%;
-}
-
 /* ===== BOTÕES EMPRESARIAIS ===== */
-.btn,
-.botao-produto {
+.btn {
   font-weight: 600;
   font-size: 0.95rem;
   padding: 0.75rem 1.5rem;
@@ -244,23 +222,20 @@ p {
   overflow: hidden;
 }
 
-.btn-primary,
-.botao-produto {
+.btn-primary {
   background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%) !important;
   color: white !important;
   box-shadow: var(--shadow-primary);
   border: none !important;
 }
 
-.btn-primary:hover,
-.botao-produto:hover {
+.btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(78, 131, 175, 0.35);
   background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-800) 100%) !important;
 }
 
-.btn-primary:active,
-.botao-produto:active {
+.btn-primary:active {
   transform: translateY(0);
 }
 
@@ -370,11 +345,6 @@ p {
   letter-spacing: 0.01em;
 }
 
-.badge-primary {
-  background: var(--primary-50);
-  color: var(--primary-600);
-}
-
 /* ===== SEÇÕES ===== */
 section {
   padding: 4rem 0;
@@ -395,45 +365,6 @@ section h2::after {
   height: 4px;
   background: linear-gradient(90deg, var(--primary-600), transparent);
   border-radius: 2px;
-}
-
-/* ===== TECNOLOGIAS ===== */
-#technologies {
-  background: white;
-  border-radius: 16px;
-  box-shadow: var(--shadow-md);
-  padding: 4rem 2rem;
-  margin: 2rem 0;
-}
-
-#technologies .tech-card {
-  background: var(--slate-50);
-  border: 1px solid var(--slate-200);
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: all var(--transition-base);
-  height: 100%;
-  text-align: center;
-}
-
-#technologies .tech-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-  background: white;
-  border-color: var(--primary-200);
-}
-
-#technologies .tech-icon {
-  filter: grayscale(20%);
-  transition: all var(--transition-base);
-  width: 48px;
-  height: 48px;
-  margin-bottom: 1rem;
-}
-
-#technologies .tech-card:hover .tech-icon {
-  filter: grayscale(0%);
-  transform: scale(1.1);
 }
 
 /* ===== FOOTER CORPORATIVO ===== */
@@ -504,8 +435,7 @@ footer .filter-white:hover {
     font-size: 1.75rem;
   }
 
-  .btn,
-  .botao-produto {
+  .btn {
     width: 100%;
     justify-content: center;
   }

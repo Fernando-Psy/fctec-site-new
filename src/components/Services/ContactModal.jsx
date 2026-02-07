@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
+import { servicesData } from "./servicesData";
 import "./ContactModal.css";
 
 const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
+  const serviceOptions = servicesData || [];
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -39,7 +42,7 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
       newErrors.phone = "Telefone é obrigatório";
     } else if (
       !/^\(?[1-9]{2}\)?\s?9?\d{4}-?\d{4}$/.test(
-        formData.phone.replace(/\s/g, "")
+        formData.phone.replace(/\s/g, ""),
       )
     ) {
       newErrors.phone = "Telefone inválido";
@@ -89,7 +92,7 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
         `📱 *Telefone:* ${formData.phone}`;
 
       const whatsappURL = `https://wa.me/5521968810478?text=${encodeURIComponent(
-        message
+        message,
       )}`;
 
       setIsSubmitting(false);
@@ -513,7 +516,7 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
                 </div>
 
                 {/* Serviço (hidden se já definido) */}
-                {!serviceId && services.length > 0 && (
+                {!serviceId && serviceOptions.length > 0 && (
                   <div style={{ marginBottom: "2rem" }}>
                     <label
                       htmlFor="contact-service"
@@ -561,9 +564,9 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
                       }}
                     >
                       <option value="">Selecione um serviço...</option>
-                      {services.map((service) => (
+                      {serviceOptions.map((service) => (
                         <option key={service.id} value={service.id}>
-                          {service.nome}
+                          {service.title}
                         </option>
                       ))}
                     </select>

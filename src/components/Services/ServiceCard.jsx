@@ -22,7 +22,7 @@ const ServiceCard = ({ service }) => {
           className="service-image"
           loading="lazy"
           decoding="async"
-          fetchpriority="low"
+          fetchPriority="low"
         />
         <div className="image-overlay">
           <span className="service-icon">{icon}</span>
