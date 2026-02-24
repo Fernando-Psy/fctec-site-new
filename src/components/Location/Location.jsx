@@ -139,12 +139,12 @@ const Location = () => {
                     style={{
                       width: '100%',
                       height: '400px',
-                      background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+                      background: 'linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       borderRadius: '12px',
-                      color: '#64748b',
+                      color: '#7a8a99',
                       fontSize: '0.95rem',
                     }}
                   >

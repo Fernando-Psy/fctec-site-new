@@ -1,9 +1,13 @@
 import axios from 'axios';
+import { createLogger } from '../utils/logger';
+
+const logger = createLogger('API');
 
 // URL base da API - usa variável de ambiente
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
 
-console.log('🔌 API URL configurada:', API_BASE_URL); // Debug
+logger.info('API URL configured:', API_BASE_URL);
 
 // Criar instância do axios
 const api = axios.create({
@@ -17,11 +21,11 @@ const api = axios.create({
 // Interceptor para debug
 api.interceptors.request.use(
   (config) => {
-    console.log('📤 Enviando requisição:', config.method?.toUpperCase(), config.url);
+    logger.request(config.method || 'GET', config.url || '', config.data);
     return config;
   },
   (error) => {
-    console.error('❌ Erro na requisição:', error);
+    logger.error('Request error:', error);
     return Promise.reject(error);
   }
 );
@@ -29,14 +33,14 @@ api.interceptors.request.use(
 // Interceptor de resposta
 api.interceptors.response.use(
   (response) => {
-    console.log('✅ Resposta recebida:', response.status, response.data);
+    logger.response(response.status, response.data);
     return response;
   },
   (error) => {
-    console.error('❌ Erro na resposta:', {
+    logger.error('Response error:', {
       status: error.response?.status,
       data: error.response?.data,
-      message: error.message
+      message: error.message,
     });
     return Promise.reject(error);
   }
@@ -47,19 +51,19 @@ api.interceptors.response.use(
  */
 export const createPublicLead = async (leadData) => {
   try {
-    console.log('🚀 Criando lead:', leadData);
+    logger.info('Creating lead:', leadData);
     const response = await api.post('/lead-publico/', leadData);
     return { success: true, data: response.data };
   } catch (error) {
-    console.error('💥 Erro ao criar lead:', error);
+    logger.error('Error creating lead:', error);
 
     // Tratamento de erro detalhado
     const errorDetail = {
       success: false,
       error: error.response?.data || {
         message: error.message || 'Erro ao criar lead',
-        status: error.response?.status
-      }
+        status: error.response?.status,
+      },
     };
 
     return errorDetail;
@@ -74,7 +78,7 @@ export const getServices = async () => {
     const response = await api.get('/servicos/');
     return { success: true, data: response.data };
   } catch (error) {
-    console.error('💥 Erro ao buscar serviços:', error);
+    logger.error('Error fetching services:', error);
     return {
       success: false,
       error: error.response?.data || 'Erro ao buscar serviços',
@@ -90,6 +94,7 @@ export const getServiceById = async (serviceId) => {
     const response = await api.get(`/servicos/${serviceId}/`);
     return { success: true, data: response.data };
   } catch (error) {
+    logger.error('Error fetching service by ID:', error);
     return {
       success: false,
       error: error.response?.data || 'Erro ao buscar serviço',

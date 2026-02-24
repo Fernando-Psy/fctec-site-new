@@ -3,20 +3,20 @@
 .service-card-wrapper {
   position: relative;
   background: white;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #f0f2f5;
   border-radius: 16px;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 2px 8px rgba(26, 33, 41, 0.03);
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .service-card-wrapper:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
-  border-color: rgba(78, 131, 175, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(26, 33, 41, 0.06);
+  border-color: rgba(14, 165, 233, 0.2);
 }
 
 .service-card-wrapper:hover .card-glow {
@@ -37,64 +37,13 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
   animation: pulse-badge 2s ease-in-out infinite;
-}
-
-/* ===== IMAGEM ===== */
-.service-image-container {
-  position: relative;
-  overflow: hidden;
-  height: 240px;
-  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-}
-
-.service-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.service-card-wrapper:hover .service-image {
-  transform: scale(1.08);
-}
-
-.image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg,
-      rgba(78, 131, 175, 0.2) 0%,
-      rgba(6, 182, 212, 0.1) 50%,
-      transparent 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.service-card-wrapper:hover .image-overlay {
-  opacity: 1;
-}
-
-.service-icon {
-  font-size: 3.5rem;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-  transform: scale(0.8);
-  transition: transform 0.4s ease;
-}
-
-.service-card-wrapper:hover .service-icon {
-  transform: scale(1);
 }
 
 /* ===== CORPO DO CARD ===== */
 .service-body {
-  padding: 1.75rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -103,76 +52,68 @@
 }
 
 .service-title {
-  font-size: 1.375rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 0.875rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a2129;
+  margin-bottom: 0;
   letter-spacing: -0.01em;
-  line-height: 1.3;
-  min-height: 3.5rem;
-  /* Altura mínima para 2 linhas */
+  line-height: 1.4;
 }
 
 .service-description {
-  font-size: 0.95rem;
-  color: #64748b;
-  line-height: 1.65;
-  margin-bottom: 1.25rem;
+  font-size: 0.925rem;
+  color: #5a6978;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
   flex-grow: 0;
-  /* Não expandir */
-  min-height: 4.5rem;
-  /* Altura mínima para consistência */
 }
 
 /* ===== FEATURES LIST ===== */
 .service-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1.75rem 0;
   flex-grow: 1;
   /* Ocupar espaço disponível */
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
 }
 
 .feature-item {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.feature-item:last-child {
-  border-bottom: none;
+  gap: 0.75rem;
+  padding: 0;
 }
 
 .feature-check {
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   flex-shrink: 0;
 }
 
 .feature-text {
   font-size: 0.875rem;
-  color: #475569;
-  font-weight: 500;
+  color: #5a6978;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 /* ===== FOOTER DO CARD ===== */
 .service-footer {
   margin-top: auto;
   /* Empurra para o final */
-  padding-top: 1.25rem;
-  border-top: 1px solid #f1f5f9;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f5f7fa;
   flex-shrink: 0;
   /* Não encolher */
 }
@@ -195,7 +136,7 @@
 .service-price {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #3a5f7d;
+  color: #1a2129;
   letter-spacing: -0.02em;
 }
 
@@ -203,14 +144,14 @@
 .service-button {
   position: relative;
   width: 100%;
-  background: linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%) !important;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%) !important;
   border: none !important;
   color: white !important;
   font-weight: 600;
   font-size: 0.95rem;
-  padding: 0.875rem 1.5rem !important;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(78, 131, 175, 0.35);
+  padding: 0.95rem 1.5rem !important;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   display: flex;
@@ -221,7 +162,7 @@
 
 .service-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(78, 131, 175, 0.45);
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
 }
 
 .service-button:active {
@@ -251,10 +192,12 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg,
-      transparent,
-      rgba(255, 255, 255, 0.3),
-      transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
   transition: left 0.6s;
 }
 
@@ -269,9 +212,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 0%,
-      rgba(78, 131, 175, 0.15) 0%,
-      transparent 60%);
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(14, 165, 233, 0.08) 0%,
+    transparent 60%
+  );
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -280,7 +225,6 @@
 
 /* ===== ANIMAÇÕES ===== */
 @keyframes pulse-badge {
-
   0%,
   100% {
     transform: scale(1);
@@ -293,12 +237,12 @@
 
 /* ===== ESTADOS ESPECIAIS ===== */
 .service-card-wrapper.featured {
-  border: 2px solid #4e83af;
+  border: 2px solid #0ea5e9;
   box-shadow: 0 8px 24px rgba(78, 131, 175, 0.2);
 }
 
 .service-card-wrapper.featured .service-title {
-  color: #3a5f7d;
+  color: #1a2129;
 }
 
 /* ===== RESPONSIVIDADE ===== */

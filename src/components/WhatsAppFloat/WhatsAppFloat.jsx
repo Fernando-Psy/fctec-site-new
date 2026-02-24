@@ -122,7 +122,7 @@ const WhatsAppFloat = () => {
         opacity: showTooltip ? 1 : 0,
         pointerEvents: showTooltip ? 'auto' : 'none',
         transition: 'all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-        border: '1px solid #e2e8f0'
+        border: '1px solid #f0f2f5'
       }}>
         {/* Seta */}
         <div style={{
@@ -160,14 +160,14 @@ const WhatsAppFloat = () => {
             <div style={{
               fontSize: '0.875rem',
               fontWeight: '700',
-              color: '#0f172a',
+              color: '#1a2129',
               marginBottom: '0.25rem'
             }}>
               Olá! Posso ajudar?
             </div>
             <div style={{
               fontSize: '0.75rem',
-              color: '#64748b',
+              color: '#7a8a99',
               lineHeight: '1.4'
             }}>
               Respondo em poucos minutos!
@@ -201,8 +201,8 @@ const WhatsAppFloat = () => {
             transition: 'all 0.2s ease'
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.background = '#f1f5f9';
-            e.currentTarget.style.color = '#0f172a';
+            e.currentTarget.style.background = '#fafbfc';
+            e.currentTarget.style.color = '#1a2129';
           }}
           onMouseOut={(e) => {
             e.currentTarget.style.background = 'transparent';

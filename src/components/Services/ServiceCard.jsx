@@ -1,6 +1,6 @@
-import { Card } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import "./ServiceCard.css";
+import { Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import './ServiceCard.css';
 
 const ServiceCard = ({ service }) => {
   const navigate = useNavigate();
@@ -13,26 +13,32 @@ const ServiceCard = ({ service }) => {
 
   return (
     <Card className="service-card-wrapper">
-      {/* Imagem do Serviço - Otimizada */}
-      <div className="service-image-container">
-        <Card.Img
-          variant="top"
-          src={image}
-          alt={title}
-          className="service-image"
-          loading="lazy"
-          decoding="async"
-          fetchPriority="low"
-        />
-        <div className="image-overlay">
-          <span className="service-icon">{icon}</span>
-        </div>
-      </div>
-
-      {/* Conteúdo do Card */}
+      {/* Conteúdo do Card - Design Clean sem imagens */}
       <Card.Body className="service-body">
-        {/* Título */}
-        <Card.Title className="service-title">{title}</Card.Title>
+        {/* Ícone pequeno + Título */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            marginBottom: '1.25rem',
+          }}
+        >
+          <span
+            style={{
+              fontSize: '2rem',
+              flexShrink: 0,
+              filter: 'grayscale(0.2) opacity(0.85)',
+              lineHeight: 1,
+            }}
+          >
+            {icon}
+          </span>
+          <div style={{ flex: 1 }}>
+            {/* Título */}
+            <Card.Title className="service-title">{title}</Card.Title>
+          </div>
+        </div>
 
         {/* Descrição */}
         <Card.Text className="service-description">{description}</Card.Text>
@@ -49,7 +55,7 @@ const ServiceCard = ({ service }) => {
             {features.length > 4 && (
               <li
                 className="feature-item"
-                style={{ fontStyle: "italic", color: "#4e83af" }}
+                style={{ fontStyle: 'italic', color: '#4e83af' }}
               >
                 <span className="feature-check">+</span>
                 <span className="feature-text">

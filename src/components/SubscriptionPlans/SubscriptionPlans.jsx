@@ -159,7 +159,7 @@ const SubscriptionPlans = () => {
     <section
       style={{
         padding: "6rem 2rem",
-        background: "linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)",
+        background: "linear-gradient(135deg, #ffffff 0%, #ffffff 100%)",
         position: "relative",
       }}
     >
@@ -195,7 +195,7 @@ const SubscriptionPlans = () => {
             style={{
               fontSize: "clamp(2rem, 4vw, 2.75rem)",
               fontWeight: "800",
-              color: "#0f172a",
+              color: "#1a2129",
               marginBottom: "1rem",
               letterSpacing: "-0.02em",
             }}
@@ -217,7 +217,7 @@ const SubscriptionPlans = () => {
           <div
             style={{
               fontSize: "1.125rem",
-              color: "#64748b",
+              color: "#7a8a99",
               lineHeight: "1.7",
               marginBottom: "2rem",
               maxWidth: "700px",
@@ -247,7 +247,7 @@ const SubscriptionPlans = () => {
               background: "white",
               padding: "0.5rem",
               borderRadius: "50px",
-              border: "1px solid #e2e8f0",
+              border: "1px solid #f0f2f5",
               boxShadow: "0 2px 8px rgba(15, 23, 42, 0.06)",
             }}
           >
@@ -261,7 +261,7 @@ const SubscriptionPlans = () => {
                   billingCycle === "monthly"
                     ? "linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)"
                     : "transparent",
-                color: billingCycle === "monthly" ? "white" : "#64748b",
+                color: billingCycle === "monthly" ? "white" : "#7a8a99",
                 fontWeight: "600",
                 fontSize: "0.9rem",
                 cursor: "pointer",
@@ -280,7 +280,7 @@ const SubscriptionPlans = () => {
                   billingCycle === "yearly"
                     ? "linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)"
                     : "transparent",
-                color: billingCycle === "yearly" ? "white" : "#64748b",
+                color: billingCycle === "yearly" ? "white" : "#7a8a99",
                 fontWeight: "600",
                 fontSize: "0.9rem",
                 cursor: "pointer",
@@ -325,7 +325,7 @@ const SubscriptionPlans = () => {
                 background: "white",
                 border: plan.highlight
                   ? "2px solid #4e83af"
-                  : "1px solid #e2e8f0",
+                  : "1px solid #f0f2f5",
                 borderRadius: "20px",
                 padding: "2rem",
                 boxShadow: plan.highlight
@@ -385,7 +385,7 @@ const SubscriptionPlans = () => {
                 style={{
                   fontSize: "1.5rem",
                   fontWeight: "700",
-                  color: "#0f172a",
+                  color: "#1a2129",
                   marginBottom: "0.5rem",
                 }}
               >
@@ -406,7 +406,7 @@ const SubscriptionPlans = () => {
               <p
                 style={{
                   fontSize: "0.9rem",
-                  color: "#64748b",
+                  color: "#7a8a99",
                   lineHeight: "1.6",
                   marginBottom: "1.5rem",
                 }}
@@ -426,12 +426,12 @@ const SubscriptionPlans = () => {
                     style={{
                       fontSize: "3rem",
                       fontWeight: "800",
-                      color: "#0f172a",
+                      color: "#1a2129",
                     }}
                   >
                     R${getPrice(plan)}
                   </span>
-                  <span style={{ color: "#64748b", fontSize: "0.95rem" }}>
+                  <span style={{ color: "#7a8a99", fontSize: "0.95rem" }}>
                     /mês
                   </span>
                 </div>
@@ -465,7 +465,7 @@ const SubscriptionPlans = () => {
                       gap: "0.75rem",
                       marginBottom: "0.75rem",
                       fontSize: "0.9rem",
-                      color: "#475569",
+                      color: "#5a6978",
                     }}
                   >
                     <span
@@ -525,7 +525,7 @@ const SubscriptionPlans = () => {
               <p
                 style={{
                   fontSize: "0.8rem",
-                  color: "#64748b",
+                  color: "#7a8a99",
                   textAlign: "center",
                   marginTop: "1rem",
                   fontStyle: "italic",
@@ -545,7 +545,7 @@ const SubscriptionPlans = () => {
             borderRadius: "20px",
             padding: "3rem 2rem",
             boxShadow: "0 4px 12px rgba(15, 23, 42, 0.06)",
-            border: "1px solid #e2e8f0",
+            border: "1px solid #f0f2f5",
             marginBottom: "4rem",
           }}
         >
@@ -553,7 +553,7 @@ const SubscriptionPlans = () => {
             style={{
               fontSize: "1.75rem",
               fontWeight: "700",
-              color: "#0f172a",
+              color: "#1a2129",
               marginBottom: "2rem",
               textAlign: "center",
             }}
@@ -570,14 +570,14 @@ const SubscriptionPlans = () => {
               }}
             >
               <thead>
-                <tr style={{ borderBottom: "2px solid #e2e8f0" }}>
+                <tr style={{ borderBottom: "2px solid #f0f2f5" }}>
                   <th
                     style={{
                       textAlign: "left",
                       padding: "1rem",
                       fontSize: "0.95rem",
                       fontWeight: "600",
-                      color: "#64748b",
+                      color: "#7a8a99",
                     }}
                   >
                     Recurso
@@ -588,7 +588,7 @@ const SubscriptionPlans = () => {
                       padding: "1rem",
                       fontSize: "0.95rem",
                       fontWeight: "600",
-                      color: "#64748b",
+                      color: "#7a8a99",
                     }}
                   >
                     Presença Digital
@@ -611,7 +611,7 @@ const SubscriptionPlans = () => {
                       padding: "1rem",
                       fontSize: "0.95rem",
                       fontWeight: "600",
-                      color: "#64748b",
+                      color: "#7a8a99",
                     }}
                   >
                     Enterprise
@@ -628,8 +628,8 @@ const SubscriptionPlans = () => {
                           padding: "1.5rem 1rem 0.75rem",
                           fontSize: "1rem",
                           fontWeight: "700",
-                          color: "#0f172a",
-                          background: "#f8fafc",
+                          color: "#1a2129",
+                          background: "#ffffff",
                         }}
                       >
                         {category.category}
@@ -639,14 +639,14 @@ const SubscriptionPlans = () => {
                       <tr
                         key={`feat-${catIdx}-${featIdx}`}
                         style={{
-                          borderBottom: "1px solid #f1f5f9",
+                          borderBottom: "1px solid #fafbfc",
                         }}
                       >
                         <td
                           style={{
                             padding: "1rem",
                             fontSize: "0.9rem",
-                            color: "#475569",
+                            color: "#5a6978",
                           }}
                         >
                           {feature.name}

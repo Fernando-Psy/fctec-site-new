@@ -1,33 +1,6 @@
-import "./AboutCompany.css";
+import './AboutCompany.css';
 
 const AboutCompany = () => {
-  const values = [
-    {
-      icon: "🎯",
-      title: "Expertise Técnica",
-      description:
-        "Equipe especializada em desenvolvimento web com anos de experiência em tecnologias modernas e boas práticas de engenharia de software.",
-    },
-    {
-      icon: "🤝",
-      title: "Parceria de Longo Prazo",
-      description:
-        "Construímos relacionamentos duradouros, acompanhando a evolução digital dos nossos clientes com suporte contínuo e dedicado.",
-    },
-    {
-      icon: "⚡",
-      title: "Agilidade e Qualidade",
-      description:
-        "Processos otimizados que garantem entregas rápidas sem comprometer a qualidade técnica e a excelência do código.",
-    },
-    {
-      icon: "🔒",
-      title: "Segurança e Confiabilidade",
-      description:
-        "Implementamos as melhores práticas de segurança e garantimos a integridade dos dados com infraestrutura robusta.",
-    },
-  ];
-
   return (
     <section id="sobre" className="about-company-section">
       <div className="about-container">
@@ -39,56 +12,196 @@ const AboutCompany = () => {
           </div>
 
           <h2 className="about-title">
-            Transformando Ideias em{" "}
-            <span className="title-highlight">Soluções Digitais</span>
+            Transformamos Ideias em{' '}
+            <span className="title-highlight">Resultados Digitais</span>
           </h2>
 
           <p className="about-description">
-            Somos uma empresa especializada em desenvolvimento de soluções web,
-            comprometida em criar produtos digitais que fazem a diferença para
-            nossos clientes.
+            Somos especialistas em desenvolvimento web que criam soluções
+            digitais que realmente funcionam para o seu negócio.
           </p>
         </div>
 
-        {/* Mission Statement */}
-        <div className="mission-card">
+        {/* Simplified Mission - More Spacious US Style */}
+        <div
+          className="mission-card"
+          style={{
+            padding: '3rem',
+            marginBottom: '3rem',
+            textAlign: 'center',
+          }}
+        >
           <div className="mission-content">
-            <h3 className="mission-title">Nossa Missão</h3>
-            <p className="mission-text">
-              Desenvolver soluções tecnológicas de alta qualidade que
-              impulsionam o crescimento e a transformação digital de empresas,
-              profissionais e instituições. Trabalhamos com dedicação para
-              entregar produtos que realmente atendem às necessidades dos nossos
-              clientes, sempre com foco em inovação, qualidade e resultados.
-            </p>
-          </div>
-        </div>
-
-        {/* Values Grid */}
-        <div className="values-grid">
-          {values.map((value, index) => (
             <div
-              key={index}
-              className="value-card"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                marginBottom: '1.5rem',
+                fontSize: '2.5rem',
+              }}
             >
-              <div className="value-icon">{value.icon}</div>
-              <h4 className="value-title">{value.title}</h4>
-              <p className="value-description">{value.description}</p>
+              <span>🎯</span>
             </div>
-          ))}
-        </div>
-
-        {/* CTA Section */}
-        <div className="about-cta">
-          <div className="cta-content">
-            <h3 className="cta-title">Vamos Conversar?</h3>
-            <p className="cta-description">
-              Estamos prontos para entender suas necessidades e apresentar as
-              melhores soluções para o seu projeto.
+            <h3
+              className="mission-title"
+              style={{
+                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                marginBottom: '1.5rem',
+              }}
+            >
+              Nossa Missão
+            </h3>
+            <p
+              className="mission-text"
+              style={{
+                fontSize: '1.125rem',
+                lineHeight: '1.8',
+                maxWidth: '800px',
+                margin: '0 auto',
+                color: '#5a6978',
+              }}
+            >
+              Desenvolver soluções web de alta qualidade que impulsionam o
+              crescimento dos nossos clientes. Trabalhamos com{' '}
+              <strong>foco em resultados</strong>, entregando produtos que fazem
+              diferença real no seu negócio.
             </p>
           </div>
-          <div className="cta-buttons">
+        </div>
+
+        {/* Key Differentiators - Compact Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '2rem',
+            marginBottom: '3rem',
+          }}
+        >
+          <div
+            style={{
+              textAlign: 'center',
+              padding: '2rem 1rem',
+            }}
+          >
+            <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>⚡</div>
+            <h4
+              style={{
+                fontSize: '1.125rem',
+                fontWeight: '700',
+                color: '#1a2129',
+                marginBottom: '0.5rem',
+              }}
+            >
+              Entrega Rápida
+            </h4>
+            <p
+              style={{
+                fontSize: '0.95rem',
+                color: '#7a8a99',
+                lineHeight: '1.6',
+              }}
+            >
+              Projetos concluídos em prazos realistas sem comprometer qualidade
+            </p>
+          </div>
+
+          <div
+            style={{
+              textAlign: 'center',
+              padding: '2rem 1rem',
+            }}
+          >
+            <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🤝</div>
+            <h4
+              style={{
+                fontSize: '1.125rem',
+                fontWeight: '700',
+                color: '#1a2129',
+                marginBottom: '0.5rem',
+              }}
+            >
+              Suporte Dedicado
+            </h4>
+            <p
+              style={{
+                fontSize: '0.95rem',
+                color: '#7a8a99',
+                lineHeight: '1.6',
+              }}
+            >
+              Acompanhamento contínuo e suporte sempre que você precisar
+            </p>
+          </div>
+
+          <div
+            style={{
+              textAlign: 'center',
+              padding: '2rem 1rem',
+            }}
+          >
+            <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🔒</div>
+            <h4
+              style={{
+                fontSize: '1.125rem',
+                fontWeight: '700',
+                color: '#1a2129',
+                marginBottom: '0.5rem',
+              }}
+            >
+              100% Seguro
+            </h4>
+            <p
+              style={{
+                fontSize: '0.95rem',
+                color: '#7a8a99',
+                lineHeight: '1.6',
+              }}
+            >
+              Seus dados protegidos com as melhores práticas de segurança
+            </p>
+          </div>
+        </div>
+
+        {/* CTA Section - More Spacious */}
+        <div
+          className="about-cta"
+          style={{
+            padding: '3rem 2rem',
+            marginTop: '4rem',
+          }}
+        >
+          <div className="cta-content" style={{ textAlign: 'center' }}>
+            <h3
+              className="cta-title"
+              style={{
+                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                marginBottom: '1rem',
+              }}
+            >
+              Vamos Conversar?
+            </h3>
+            <p
+              className="cta-description"
+              style={{
+                fontSize: '1.05rem',
+                maxWidth: '600px',
+                margin: '0 auto 2rem',
+              }}
+            >
+              Conte-nos sobre seu projeto e vamos apresentar a melhor solução
+            </p>
+          </div>
+          <div
+            className="cta-buttons"
+            style={{
+              display: 'flex',
+              gap: '1rem',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+            }}
+          >
             <a
               href="https://wa.me/5521968810478?text=Olá, gostaria de conversar sobre soluções digitais."
               target="_blank"

@@ -1,68 +1,68 @@
-import { lazy, Suspense, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // CSS Crítico (carregado imediatamente)
-import "./styles/bootstrap-critical.css"; // Bootstrap mínimo para Hero/Header
-import "./styles/neumorphism.css";
-import "./App.css";
+import './styles/bootstrap-critical.css'; // Bootstrap mínimo para Hero/Header
+import './styles/neumorphism.css';
+import './App.css';
 
 // Utilitário para carregar CSS não bloqueante
-import { loadCSSIdle } from "./utils/loadCSS";
+import { loadCSSIdle } from './utils/loadCSS';
 
-import SEO from "./components/SEO/SEO";
-import { SEOPages } from "./components/SEO/seoConfig";
-import Header from "./components/Header/Header";
-import Hero from "./components/Hero/Hero";
-import WhatsAppFloat from "./components/WhatsAppFloat/WhatsAppFloat";
-import ScrollToTop from "./components/ScrollToTop";
+import SEO from './components/SEO/SEO';
+import { SEOPages } from './components/SEO/seoConfig';
+import Header from './components/Header/Header';
+import Hero from './components/Hero/Hero';
+import WhatsAppFloat from './components/WhatsAppFloat/WhatsAppFloat';
+import ScrollToTop from './components/ScrollToTop';
 
 // Lazy loading para componentes pesados
 const AboutCompany = lazy(
-  () => import("./components/AboutCompany/AboutCompany"),
+  () => import('./components/AboutCompany/AboutCompany')
 );
-const Services = lazy(() => import("./components/Services/Services"));
+const Services = lazy(() => import('./components/Services/Services'));
 const ServiceDetails = lazy(
-  () => import("./components/Services/ServiceDetails"),
+  () => import('./components/Services/ServiceDetails')
 );
 const ClientsShowcase = lazy(
-  () => import("./components/ClientsShowcase/ClientsShowcase"),
+  () => import('./components/ClientsShowcase/ClientsShowcase')
 );
 const BenefitsResults = lazy(
-  () => import("./components/BenefitsResults/BenefitsResults"),
+  () => import('./components/BenefitsResults/BenefitsResults')
 );
 const FreeResources = lazy(
-  () => import("./components/FreeResources/FreeResources"),
+  () => import('./components/FreeResources/FreeResources')
 );
-const ContactForm = lazy(() => import("./components/ContactForm/ContactForm"));
-const FAQ = lazy(() => import("./components/FAQ/FAQ"));
-const Location = lazy(() => import("./components/Location/Location"));
-const Footer = lazy(() => import("./components/Footer/Footer"));
+const ContactForm = lazy(() => import('./components/ContactForm/ContactForm'));
+const FAQ = lazy(() => import('./components/FAQ/FAQ'));
+const Location = lazy(() => import('./components/Location/Location'));
+const Footer = lazy(() => import('./components/Footer/Footer'));
 const PrivacyPolicy = lazy(
-  () => import("./components/PrivacyPolicy/PrivacyPolicy"),
+  () => import('./components/PrivacyPolicy/PrivacyPolicy')
 );
 const TermsOfService = lazy(
-  () => import("./components/TermsOfService/TermsOfService"),
+  () => import('./components/TermsOfService/TermsOfService')
 );
 
 // Loading component
 const LoadingFallback = () => (
   <div
     style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      minHeight: "200px",
-      color: "#4e83af",
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '200px',
+      color: '#4e83af',
     }}
   >
     <div
       style={{
-        width: "40px",
-        height: "40px",
-        border: "4px solid rgba(37, 99, 235, 0.1)",
-        borderTopColor: "#4e83af",
-        borderRadius: "50%",
-        animation: "spin 0.8s linear infinite",
+        width: '40px',
+        height: '40px',
+        border: '4px solid rgba(37, 99, 235, 0.1)',
+        borderTopColor: '#4e83af',
+        borderRadius: '50%',
+        animation: 'spin 0.8s linear infinite',
       }}
     />
   </div>
@@ -73,8 +73,8 @@ function App() {
   useEffect(() => {
     // Carregar Bootstrap de forma idle para não bloquear LCP
     loadCSSIdle(
-      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
-      "bootstrap-css",
+      'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
+      'bootstrap-css'
     );
   }, []);
 
@@ -105,9 +105,10 @@ function App() {
                     <Suspense fallback={<LoadingFallback />}>
                       <ClientsShowcase />
                     </Suspense>
-                    <Suspense fallback={<LoadingFallback />}>
+                    {/* FreeResources moved to separate page for cleaner US-style homepage */}
+                    {/* <Suspense fallback={<LoadingFallback />}>
                       <FreeResources />
-                    </Suspense>
+                    </Suspense> */}
                     <Suspense fallback={<LoadingFallback />}>
                       <ContactForm />
                     </Suspense>

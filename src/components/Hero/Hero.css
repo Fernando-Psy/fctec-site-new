@@ -4,7 +4,7 @@
   position: relative;
   padding: 5rem 0;
   overflow: hidden;
-  background: linear-gradient(135deg, #ffffff 0%, #f6fafe 50%, #ecfeff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #eff6ff 100%);
 }
 
 /* ===== HERO CONTENT ===== */
@@ -17,7 +17,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, #f6fafe 0%, #ecfeff 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
   border: 1px solid rgba(78, 131, 175, 0.3);
   padding: 0.625rem 1.25rem;
   border-radius: 50px;
@@ -27,13 +27,13 @@
 }
 
 .badge-icon {
-  color: #06b6d4;
+  color: #38bdf8;
   font-size: 1rem;
   animation: rotate 3s linear infinite;
 }
 
 .badge-text {
-  color: #3a5f7d;
+  color: #0369a1;
   font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.02em;
@@ -44,13 +44,13 @@
   font-size: clamp(2.25rem, 5vw, 3.5rem);
   font-weight: 800;
   line-height: 1.15;
-  color: #0f172a;
+  color: #1a2129;
   margin-bottom: 1.5rem;
   letter-spacing: -0.03em;
 }
 
 .hero-gradient-text {
-  background: linear-gradient(135deg, #4e83af 0%, #06b6d4 50%, #7c3aed 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 50%, #38bdf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -65,7 +65,7 @@
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, #4e83af, #06b6d4, #f97316);
+  background: linear-gradient(90deg, #0ea5e9, #38bdf8, #0ea5e9);
   border-radius: 2px;
   opacity: 0.3;
 }
@@ -74,7 +74,7 @@
 .hero-description {
   font-size: 1.125rem;
   line-height: 1.75;
-  color: #475569;
+  color: #5a6978;
   margin-bottom: 2rem;
   max-width: 560px;
 }
@@ -93,13 +93,13 @@
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   background: white;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #f0f2f5;
   border-radius: 10px;
   transition: all 0.3s ease;
 }
 
 .feature-item:hover {
-  border-color: #4e83af;
+  border-color: #0ea5e9;
   box-shadow: 0 4px 12px rgba(78, 131, 175, 0.15);
   transform: translateX(4px);
 }
@@ -126,14 +126,14 @@
 /* Botão Primário */
 .btn-hero-primary {
   position: relative;
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+  background: linear-gradient(135deg, #bfdbfe 0%, #0284c7 100%) !important;
   border: none !important;
   color: white !important;
   font-weight: 600;
   font-size: 1rem;
   padding: 1rem 2rem !important;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   text-decoration: none;
@@ -141,7 +141,7 @@
 
 .btn-hero-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(249, 115, 22, 0.5);
+  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.5);
 }
 
 .btn-hero-primary:active {
@@ -182,8 +182,8 @@
 /* Botão Secundário */
 .btn-hero-secondary {
   background: white !important;
-  border: 2px solid #e2e8f0 !important;
-  color: #3a5f7d !important;
+  border: 2px solid #f0f2f5 !important;
+  color: #0369a1 !important;
   font-weight: 600;
   font-size: 1rem;
   padding: 1rem 2rem !important;
@@ -197,8 +197,8 @@
 }
 
 .btn-hero-secondary:hover {
-  border-color: #4e83af !important;
-  background: #ecf5fa !important;
+  border-color: #0ea5e9 !important;
+  background: #dbeafe !important;
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(78, 131, 175, 0.2);
 }
@@ -210,7 +210,7 @@
   gap: 1.5rem;
   padding: 1.5rem;
   background: white;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #f0f2f5;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
 }
@@ -222,7 +222,7 @@
 .proof-number {
   font-size: 1.75rem;
   font-weight: 800;
-  color: #3a5f7d;
+  color: #0369a1;
   line-height: 1;
   margin-bottom: 0.25rem;
 }
@@ -230,7 +230,7 @@
 .proof-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #64748b;
+  color: #7a8a99;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -238,7 +238,7 @@
 .social-proof-divider {
   width: 1px;
   height: 40px;
-  background: linear-gradient(180deg, transparent, #e2e8f0, transparent);
+  background: linear-gradient(180deg, transparent, #f0f2f5, transparent);
 }
 
 /* ===== HERO IMAGE ===== */
@@ -257,7 +257,7 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
-  border: 1px solid #e2e8f0;
+  border: 1px solid #f0f2f5;
   z-index: 1;
 }
 

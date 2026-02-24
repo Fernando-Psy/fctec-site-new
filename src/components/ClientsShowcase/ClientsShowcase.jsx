@@ -48,7 +48,7 @@ const ClientsShowcase = () => {
   return (
     <section style={{
       padding: '6rem 2rem',
-      background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)',
+      background: 'linear-gradient(135deg, #ffffff 0%, #ffffff 100%)',
       position: 'relative',
       overflow: 'hidden'
     }}>
@@ -93,7 +93,7 @@ const ClientsShowcase = () => {
           <h2 style={{
             fontSize: 'clamp(2rem, 4vw, 2.75rem)',
             fontWeight: '800',
-            color: '#0f172a',
+            color: '#1a2129',
             marginBottom: '1rem',
             letterSpacing: '-0.02em'
           }}>
@@ -108,7 +108,7 @@ const ClientsShowcase = () => {
 
           <p style={{
             fontSize: '1.125rem',
-            color: '#64748b',
+            color: '#7a8a99',
             lineHeight: '1.7'
           }}>
             Criamos soluções digitais sob medida para diversos segmentos — porque acreditamos que todo negócio merece uma presença online poderosa.
@@ -123,7 +123,7 @@ const ClientsShowcase = () => {
           marginBottom: '4rem'
         }}>
           {serviceAreas.map((area, idx) => {
-            const { color, bgColor } = colorMap[area.name] || { color: "#64748b", bgColor: "#f1f5f9" };
+            const { color, bgColor } = colorMap[area.name] || { color: "#7a8a99", bgColor: "#fafbfc" };
             return (
               <div
                 key={idx}
@@ -131,7 +131,7 @@ const ClientsShowcase = () => {
                 onMouseLeave={() => setHoveredIndex(null)}
                 style={{
                   background: 'white',
-                  border: '1px solid #e2e8f0',
+                  border: '1px solid #f0f2f5',
                   borderRadius: '16px',
                   padding: '2rem',
                   transition: 'all 0.3s ease',
@@ -140,7 +140,7 @@ const ClientsShowcase = () => {
                   boxShadow: hoveredIndex === `area-${idx}`
                     ? '0 12px 28px rgba(15, 23, 42, 0.12)'
                     : 'none',
-                  borderColor: hoveredIndex === `area-${idx}` ? color : '#e2e8f0'
+                  borderColor: hoveredIndex === `area-${idx}` ? color : '#f0f2f5'
                 }}
               >
                 {/* Icon */}
@@ -164,7 +164,7 @@ const ClientsShowcase = () => {
                 <h3 style={{
                   fontSize: '1.25rem',
                   fontWeight: '700',
-                  color: '#0f172a',
+                  color: '#1a2129',
                   marginBottom: '0.5rem'
                 }}>
                   {area.name}
@@ -172,7 +172,7 @@ const ClientsShowcase = () => {
 
                 <p style={{
                   fontSize: '0.9rem',
-                  color: '#64748b',
+                  color: '#7a8a99',
                   lineHeight: '1.6',
                   marginBottom: '1rem'
                 }}>
@@ -204,14 +204,14 @@ const ClientsShowcase = () => {
           background: 'white',
           borderRadius: '20px',
           padding: '3rem 2rem',
-          border: '1px solid #e2e8f0',
+          border: '1px solid #f0f2f5',
           boxShadow: '0 4px 12px rgba(15, 23, 42, 0.06)'
         }}>
           <h3 style={{
             textAlign: 'center',
             fontSize: '1.5rem',
             fontWeight: '700',
-            color: '#0f172a',
+            color: '#1a2129',
             marginBottom: '0.5rem'
           }}>
             Segmentos que Atendemos
@@ -219,7 +219,7 @@ const ClientsShowcase = () => {
           <p style={{
             textAlign: 'center',
             fontSize: '0.95rem',
-            color: '#64748b',
+            color: '#7a8a99',
             marginBottom: '2.5rem'
           }}>
             Trabalhamos com empresas de todos os portes — do microempreendedor à startup em crescimento.
@@ -237,7 +237,7 @@ const ClientsShowcase = () => {
                 client.category.includes(key.split(' & ')[0]) ||
                 key.includes(client.category.split(' & ')[0])
               );
-              const { color = "#64748b" } = colorMap[categoryKey] || {};
+              const { color = "#7a8a99" } = colorMap[categoryKey] || {};
 
               return (
                 <div
@@ -250,7 +250,7 @@ const ClientsShowcase = () => {
                     alignItems: 'center',
                     gap: '0.75rem',
                     padding: '1.5rem',
-                    background: hoveredIndex === `client-${idx}` ? 'white' : '#f8fafc',
+                    background: hoveredIndex === `client-${idx}` ? 'white' : '#ffffff',
                     borderRadius: '12px',
                     transition: 'all 0.3s ease',
                     cursor: 'pointer',
@@ -281,14 +281,14 @@ const ClientsShowcase = () => {
                     <div style={{
                       fontSize: '0.9rem',
                       fontWeight: '600',
-                      color: '#0f172a',
+                      color: '#1a2129',
                       marginBottom: '0.25rem'
                     }}>
                       {client.name}
                     </div>
                     <div style={{
                       fontSize: '0.75rem',
-                      color: '#64748b',
+                      color: '#7a8a99',
                       fontWeight: '500'
                     }}>
                       {client.category}
@@ -375,7 +375,7 @@ const ClientsShowcase = () => {
         }}>
           <p style={{
             fontSize: '1.125rem',
-            color: '#475569',
+            color: '#5a6978',
             marginBottom: '1.5rem',
             fontWeight: '500'
           }}>

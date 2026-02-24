@@ -1,7 +1,7 @@
 .contact-form-section {
     padding: 5rem 0;
     position: relative;
-    background: linear-gradient(135deg, #ecfeff 0%, #ffffff 50%, #f6fafe 100%);
+    background: linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #f0f9ff 100%);
     overflow: hidden;
 }
 
@@ -39,13 +39,13 @@
     margin-bottom: 1.5rem;
     font-size: 0.875rem;
     font-weight: 600;
-    color: #3a5f7d;
+    color: #0369a1;
 }
 
 .badge-dot {
     width: 8px;
     height: 8px;
-    background: #f97316;
+    background: #0ea5e9;
     border-radius: 50%;
     animation: pulse 2s ease-in-out infinite;
 }
@@ -66,13 +66,13 @@
     font-size: clamp(1.75rem, 3vw, 2.5rem);
     font-weight: 800;
     line-height: 1.2;
-    color: #0f172a;
+    color: #1a2129;
     margin-bottom: 1rem;
     letter-spacing: -0.02em;
 }
 
 .title-highlight {
-    background: linear-gradient(135deg, #4e83af 0%, #06b6d4 50%, #f97316 100%);
+    background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 50%, #0ea5e9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -81,7 +81,7 @@
 .contact-description {
     font-size: 1rem;
     line-height: 1.7;
-    color: #64748b;
+    color: #7a8a99;
 }
 
 /* Contact Methods */
@@ -97,7 +97,7 @@
     gap: 1rem;
     padding: 1.25rem;
     background: white;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #f0f2f5;
     border-radius: 12px;
     transition: all 0.3s ease;
     text-decoration: none;
@@ -140,20 +140,20 @@
 .method-title {
     font-size: 0.875rem;
     font-weight: 700;
-    color: #0f172a;
+    color: #1a2129;
     margin-bottom: 0.25rem;
 }
 
 .method-text {
     font-size: 0.9375rem;
-    color: #64748b;
+    color: #7a8a99;
     margin: 0;
 }
 
 /* Form Column */
 .contact-form-wrapper {
     background: white;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #f0f2f5;
     border-radius: 16px;
     padding: 2.5rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
@@ -180,7 +180,7 @@
 .form-label {
     font-size: 0.875rem;
     font-weight: 600;
-    color: #0f172a;
+    color: #1a2129;
 }
 
 .required {
@@ -190,10 +190,10 @@
 .form-input,
 .form-textarea {
     padding: 0.75rem 1rem;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #f0f2f5;
     border-radius: 8px;
     font-size: 0.9375rem;
-    color: #0f172a;
+    color: #1a2129;
     transition: all 0.3s ease;
     font-family: inherit;
 }
@@ -201,7 +201,7 @@
 .form-input:focus,
 .form-textarea:focus {
     outline: none;
-    border-color: #4e83af;
+    border-color: #0ea5e9;
     box-shadow: 0 0 0 3px rgba(78, 131, 175, 0.15);
 }
 
@@ -250,7 +250,7 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
     color: white;
     border: none;
     border-radius: 8px;
@@ -258,12 +258,12 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .submit-button:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px -4px rgba(249, 115, 22, 0.5);
+    box-shadow: 0 12px 28px -4px rgba(59, 130, 246, 0.5);
 }
 
 .submit-button:disabled {
@@ -307,7 +307,7 @@
 .contact-bg-1 {
     width: 400px;
     height: 400px;
-    background: linear-gradient(135deg, #4e83af, #06b6d4);
+    background: linear-gradient(135deg, #0ea5e9, #38bdf8);
     top: -200px;
     left: -200px;
 }
@@ -315,7 +315,7 @@
 .contact-bg-2 {
     width: 500px;
     height: 500px;
-    background: linear-gradient(135deg, #f97316, #ea580c);
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
     bottom: -250px;
     right: -250px;
 }

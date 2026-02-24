@@ -2,7 +2,7 @@
 
 .terms-page {
     min-height: 100vh;
-    background: linear-gradient(135deg, #ffffff 0%, #f6fafe 50%, #ecfeff 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #eff6ff 100%);
     padding: 6rem 0 4rem;
 }
 
@@ -17,16 +17,16 @@
     text-align: center;
     margin-bottom: 4rem;
     padding-bottom: 2rem;
-    border-bottom: 2px solid #e2e8f0;
+    border-bottom: 2px solid #f0f2f5;
 }
 
 .terms-title {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 800;
-    color: #0f172a;
+    color: #1a2129;
     margin-bottom: 1rem;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #4e83af 0%, #06b6d4 50%, #7c3aed 100%);
+    background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 50%, #38bdf8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -34,7 +34,7 @@
 
 .terms-updated {
     font-size: 0.95rem;
-    color: #64748b;
+    color: #7a8a99;
     font-weight: 500;
 }
 
@@ -44,13 +44,13 @@
     border-radius: 16px;
     padding: 3rem;
     box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
-    border: 1px solid #e2e8f0;
+    border: 1px solid #f0f2f5;
 }
 
 .terms-section {
     margin-bottom: 3rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid #fafbfc;
 }
 
 .terms-section:last-child {
@@ -62,7 +62,7 @@
 .section-title {
     font-size: 1.75rem;
     font-weight: 700;
-    color: #0f172a;
+    color: #1a2129;
     margin-bottom: 1.25rem;
     letter-spacing: -0.01em;
 }
@@ -77,7 +77,7 @@
 .terms-section p {
     font-size: 1rem;
     line-height: 1.8;
-    color: #475569;
+    color: #5a6978;
     margin-bottom: 1rem;
 }
 
@@ -90,7 +90,7 @@
 .terms-section ul li {
     font-size: 1rem;
     line-height: 1.8;
-    color: #475569;
+    color: #5a6978;
     margin-bottom: 0.75rem;
 }
 
@@ -112,7 +112,7 @@
     margin-bottom: 1rem;
     font-size: 1rem;
     line-height: 1.8;
-    color: #475569;
+    color: #5a6978;
     position: relative;
     padding-left: 2rem;
 }
@@ -122,7 +122,7 @@
     position: absolute;
     left: 0;
     font-weight: 700;
-    color: #4e83af;
+    color: #0ea5e9;
 }
 
 /* ===== SERVICES GRID ===== */
@@ -134,8 +134,8 @@
 }
 
 .service-item {
-    background: linear-gradient(135deg, #f6fafe 0%, #ecfeff 100%);
-    border: 1px solid #e2e8f0;
+    background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
+    border: 1px solid #f0f2f5;
     border-radius: 12px;
     padding: 1.5rem;
     text-align: center;
@@ -156,13 +156,13 @@
 .service-item h4 {
     font-size: 1.125rem;
     font-weight: 700;
-    color: #0f172a;
+    color: #1a2129;
     margin-bottom: 0.75rem;
 }
 
 .service-item p {
     font-size: 0.9375rem;
-    color: #64748b;
+    color: #7a8a99;
     margin: 0;
 }
 
@@ -171,7 +171,7 @@
 .warranty-note,
 .consumer-note {
     background: #fff7ed;
-    border-left: 4px solid #f97316;
+    border-left: 4px solid #bfdbfe;
     padding: 1rem 1.25rem;
     margin: 1.5rem 0;
     border-radius: 4px;
@@ -181,28 +181,28 @@
 .payment-note strong,
 .warranty-note strong,
 .consumer-note strong {
-    color: #ea580c;
+    color: #0284c7;
 }
 
 /* ===== INLINE LINK ===== */
 .inline-link {
-    color: #4e83af;
+    color: #0ea5e9;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .inline-link:hover {
-    color: #3a5f7d;
+    color: #1a2129;
     text-decoration: underline;
 }
 
 /* ===== CONTACT SECTION ===== */
 .contact-section {
-    background: linear-gradient(135deg, #f6fafe 0%, #ecfeff 100%);
+    background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
     border-radius: 12px;
     padding: 2rem;
-    border: 2px solid #e2e8f0;
+    border: 2px solid #f0f2f5;
 }
 
 .contact-cards {
@@ -214,7 +214,7 @@
 
 .contact-card {
     background: white;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #f0f2f5;
     border-radius: 12px;
     padding: 1.75rem;
     text-align: center;
@@ -235,13 +235,13 @@
 .contact-card h4 {
     font-size: 1.125rem;
     font-weight: 700;
-    color: #0f172a;
+    color: #1a2129;
     margin-bottom: 0.75rem;
 }
 
 .contact-card a {
     display: block;
-    color: #4e83af;
+    color: #0ea5e9;
     text-decoration: none;
     font-weight: 600;
     margin-bottom: 0.5rem;
@@ -249,19 +249,19 @@
 }
 
 .contact-card a:hover {
-    color: #3a5f7d;
+    color: #1a2129;
 }
 
 .contact-card p {
     font-size: 0.9375rem;
-    color: #64748b;
+    color: #7a8a99;
     margin: 0;
     line-height: 1.6;
 }
 
 /* ===== FINAL NOTE ===== */
 .final-note {
-    background: linear-gradient(135deg, #ecf5fa 0%, #d9eaf4 100%);
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
     border-radius: 12px;
     padding: 2rem;
     border: 2px solid #c1dceb;
@@ -276,7 +276,7 @@
 }
 
 .disclaimer strong {
-    color: #0f172a;
+    color: #1a2129;
 }
 
 /* ===== RESPONSIVIDADE ===== */
@@ -366,7 +366,7 @@
 }
 
 .terms-content::-webkit-scrollbar-track {
-    background: #f1f5f9;
+    background: #fafbfc;
     border-radius: 4px;
 }
 
