@@ -72,10 +72,18 @@ function App() {
   // Carregar Bootstrap CSS de forma assíncrona após renderização inicial
   useEffect(() => {
     // Carregar Bootstrap de forma idle para não bloquear LCP
-    loadCSSIdle(
-      'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
-      'bootstrap-css'
-    );
+    // Usar maior delay em dispositivos mobile para priorizar conteúdo crítico
+    const isMobile = window.innerWidth < 768;
+    const delay = isMobile ? 1500 : 800;
+
+    const timeoutId = setTimeout(() => {
+      loadCSSIdle(
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
+        'bootstrap-css'
+      );
+    }, delay);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (

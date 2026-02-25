@@ -312,15 +312,21 @@ const HeroImproved = () => {
               {/* Imagem otimizada com WebP e tamanhos responsivos */}
               <picture>
                 <source
-                  srcSet="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&fm=webp"
+                  srcSet="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&fm=webp&q=80"
                   type="image/webp"
+                  media="(min-width: 768px)"
+                />
+                <source
+                  srcSet="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=450&fit=crop&fm=webp&q=80"
+                  type="image/webp"
+                  media="(max-width: 767px)"
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=75"
                   alt="Desenvolvimento de software"
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
-                  fetchPriority="low"
+                  fetchPriority="high"
                   width="800"
                   height="600"
                   style={{

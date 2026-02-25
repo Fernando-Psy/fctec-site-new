@@ -1,12 +1,45 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import viteCompression from 'vite-plugin-compression'
-import { visualizer } from 'rollup-plugin-visualizer'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import viteCompression from 'vite-plugin-compression';
+import { visualizer } from 'rollup-plugin-visualizer';
+import viteImagemin from 'vite-plugin-imagemin';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    // Otimização de imagens
+    viteImagemin({
+      gifsicle: {
+        optimizationLevel: 7,
+        interlaced: false,
+      },
+      optipng: {
+        optimizationLevel: 7,
+      },
+      mozjpeg: {
+        quality: 75,
+      },
+      pngquant: {
+        quality: [0.65, 0.8],
+        speed: 4,
+      },
+      svgo: {
+        plugins: [
+          {
+            name: 'removeViewBox',
+            active: false,
+          },
+          {
+            name: 'removeEmptyAttrs',
+            active: false,
+          },
+        ],
+      },
+      webp: {
+        quality: 75,
+      },
+    }),
     // Compressão Brotli (melhor compressão)
     viteCompression({
       algorithm: 'brotliCompress',
@@ -31,7 +64,7 @@ export default defineConfig({
   ],
   server: {
     port: 3000,
-    open: true
+    open: true,
   },
   build: {
     outDir: 'dist',
@@ -51,7 +84,7 @@ export default defineConfig({
           // Vendor chunks separados
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'bootstrap-vendor': ['react-bootstrap', 'bootstrap'],
-          'utils': ['./src/utils/scrollUtils', './src/utils/loadNonCriticalCSS'],
+          utils: ['./src/utils/scrollUtils', './src/utils/loadNonCriticalCSS'],
         },
         // Otimizar nomes de chunks
         chunkFileNames: 'js/[name]-[hash].js',
@@ -81,4 +114,4 @@ export default defineConfig({
     include: ['react', 'react-dom', 'react-router-dom'],
     exclude: [],
   },
-})
+});

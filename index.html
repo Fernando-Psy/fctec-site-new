@@ -7,16 +7,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- DNS Prefetch para melhorar performance -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-    <link rel="dns-prefetch" href="https://images.unsplash.com" />
-
-    <!-- Preconnect para recursos externos -->
+    <!-- Preconnect apenas para recursos críticos (fontes e imagem do Hero) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" />
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+    <!-- DNS Prefetch para recursos secundários -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
     <!-- ========================================
        FAVICON E ÍCONES
@@ -29,47 +26,36 @@
     <!-- ========================================
        FONTES E ÍCONES
        ======================================== -->
-    <!-- Google Fonts - Inter (otimizado com preload para melhor performance) -->
-    <!-- Preload da fonte mais importante para reduzir FCP -->
+    <!-- Google Fonts - Inter com apenas pesos necessários para reduzir tamanho -->
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       as="style"
       onload="
         this.onload = null;
         this.rel = 'stylesheet';
       "
     />
-    <noscript
-      ><link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet"
-    /></noscript>
+      />
+    </noscript>
 
-    <!-- Preload de arquivos de fonte críticos para LCP -->
+    <!-- Bootstrap Icons carregado de forma assíncrona (não bloqueia renderização) -->
     <link
-      rel="preload"
-      href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-
-    <!-- Bootstrap Icons (defer para não bloquear renderização) -->
-    <link
-      rel="preload"
+      rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
-      as="style"
-      onload="
-        this.onload = null;
-        this.rel = 'stylesheet';
-      "
+      media="print"
+      onload="this.media = 'all'"
     />
-    <noscript
-      ><link
+    <noscript>
+      <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
-    /></noscript>
+      />
+    </noscript>
 
     <!-- Bootstrap CSS otimizado - apenas grid e utilities (carregado pelo Vite) -->
 
@@ -182,22 +168,62 @@
           transform: rotate(360deg);
         }
       }
+
+      /* Otimizações Mobile-First */
+      @media (max-width: 767px) {
+        body {
+          font-size: 16px; /* Prevenir zoom automático no iOS */
+        }
+
+        .hero-section {
+          padding: 3rem 1rem 2rem;
+        }
+
+        /* Reduzir animações em mobile para melhorar performance */
+        * {
+          animation-duration: 0.3s !important;
+          transition-duration: 0.2s !important;
+        }
+      }
+
+      /* Prevenir layout shift */
+      img,
+      picture {
+        max-width: 100%;
+        height: auto;
+      }
     </style>
 
     <!-- Script inline para melhorar carregamento de recursos -->
     <script>
       // Detectar conexão lenta e ajustar estratégia de carregamento
-      (function() {
-        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-        const slowConnection = connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g');
+      (function () {
+        const connection =
+          navigator.connection ||
+          navigator.mozConnection ||
+          navigator.webkitConnection;
+        const slowConnection =
+          connection &&
+          (connection.effectiveType === 'slow-2g' ||
+            connection.effectiveType === '2g' ||
+            connection.effectiveType === '3g');
+        const saveData = connection && connection.saveData;
 
         // Armazenar informação de conexão para uso posterior
-        window.__connectionSlow = slowConnection;
+        window.__connectionSlow = slowConnection || saveData;
+        window.__saveData = saveData;
 
-        // Em conexões lentas, priorizar apenas o essencial
-        if (slowConnection && import.meta.env.MODE === 'development') {
-          // eslint-disable-next-line no-console
-          console.warn('Slow connection detected - optimizing loading');
+        // Em conexões lentas ou Save Data ativado, ajustar comportamento
+        if (window.__connectionSlow) {
+          // Sinalizar para o app reduzir a qualidade de imagens
+          document.documentElement.classList.add('slow-connection');
+        }
+
+        // Prevenir scroll jank em iOS
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+          document.addEventListener('touchstart', function () {}, {
+            passive: true,
+          });
         }
       })();
     </script>
