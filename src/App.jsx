@@ -58,16 +58,7 @@ const LoadingFallback = () => (
       color: '#4e83af',
     }}
   >
-    <div
-      style={{
-        width: '40px',
-        height: '40px',
-        border: '4px solid rgba(37, 99, 235, 0.1)',
-        borderTopColor: '#4e83af',
-        borderRadius: '50%',
-        animation: 'spin 0.8s linear infinite',
-      }}
-    />
+    <div className="loading-spinner" />
   </div>
 );
 
@@ -80,7 +71,7 @@ function App() {
     // Carregar Bootstrap de forma idle para não bloquear LCP
     // Usar maior delay em dispositivos mobile e conexões lentas
     const isMobile = window.innerWidth < 768;
-    const baseDelay = isMobile ? 1500 : 800;
+    const baseDelay = isMobile ? 800 : 400;
 
     // Aumentar delay em conexões lentas para priorizar conteúdo crítico
     const delay = isSlowConnection ? baseDelay * 1.5 : baseDelay;

@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Navbar, Nav, Container, Button } from "react-bootstrap";
-import { useNavigate, useLocation } from "react-router-dom";
-import { scrollToElement, scrollToTop } from "../../utils/scrollUtils";
-import "./Header.css";
-import logoImage from "../../assets/logo/logo2-removebg.png";
+import { useState } from 'react';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { scrollToElement, scrollToTop } from '../../utils/scrollUtils';
+import './Header.css';
+import logoImage from '../../assets/logo/logo2-removebg.png';
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
@@ -14,29 +14,29 @@ const Header = () => {
 
   const scrollToSection = (sectionId) => {
     // Se não estiver na home, navegar primeiro
-    if (location.pathname !== "/") {
-      navigate("/");
+    if (location.pathname !== '/') {
+      navigate('/');
       // Usar scrollAfterNavigation para aguardar DOM atualizar
       // requestAnimationFrame garante que não há reflow forçado
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          scrollToElement(sectionId, { behavior: "smooth", block: "start" });
+          scrollToElement(sectionId, { behavior: 'smooth', block: 'start' });
         });
       });
     } else {
       // Scroll imediato usando função otimizada
-      scrollToElement(sectionId, { behavior: "smooth", block: "start" });
+      scrollToElement(sectionId, { behavior: 'smooth', block: 'start' });
     }
     handleNavClick();
   };
 
   const handleLogoClick = (e) => {
     e.preventDefault();
-    if (location.pathname !== "/") {
-      navigate("/");
+    if (location.pathname !== '/') {
+      navigate('/');
     } else {
       // Usar função otimizada para scroll ao topo
-      scrollToTop("smooth");
+      scrollToTop('smooth');
     }
     handleNavClick();
   };
@@ -61,6 +61,10 @@ const Header = () => {
                 src={logoImage}
                 alt="FCBJ Desenvolvimento"
                 className="logo-img"
+                width="120"
+                height="40"
+                loading="eager"
+                decoding="async"
               />
               <div className="brand-underline"></div>
             </div>
@@ -76,21 +80,21 @@ const Header = () => {
             <Nav className="ms-auto align-items-lg-center">
               <Nav.Link
                 className="nav-link-custom"
-                onClick={() => scrollToSection("about")}
+                onClick={() => scrollToSection('about')}
               >
                 <span className="nav-text">Sobre</span>
               </Nav.Link>
 
               <Nav.Link
                 className="nav-link-custom"
-                onClick={() => scrollToSection("products")}
+                onClick={() => scrollToSection('products')}
               >
                 <span className="nav-text">Serviços</span>
               </Nav.Link>
 
               <Nav.Link
                 className="nav-link-custom"
-                onClick={() => scrollToSection("location")}
+                onClick={() => scrollToSection('location')}
               >
                 <span className="nav-text">Contato</span>
               </Nav.Link>

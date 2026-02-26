@@ -334,6 +334,7 @@
 @media (max-width: 768px) {
   .custom-navbar {
     will-change: auto;
+    backdrop-filter: blur(8px);
   }
 
   .nav-link-custom:hover::before {
@@ -343,9 +344,28 @@
   .btn-shine {
     display: none; /* Remover efeito pesado em mobile */
   }
+
+  /* Desabilitar animações desnecessárias em mobile */
+  .brand-container:hover {
+    transform: none;
+  }
+
+  .nav-link-custom:hover {
+    transform: none;
+  }
+
+  .btn-cta {
+    transition-duration: 0.15s !important;
+  }
+
+  /* Reduzir complexidade de backdrop-filter */
+  .custom-navbar {
+    backdrop-filter: blur(8px) !important;
+  }
 }
 
 .logo-img {
-  width: 80px;
-  height: auto;
+  width: 120px;
+  height: 40px;
+  max-width: 100%;
 }

@@ -309,33 +309,36 @@ const HeroImproved = () => {
                 border: '1px solid #f0f2f5',
               }}
             >
-              {/* Imagem otimizada com WebP e tamanhos responsivos */}
-              <picture>
-                <source
-                  srcSet="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&fm=webp&q=80"
-                  type="image/webp"
-                  media="(min-width: 768px)"
-                />
-                <source
-                  srcSet="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=450&fit=crop&fm=webp&q=80"
-                  type="image/webp"
-                  media="(max-width: 767px)"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=75"
-                  alt="Desenvolvimento de software"
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
-                  width="800"
-                  height="600"
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    display: 'block',
-                  }}
-                />
-              </picture>
+              {/* Imagem otimizada com WebP, aspect-ratio fixo para evitar CLS */}
+              <div className="hero-image-container">
+                <picture>
+                  <source
+                    srcSet="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&fm=webp&q=80"
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                  />
+                  <source
+                    srcSet="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=450&fit=crop&fm=webp&q=80"
+                    type="image/webp"
+                    media="(max-width: 767px)"
+                  />
+                  <img
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=75"
+                    alt="Desenvolvimento de software profissional"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                    width="800"
+                    height="600"
+                    sizes="(max-width: 767px) 600px, 800px"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    }}
+                  />
+                </picture>
+              </div>
 
               {/* Overlay de destaque */}
               <div

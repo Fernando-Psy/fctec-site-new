@@ -603,6 +603,37 @@ footer .filter-white:hover {
   .btn:hover {
     transform: none;
   }
+
+  /* Reduzir animações complexas em touch devices */
+  * {
+    animation-duration: 0.15s !important;
+    transition-duration: 0.15s !important;
+  }
+
+  /* Remover efeitos pesados */
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+}
+
+/* Performance otimizations for mobile */
+@media (max-width: 768px) {
+  /* Reduzir complexidade visual */
+  .shadow-xl,
+  .shadow-lg {
+    box-shadow: var(--shadow-sm) !important;
+  }
+
+  /* Simplificar gradientes */
+  body {
+    background: #fafbfc !important;
+  }
+
+  /* Desabilitar will-change global */
+  * {
+    will-change: auto !important;
+  }
 }
 
 /* ===== ADAPTAÇÃO PARA CONEXÃO LENTA ===== */

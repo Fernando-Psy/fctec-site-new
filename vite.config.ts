@@ -82,9 +82,9 @@ export default defineConfig({
         // Code splitting otimizado
         manualChunks: {
           // Vendor chunks separados
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'bootstrap-vendor': ['react-bootstrap', 'bootstrap'],
-          utils: ['./src/utils/scrollUtils', './src/utils/loadNonCriticalCSS'],
+          'react-vendor': ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          'bootstrap-vendor': ['react-bootstrap'],
         },
         // Otimizar nomes de chunks
         chunkFileNames: 'js/[name]-[hash].js',
