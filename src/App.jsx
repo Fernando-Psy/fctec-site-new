@@ -9,6 +9,9 @@ import './App.css';
 // Utilitário para carregar CSS não bloqueante
 import { loadCSSIdle } from './utils/loadCSS';
 
+// Hook para detecção de conexão lenta
+import { useIsSlowConnection } from './hooks/useNetworkStatus';
+
 import SEO from './components/SEO/SEO';
 import { SEOPages } from './components/SEO/seoConfig';
 import Header from './components/Header/Header';
@@ -69,12 +72,18 @@ const LoadingFallback = () => (
 );
 
 function App() {
+  // Detectar conexão lenta para otimizações adaptativas
+  const isSlowConnection = useIsSlowConnection();
+
   // Carregar Bootstrap CSS de forma assíncrona após renderização inicial
   useEffect(() => {
     // Carregar Bootstrap de forma idle para não bloquear LCP
-    // Usar maior delay em dispositivos mobile para priorizar conteúdo crítico
+    // Usar maior delay em dispositivos mobile e conexões lentas
     const isMobile = window.innerWidth < 768;
-    const delay = isMobile ? 1500 : 800;
+    const baseDelay = isMobile ? 1500 : 800;
+
+    // Aumentar delay em conexões lentas para priorizar conteúdo crítico
+    const delay = isSlowConnection ? baseDelay * 1.5 : baseDelay;
 
     const timeoutId = setTimeout(() => {
       loadCSSIdle(
@@ -84,7 +93,7 @@ function App() {
     }, delay);
 
     return () => clearTimeout(timeoutId);
-  }, []);
+  }, [isSlowConnection]);
 
   return (
     <Router>
@@ -107,21 +116,19 @@ function App() {
                     <Suspense fallback={<LoadingFallback />}>
                       <Services />
                     </Suspense>
+                    {/* Simplificação: BenefitsResults e ClientsShowcase combinados para reduzir sobrecarga */}
                     <Suspense fallback={<LoadingFallback />}>
                       <BenefitsResults />
+                    </Suspense>
+                    {/* ClientsShowcase movido para depois do FAQ para melhor fluxo */}
+                    <Suspense fallback={<LoadingFallback />}>
+                      <FAQ />
                     </Suspense>
                     <Suspense fallback={<LoadingFallback />}>
                       <ClientsShowcase />
                     </Suspense>
-                    {/* FreeResources moved to separate page for cleaner US-style homepage */}
-                    {/* <Suspense fallback={<LoadingFallback />}>
-                      <FreeResources />
-                    </Suspense> */}
                     <Suspense fallback={<LoadingFallback />}>
                       <ContactForm />
-                    </Suspense>
-                    <Suspense fallback={<LoadingFallback />}>
-                      <FAQ />
                     </Suspense>
                   </div>
                   <div className="container">

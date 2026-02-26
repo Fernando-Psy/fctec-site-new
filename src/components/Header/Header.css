@@ -195,11 +195,16 @@
 /* ===== MOBILE TOGGLER ===== */
 .custom-toggler {
   border: none;
-  padding: 0.5rem;
+  padding: 0.375rem;
   background: transparent;
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .custom-toggler:focus {
@@ -212,23 +217,24 @@
 .toggler-icon {
   display: block;
   width: 24px;
-  height: 2px;
+  height: 2.5px;
   background: #1a2129;
-  margin: 5px 0;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 2px;
+  position: relative;
 }
 
 .custom-toggler[aria-expanded='true'] .toggler-icon:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: rotate(45deg) translate(5px, 7px);
 }
 
 .custom-toggler[aria-expanded='true'] .toggler-icon:nth-child(2) {
   opacity: 0;
+  transform: translateX(-10px);
 }
 
 .custom-toggler[aria-expanded='true'] .toggler-icon:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-45deg) translate(5px, -7px);
 }
 
 /* ===== MOBILE MENU ===== */
@@ -255,6 +261,17 @@
   .nav-cta-wrapper {
     margin-left: 0;
     margin-top: 0.5rem;
+  }
+
+  /* Otimização de performance para mobile */
+  .nav-link-custom,
+  .btn-cta {
+    transition-duration: 0.15s !important;
+  }
+
+  .nav-link-custom::before,
+  .nav-link-custom::after {
+    transition-duration: 0.15s !important;
   }
 }
 
@@ -296,6 +313,35 @@
 
   .nav-link-custom {
     font-size: 0.9rem;
+  }
+
+  .logo-img {
+    max-height: 40px;
+    width: auto;
+  }
+}
+
+/* ===== OTIMIZAÇÕES DE PERFORMANCE MOBILE ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Otimizar para mobile */
+@media (max-width: 768px) {
+  .custom-navbar {
+    will-change: auto;
+  }
+
+  .nav-link-custom:hover::before {
+    transition-duration: 0.1s;
+  }
+
+  .btn-shine {
+    display: none; /* Remover efeito pesado em mobile */
   }
 }
 

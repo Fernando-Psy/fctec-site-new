@@ -4,7 +4,7 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [showAll, setShowAll] = useState(false);
 
-  // Top 8 most important questions - US style: direct and concise
+  // Top 5 most critical questions - combate ao efeito porta mostrando menos inicialmente
   const topFaqs = [
     {
       question: 'Quanto tempo leva para desenvolver um site?',
@@ -15,21 +15,6 @@ const FAQ = () => {
       question: 'Qual a diferença entre site e sistema web?',
       answer:
         'Site é para divulgação (portfólio, serviços). Sistema web tem funcionalidades como agendamento, relatórios e gestão de dados.',
-    },
-    {
-      question: 'Preciso ter conhecimento técnico?',
-      answer:
-        'Não! Painel de administração intuitivo + treinamento completo. Você atualiza conteúdo sem programar.',
-    },
-    {
-      question: 'O que acontece se eu cancelar?',
-      answer:
-        'Exportamos todos os seus dados em formato aberto. Domínio e contas permanecem suas. Sem multas ou retenção.',
-    },
-    {
-      question: 'Quais são as formas de pagamento?',
-      answer:
-        'PIX, cartão (até 3x), transferência. Projetos acima de R$ 5.000: parcelamento direto até 5x sem juros.',
     },
     {
       question: 'O que está incluso no preço?',
@@ -50,6 +35,21 @@ const FAQ = () => {
 
   // Additional questions (shown when "Ver mais" is clicked)
   const additionalFaqs = [
+    {
+      question: 'Preciso ter conhecimento técnico?',
+      answer:
+        'Não! Painel de administração intuitivo + treinamento completo. Você atualiza conteúdo sem programar.',
+    },
+    {
+      question: 'O que acontece se eu cancelar?',
+      answer:
+        'Exportamos todos os seus dados em formato aberto. Domínio e contas permanecem suas. Sem multas ou retenção.',
+    },
+    {
+      question: 'Quais são as formas de pagamento?',
+      answer:
+        'PIX, cartão (até 3x), transferência. Projetos acima de R$ 5.000: parcelamento direto até 5x sem juros.',
+    },
     {
       question: 'Quem fica com o domínio e redes sociais?',
       answer:

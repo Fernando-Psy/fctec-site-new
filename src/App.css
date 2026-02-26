@@ -486,3 +486,147 @@ footer .filter-white:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--slate-500);
 }
+
+/* ===== OTIMIZAÇÕES DE PERFORMANCE MOBILE ===== */
+
+/* Reduzir movimento para usuários que preferem menos animação */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Otimizações específicas para mobile */
+@media (max-width: 768px) {
+  /* Reduzir transições para melhor performance */
+  * {
+    transition-duration: 0.15s !important;
+  }
+
+  /* Otimizar animações pesadas */
+  .service-card:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Remover sombras pesadas em mobile */
+  .hero-section {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .service-card {
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Otimizar fontes em telas pequenas */
+  body {
+    font-size: 16px; /* Previne zoom no iOS */
+  }
+
+  /* Reduzir espaçamento para economizar espaço */
+  section {
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+  }
+
+  /* Will-change para animações importantes */
+  .service-card,
+  .btn {
+    will-change: transform;
+  }
+}
+
+/* Otimizar para conexões lentas */
+@media (prefers-reduced-data: reduce) {
+  /* Remover gradientes complexos */
+  body {
+    background: white;
+  }
+
+  /* Simplificar sombras */
+  * {
+    box-shadow: none !important;
+  }
+
+  /* Desabilitar efeitos decorativos */
+  *::before,
+  *::after {
+    display: none !important;
+  }
+}
+
+/* Otimizar para telas muito pequenas */
+@media (max-width: 576px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  section {
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.875rem;
+    padding: 0.675rem 1rem;
+  }
+}
+
+/* Touch optimization */
+@media (hover: none) and (pointer: coarse) {
+  /* Aumentar área de toque */
+  .btn,
+  .nav-link,
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Remover hover effects em dispositivos touch */
+  .service-card:hover {
+    transform: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+}
+
+/* ===== ADAPTAÇÃO PARA CONEXÃO LENTA ===== */
+/* Aplicado automaticamente pelo hook useNetworkStatus */
+.slow-connection .service-card,
+.slow-connection .hero-section {
+  box-shadow: none !important;
+}
+
+.slow-connection * {
+  transition-duration: 0.05s !important;
+  animation-duration: 0.05s !important;
+}
+
+.slow-connection .service-card:hover {
+  transform: none !important;
+}
+
+.slow-connection body {
+  background: white !important;
+}
+
+.slow-connection .btn-shine,
+.slow-connection *::before,
+.slow-connection *::after {
+  display: none !important;
+}
