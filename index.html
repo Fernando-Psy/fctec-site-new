@@ -171,8 +171,10 @@
       }
       .logo-img {
         height: 40px;
-        width: 120px;
-        max-width: 100%;
+        width: auto;
+        max-height: 40px;
+        object-fit: contain;
+        display: block;
       }
       .hero-section {
         padding: 5rem 2rem 4rem;
@@ -417,38 +419,19 @@
     <!-- ========================================
        SCRIPTS DEFERRED (Carregam após renderização inicial)
        ======================================== -->
-    <!-- Google Analytics - Carrega após renderização inicial para não bloquear LCP -->
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LSN3HFVQHR"
+    ></script>
     <script>
-      // Função para carregar Google Analytics de forma não bloqueante
-      function loadGoogleAnalytics() {
-        // Carregar script do Google Analytics
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-F3ZCPCVGYH';
-        document.head.appendChild(script);
-
-        // Inicializar após o script carregar
-        script.onload = function () {
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            dataLayer.push(arguments);
-          }
-          gtag('js', new Date());
-          gtag('config', 'G-F3ZCPCVGYH');
-        };
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
+      gtag('js', new Date());
 
-      // Usar requestIdleCallback se disponível (melhor performance)
-      // Caso contrário, usar setTimeout após o load
-      if ('requestIdleCallback' in window) {
-        window.addEventListener('load', function () {
-          requestIdleCallback(loadGoogleAnalytics, { timeout: 2000 });
-        });
-      } else {
-        window.addEventListener('load', function () {
-          setTimeout(loadGoogleAnalytics, 1000);
-        });
-      }
+      gtag('config', 'G-LSN3HFVQHR');
     </script>
   </body>
 </html>
