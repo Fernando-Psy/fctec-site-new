@@ -48,7 +48,8 @@ const ClientsShowcase = () => {
   return (
     <section style={{
       padding: '6rem 2rem',
-      background: 'linear-gradient(135deg, #ffffff 0%, #ffffff 100%)',
+      background:
+        'radial-gradient(circle at 12% 20%, rgba(6, 182, 212, 0.14) 0%, transparent 34%), radial-gradient(circle at 80% 15%, rgba(99, 102, 241, 0.14) 0%, transparent 36%), linear-gradient(145deg, #040b1a 0%, #07152c 55%, #0b1e3f 100%)',
       position: 'relative',
       overflow: 'hidden'
     }}>
@@ -77,14 +78,14 @@ const ClientsShowcase = () => {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.5rem',
-            background: 'linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%)',
-            border: '1px solid rgba(16, 185, 129, 0.3)',
+            background: 'rgba(6, 182, 212, 0.14)',
+            border: '1px solid rgba(34, 211, 238, 0.35)',
             padding: '0.5rem 1.25rem',
             borderRadius: '50px',
             marginBottom: '1.5rem',
             fontSize: '0.875rem',
             fontWeight: '600',
-            color: '#065f46'
+            color: '#67e8f9'
           }}>
             <span>✨</span>
             <span>Parceria em Construção</span>
@@ -93,13 +94,13 @@ const ClientsShowcase = () => {
           <h2 style={{
             fontSize: 'clamp(2rem, 4vw, 2.75rem)',
             fontWeight: '800',
-            color: '#1a2129',
+            color: '#e2e8f0',
             marginBottom: '1rem',
             letterSpacing: '-0.02em'
           }}>
             Seu Negócio{' '}
             <span style={{
-              background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+              background: 'linear-gradient(135deg, #22d3ee 0%, #60a5fa 45%, #a78bfa 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -108,7 +109,7 @@ const ClientsShowcase = () => {
 
           <p style={{
             fontSize: '1.125rem',
-            color: '#7a8a99',
+            color: '#cbd5e1',
             lineHeight: '1.7'
           }}>
             Criamos soluções digitais sob medida para diversos segmentos — porque acreditamos que todo negócio merece uma presença online poderosa.
@@ -130,24 +131,25 @@ const ClientsShowcase = () => {
                 onMouseEnter={() => setHoveredIndex(`area-${idx}`)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 style={{
-                  background: 'white',
-                  border: '1px solid #f0f2f5',
+                  background: 'rgba(15, 23, 42, 0.82)',
+                  border: '1px solid rgba(148, 163, 184, 0.24)',
                   borderRadius: '16px',
                   padding: '2rem',
                   transition: 'all 0.3s ease',
                   cursor: 'pointer',
                   transform: hoveredIndex === `area-${idx}` ? 'translateY(-8px)' : 'translateY(0)',
                   boxShadow: hoveredIndex === `area-${idx}`
-                    ? '0 12px 28px rgba(15, 23, 42, 0.12)'
+                    ? '0 16px 30px rgba(2, 6, 23, 0.45)'
                     : 'none',
-                  borderColor: hoveredIndex === `area-${idx}` ? color : '#f0f2f5'
+                  borderColor: hoveredIndex === `area-${idx}` ? color : 'rgba(148, 163, 184, 0.24)'
                 }}
               >
                 {/* Icon */}
                 <div style={{
                   width: '60px',
                   height: '60px',
-                  background: bgColor,
+                  background: 'rgba(15, 23, 42, 0.75)',
+                  border: `1px solid ${color}55`,
                   borderRadius: '14px',
                   display: 'flex',
                   alignItems: 'center',
@@ -164,7 +166,7 @@ const ClientsShowcase = () => {
                 <h3 style={{
                   fontSize: '1.25rem',
                   fontWeight: '700',
-                  color: '#1a2129',
+                  color: '#e2e8f0',
                   marginBottom: '0.5rem'
                 }}>
                   {area.name}
@@ -172,7 +174,7 @@ const ClientsShowcase = () => {
 
                 <p style={{
                   fontSize: '0.9rem',
-                  color: '#7a8a99',
+                  color: '#cbd5e1',
                   lineHeight: '1.6',
                   marginBottom: '1rem'
                 }}>
@@ -201,17 +203,17 @@ const ClientsShowcase = () => {
 
         {/* Clients Logo Grid – apresentado como "exemplos de segmentos atendíveis" */}
         <div style={{
-          background: 'white',
+          background: 'rgba(15, 23, 42, 0.82)',
           borderRadius: '20px',
           padding: '3rem 2rem',
-          border: '1px solid #f0f2f5',
-          boxShadow: '0 4px 12px rgba(15, 23, 42, 0.06)'
+          border: '1px solid rgba(148, 163, 184, 0.24)',
+          boxShadow: '0 18px 32px rgba(2, 6, 23, 0.45)'
         }}>
           <h3 style={{
             textAlign: 'center',
             fontSize: '1.5rem',
             fontWeight: '700',
-            color: '#1a2129',
+            color: '#e2e8f0',
             marginBottom: '0.5rem'
           }}>
             Segmentos que Atendemos
@@ -219,7 +221,7 @@ const ClientsShowcase = () => {
           <p style={{
             textAlign: 'center',
             fontSize: '0.95rem',
-            color: '#7a8a99',
+            color: '#cbd5e1',
             marginBottom: '2.5rem'
           }}>
             Trabalhamos com empresas de todos os portes — do microempreendedor à startup em crescimento.
@@ -250,13 +252,15 @@ const ClientsShowcase = () => {
                     alignItems: 'center',
                     gap: '0.75rem',
                     padding: '1.5rem',
-                    background: hoveredIndex === `client-${idx}` ? 'white' : '#ffffff',
+                    background: hoveredIndex === `client-${idx}`
+                      ? 'rgba(30, 41, 59, 0.95)'
+                      : 'rgba(15, 23, 42, 0.74)',
                     borderRadius: '12px',
                     transition: 'all 0.3s ease',
                     cursor: 'pointer',
                     transform: hoveredIndex === `client-${idx}` ? 'scale(1.05)' : 'scale(1)',
                     boxShadow: hoveredIndex === `client-${idx}`
-                      ? '0 4px 12px rgba(15, 23, 42, 0.1)'
+                      ? '0 14px 26px rgba(2, 6, 23, 0.45)'
                       : 'none'
                   }}
                 >
@@ -264,8 +268,8 @@ const ClientsShowcase = () => {
                     width: '60px',
                     height: '60px',
                     background: hoveredIndex === `client-${idx}`
-                      ? `linear-gradient(135deg, ${color}20 0%, ${color}40 100%)`
-                      : 'linear-gradient(135deg, #d9eaf4 0%, #bfdbfe 100%)',
+                      ? `linear-gradient(135deg, ${color}33 0%, ${color}55 100%)`
+                      : 'linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(99, 102, 241, 0.25) 100%)',
                     borderRadius: '12px',
                     display: 'flex',
                     alignItems: 'center',
@@ -281,14 +285,14 @@ const ClientsShowcase = () => {
                     <div style={{
                       fontSize: '0.9rem',
                       fontWeight: '600',
-                      color: '#1a2129',
+                      color: '#e2e8f0',
                       marginBottom: '0.25rem'
                     }}>
                       {client.name}
                     </div>
                     <div style={{
                       fontSize: '0.75rem',
-                      color: '#7a8a99',
+                      color: '#cbd5e1',
                       fontWeight: '500'
                     }}>
                       {client.category}
@@ -303,10 +307,10 @@ const ClientsShowcase = () => {
         {/* Stats Bar – reescrita para focar em compromisso, não em métricas falsas */}
         <div style={{
           marginTop: '3rem',
-          background: 'linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)',
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #4338ca 100%)',
           borderRadius: '16px',
           padding: '2.5rem 2rem',
-          boxShadow: '0 8px 24px rgba(37, 99, 235, 0.3)',
+          boxShadow: '0 16px 30px rgba(2, 6, 23, 0.5)',
           position: 'relative',
           overflow: 'hidden'
         }}>
@@ -375,7 +379,7 @@ const ClientsShowcase = () => {
         }}>
           <p style={{
             fontSize: '1.125rem',
-            color: '#5a6978',
+            color: '#cbd5e1',
             marginBottom: '1.5rem',
             fontWeight: '500'
           }}>
@@ -384,7 +388,7 @@ const ClientsShowcase = () => {
           <button
             onClick={() => window.open('https://wa.me/5521968810478?text=Oi  , quero transformar meu negócio!', '_blank')}
             style={{
-              background: 'linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)',
+              background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 55%, #6366f1 100%)',
               color: 'white',
               border: 'none',
               padding: '1rem 2.5rem',
@@ -393,18 +397,18 @@ const ClientsShowcase = () => {
               fontWeight: '600',
               cursor: 'pointer',
               transition: 'all 0.3s ease',
-              boxShadow: '0 4px 12px rgba(37, 99, 235, 0.3)',
+              boxShadow: '0 10px 22px rgba(37, 99, 235, 0.35)',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.75rem'
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 8px 20px rgba(37, 99, 235, 0.4)';
+              e.currentTarget.style.boxShadow = '0 0 22px rgba(34, 211, 238, 0.35)';
             }}
             onMouseOut={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(37, 99, 235, 0.3)';
+              e.currentTarget.style.boxShadow = '0 10px 22px rgba(37, 99, 235, 0.35)';
             }}
           >
             <span>💼</span>

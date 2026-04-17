@@ -108,7 +108,7 @@ const Header = () => {
                   onClick={handleNavClick}
                 >
                   <span className="btn-icon">💬</span>
-                  <span className="btn-text">Solicitar Orçamento</span>
+                  <span className="btn-text">Entrar em Contato</span>
                   <div className="btn-shine"></div>
                 </Button>
               </div>

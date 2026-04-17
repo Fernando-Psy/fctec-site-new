@@ -106,7 +106,7 @@ const ServiceDetails = () => {
                   alignItems: 'center',
                   gap: '0.5rem',
                   background:
-                    'linear-gradient(135deg, #ecf5fa 0%, #d9eaf4 100%)',
+                    'linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%)',
                   border: '1px solid rgba(37, 99, 235, 0.2)',
                   padding: '0.5rem 1.25rem',
                   borderRadius: '50px',
@@ -117,7 +117,7 @@ const ServiceDetails = () => {
                 }}
               >
                 <span style={{ fontSize: '1.25rem' }}>{service.icon}</span>
-                <span>Serviço Profissional</span>
+                <span>Especialidade Tecnica</span>
               </div>
 
               <h1
@@ -155,7 +155,7 @@ const ServiceDetails = () => {
                   onClick={() => setShowModal(true)}
                   style={{
                     background:
-                      'linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)',
+                      'linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%)',
                     color: 'white',
                     border: 'none',
                     padding: '1.125rem 2.5rem',
@@ -182,7 +182,7 @@ const ServiceDetails = () => {
                   }}
                 >
                   <span>📧</span>
-                  <span>Solicitar Informações</span>
+                  <span>Entrar em Contato</span>
                 </button>
 
                 <a
@@ -190,7 +190,7 @@ const ServiceDetails = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    background: '#25d366',
+                    background: '#06cf9c',
                     color: 'white',
                     border: 'none',
                     padding: '1.125rem 2.5rem',
@@ -199,7 +199,7 @@ const ServiceDetails = () => {
                     fontWeight: '600',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
-                    boxShadow: '0 8px 20px rgba(37, 211, 102, 0.3)',
+                    boxShadow: '0 8px 20px rgba(6, 207, 156, 0.3)',
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -209,16 +209,16 @@ const ServiceDetails = () => {
                   onMouseOver={(e) => {
                     e.currentTarget.style.transform = 'translateY(-3px)';
                     e.currentTarget.style.boxShadow =
-                      '0 12px 28px rgba(37, 211, 102, 0.4)';
+                      '0 12px 28px rgba(6, 207, 156, 0.4)';
                   }}
                   onMouseOut={(e) => {
                     e.currentTarget.style.transform = 'translateY(0)';
                     e.currentTarget.style.boxShadow =
-                      '0 8px 20px rgba(37, 211, 102, 0.3)';
+                      '0 8px 20px rgba(6, 207, 156, 0.3)';
                   }}
                 >
                   <span>💬</span>
-                  <span>Falar no WhatsApp</span>
+                  <span>Conversar no WhatsApp</span>
                 </a>
               </div>
             </Col>
@@ -244,7 +244,7 @@ const ServiceDetails = () => {
               letterSpacing: '-0.02em',
             }}
           >
-            O Que Está Incluído
+            Escopo Tecnico
           </h2>
 
           <Row className="g-4">
@@ -303,67 +303,6 @@ const ServiceDetails = () => {
               </Col>
             ))}
           </Row>
-        </Container>
-      </section>
-
-      {/* CTA Final */}
-      <section
-        style={{
-          padding: '4rem 2rem',
-          background: 'linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)',
-          textAlign: 'center',
-        }}
-      >
-        <Container>
-          <h2
-            style={{
-              fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
-              fontWeight: '800',
-              color: 'white',
-              marginBottom: '1rem',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            Pronto para Começar?
-          </h2>
-          <p
-            style={{
-              fontSize: '1.125rem',
-              color: 'rgba(255, 255, 255, 0.9)',
-              marginBottom: '2rem',
-              maxWidth: '600px',
-              margin: '0 auto 2rem',
-            }}
-          >
-            Entre em contato agora e receba uma proposta personalizada para o
-            seu negócio
-          </p>
-          <button
-            onClick={() => setShowModal(true)}
-            style={{
-              background: 'white',
-              color: '#4e83af',
-              border: 'none',
-              padding: '1rem 2.5rem',
-              borderRadius: '12px',
-              fontSize: '1rem',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'scale(1.05)';
-              e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.2)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'scale(1)';
-              e.currentTarget.style.boxShadow =
-                '0 4px 12px rgba(0, 0, 0, 0.15)';
-            }}
-          >
-            Solicitar Contato Agora
-          </button>
         </Container>
       </section>
 

@@ -92,7 +92,8 @@ const FAQ = () => {
     <section
       style={{
         padding: '6rem 2rem',
-        background: 'linear-gradient(135deg, #ffffff 0%, #ffffff 100%)',
+        background:
+          'radial-gradient(circle at 12% 20%, rgba(6, 182, 212, 0.14) 0%, transparent 34%), radial-gradient(circle at 80% 15%, rgba(99, 102, 241, 0.14) 0%, transparent 36%), linear-gradient(145deg, #040b1a 0%, #07152c 55%, #0b1e3f 100%)',
         position: 'relative',
       }}
     >
@@ -109,14 +110,14 @@ const FAQ = () => {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.5rem',
-              background: 'rgba(59, 130, 246, 0.1)',
-              border: '1px solid rgba(59, 130, 246, 0.2)',
+              background: 'rgba(6, 182, 212, 0.14)',
+              border: '1px solid rgba(34, 211, 238, 0.35)',
               padding: '0.5rem 1.25rem',
               borderRadius: '50px',
               marginBottom: '1.5rem',
               fontSize: '0.875rem',
               fontWeight: '600',
-              color: '#0ea5e9',
+              color: '#67e8f9',
             }}
           >
             <span>❓</span>
@@ -127,7 +128,7 @@ const FAQ = () => {
             style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: '800',
-              color: '#1a2129',
+              color: '#e2e8f0',
               marginBottom: '1rem',
               letterSpacing: '-0.02em',
             }}
@@ -135,7 +136,7 @@ const FAQ = () => {
             Tire Suas{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%)',
+                background: 'linear-gradient(135deg, #22d3ee 0%, #60a5fa 45%, #a78bfa 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -148,7 +149,7 @@ const FAQ = () => {
           <p
             style={{
               fontSize: '1.05rem',
-              color: '#7a8a99',
+              color: '#cbd5e1',
               maxWidth: '600px',
               margin: '0 auto',
               lineHeight: '1.7',
@@ -170,14 +171,14 @@ const FAQ = () => {
             <div
               key={index}
               style={{
-                background: 'white',
-                border: '1px solid #f0f2f5',
+                background: 'rgba(15, 23, 42, 0.84)',
+                border: '1px solid rgba(148, 163, 184, 0.24)',
                 borderRadius: '12px',
                 overflow: 'hidden',
                 transition: 'all 0.3s ease',
                 boxShadow:
                   openIndex === index
-                    ? '0 4px 16px rgba(15, 23, 42, 0.08)'
+                    ? '0 14px 26px rgba(2, 6, 23, 0.45)'
                     : 'none',
               }}
             >
@@ -201,7 +202,7 @@ const FAQ = () => {
                   style={{
                     fontSize: '1.05rem',
                     fontWeight: '600',
-                    color: openIndex === index ? '#0ea5e9' : '#1a2129',
+                    color: openIndex === index ? '#67e8f9' : '#e2e8f0',
                     transition: 'color 0.3s ease',
                   }}
                 >
@@ -210,7 +211,7 @@ const FAQ = () => {
                 <span
                   style={{
                     fontSize: '1.5rem',
-                    color: '#0ea5e9',
+                    color: '#67e8f9',
                     transform:
                       openIndex === index ? 'rotate(180deg)' : 'rotate(0)',
                     transition: 'transform 0.3s ease',
@@ -225,11 +226,11 @@ const FAQ = () => {
                 <div
                   style={{
                     padding: '0 1.5rem 1.5rem',
-                    color: '#5a6978',
+                    color: '#cbd5e1',
                     fontSize: '0.95rem',
                     lineHeight: '1.7',
                     animation: 'fadeIn 0.3s ease',
-                    borderTop: '1px solid #fafbfc',
+                    borderTop: '1px solid rgba(148, 163, 184, 0.2)',
                   }}
                 >
                   {faq.answer}
@@ -251,10 +252,10 @@ const FAQ = () => {
               onClick={() => setShowAll(true)}
               style={{
                 padding: '1rem 2rem',
-                background: 'white',
-                border: '2px solid #0ea5e9',
+                background: 'rgba(15, 23, 42, 0.8)',
+                border: '2px solid rgba(34, 211, 238, 0.55)',
                 borderRadius: '12px',
-                color: '#0ea5e9',
+                color: '#67e8f9',
                 fontSize: '1rem',
                 fontWeight: '600',
                 cursor: 'pointer',
@@ -264,12 +265,12 @@ const FAQ = () => {
                 gap: '0.5rem',
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.background = '#0ea5e9';
-                e.currentTarget.style.color = 'white';
+                e.currentTarget.style.background = 'rgba(34, 211, 238, 0.18)';
+                e.currentTarget.style.color = '#e2e8f0';
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = 'white';
-                e.currentTarget.style.color = '#0ea5e9';
+                e.currentTarget.style.background = 'rgba(15, 23, 42, 0.8)';
+                e.currentTarget.style.color = '#67e8f9';
               }}
             >
               <span>Ver mais perguntas</span>
@@ -283,17 +284,18 @@ const FAQ = () => {
           style={{
             marginTop: '4rem',
             padding: '3rem 2rem',
-            background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
+            background:
+              'linear-gradient(145deg, rgba(15, 23, 42, 0.86) 0%, rgba(30, 41, 59, 0.9) 100%)',
             borderRadius: '16px',
             textAlign: 'center',
-            border: '1px solid #bfdbfe',
+            border: '1px solid rgba(34, 211, 238, 0.28)',
           }}
         >
           <h3
             style={{
               fontSize: 'clamp(1.5rem, 3vw, 1.875rem)',
               fontWeight: '700',
-              color: '#1a2129',
+              color: '#e2e8f0',
               marginBottom: '1rem',
             }}
           >
@@ -302,7 +304,7 @@ const FAQ = () => {
           <p
             style={{
               fontSize: '1rem',
-              color: '#5a6978',
+              color: '#cbd5e1',
               marginBottom: '2rem',
               maxWidth: '500px',
               margin: '0 auto 2rem',
@@ -319,24 +321,24 @@ const FAQ = () => {
               alignItems: 'center',
               gap: '0.75rem',
               padding: '1rem 2rem',
-              background: 'linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)',
+              background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 55%, #6366f1 100%)',
               color: 'white',
               textDecoration: 'none',
               borderRadius: '12px',
               fontSize: '1.05rem',
               fontWeight: '600',
               transition: 'all 0.3s ease',
-              boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
+              boxShadow: '0 8px 20px rgba(37, 99, 235, 0.36)',
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.transform = 'translateY(-2px)';
               e.currentTarget.style.boxShadow =
-                '0 8px 20px rgba(59, 130, 246, 0.4)';
+                '0 0 22px rgba(34, 211, 238, 0.35)';
             }}
             onMouseOut={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
               e.currentTarget.style.boxShadow =
-                '0 4px 12px rgba(59, 130, 246, 0.3)';
+                '0 8px 20px rgba(37, 99, 235, 0.36)';
             }}
           >
             <span>💬</span>

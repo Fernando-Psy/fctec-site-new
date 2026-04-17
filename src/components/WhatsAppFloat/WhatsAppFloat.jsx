@@ -5,20 +5,30 @@ const WhatsAppFloat = () => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
+    let showTooltipTimer;
+    let hideTooltipTimer;
+
     // Mostrar após 2 segundos
     const timer = setTimeout(() => {
       setIsVisible(true);
       // Mostrar tooltip após mais 1 segundo
-      setTimeout(() => setShowTooltip(true), 1000);
+      showTooltipTimer = setTimeout(() => setShowTooltip(true), 1000);
       // Esconder tooltip após 5 segundos
-      setTimeout(() => setShowTooltip(false), 6000);
+      hideTooltipTimer = setTimeout(() => setShowTooltip(false), 6000);
     }, 2000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(showTooltipTimer);
+      clearTimeout(hideTooltipTimer);
+    };
   }, []);
 
   const handleClick = () => {
-    window.open('https://wa.me/5521968810478?text=Oi! Vim pelo site e gostaria de mais informações', '_blank');
+    window.open(
+      'https://wa.me/5521968810478?text=Ola! Vim pelo site e gostaria de conversar sobre as solucoes da empresa.',
+      '_blank'
+    );
   };
 
   return (
@@ -34,45 +44,50 @@ const WhatsAppFloat = () => {
           cursor: 'pointer',
           transform: isVisible ? 'scale(1)' : 'scale(0)',
           transition: 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-          animation: isVisible ? 'pulse 2s infinite' : 'none'
+          animation: isVisible ? 'pulse 2s infinite' : 'none',
         }}
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
       >
         {/* Círculo de Fundo com Pulso */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '70px',
-          height: '70px',
-          background: 'rgba(37, 211, 102, 0.2)',
-          borderRadius: '50%',
-          animation: 'ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite'
-        }} />
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '76px',
+            height: '76px',
+            background: 'rgba(34, 211, 238, 0.22)',
+            borderRadius: '50%',
+            animation: 'ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+          }}
+        />
 
         {/* Botão */}
-        <div style={{
-          position: 'relative',
-          width: '60px',
-          height: '60px',
-          background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 8px 24px rgba(37, 211, 102, 0.4)',
-          transition: 'all 0.3s ease'
-        }}
-        onMouseOver={(e) => {
-          e.currentTarget.style.transform = 'scale(1.1)';
-          e.currentTarget.style.boxShadow = '0 12px 32px rgba(37, 211, 102, 0.5)';
-        }}
-        onMouseOut={(e) => {
-          e.currentTarget.style.transform = 'scale(1)';
-          e.currentTarget.style.boxShadow = '0 8px 24px rgba(37, 211, 102, 0.4)';
-        }}>
+        <div
+          style={{
+            position: 'relative',
+            width: '60px',
+            height: '60px',
+            background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 60%, #6366f1 100%)',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 10px 28px rgba(37, 99, 235, 0.45)',
+            border: '1px solid rgba(125, 211, 252, 0.5)',
+            transition: 'all 0.3s ease',
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.transform = 'scale(1.1)';
+            e.currentTarget.style.boxShadow = '0 0 30px rgba(34, 211, 238, 0.55)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.transform = 'scale(1)';
+            e.currentTarget.style.boxShadow = '0 10px 28px rgba(37, 99, 235, 0.45)';
+          }}
+        >
           {/* Ícone WhatsApp */}
           <svg
             width="32"
@@ -85,92 +100,110 @@ const WhatsAppFloat = () => {
           </svg>
 
           {/* Badge de Notificação */}
-          <div style={{
-            position: 'absolute',
-            top: '-2px',
-            right: '-2px',
-            width: '20px',
-            height: '20px',
-            background: '#ff4444',
-            borderRadius: '50%',
-            border: '2px solid white',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '10px',
-            fontWeight: '700',
-            color: 'white',
-            animation: 'bounce 1s infinite'
-          }}>
+          <div
+            style={{
+              position: 'absolute',
+              top: '-2px',
+              right: '-2px',
+              width: '20px',
+              height: '20px',
+              background: '#22d3ee',
+              borderRadius: '50%',
+              border: '2px solid #0f172a',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '10px',
+              fontWeight: '700',
+              color: '#0f172a',
+              animation: 'bounce 1s infinite',
+            }}
+          >
             1
           </div>
         </div>
       </div>
 
       {/* Tooltip */}
-      <div style={{
-        position: 'fixed',
-        bottom: '35px',
-        right: '110px',
-        zIndex: 9998,
-        background: 'white',
-        padding: '1rem 1.25rem',
-        borderRadius: '12px',
-        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
-        maxWidth: '280px',
-        transform: showTooltip ? 'translateX(0) scale(1)' : 'translateX(20px) scale(0.8)',
-        opacity: showTooltip ? 1 : 0,
-        pointerEvents: showTooltip ? 'auto' : 'none',
-        transition: 'all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-        border: '1px solid #f0f2f5'
-      }}>
+      <div
+        style={{
+          position: 'fixed',
+          bottom: '35px',
+          right: '110px',
+          zIndex: 9998,
+          background: 'rgba(15, 23, 42, 0.92)',
+          padding: '1rem 1.25rem',
+          borderRadius: '12px',
+          boxShadow: '0 14px 30px rgba(2, 6, 23, 0.45)',
+          maxWidth: '280px',
+          transform: showTooltip
+            ? 'translateX(0) scale(1)'
+            : 'translateX(20px) scale(0.8)',
+          opacity: showTooltip ? 1 : 0,
+          pointerEvents: showTooltip ? 'auto' : 'none',
+          transition: 'all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+          border: '1px solid rgba(34, 211, 238, 0.35)',
+        }}
+      >
         {/* Seta */}
-        <div style={{
-          position: 'absolute',
-          right: '-8px',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          width: 0,
-          height: 0,
-          borderTop: '8px solid transparent',
-          borderBottom: '8px solid transparent',
-          borderLeft: '8px solid white'
-        }} />
+        <div
+          style={{
+            position: 'absolute',
+            right: '-8px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: 0,
+            height: 0,
+            borderTop: '8px solid transparent',
+            borderBottom: '8px solid transparent',
+            borderLeft: '8px solid rgba(15, 23, 42, 0.92)',
+          }}
+        />
 
         {/* Conteúdo */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.75rem'
-        }}>
-          <div style={{
-            width: '40px',
-            height: '40px',
-            background: 'linear-gradient(135deg, #d9eaf4 0%, #bfdbfe 100%)',
-            borderRadius: '50%',
+        <div
+          style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '1.25rem',
-            flexShrink: 0
-          }}>
+            gap: '0.75rem',
+          }}
+        >
+          <div
+            style={{
+              width: '40px',
+              height: '40px',
+              background:
+                'linear-gradient(135deg, rgba(34, 211, 238, 0.3) 0%, rgba(99, 102, 241, 0.4) 100%)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '1.25rem',
+              flexShrink: 0,
+              border: '1px solid rgba(34, 211, 238, 0.35)',
+            }}
+          >
             👋
           </div>
           <div>
-            <div style={{
-              fontSize: '0.875rem',
-              fontWeight: '700',
-              color: '#1a2129',
-              marginBottom: '0.25rem'
-            }}>
-              Olá! Posso ajudar?
+            <div
+              style={{
+                fontSize: '0.875rem',
+                fontWeight: '700',
+                color: '#e2e8f0',
+                marginBottom: '0.25rem',
+              }}
+            >
+              Ola! Quer falar com a equipe?
             </div>
-            <div style={{
-              fontSize: '0.75rem',
-              color: '#7a8a99',
-              lineHeight: '1.4'
-            }}>
-              Respondo em poucos minutos!
+            <div
+              style={{
+                fontSize: '0.75rem',
+                color: '#cbd5e1',
+                lineHeight: '1.4',
+              }}
+            >
+              Atendimento para duvidas e contato institucional.
             </div>
           </div>
         </div>
@@ -190,7 +223,7 @@ const WhatsAppFloat = () => {
             background: 'transparent',
             border: 'none',
             cursor: 'pointer',
-            color: '#94a3b8',
+            color: '#67e8f9',
             fontSize: '16px',
             lineHeight: '1',
             padding: 0,
@@ -198,15 +231,15 @@ const WhatsAppFloat = () => {
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: '50%',
-            transition: 'all 0.2s ease'
+            transition: 'all 0.2s ease',
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.background = '#fafbfc';
-            e.currentTarget.style.color = '#1a2129';
+            e.currentTarget.style.background = 'rgba(34, 211, 238, 0.18)';
+            e.currentTarget.style.color = '#e2e8f0';
           }}
           onMouseOut={(e) => {
             e.currentTarget.style.background = 'transparent';
-            e.currentTarget.style.color = '#94a3b8';
+            e.currentTarget.style.color = '#67e8f9';
           }}
         >
           ×

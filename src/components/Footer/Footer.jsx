@@ -100,8 +100,8 @@ const Footer = () => {
                   <div className="brand-tagline">Soluções Digitais Premium</div>
                 </div>
                 <p className="footer-description">
-                  Transformamos ideias em experiências digitais excepcionais,
-                  combinando design moderno com tecnologia de ponta.
+                  Construimos experiencias digitais com engenharia moderna,
+                  foco em confiabilidade e evolucao continua.
                 </p>
                 {/* Social Links */}
                 <div className="footer-social">
@@ -176,9 +176,10 @@ const Footer = () => {
             {/* CTA */}
             <Col lg={3} md={6}>
               <div className="footer-section">
-                <h4 className="footer-title">Pronto para começar?</h4>
+                <h4 className="footer-title">Vamos conversar?</h4>
                 <p className="cta-text">
-                  Entre em contato e transforme sua presença digital hoje mesmo.
+                  Entre em contato para conhecer nossa atuacao e possibilidades
+                  para sua empresa.
                 </p>
                 <a
                   href="https://wa.me/5521968810478"

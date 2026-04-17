@@ -19,11 +19,31 @@ const HeroImproved = () => {
       style={{
         padding: '6rem 2rem 5rem',
         background:
-          'linear-gradient(135deg, #ffffff 0%, #fafbfc 50%, #f0f9ff 100%)',
+          'radial-gradient(circle at 15% 20%, rgba(6, 182, 212, 0.22) 0%, transparent 35%), radial-gradient(circle at 80% 15%, rgba(99, 102, 241, 0.18) 0%, transparent 40%), linear-gradient(145deg, #040b1a 0%, #07152c 55%, #0b1e3f 100%)',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          opacity: 0.22,
+          backgroundImage:
+            'linear-gradient(rgba(34, 211, 238, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 211, 238, 0.18) 1px, transparent 1px)',
+          backgroundSize: '34px 34px',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          background:
+            'linear-gradient(120deg, rgba(34, 211, 238, 0.08) 0%, transparent 22%, transparent 60%, rgba(99, 102, 241, 0.12) 100%)',
+        }}
+      />
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div
           style={{
@@ -41,21 +61,22 @@ const HeroImproved = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                background: 'rgba(14, 165, 233, 0.06)',
-                border: '1px solid rgba(14, 165, 233, 0.15)',
+                background: 'rgba(6, 182, 212, 0.14)',
+                border: '1px solid rgba(34, 211, 238, 0.35)',
                 padding: '0.5rem 1.25rem',
                 borderRadius: '50px',
                 marginBottom: '1.5rem',
                 fontSize: '0.875rem',
                 fontWeight: '500',
-                color: '#0284c7',
+                color: '#67e8f9',
+                boxShadow: '0 0 22px rgba(34, 211, 238, 0.2)',
               }}
             >
               <span
                 style={{
                   width: '6px',
                   height: '6px',
-                  background: '#0ea5e9',
+                  background: '#22d3ee',
                   borderRadius: '50%',
                 }}
               />
@@ -68,7 +89,7 @@ const HeroImproved = () => {
                 fontSize: 'clamp(2.25rem, 5vw, 3.5rem)',
                 fontWeight: '700',
                 lineHeight: '1.15',
-                color: '#1a2129',
+                color: '#e2e8f0',
                 marginBottom: '1.5rem',
                 letterSpacing: '-0.02em',
               }}
@@ -76,7 +97,11 @@ const HeroImproved = () => {
               Soluções Digitais que{' '}
               <span
                 style={{
-                  color: '#1a2129',
+                  background:
+                    'linear-gradient(120deg, #22d3ee 0%, #60a5fa 50%, #a78bfa 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                   fontWeight: '700',
                 }}
               >
@@ -89,7 +114,7 @@ const HeroImproved = () => {
               style={{
                 fontSize: '1.125rem',
                 lineHeight: '1.75',
-                color: '#5a6978',
+                color: '#cbd5e1',
                 marginBottom: '2.5rem',
                 fontWeight: '400',
               }}
@@ -102,19 +127,20 @@ const HeroImproved = () => {
             {/* Tech Stack */}
             <div
               style={{
-                background: 'white',
-                border: '1px solid #f0f2f5',
+                background: 'rgba(15, 23, 42, 0.72)',
+                border: '1px solid rgba(34, 211, 238, 0.2)',
                 borderRadius: '16px',
                 padding: '1.75rem',
                 marginBottom: '2.5rem',
-                boxShadow: '0 2px 8px rgba(26, 33, 41, 0.03)',
+                boxShadow: '0 16px 30px rgba(2, 6, 23, 0.35)',
+                backdropFilter: 'blur(8px)',
               }}
             >
               <div
                 style={{
                   fontSize: '0.8rem',
                   fontWeight: '600',
-                  color: '#7a8a99',
+                  color: '#67e8f9',
                   marginBottom: '1.25rem',
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
@@ -138,16 +164,22 @@ const HeroImproved = () => {
                       alignItems: 'center',
                       gap: '0.5rem',
                       padding: '1rem',
-                      background: '#fafbfc',
+                      background: 'rgba(15, 23, 42, 0.75)',
+                      border: '1px solid rgba(148, 163, 184, 0.2)',
                       borderRadius: '12px',
                       transition: 'all 0.3s ease',
                     }}
                     onMouseOver={(e) => {
-                      e.currentTarget.style.background = '#f0f9ff';
+                      e.currentTarget.style.background = 'rgba(15, 23, 42, 0.95)';
+                      e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.45)';
+                      e.currentTarget.style.boxShadow =
+                        '0 0 20px rgba(34, 211, 238, 0.18)';
                       e.currentTarget.style.transform = 'translateY(-3px)';
                     }}
                     onMouseOut={(e) => {
-                      e.currentTarget.style.background = '#fafbfc';
+                      e.currentTarget.style.background = 'rgba(15, 23, 42, 0.75)';
+                      e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.2)';
+                      e.currentTarget.style.boxShadow = 'none';
                       e.currentTarget.style.transform = 'translateY(0)';
                     }}
                   >
@@ -156,7 +188,7 @@ const HeroImproved = () => {
                       style={{
                         fontSize: '0.75rem',
                         fontWeight: '500',
-                        color: '#3f4b57',
+                        color: '#cbd5e1',
                       }}
                     >
                       {tech.name}
@@ -185,13 +217,13 @@ const HeroImproved = () => {
                 }
                 style={{
                   background:
-                    'linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)',
+                    'linear-gradient(135deg, #06b6d4 0%, #3b82f6 55%, #6366f1 100%)',
                   border: 'none',
                   padding: '1.125rem 2rem',
                   borderRadius: '12px',
                   fontSize: '1rem',
                   fontWeight: '600',
-                  boxShadow: '0 4px 12px rgba(14, 165, 233, 0.2)',
+                  boxShadow: '0 8px 20px rgba(37, 99, 235, 0.35)',
                   transition: 'all 0.3s ease',
                   display: 'flex',
                   alignItems: 'center',
@@ -204,12 +236,12 @@ const HeroImproved = () => {
                 onMouseOver={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
                   e.currentTarget.style.boxShadow =
-                    '0 8px 20px rgba(14, 165, 233, 0.25)';
+                    '0 0 22px rgba(34, 211, 238, 0.38)';
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow =
-                    '0 4px 12px rgba(14, 165, 233, 0.2)';
+                    '0 8px 20px rgba(37, 99, 235, 0.35)';
                 }}
               >
                 <span>💬</span>
@@ -222,14 +254,14 @@ const HeroImproved = () => {
                   scrollToElement('products', { behavior: 'smooth' })
                 }
                 style={{
-                  background: 'white',
-                  border: '1.5px solid #e8ecf1',
-                  color: '#0284c7',
+                  background: 'rgba(15, 23, 42, 0.75)',
+                  border: '1.5px solid rgba(34, 211, 238, 0.35)',
+                  color: '#67e8f9',
                   padding: '1rem 2rem',
                   borderRadius: '12px',
                   fontSize: '0.95rem',
                   fontWeight: '500',
-                  boxShadow: '0 2px 6px rgba(26, 33, 41, 0.03)',
+                  boxShadow: '0 8px 20px rgba(2, 6, 23, 0.28)',
                   transition: 'all 0.3s ease',
                   display: 'flex',
                   alignItems: 'center',
@@ -239,13 +271,16 @@ const HeroImproved = () => {
                   width: '100%',
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.borderColor = '#0ea5e9';
-                  e.currentTarget.style.background = '#f0f9ff';
+                  e.currentTarget.style.borderColor = 'rgba(96, 165, 250, 0.8)';
+                  e.currentTarget.style.background = 'rgba(30, 41, 59, 0.9)';
+                  e.currentTarget.style.boxShadow =
+                    '0 0 18px rgba(96, 165, 250, 0.35)';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget.style.borderColor = '#e8ecf1';
-                  e.currentTarget.style.background = 'white';
+                  e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.35)';
+                  e.currentTarget.style.background = 'rgba(15, 23, 42, 0.75)';
+                  e.currentTarget.style.boxShadow = '0 8px 20px rgba(2, 6, 23, 0.28)';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
@@ -261,10 +296,10 @@ const HeroImproved = () => {
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 gap: '1rem',
                 padding: '1.5rem',
-                background: 'white',
-                border: '1px solid #f0f2f5',
+                background: 'rgba(15, 23, 42, 0.8)',
+                border: '1px solid rgba(99, 102, 241, 0.3)',
                 borderRadius: '12px',
-                boxShadow: '0 2px 8px rgba(15, 23, 42, 0.05)',
+                boxShadow: '0 18px 34px rgba(2, 6, 23, 0.4)',
               }}
             >
               {stats.map((stat, idx) => (
@@ -276,7 +311,7 @@ const HeroImproved = () => {
                     style={{
                       fontSize: '1.5rem',
                       fontWeight: '800',
-                      color: '#4e83af',
+                      color: '#60a5fa',
                       lineHeight: '1',
                       marginBottom: '0.25rem',
                     }}
@@ -286,7 +321,7 @@ const HeroImproved = () => {
                   <div
                     style={{
                       fontSize: '0.75rem',
-                      color: '#7a8a99',
+                      color: '#cbd5e1',
                       fontWeight: '600',
                       lineHeight: '1.3',
                     }}
@@ -305,8 +340,8 @@ const HeroImproved = () => {
                 position: 'relative',
                 borderRadius: '16px',
                 overflow: 'hidden',
-                boxShadow: '0 20px 40px rgba(15, 23, 42, 0.12)',
-                border: '1px solid #f0f2f5',
+                boxShadow: '0 24px 48px rgba(2, 6, 23, 0.45)',
+                border: '1px solid rgba(34, 211, 238, 0.35)',
               }}
             >
               {/* Imagem otimizada com WebP, aspect-ratio fixo para evitar CLS */}
@@ -347,11 +382,12 @@ const HeroImproved = () => {
                   bottom: '1.5rem',
                   left: '1.5rem',
                   right: '1.5rem',
-                  background: 'rgba(255, 255, 255, 0.95)',
+                  background: 'rgba(15, 23, 42, 0.88)',
                   backdropFilter: 'blur(10px)',
                   padding: '1.25rem',
                   borderRadius: '12px',
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
+                  boxShadow: '0 8px 24px rgba(2, 6, 23, 0.3)',
+                  border: '1px solid rgba(34, 211, 238, 0.25)',
                 }}
               >
                 <div
@@ -365,7 +401,7 @@ const HeroImproved = () => {
                     style={{
                       width: '48px',
                       height: '48px',
-                      background: 'linear-gradient(135deg, #0ea5e9, #0284c7)',
+                      background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
                       borderRadius: '12px',
                       display: 'flex',
                       alignItems: 'center',
@@ -380,7 +416,7 @@ const HeroImproved = () => {
                       style={{
                         fontSize: '0.875rem',
                         fontWeight: '700',
-                        color: '#1a2129',
+                        color: '#e2e8f0',
                         marginBottom: '0.25rem',
                       }}
                     >
@@ -389,7 +425,7 @@ const HeroImproved = () => {
                     <div
                       style={{
                         fontSize: '0.75rem',
-                        color: '#7a8a99',
+                        color: '#cbd5e1',
                         lineHeight: '1.4',
                       }}
                     >

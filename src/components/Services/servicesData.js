@@ -9,9 +9,9 @@ export const servicesData = [
     image: googleMapsImage,
     title: "Google Meu Negócio",
     description:
-      "Configuração estratégica completa do Google Meu Negócio para maximizar sua visibilidade local e conectar sua empresa com clientes da sua região.",
+      "Configuracao tecnica completa do Google Meu Negocio para fortalecer a presenca local da sua empresa.",
     detailedDescription:
-      "Otimize sua presença no Google e fortaleça sua presença digital local. Configuração profissional que aumenta sua visibilidade e facilita que clientes encontrem seus serviços.",
+      "Estruturamos seu perfil no Google com boas praticas de organizacao, categorizacao e consistencia de informacoes para ampliar sua relevancia local.",
     features: [
       "Otimização completa do perfil no Google",
       "Landing Page profissional integrada",
@@ -32,9 +32,9 @@ export const servicesData = [
       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop",
     title: "Capacitação Digital Gratuita",
     description:
-      "Encontro presencial gratuito para configurar um LinkedIn profissional e criar um currículo em HTML/CSS que se destaca.",
+      "Encontro presencial gratuito para organizar LinkedIn profissional e criar curriculo em HTML/CSS.",
     detailedDescription:
-      "Sessão presencial guiada e 100% gratuita para empreendedores e profissionais que querem fortalecer sua marca pessoal online. Configuramos um LinkedIn otimizado e montamos um currículo responsivo em HTML/CSS que você pode hospedar ou enviar em PDF.",
+      "Sessao presencial guiada para empreendedores e profissionais que buscam consolidar sua marca pessoal no ambiente digital com LinkedIn otimizado e curriculo responsivo.",
     features: [
       "Encontro presencial com especialista",
       "Checklist para perfil completo no LinkedIn",
@@ -53,9 +53,9 @@ export const servicesData = [
     image: site1Image,
     title: "Sistema Web Personalizado",
     description:
-      "Desenvolvemos sistemas sob medida com tecnologias modernas. Soluções completas para clínicas, consultórios, escolas e empresas que precisam automatizar seus processos.",
+      "Desenvolvemos sistemas sob medida com tecnologias modernas para organizacao e automacao de processos.",
     detailedDescription:
-      "Criamos soluções tecnológicas personalizadas para atender às necessidades específicas do seu negócio. Utilizamos tecnologias de ponta para desenvolver sistemas seguros, escaláveis e intuitivos.",
+      "Criamos solucoes personalizadas com foco em seguranca, escalabilidade e usabilidade para atender necessidades especificas do seu contexto.",
     features: [
       "Backend robusto com Python + Django",
       "Frontend moderno e responsivo com React",
@@ -79,9 +79,9 @@ export const servicesData = [
     image: siteImage,
     title: "Site Institucional com CMS",
     description:
-      "Desenvolvemos sites profissionais com sistema de gerenciamento de conteúdo. Solução completa que permite atualizações independentes de forma simples e intuitiva.",
+      "Desenvolvemos sites institucionais com CMS para facilitar atualizacoes de conteudo com autonomia.",
     detailedDescription:
-      "Criamos sites institucionais que transmitem credibilidade e profissionalismo. Sistema completo com painel de administração intuitivo, design moderno e responsivo, otimizado para todos os dispositivos.",
+      "Estruturamos sites institucionais com painel administrativo intuitivo, design responsivo e base tecnica preparada para manutencao continua.",
     features: [
       "Design moderno e responsivo",
       "Painel de administração intuitivo (CMS)",
@@ -107,9 +107,9 @@ export const servicesData = [
     image: siteManutencao,
     title: "Manutenção e Suporte Técnico",
     description:
-      "Oferecemos suporte técnico especializado para manutenção e evolução contínua de sistemas web. Atendimento sob demanda para ajustes, correções e melhorias.",
+      "Suporte tecnico especializado para manutencao e evolucao continua de sistemas web.",
     detailedDescription:
-      "Nosso time técnico está preparado para dar suporte ao seu sistema web, realizando manutenções preventivas e corretivas. Acompanhamento profissional com relatórios detalhados de todas as intervenções realizadas.",
+      "Nossa equipe atua com manutencoes preventivas e corretivas, registrando intervencoes e orientando melhorias tecnicas ao longo do tempo.",
     features: [
       "Atualizações de segurança",
       "Correção de bugs e erros",
@@ -132,9 +132,9 @@ export const servicesData = [
       "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
     title: "E-commerce",
     description:
-      "Desenvolvemos plataformas de comércio eletrônico completas e seguras. Soluções robustas para empresas que desejam expandir suas operações para o ambiente digital.",
+      "Desenvolvemos plataformas de comercio eletronico seguras, com foco em estabilidade operacional.",
     detailedDescription:
-      "Criamos lojas virtuais profissionais com toda infraestrutura necessária para operações de e-commerce. Sistemas completos com gestão de produtos, integração de pagamentos, controle de estoque e logística.",
+      "Criamos lojas virtuais com infraestrutura para gestao de produtos, pagamentos, estoque e logistica de forma integrada.",
     features: [
       "Catálogo de produtos",
       "Carrinho de compras",
@@ -161,9 +161,9 @@ export const servicesData = [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
     title: "Landing Page",
     description:
-      "Criamos páginas otimizadas para campanhas digitais e captação de contatos. Design estratégico focado na experiência do usuário e performance.",
+      "Criamos paginas com foco em clareza de comunicacao, experiencia do usuario e performance.",
     detailedDescription:
-      "Desenvolvemos landing pages profissionais com design estratégico e otimização técnica. Páginas rápidas e responsivas, ideais para campanhas de marketing digital e ações pontuais.",
+      "Desenvolvemos landing pages com estrutura tecnica otimizada, carregamento rapido e responsividade para diferentes dispositivos.",
     features: [
       "Design estratégico",
       "Conteúdo otimizado",
@@ -183,5 +183,26 @@ export const servicesData = [
     whatsappLink:
       "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Landing Page.",
     icon: "📄",
+  },
+  {
+    id: "assinatura-crm-psicologias",
+    image: googleMapsImage,
+    title: "CRM Psicologias",
+    description:
+      "CRM especializado com gestao de pacientes, agendamento, prontuario eletronico e comunicacao integrada.",
+    detailedDescription:
+      "CRM especializado para psicologas e psicologos, com funcionalidades completas para organizar a rotina clinica e padronizar atendimentos.",
+    features: [
+      "Gestão de pacientes",
+      "Agendamento de consultas",
+      "Prontuário eletrônico",
+      "Comunicação integrada",
+      "Relatórios detalhados",
+      "Atendimento flexível",
+      "Suporte técnico especializado",
+    ],
+    whatsappLink:
+      "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre CRM Psicologias.",
+    icon: "🧠",
   },
 ];

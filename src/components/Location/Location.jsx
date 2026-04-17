@@ -139,13 +139,15 @@ const Location = () => {
                     style={{
                       width: '100%',
                       height: '400px',
-                      background: 'linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%)',
+                      background:
+                        'linear-gradient(145deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.92) 100%)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       borderRadius: '12px',
-                      color: '#7a8a99',
+                      color: '#cbd5e1',
                       fontSize: '0.95rem',
+                      border: '1px solid rgba(34, 211, 238, 0.28)',
                     }}
                   >
                     Carregando mapa...

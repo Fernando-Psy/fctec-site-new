@@ -7,18 +7,18 @@ const AboutCompany = () => {
         {/* Header */}
         <div className="about-header">
           <div className="section-badge">
-            <span className="badge-dot"></span>
+            <span className="badge-dot" />
             <span className="badge-text">Sobre Nós</span>
           </div>
 
           <h2 className="about-title">
-            Transformamos Ideias em{' '}
-            <span className="title-highlight">Resultados Digitais</span>
+            Engenharia Digital com{' '}
+            <span className="title-highlight">Visao de Negocio</span>
           </h2>
 
           <p className="about-description">
-            Somos especialistas em desenvolvimento web que criam soluções
-            digitais que realmente funcionam para o seu negócio.
+            Somos uma equipe de desenvolvimento web voltada para construir
+            presenca digital solida, segura e alinhada aos objetivos da empresa.
           </p>
         </div>
 
@@ -63,9 +63,9 @@ const AboutCompany = () => {
               }}
             >
               Desenvolver soluções web de alta qualidade que impulsionam o
-              crescimento dos nossos clientes. Trabalhamos com{' '}
-              <strong>foco em resultados</strong>, entregando produtos que fazem
-              diferença real no seu negócio.
+              crescimento sustentavel dos nossos clientes. Trabalhamos com{' '}
+              <strong>foco em estrutura, confiabilidade e evolucao continua</strong>,
+              entregando produtos que fortalecem a operacao digital da empresa.
             </p>
           </div>
         </div>
@@ -94,7 +94,7 @@ const AboutCompany = () => {
                 marginBottom: '0.5rem',
               }}
             >
-              Entrega Rápida
+              Arquitetura Moderna
             </h4>
             <p
               style={{
@@ -103,7 +103,7 @@ const AboutCompany = () => {
                 lineHeight: '1.6',
               }}
             >
-              Projetos concluídos em prazos realistas sem comprometer qualidade
+              Solucoes com stack atual, escalabilidade e padroes tecnicos robustos
             </p>
           </div>
 
@@ -122,7 +122,7 @@ const AboutCompany = () => {
                 marginBottom: '0.5rem',
               }}
             >
-              Suporte Dedicado
+              Parceria Proxima
             </h4>
             <p
               style={{
@@ -131,7 +131,7 @@ const AboutCompany = () => {
                 lineHeight: '1.6',
               }}
             >
-              Acompanhamento contínuo e suporte sempre que você precisar
+              Acompanhamento continuo para ajustes, duvidas e evolucao do produto
             </p>
           </div>
 
@@ -150,7 +150,7 @@ const AboutCompany = () => {
                 marginBottom: '0.5rem',
               }}
             >
-              100% Seguro
+              Seguranca Aplicada
             </h4>
             <p
               style={{
@@ -159,69 +159,15 @@ const AboutCompany = () => {
                 lineHeight: '1.6',
               }}
             >
-              Seus dados protegidos com as melhores práticas de segurança
+              Dados protegidos com praticas de seguranca e manutencao preventiva
             </p>
-          </div>
-        </div>
-
-        {/* CTA Section - More Spacious */}
-        <div
-          className="about-cta"
-          style={{
-            padding: '3rem 2rem',
-            marginTop: '4rem',
-          }}
-        >
-          <div className="cta-content" style={{ textAlign: 'center' }}>
-            <h3
-              className="cta-title"
-              style={{
-                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-                marginBottom: '1rem',
-              }}
-            >
-              Vamos Conversar?
-            </h3>
-            <p
-              className="cta-description"
-              style={{
-                fontSize: '1.05rem',
-                maxWidth: '600px',
-                margin: '0 auto 2rem',
-              }}
-            >
-              Conte-nos sobre seu projeto e vamos apresentar a melhor solução
-            </p>
-          </div>
-          <div
-            className="cta-buttons"
-            style={{
-              display: 'flex',
-              gap: '1rem',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-            }}
-          >
-            <a
-              href="https://wa.me/5521968810478?text=Olá, gostaria de conversar sobre soluções digitais."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-button primary"
-            >
-              <span>Falar no WhatsApp</span>
-              <span className="button-icon">💬</span>
-            </a>
-            <a href="#contato" className="cta-button secondary">
-              <span>Enviar Mensagem</span>
-              <span className="button-icon">✉️</span>
-            </a>
           </div>
         </div>
       </div>
 
       {/* Background Decorations */}
-      <div className="about-bg-element about-bg-1"></div>
-      <div className="about-bg-element about-bg-2"></div>
+      <div className="about-bg-element about-bg-1" />
+      <div className="about-bg-element about-bg-2" />
     </section>
   );
 };

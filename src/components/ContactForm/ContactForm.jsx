@@ -107,7 +107,7 @@ const ContactForm = () => {
           <div className="contact-info">
             <div className="info-header">
               <div className="section-badge">
-                <span className="badge-dot"></span>
+                <span className="badge-dot" />
                 <span className="badge-text">Entre em Contato</span>
               </div>
               <h2 className="contact-title">
@@ -274,8 +274,8 @@ const ContactForm = () => {
       </div>
 
       {/* Background Decorations */}
-      <div className="contact-bg-element contact-bg-1"></div>
-      <div className="contact-bg-element contact-bg-2"></div>
+      <div className="contact-bg-element contact-bg-1" />
+      <div className="contact-bg-element contact-bg-2" />
     </section>
   );
 };

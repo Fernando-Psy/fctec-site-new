@@ -2,7 +2,10 @@
 
 .privacy-policy-page {
     min-height: 100vh;
-    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #eff6ff 100%);
+    background:
+        radial-gradient(circle at 12% 18%, rgba(6, 182, 212, 0.14) 0%, transparent 34%),
+        radial-gradient(circle at 82% 14%, rgba(99, 102, 241, 0.14) 0%, transparent 36%),
+        linear-gradient(145deg, #040b1a 0%, #07152c 55%, #0b1e3f 100%);
     padding: 6rem 0 4rem;
 }
 
@@ -17,7 +20,7 @@
     text-align: center;
     margin-bottom: 4rem;
     padding-bottom: 2rem;
-    border-bottom: 2px solid #f0f2f5;
+    border-bottom: 2px solid rgba(34, 211, 238, 0.22);
 }
 
 .privacy-title {
@@ -34,23 +37,23 @@
 
 .privacy-updated {
     font-size: 0.95rem;
-    color: #7a8a99;
+    color: #cbd5e1;
     font-weight: 500;
 }
 
 /* ===== CONTENT ===== */
 .privacy-content {
-    background: white;
+    background: rgba(15, 23, 42, 0.86);
     border-radius: 16px;
     padding: 3rem;
-    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
-    border: 1px solid #f0f2f5;
+    box-shadow: 0 20px 36px rgba(2, 6, 23, 0.45);
+    border: 1px solid rgba(148, 163, 184, 0.24);
 }
 
 .privacy-section {
     margin-bottom: 3rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid #fafbfc;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 .privacy-section:last-child {
@@ -62,7 +65,7 @@
 .section-title {
     font-size: 1.75rem;
     font-weight: 700;
-    color: #1a2129;
+    color: #e2e8f0;
     margin-bottom: 1.25rem;
     letter-spacing: -0.01em;
 }
@@ -70,14 +73,14 @@
 .subsection-title {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #334155;
+    color: #dbe3ef;
     margin: 1.5rem 0 1rem;
 }
 
 .privacy-section p {
     font-size: 1rem;
     line-height: 1.8;
-    color: #5a6978;
+    color: #cbd5e1;
     margin-bottom: 1rem;
 }
 
@@ -89,12 +92,12 @@
 .privacy-section ul li {
     font-size: 1rem;
     line-height: 1.8;
-    color: #5a6978;
+    color: #cbd5e1;
     margin-bottom: 0.75rem;
 }
 
 .privacy-section ul li strong {
-    color: #334155;
+    color: #e2e8f0;
     font-weight: 600;
 }
 
@@ -107,8 +110,8 @@
 }
 
 .purpose-card {
-    background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
-    border: 1px solid #f0f2f5;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.24);
     border-radius: 12px;
     padding: 1.5rem;
     text-align: center;
@@ -129,13 +132,13 @@
 .purpose-card h4 {
     font-size: 1.125rem;
     font-weight: 700;
-    color: #1a2129;
+    color: #e2e8f0;
     margin-bottom: 0.75rem;
 }
 
 .purpose-card p {
     font-size: 0.9375rem;
-    color: #7a8a99;
+    color: #cbd5e1;
     margin: 0;
 }
 
@@ -152,7 +155,7 @@
     align-items: flex-start;
     gap: 1rem;
     padding: 1rem;
-    background: #ffffff;
+    background: rgba(15, 23, 42, 0.72);
     border-radius: 8px;
     border-left: 3px solid #0ea5e9;
 }
@@ -173,19 +176,19 @@
 
 .right-item strong {
     display: block;
-    color: #1a2129;
+    color: #e2e8f0;
     margin-bottom: 0.25rem;
 }
 
 .exercise-rights {
-    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.16) 0%, rgba(59, 130, 246, 0.16) 100%);
     border-left: 4px solid #0ea5e9;
     padding: 1.25rem 1.5rem;
     margin-top: 2rem;
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
-    color: #334155;
+    color: #cbd5e1;
 }
 
 .contact-link {
@@ -202,7 +205,7 @@
 
 /* ===== NOTES ===== */
 .note {
-    background: #fff7ed;
+    background: rgba(15, 23, 42, 0.76);
     border-left: 4px solid #bfdbfe;
     padding: 1rem 1.25rem;
     margin: 1.5rem 0;
@@ -217,8 +220,8 @@
 /* ===== DPO & ANPD INFO ===== */
 .dpo-info,
 .anpd-info {
-    background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
-    border: 1px solid #f0f2f5;
+    background: rgba(15, 23, 42, 0.76);
+    border: 1px solid rgba(148, 163, 184, 0.22);
     border-radius: 12px;
     padding: 1.5rem;
     margin: 1.5rem 0;
@@ -228,7 +231,7 @@
 .anpd-info h4 {
     font-size: 1.125rem;
     font-weight: 700;
-    color: #1a2129;
+    color: #e2e8f0;
     margin-bottom: 1rem;
 }
 
@@ -277,10 +280,10 @@
 
 /* ===== CONTACT SECTION ===== */
 .contact-section {
-    background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
+    background: rgba(15, 23, 42, 0.74);
     border-radius: 12px;
     padding: 2rem;
-    border: 2px solid #f0f2f5;
+    border: 2px solid rgba(148, 163, 184, 0.22);
 }
 
 .contact-cards {
@@ -291,8 +294,8 @@
 }
 
 .contact-card {
-    background: white;
-    border: 1px solid #f0f2f5;
+    background: rgba(15, 23, 42, 0.84);
+    border: 1px solid rgba(148, 163, 184, 0.24);
     border-radius: 12px;
     padding: 1.75rem;
     text-align: center;
@@ -313,7 +316,7 @@
 .contact-card h4 {
     font-size: 1.125rem;
     font-weight: 700;
-    color: #1a2129;
+    color: #e2e8f0;
     margin-bottom: 0.75rem;
 }
 
@@ -332,29 +335,29 @@
 
 .contact-card p {
     font-size: 0.9375rem;
-    color: #7a8a99;
+    color: #cbd5e1;
     margin: 0;
     line-height: 1.6;
 }
 
 /* ===== FINAL NOTE ===== */
 .final-note {
-    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.16) 0%, rgba(99, 102, 241, 0.18) 100%);
     border-radius: 12px;
     padding: 2rem;
-    border: 2px solid #c1dceb;
+    border: 2px solid rgba(34, 211, 238, 0.24);
 }
 
 .disclaimer {
     font-size: 0.95rem;
     line-height: 1.8;
-    color: #334155;
+    color: #cbd5e1;
     font-weight: 500;
     margin: 0;
 }
 
 .disclaimer strong {
-    color: #1a2129;
+    color: #e2e8f0;
 }
 
 /* ===== RESPONSIVIDADE ===== */
