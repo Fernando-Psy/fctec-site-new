@@ -36,7 +36,7 @@ const ServiceCard = ({ service }) => {
           </span>
           <div style={{ flex: 1 }}>
             {/* Título */}
-            <Card.Title className="service-title">{title}</Card.Title>
+            <Card.Title style={{color: 'white'}} className="service-title">{title}</Card.Title>
           </div>
         </div>
 
