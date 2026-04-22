@@ -59,7 +59,7 @@ const AboutCompany = () => {
                 lineHeight: '1.8',
                 maxWidth: '800px',
                 margin: '0 auto',
-                color: '#5a6978',
+                color: '#cbd5e1',
               }}
             >
               Desenvolver soluções web de alta qualidade que impulsionam o
@@ -90,7 +90,7 @@ const AboutCompany = () => {
               style={{
                 fontSize: '1.125rem',
                 fontWeight: '700',
-                color: '#1a2129',
+                color: '#e2e8f0',
                 marginBottom: '0.5rem',
               }}
             >
@@ -99,7 +99,7 @@ const AboutCompany = () => {
             <p
               style={{
                 fontSize: '0.95rem',
-                color: '#7a8a99',
+                color: '#cbd5e1',
                 lineHeight: '1.6',
               }}
             >
@@ -118,7 +118,7 @@ const AboutCompany = () => {
               style={{
                 fontSize: '1.125rem',
                 fontWeight: '700',
-                color: '#1a2129',
+                color: '#e2e8f0',
                 marginBottom: '0.5rem',
               }}
             >
@@ -127,7 +127,7 @@ const AboutCompany = () => {
             <p
               style={{
                 fontSize: '0.95rem',
-                color: '#7a8a99',
+                color: '#cbd5e1',
                 lineHeight: '1.6',
               }}
             >
@@ -146,7 +146,7 @@ const AboutCompany = () => {
               style={{
                 fontSize: '1.125rem',
                 fontWeight: '700',
-                color: '#1a2129',
+                color: '#e2e8f0',
                 marginBottom: '0.5rem',
               }}
             >
@@ -155,7 +155,7 @@ const AboutCompany = () => {
             <p
               style={{
                 fontSize: '0.95rem',
-                color: '#7a8a99',
+                color: '#cbd5e1',
                 lineHeight: '1.6',
               }}
             >

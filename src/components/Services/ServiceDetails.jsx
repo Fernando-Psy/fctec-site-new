@@ -32,7 +32,8 @@ const ServiceDetails = () => {
       <section
         style={{
           padding: '6rem 2rem 4rem',
-          background: 'linear-gradient(135deg, #ffffff 0%, #ffffff 100%)',
+          background:
+            'radial-gradient(circle at 15% 20%, rgba(6, 182, 212, 0.13) 0%, transparent 32%), radial-gradient(circle at 78% 12%, rgba(99, 102, 241, 0.14) 0%, transparent 35%), linear-gradient(145deg, #040b1a 0%, #07152c 55%, #0b1e3f 100%)',
         }}
       >
         <Container>
@@ -41,12 +42,12 @@ const ServiceDetails = () => {
             style={{
               marginBottom: '2rem',
               fontSize: '0.9rem',
-              color: '#7a8a99',
+              color: '#94a3b8',
             }}
           >
             <span
               onClick={() => navigate('/')}
-              style={{ cursor: 'pointer', color: '#4e83af' }}
+              style={{ cursor: 'pointer', color: '#38bdf8' }}
             >
               Início
             </span>
@@ -61,12 +62,12 @@ const ServiceDetails = () => {
                   });
                 });
               }}
-              style={{ cursor: 'pointer', color: '#4e83af' }}
+              style={{ cursor: 'pointer', color: '#38bdf8' }}
             >
               Serviços
             </span>
             <span style={{ margin: '0 0.5rem' }}>›</span>
-            <span style={{ color: '#1a2129', fontWeight: '600' }}>
+            <span style={{ color: '#e2e8f0', fontWeight: '600' }}>
               {service.title}
             </span>
           </nav>
@@ -79,8 +80,8 @@ const ServiceDetails = () => {
                   position: 'relative',
                   borderRadius: '20px',
                   overflow: 'hidden',
-                  boxShadow: '0 20px 40px rgba(15, 23, 42, 0.15)',
-                  border: '1px solid #f0f2f5',
+                  boxShadow: '0 20px 40px rgba(2, 6, 23, 0.45)',
+                  border: '1px solid rgba(148, 163, 184, 0.24)',
                 }}
               >
                 <img
@@ -105,15 +106,14 @@ const ServiceDetails = () => {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.5rem',
-                  background:
-                    'linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%)',
-                  border: '1px solid rgba(37, 99, 235, 0.2)',
+                  background: 'rgba(6, 182, 212, 0.14)',
+                  border: '1px solid rgba(34, 211, 238, 0.35)',
                   padding: '0.5rem 1.25rem',
                   borderRadius: '50px',
                   marginBottom: '1.5rem',
                   fontSize: '0.875rem',
                   fontWeight: '600',
-                  color: '#3a5f7d',
+                  color: '#67e8f9',
                 }}
               >
                 <span style={{ fontSize: '1.25rem' }}>{service.icon}</span>
@@ -124,7 +124,7 @@ const ServiceDetails = () => {
                 style={{
                   fontSize: 'clamp(2rem, 5vw, 3rem)',
                   fontWeight: '800',
-                  color: '#1a2129',
+                  color: '#e2e8f0',
                   marginBottom: '1.5rem',
                   letterSpacing: '-0.02em',
                 }}
@@ -135,7 +135,7 @@ const ServiceDetails = () => {
               <p
                 style={{
                   fontSize: '1.125rem',
-                  color: '#7a8a99',
+                  color: '#cbd5e1',
                   lineHeight: '1.7',
                   marginBottom: '2.5rem',
                 }}
@@ -230,7 +230,8 @@ const ServiceDetails = () => {
       <section
         style={{
           padding: '4rem 2rem',
-          background: 'white',
+          background:
+            'radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 35%), linear-gradient(145deg, #07152c 0%, #0b1e3f 100%)',
         }}
       >
         <Container>
@@ -238,7 +239,7 @@ const ServiceDetails = () => {
             style={{
               fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
               fontWeight: '800',
-              color: '#1a2129',
+              color: '#e2e8f0',
               marginBottom: '3rem',
               textAlign: 'center',
               letterSpacing: '-0.02em',
@@ -255,19 +256,19 @@ const ServiceDetails = () => {
                     display: 'flex',
                     gap: '1rem',
                     padding: '1.5rem',
-                    background: '#ffffff',
+                    background: 'rgba(15, 23, 42, 0.84)',
                     borderRadius: '12px',
-                    border: '1px solid #f0f2f5',
+                    border: '1px solid rgba(148, 163, 184, 0.24)',
                     transition: 'all 0.3s ease',
                   }}
                   onMouseOver={(e) => {
-                    e.currentTarget.style.background = 'white';
-                    e.currentTarget.style.borderColor = '#4e83af';
+                    e.currentTarget.style.background = 'rgba(15, 23, 42, 0.96)';
+                    e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.45)';
                     e.currentTarget.style.transform = 'translateX(4px)';
                   }}
                   onMouseOut={(e) => {
-                    e.currentTarget.style.background = '#ffffff';
-                    e.currentTarget.style.borderColor = '#f0f2f5';
+                    e.currentTarget.style.background = 'rgba(15, 23, 42, 0.84)';
+                    e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.24)';
                     e.currentTarget.style.transform = 'translateX(0)';
                   }}
                 >
@@ -292,7 +293,7 @@ const ServiceDetails = () => {
                   <span
                     style={{
                       fontSize: '0.95rem',
-                      color: '#334155',
+                      color: '#e2e8f0',
                       fontWeight: '500',
                       lineHeight: '1.6',
                     }}

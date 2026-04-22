@@ -1,0 +1,31 @@
+/* QuickQuoteForm.css — dark theme for form inputs */
+
+/* Garante fundo escuro nos inputs/selects dentro do form */
+.quick-quote-form input,
+.quick-quote-form select,
+.quick-quote-form textarea {
+    background-color: rgba(7, 21, 44, 0.8) !important;
+    color: #e2e8f0 !important;
+}
+
+.quick-quote-form input::placeholder,
+.quick-quote-form select::placeholder,
+.quick-quote-form textarea::placeholder {
+    color: #64748b !important;
+}
+
+/* inputs dentro de modais (Bootstrap Modal + div modais customizados) */
+.contact-modal input,
+.contact-modal select,
+.contact-modal textarea {
+    background-color: rgba(7, 21, 44, 0.8) !important;
+    color: #e2e8f0 !important;
+}
+
+.contact-modal input::placeholder,
+.contact-modal select::placeholder,
+.contact-modal textarea::placeholder {
+    color: #64748b !important;
+}
+
+/* Estilo global para qualquer input dentro de div com fundo escuro */

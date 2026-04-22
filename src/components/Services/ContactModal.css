@@ -1,14 +1,33 @@
 /* ContactModal.css */
 
 .contact-modal .modal-content {
-  border: none;
+  border: 1px solid rgba(148, 163, 184, 0.15);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  background: rgba(7, 21, 44, 0.98);
 }
 
 .contact-modal .modal-body {
   padding: 0;
+  background: transparent;
+}
+
+/* Grid responsivo: stacked em mobile */
+.contact-modal .modal-body>div>div:first-child {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+@media (max-width: 768px) {
+  .contact-modal .modal-body>div>div:first-child {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Ocultar coluna esquerda (info) em mobile para economizar espaço */
+  .contact-modal .modal-body>div>div:first-child>div:first-child {
+    display: none;
+  }
 }
 
 @media (max-width: 991px) {
@@ -23,6 +42,7 @@
   }
 
   .contact-modal input {
-    font-size: 16px !important; /* Previne zoom no iOS */
+    font-size: 16px !important;
+    /* Previne zoom no iOS */
   }
 }

@@ -73,15 +73,17 @@
   box-sizing: border-box;
 }
 
-/* US-Style Spacing - More generous whitespace */
-section {
-  margin-bottom: 6rem;
+html {
+  background: #040b1a;
 }
 
-@media (min-width: 768px) {
-  section {
-    margin-bottom: 8rem;
-  }
+#root {
+  background: #040b1a;
+}
+
+/* Sem margem entre seções — cada seção controla seu próprio padding interno */
+section {
+  margin-bottom: 0;
 }
 
 /* Container adjustments for better readability */
@@ -124,8 +126,8 @@ body {
   /* Fallback otimizado renderiza primeiro, Inter substitui quando carregar */
   /* font-display: swap garante que texto fique sempre visível */
   font-family: var(--font-family-primary);
-  background: linear-gradient(to bottom, #ffffff 0%, var(--slate-50) 100%);
-  color: var(--slate-900);
+  background: #040b1a;
+  color: var(--slate-300);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -320,10 +322,9 @@ p {
 /* ===== HERO SECTION ===== */
 .hero-section {
   padding: 5rem 0;
-  background: white;
-  border-radius: 16px;
-  margin: 2rem 0;
-  box-shadow: var(--shadow-md);
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
 }
 
 .hero-section h1 {
@@ -358,7 +359,7 @@ p {
 
 /* ===== SEÇÕES ===== */
 section {
-  padding: 4rem 0;
+  padding: 0;
 }
 
 section h2 {
@@ -427,11 +428,7 @@ footer .filter-white:hover {
 /* ===== RESPONSIVIDADE ===== */
 @media (max-width: 768px) {
   .hero-section {
-    padding: 3rem 1.5rem;
-  }
-
-  section {
-    padding: 2rem 0;
+    padding: 0;
   }
 
   .service-card .card-body {
@@ -475,22 +472,23 @@ footer .filter-white:hover {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--slate-100);
+  background: #0d1b2e;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--slate-400);
+  background: #2d4a6e;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--slate-500);
+  background: #3d6a9a;
 }
 
 /* ===== OTIMIZAÇÕES DE PERFORMANCE MOBILE ===== */
 
 /* Reduzir movimento para usuários que preferem menos animação */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -503,6 +501,7 @@ footer .filter-white:hover {
 
 /* Otimizações específicas para mobile */
 @media (max-width: 768px) {
+
   /* Reduzir transições para melhor performance */
   * {
     transition-duration: 0.15s !important;
@@ -524,13 +523,14 @@ footer .filter-white:hover {
 
   /* Otimizar fontes em telas pequenas */
   body {
-    font-size: 16px; /* Previne zoom no iOS */
+    font-size: 16px;
+    /* Previne zoom no iOS */
   }
 
   /* Reduzir espaçamento para economizar espaço */
   section {
-    padding: 3rem 0;
-    margin-bottom: 3rem;
+    padding: 0;
+    margin-bottom: 0;
   }
 
   /* Will-change para animações importantes */
@@ -542,9 +542,10 @@ footer .filter-white:hover {
 
 /* Otimizar para conexões lentas */
 @media (prefers-reduced-data: reduce) {
-  /* Remover gradientes complexos */
+
+  /* Manter fundo escuro mesmo com dados reduzidos */
   body {
-    background: white;
+    background: #040b1a;
   }
 
   /* Simplificar sombras */
@@ -567,8 +568,8 @@ footer .filter-white:hover {
   }
 
   section {
-    padding: 2rem 0;
-    margin-bottom: 2rem;
+    padding: 0;
+    margin-bottom: 0;
   }
 
   h1 {
@@ -587,6 +588,7 @@ footer .filter-white:hover {
 
 /* Touch optimization */
 @media (hover: none) and (pointer: coarse) {
+
   /* Aumentar área de toque */
   .btn,
   .nav-link,
@@ -619,6 +621,7 @@ footer .filter-white:hover {
 
 /* Performance otimizations for mobile */
 @media (max-width: 768px) {
+
   /* Reduzir complexidade visual */
   .shadow-xl,
   .shadow-lg {

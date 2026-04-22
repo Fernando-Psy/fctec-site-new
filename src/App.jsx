@@ -100,33 +100,27 @@ function App() {
                 <SEO {...SEOPages.home} />
                 <main>
                   <Hero />
-                  <div className="container">
-                    <Suspense fallback={<LoadingFallback />}>
-                      <AboutCompany />
-                    </Suspense>
-                    <Suspense fallback={<LoadingFallback />}>
-                      <Services />
-                    </Suspense>
-                    {/* Simplificação: BenefitsResults e ClientsShowcase combinados para reduzir sobrecarga */}
-                    <Suspense fallback={<LoadingFallback />}>
-                      <BenefitsResults />
-                    </Suspense>
-                    {/* ClientsShowcase movido para depois do FAQ para melhor fluxo */}
-                    <Suspense fallback={<LoadingFallback />}>
-                      <FAQ />
-                    </Suspense>
-                    <Suspense fallback={<LoadingFallback />}>
-                      <ClientsShowcase />
-                    </Suspense>
-                    <Suspense fallback={<LoadingFallback />}>
-                      <ContactForm />
-                    </Suspense>
-                  </div>
-                  <div className="container">
-                    <Suspense fallback={<LoadingFallback />}>
-                      <Location />
-                    </Suspense>
-                  </div>
+                  <Suspense fallback={<LoadingFallback />}>
+                    <AboutCompany />
+                  </Suspense>
+                  <Suspense fallback={<LoadingFallback />}>
+                    <Services />
+                  </Suspense>
+                  <Suspense fallback={<LoadingFallback />}>
+                    <BenefitsResults />
+                  </Suspense>
+                  <Suspense fallback={<LoadingFallback />}>
+                    <FAQ />
+                  </Suspense>
+                  <Suspense fallback={<LoadingFallback />}>
+                    <ClientsShowcase />
+                  </Suspense>
+                  <Suspense fallback={<LoadingFallback />}>
+                    <ContactForm />
+                  </Suspense>
+                  <Suspense fallback={<LoadingFallback />}>
+                    <Location />
+                  </Suspense>
                 </main>
               </>
             }

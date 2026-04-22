@@ -1,4 +1,5 @@
 import { scrollToElement } from '../../utils/scrollUtils';
+import './Hero.css';
 
 const HeroImproved = () => {
   const stats = [
@@ -148,51 +149,11 @@ const HeroImproved = () => {
               >
                 Tecnologias que Utilizamos
               </div>
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(4, 1fr)',
-                  gap: '1rem',
-                }}
-              >
+              <div className="hero-tech-grid">
                 {techStack.map((tech, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      gap: '0.5rem',
-                      padding: '1rem',
-                      background: 'rgba(15, 23, 42, 0.75)',
-                      border: '1px solid rgba(148, 163, 184, 0.2)',
-                      borderRadius: '12px',
-                      transition: 'all 0.3s ease',
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.background = 'rgba(15, 23, 42, 0.95)';
-                      e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.45)';
-                      e.currentTarget.style.boxShadow =
-                        '0 0 20px rgba(34, 211, 238, 0.18)';
-                      e.currentTarget.style.transform = 'translateY(-3px)';
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.background = 'rgba(15, 23, 42, 0.75)';
-                      e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.2)';
-                      e.currentTarget.style.boxShadow = 'none';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }}
-                  >
-                    <span style={{ fontSize: '1.75rem' }}>{tech.icon}</span>
-                    <span
-                      style={{
-                        fontSize: '0.75rem',
-                        fontWeight: '500',
-                        color: '#cbd5e1',
-                      }}
-                    >
-                      {tech.name}
-                    </span>
+                  <div key={idx} className="hero-tech-item">
+                    <span>{tech.icon}</span>
+                    <span>{tech.name}</span>
                   </div>
                 ))}
               </div>

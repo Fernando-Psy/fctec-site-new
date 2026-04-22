@@ -171,12 +171,10 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent);
   transition: left 0.6s;
 }
 
@@ -279,11 +277,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(78, 131, 175, 0.05) 0%,
-    transparent 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(78, 131, 175, 0.05) 0%,
+      transparent 100%);
   pointer-events: none;
 }
 
@@ -325,6 +321,7 @@
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0);
@@ -336,6 +333,7 @@
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 0.1;
@@ -450,5 +448,58 @@
 
   .proof-number {
     font-size: 1.5rem;
+  }
+}
+
+/* ===== HERO TECH CARD ===== */
+.hero-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.hero-tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.hero-tech-item:hover {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: rgba(34, 211, 238, 0.45);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.18);
+  transform: translateY(-3px);
+}
+
+.hero-tech-item span:first-child {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.hero-tech-item span:last-child {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  white-space: nowrap;
+}
+
+@media (max-width: 400px) {
+  .hero-tech-item span:first-child {
+    font-size: 1.4rem;
+  }
+
+  .hero-tech-item span:last-child {
+    font-size: 0.6rem;
+  }
+
+  .hero-tech-item {
+    padding: 0.625rem 0.25rem;
   }
 }

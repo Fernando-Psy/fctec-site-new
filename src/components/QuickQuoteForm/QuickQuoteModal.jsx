@@ -122,7 +122,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
         animation: 'slideIn 0.3s ease'
       }}>
         <div style={{
-          background: 'white',
+          background: 'rgba(7, 21, 44, 0.98)',
           borderRadius: '20px',
           overflow: 'hidden',
           boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
@@ -221,7 +221,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
               {/* Coluna Direita - Formulário */}
               <div style={{
                 padding: '3rem 2.5rem',
-                background: 'white'
+                background: 'rgba(7, 21, 44, 0.98)'
               }}>
                 <div style={{
                   display: 'flex',
@@ -232,7 +232,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                   <h4 style={{
                     fontSize: '1.5rem',
                     fontWeight: '700',
-                    color: '#1a2129',
+                    color: '#e2e8f0',
                     margin: 0
                   }}>
                     Seus Dados
@@ -263,7 +263,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                       display: 'block',
                       fontSize: '0.875rem',
                       fontWeight: '600',
-                      color: '#5a6978',
+                      color: '#94a3b8',
                       marginBottom: '0.5rem'
                     }}>
                       Seu Nome *
@@ -279,10 +279,10 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                       style={{
                         width: '100%',
                         padding: '0.875rem 1rem',
-                        border: '2px solid #f0f2f5',
+                        border: '2px solid rgba(148, 163, 184, 0.2)',
                         borderRadius: '10px',
                         fontSize: '0.95rem',
-                        color: '#1a2129',
+                        color: '#e2e8f0',
                         transition: 'all 0.2s ease',
                         outline: 'none'
                       }}
@@ -291,7 +291,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                         e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
                       }}
                       onBlur={(e) => {
-                        e.target.style.borderColor = '#f0f2f5';
+                        e.target.style.borderColor = 'rgba(148, 163, 184, 0.2)';
                         e.target.style.boxShadow = 'none';
                       }}
                     />
@@ -303,7 +303,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                       display: 'block',
                       fontSize: '0.875rem',
                       fontWeight: '600',
-                      color: '#5a6978',
+                      color: '#94a3b8',
                       marginBottom: '0.5rem'
                     }}>
                       WhatsApp *
@@ -319,10 +319,10 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                       style={{
                         width: '100%',
                         padding: '0.875rem 1rem',
-                        border: '2px solid #f0f2f5',
+                        border: '2px solid rgba(148, 163, 184, 0.2)',
                         borderRadius: '10px',
                         fontSize: '0.95rem',
-                        color: '#1a2129',
+                        color: '#e2e8f0',
                         transition: 'all 0.2s ease',
                         outline: 'none'
                       }}
@@ -331,7 +331,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                         e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
                       }}
                       onBlur={(e) => {
-                        e.target.style.borderColor = '#f0f2f5';
+                        e.target.style.borderColor = 'rgba(148, 163, 184, 0.2)';
                         e.target.style.boxShadow = 'none';
                       }}
                     />
@@ -343,7 +343,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                       display: 'block',
                       fontSize: '0.875rem',
                       fontWeight: '600',
-                      color: '#5a6978',
+                      color: '#94a3b8',
                       marginBottom: '0.5rem'
                     }}>
                       Tipo de Negócio *
@@ -359,10 +359,10 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                       style={{
                         width: '100%',
                         padding: '0.875rem 1rem',
-                        border: '2px solid #f0f2f5',
+                        border: '2px solid rgba(148, 163, 184, 0.2)',
                         borderRadius: '10px',
                         fontSize: '0.95rem',
-                        color: '#1a2129',
+                        color: '#e2e8f0',
                         transition: 'all 0.2s ease',
                         outline: 'none'
                       }}
@@ -371,7 +371,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                         e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
                       }}
                       onBlur={(e) => {
-                        e.target.style.borderColor = '#f0f2f5';
+                        e.target.style.borderColor = 'rgba(148, 163, 184, 0.2)';
                         e.target.style.boxShadow = 'none';
                       }}
                     />
@@ -383,7 +383,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                       display: 'block',
                       fontSize: '0.875rem',
                       fontWeight: '600',
-                      color: '#5a6978',
+                      color: '#94a3b8',
                       marginBottom: '0.5rem'
                     }}>
                       Serviço de Interesse *
@@ -397,21 +397,21 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
                       style={{
                         width: '100%',
                         padding: '0.875rem 1rem',
-                        border: '2px solid #f0f2f5',
+                        border: '2px solid rgba(148, 163, 184, 0.2)',
                         borderRadius: '10px',
                         fontSize: '0.95rem',
-                        color: '#1a2129',
+                        color: '#e2e8f0',
                         transition: 'all 0.2s ease',
                         outline: 'none',
                         cursor: 'pointer',
-                        backgroundColor: 'white'
+                        backgroundColor: 'rgba(7, 21, 44, 0.98)'
                       }}
                       onFocus={(e) => {
                         e.target.style.borderColor = '#4e83af';
                         e.target.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.1)';
                       }}
                       onBlur={(e) => {
-                        e.target.style.borderColor = '#f0f2f5';
+                        e.target.style.borderColor = 'rgba(148, 163, 184, 0.2)';
                         e.target.style.boxShadow = 'none';
                       }}
                     >
@@ -523,7 +523,7 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
               <h3 style={{
                 fontSize: '1.75rem',
                 fontWeight: '700',
-                color: '#1a2129',
+                color: '#e2e8f0',
                 marginBottom: '0.75rem'
               }}>
                 Solicitação Enviada!

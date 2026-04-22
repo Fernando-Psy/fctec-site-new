@@ -45,7 +45,8 @@ const BenefitsResults = () => {
   return (
     <section
       style={{
-        background: 'linear-gradient(135deg, #ffffff 0%, #ffffff 100%)',
+        background:
+          'radial-gradient(circle at 15% 20%, rgba(6, 182, 212, 0.13) 0%, transparent 32%), radial-gradient(circle at 78% 12%, rgba(99, 102, 241, 0.14) 0%, transparent 35%), linear-gradient(145deg, #040b1a 0%, #07152c 55%, #0b1e3f 100%)',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -66,14 +67,14 @@ const BenefitsResults = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                background: 'linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%)',
-                border: '1px solid rgba(59, 130, 246, 0.25)',
+                background: 'rgba(6, 182, 212, 0.14)',
+                border: '1px solid rgba(34, 211, 238, 0.35)',
                 padding: '0.5rem 1.25rem',
                 borderRadius: '50px',
                 marginBottom: '1.5rem',
                 fontSize: '0.875rem',
                 fontWeight: '600',
-                color: '#1e3a8a',
+                color: '#67e8f9',
               }}
             >
               <span>💻</span>
@@ -84,7 +85,7 @@ const BenefitsResults = () => {
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3rem)',
                 fontWeight: '800',
-                color: '#1a2129',
+                color: '#e2e8f0',
                 marginBottom: '1rem',
                 letterSpacing: '-0.02em',
               }}
@@ -93,7 +94,7 @@ const BenefitsResults = () => {
               <span
                 style={{
                   background:
-                    'linear-gradient(135deg, #4e83af 0%, #06b6d4 50%, #7c3aed 100%)',
+                    'linear-gradient(135deg, #22d3ee 0%, #60a5fa 45%, #a78bfa 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -106,7 +107,7 @@ const BenefitsResults = () => {
             <p
               style={{
                 fontSize: '1.125rem',
-                color: '#7a8a99',
+                color: '#cbd5e1',
                 lineHeight: '1.7',
               }}
             >
@@ -128,25 +129,26 @@ const BenefitsResults = () => {
               <div
                 key={idx}
                 style={{
-                  background: 'white',
-                  border: '1px solid #f0f2f5',
+                  background: 'rgba(15, 23, 42, 0.84)',
+                  border: '1px solid rgba(148, 163, 184, 0.25)',
                   borderRadius: '20px',
                   padding: '2.5rem',
                   transition: 'all 0.3s ease',
                   cursor: 'pointer',
                   position: 'relative',
                   overflow: 'hidden',
+                  boxShadow: '0 16px 28px rgba(2, 6, 23, 0.38)',
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-8px)';
+                  e.currentTarget.style.transform = 'translateY(-6px)';
                   e.currentTarget.style.boxShadow =
-                    '0 20px 40px rgba(15, 23, 42, 0.12)';
+                    '0 24px 40px rgba(2, 6, 23, 0.55)';
                   e.currentTarget.style.borderColor = benefit.color;
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
-                  e.currentTarget.style.borderColor = '#f0f2f5';
+                  e.currentTarget.style.boxShadow = '0 16px 28px rgba(2, 6, 23, 0.38)';
+                  e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.25)';
                 }}
               >
                 {/* Background decoration */}
@@ -157,7 +159,7 @@ const BenefitsResults = () => {
                     right: '-50px',
                     width: '150px',
                     height: '150px',
-                    background: benefit.bgColor,
+                    background: `${benefit.color}22`,
                     borderRadius: '50%',
                     opacity: 0.5,
                     transition: 'all 0.3s ease',
@@ -169,7 +171,7 @@ const BenefitsResults = () => {
                   style={{
                     width: '70px',
                     height: '70px',
-                    background: benefit.bgColor,
+                    background: `${benefit.color}22`,
                     borderRadius: '16px',
                     display: 'flex',
                     alignItems: 'center',
@@ -188,7 +190,7 @@ const BenefitsResults = () => {
                   style={{
                     fontSize: '1.375rem',
                     fontWeight: '700',
-                    color: '#1a2129',
+                    color: '#e2e8f0',
                     marginBottom: '1rem',
                     position: 'relative',
                     zIndex: 1,
@@ -200,7 +202,7 @@ const BenefitsResults = () => {
                 <p
                   style={{
                     fontSize: '0.95rem',
-                    color: '#7a8a99',
+                    color: '#cbd5e1',
                     lineHeight: '1.7',
                     marginBottom: '1.5rem',
                     position: 'relative',
@@ -213,7 +215,8 @@ const BenefitsResults = () => {
                 {/* Results List */}
                 <div
                   style={{
-                    background: benefit.bgColor,
+                    background: 'rgba(15, 23, 42, 0.76)',
+                    border: `1px solid ${benefit.color}44`,
                     borderRadius: '12px',
                     padding: '1.25rem',
                     position: 'relative',
@@ -250,7 +253,7 @@ const BenefitsResults = () => {
                           alignItems: 'center',
                           gap: '0.5rem',
                           fontSize: '0.875rem',
-                          color: '#1a2129',
+                          color: '#e2e8f0',
                           fontWeight: '500',
                         }}
                       >

@@ -159,7 +159,8 @@ const SubscriptionPlans = () => {
     <section
       style={{
         padding: "6rem 2rem",
-        background: "linear-gradient(135deg, #ffffff 0%, #ffffff 100%)",
+        background:
+          'radial-gradient(circle at 15% 20%, rgba(6, 182, 212, 0.12) 0%, transparent 32%), radial-gradient(circle at 80% 15%, rgba(99, 102, 241, 0.13) 0%, transparent 36%), linear-gradient(145deg, #040b1a 0%, #07152c 55%, #0b1e3f 100%)',
         position: "relative",
       }}
     >
@@ -184,7 +185,7 @@ const SubscriptionPlans = () => {
               marginBottom: "1.5rem",
               fontSize: "0.875rem",
               fontWeight: "600",
-              color: "#92400e",
+              color: "#fef3c7",
             }}
           >
             <span>⚡</span>
@@ -195,7 +196,7 @@ const SubscriptionPlans = () => {
             style={{
               fontSize: "clamp(2rem, 4vw, 2.75rem)",
               fontWeight: "800",
-              color: "#1a2129",
+              color: "#e2e8f0",
               marginBottom: "1rem",
               letterSpacing: "-0.02em",
             }}
@@ -217,7 +218,7 @@ const SubscriptionPlans = () => {
           <div
             style={{
               fontSize: "1.125rem",
-              color: "#7a8a99",
+              color: "#cbd5e1",
               lineHeight: "1.7",
               marginBottom: "2rem",
               maxWidth: "700px",
@@ -244,11 +245,11 @@ const SubscriptionPlans = () => {
               display: "inline-flex",
               alignItems: "center",
               gap: "1rem",
-              background: "white",
+              background: "rgba(15, 23, 42, 0.7)",
               padding: "0.5rem",
               borderRadius: "50px",
-              border: "1px solid #f0f2f5",
-              boxShadow: "0 2px 8px rgba(15, 23, 42, 0.06)",
+              border: "1px solid rgba(148, 163, 184, 0.2)",
+              boxShadow: "0 2px 8px rgba(2, 6, 23, 0.3)",
             }}
           >
             <button
@@ -261,7 +262,7 @@ const SubscriptionPlans = () => {
                   billingCycle === "monthly"
                     ? "linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)"
                     : "transparent",
-                color: billingCycle === "monthly" ? "white" : "#7a8a99",
+                color: billingCycle === "monthly" ? "white" : "#94a3b8",
                 fontWeight: "600",
                 fontSize: "0.9rem",
                 cursor: "pointer",
@@ -280,7 +281,7 @@ const SubscriptionPlans = () => {
                   billingCycle === "yearly"
                     ? "linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)"
                     : "transparent",
-                color: billingCycle === "yearly" ? "white" : "#7a8a99",
+                color: billingCycle === "yearly" ? "white" : "#94a3b8",
                 fontWeight: "600",
                 fontSize: "0.9rem",
                 cursor: "pointer",
@@ -310,7 +311,7 @@ const SubscriptionPlans = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
             gap: "2rem",
             marginBottom: "4rem",
           }}
@@ -322,17 +323,17 @@ const SubscriptionPlans = () => {
               onMouseLeave={() => setHoveredPlan(null)}
               style={{
                 position: "relative",
-                background: "white",
+                background: "rgba(15, 23, 42, 0.84)",
                 border: plan.highlight
-                  ? "2px solid #4e83af"
-                  : "1px solid #f0f2f5",
+                  ? "2px solid #22d3ee"
+                  : "1px solid rgba(148, 163, 184, 0.2)",
                 borderRadius: "20px",
                 padding: "2rem",
                 boxShadow: plan.highlight
-                  ? "0 20px 40px rgba(37, 99, 235, 0.2)"
+                  ? "0 20px 40px rgba(6, 182, 212, 0.25)"
                   : hoveredPlan === idx
-                    ? "0 12px 28px rgba(15, 23, 42, 0.12)"
-                    : "0 4px 12px rgba(15, 23, 42, 0.06)",
+                    ? "0 12px 28px rgba(2, 6, 23, 0.45)"
+                    : "0 4px 12px rgba(2, 6, 23, 0.3)",
                 transform: plan.highlight
                   ? "scale(1.05)"
                   : hoveredPlan === idx
@@ -369,7 +370,7 @@ const SubscriptionPlans = () => {
                   width: "60px",
                   height: "60px",
                   background:
-                    "linear-gradient(135deg, #d9eaf4 0%, #bfdbfe 100%)",
+                    "rgba(34, 211, 238, 0.15)",
                   borderRadius: "50%",
                   display: "flex",
                   alignItems: "center",
@@ -385,7 +386,7 @@ const SubscriptionPlans = () => {
                 style={{
                   fontSize: "1.5rem",
                   fontWeight: "700",
-                  color: "#1a2129",
+                  color: "#e2e8f0",
                   marginBottom: "0.5rem",
                 }}
               >
@@ -395,7 +396,7 @@ const SubscriptionPlans = () => {
               <p
                 style={{
                   fontSize: "0.85rem",
-                  color: "#4e83af",
+                  color: "#38bdf8",
                   fontWeight: "600",
                   marginBottom: "1rem",
                 }}
@@ -406,7 +407,7 @@ const SubscriptionPlans = () => {
               <p
                 style={{
                   fontSize: "0.9rem",
-                  color: "#7a8a99",
+                  color: "#94a3b8",
                   lineHeight: "1.6",
                   marginBottom: "1.5rem",
                 }}
@@ -426,12 +427,12 @@ const SubscriptionPlans = () => {
                     style={{
                       fontSize: "3rem",
                       fontWeight: "800",
-                      color: "#1a2129",
+                      color: "#e2e8f0",
                     }}
                   >
                     R${getPrice(plan)}
                   </span>
-                  <span style={{ color: "#7a8a99", fontSize: "0.95rem" }}>
+                  <span style={{ color: "#94a3b8", fontSize: "0.95rem" }}>
                     /mês
                   </span>
                 </div>
@@ -465,7 +466,7 @@ const SubscriptionPlans = () => {
                       gap: "0.75rem",
                       marginBottom: "0.75rem",
                       fontSize: "0.9rem",
-                      color: "#5a6978",
+                      color: "#cbd5e1",
                     }}
                   >
                     <span
@@ -493,10 +494,10 @@ const SubscriptionPlans = () => {
                 style={{
                   width: "100%",
                   background: plan.highlight
-                    ? "linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)"
-                    : "white",
-                  color: plan.highlight ? "white" : "#4e83af",
-                  border: plan.highlight ? "none" : "2px solid #4e83af",
+                    ? "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)"
+                    : "transparent",
+                  color: plan.highlight ? "white" : "#22d3ee",
+                  border: plan.highlight ? "none" : "2px solid rgba(34, 211, 238, 0.5)",
                   padding: "1rem",
                   borderRadius: "12px",
                   fontSize: "1rem",
@@ -525,7 +526,7 @@ const SubscriptionPlans = () => {
               <p
                 style={{
                   fontSize: "0.8rem",
-                  color: "#7a8a99",
+                  color: "#64748b",
                   textAlign: "center",
                   marginTop: "1rem",
                   fontStyle: "italic",
@@ -541,11 +542,11 @@ const SubscriptionPlans = () => {
         {/* Comparison Table */}
         <div
           style={{
-            background: "white",
+            background: "rgba(15, 23, 42, 0.84)",
             borderRadius: "20px",
             padding: "3rem 2rem",
-            boxShadow: "0 4px 12px rgba(15, 23, 42, 0.06)",
-            border: "1px solid #f0f2f5",
+            boxShadow: "0 4px 12px rgba(2, 6, 23, 0.4)",
+            border: "1px solid rgba(148, 163, 184, 0.2)",
             marginBottom: "4rem",
           }}
         >
@@ -553,7 +554,7 @@ const SubscriptionPlans = () => {
             style={{
               fontSize: "1.75rem",
               fontWeight: "700",
-              color: "#1a2129",
+              color: "#e2e8f0",
               marginBottom: "2rem",
               textAlign: "center",
             }}
@@ -570,14 +571,14 @@ const SubscriptionPlans = () => {
               }}
             >
               <thead>
-                <tr style={{ borderBottom: "2px solid #f0f2f5" }}>
+                <tr style={{ borderBottom: "2px solid rgba(148, 163, 184, 0.2)" }}>
                   <th
                     style={{
                       textAlign: "left",
                       padding: "1rem",
                       fontSize: "0.95rem",
                       fontWeight: "600",
-                      color: "#7a8a99",
+                      color: "#94a3b8",
                     }}
                   >
                     Recurso
@@ -588,7 +589,7 @@ const SubscriptionPlans = () => {
                       padding: "1rem",
                       fontSize: "0.95rem",
                       fontWeight: "600",
-                      color: "#7a8a99",
+                      color: "#94a3b8",
                     }}
                   >
                     Presença Digital
@@ -599,8 +600,8 @@ const SubscriptionPlans = () => {
                       padding: "1rem",
                       fontSize: "0.95rem",
                       fontWeight: "600",
-                      color: "#4e83af",
-                      background: "#ecf5fa",
+                      color: "#22d3ee",
+                      background: "rgba(34, 211, 238, 0.08)",
                     }}
                   >
                     Crescimento Pro
@@ -611,7 +612,7 @@ const SubscriptionPlans = () => {
                       padding: "1rem",
                       fontSize: "0.95rem",
                       fontWeight: "600",
-                      color: "#7a8a99",
+                      color: "#94a3b8",
                     }}
                   >
                     Enterprise
@@ -628,8 +629,8 @@ const SubscriptionPlans = () => {
                           padding: "1.5rem 1rem 0.75rem",
                           fontSize: "1rem",
                           fontWeight: "700",
-                          color: "#1a2129",
-                          background: "#ffffff",
+                        color: "#e2e8f0",
+                        background: "rgba(15, 23, 42, 0.84)",
                         }}
                       >
                         {category.category}
@@ -639,14 +640,14 @@ const SubscriptionPlans = () => {
                       <tr
                         key={`feat-${catIdx}-${featIdx}`}
                         style={{
-                          borderBottom: "1px solid #fafbfc",
+                          borderBottom: "1px solid rgba(148, 163, 184, 0.1)",
                         }}
                       >
                         <td
                           style={{
                             padding: "1rem",
                             fontSize: "0.9rem",
-                            color: "#5a6978",
+                            color: "#94a3b8",
                           }}
                         >
                           {feature.name}
@@ -675,7 +676,7 @@ const SubscriptionPlans = () => {
                           style={{
                             textAlign: "center",
                             padding: "1rem",
-                            background: "#ecf5fa",
+                            background: "rgba(34, 211, 238, 0.08)",
                           }}
                         >
                           {feature.pro ? (

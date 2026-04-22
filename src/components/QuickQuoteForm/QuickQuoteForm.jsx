@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import "./QuickQuoteForm.css";
 
 const QuickQuoteForm = () => {
   const [formData, setFormData] = useState({
@@ -307,7 +308,7 @@ const QuickQuoteForm = () => {
           {/* Right Column - Form */}
           <div
             style={{
-              background: "white",
+              background: "rgba(7, 21, 44, 0.98)",
               borderRadius: "20px",
               padding: "2.5rem",
               boxShadow: "0 20px 60px rgba(0, 0, 0, 0.4)",
@@ -315,12 +316,12 @@ const QuickQuoteForm = () => {
             }}
           >
             {!showSuccess ? (
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className="quick-quote-form">
                 <h3
                   style={{
                     fontSize: "1.5rem",
                     fontWeight: "700",
-                    color: "#1a2129",
+                    color: "#e2e8f0",
                     marginBottom: "1.5rem",
                   }}
                 >
@@ -356,7 +357,7 @@ const QuickQuoteForm = () => {
                       display: "block",
                       fontSize: "0.875rem",
                       fontWeight: "600",
-                      color: "#5a6978",
+                      color: "#94a3b8",
                       marginBottom: "0.5rem",
                     }}
                   >
@@ -373,10 +374,10 @@ const QuickQuoteForm = () => {
                     style={{
                       width: "100%",
                       padding: "0.875rem 1rem",
-                      border: "2px solid #f0f2f5",
+                      border: "2px solid rgba(148, 163, 184, 0.2)",
                       borderRadius: "10px",
                       fontSize: "0.95rem",
-                      color: "#1a2129",
+                      color: "#e2e8f0",
                       transition: "all 0.2s ease",
                       outline: "none",
                     }}
@@ -386,7 +387,7 @@ const QuickQuoteForm = () => {
                         "0 0 0 4px rgba(37, 99, 235, 0.1)";
                     }}
                     onBlur={(e) => {
-                      e.target.style.borderColor = "#f0f2f5";
+                      e.target.style.borderColor = "rgba(148, 163, 184, 0.2)";
                       e.target.style.boxShadow = "none";
                     }}
                   />
@@ -400,7 +401,7 @@ const QuickQuoteForm = () => {
                       display: "block",
                       fontSize: "0.875rem",
                       fontWeight: "600",
-                      color: "#5a6978",
+                      color: "#94a3b8",
                       marginBottom: "0.5rem",
                     }}
                   >
@@ -417,10 +418,10 @@ const QuickQuoteForm = () => {
                     style={{
                       width: "100%",
                       padding: "0.875rem 1rem",
-                      border: "2px solid #f0f2f5",
+                      border: "2px solid rgba(148, 163, 184, 0.2)",
                       borderRadius: "10px",
                       fontSize: "0.95rem",
-                      color: "#1a2129",
+                      color: "#e2e8f0",
                       transition: "all 0.2s ease",
                       outline: "none",
                     }}
@@ -430,7 +431,7 @@ const QuickQuoteForm = () => {
                         "0 0 0 4px rgba(37, 99, 235, 0.1)";
                     }}
                     onBlur={(e) => {
-                      e.target.style.borderColor = "#f0f2f5";
+                      e.target.style.borderColor = "rgba(148, 163, 184, 0.2)";
                       e.target.style.boxShadow = "none";
                     }}
                   />
@@ -444,7 +445,7 @@ const QuickQuoteForm = () => {
                       display: "block",
                       fontSize: "0.875rem",
                       fontWeight: "600",
-                      color: "#5a6978",
+                      color: "#94a3b8",
                       marginBottom: "0.5rem",
                     }}
                   >
@@ -460,10 +461,10 @@ const QuickQuoteForm = () => {
                     style={{
                       width: "100%",
                       padding: "0.875rem 1rem",
-                      border: "2px solid #f0f2f5",
+                      border: "2px solid rgba(148, 163, 184, 0.2)",
                       borderRadius: "10px",
                       fontSize: "0.95rem",
-                      color: "#1a2129",
+                      color: "#e2e8f0",
                       transition: "all 0.2s ease",
                       outline: "none",
                     }}
@@ -473,7 +474,7 @@ const QuickQuoteForm = () => {
                         "0 0 0 4px rgba(37, 99, 235, 0.1)";
                     }}
                     onBlur={(e) => {
-                      e.target.style.borderColor = "#f0f2f5";
+                      e.target.style.borderColor = "rgba(148, 163, 184, 0.2)";
                       e.target.style.boxShadow = "none";
                     }}
                   />
@@ -487,7 +488,7 @@ const QuickQuoteForm = () => {
                       display: "block",
                       fontSize: "0.875rem",
                       fontWeight: "600",
-                      color: "#5a6978",
+                      color: "#94a3b8",
                       marginBottom: "0.5rem",
                     }}
                   >
@@ -502,14 +503,14 @@ const QuickQuoteForm = () => {
                     style={{
                       width: "100%",
                       padding: "0.875rem 1rem",
-                      border: "2px solid #f0f2f5",
+                      border: "2px solid rgba(148, 163, 184, 0.2)",
                       borderRadius: "10px",
                       fontSize: "0.95rem",
-                      color: "#1a2129",
+                      color: "#e2e8f0",
                       transition: "all 0.2s ease",
                       outline: "none",
                       cursor: "pointer",
-                      backgroundColor: "white",
+                      backgroundColor: "rgba(7, 21, 44, 0.98)",
                     }}
                     onFocus={(e) => {
                       e.target.style.borderColor = "#4e83af";
@@ -517,7 +518,7 @@ const QuickQuoteForm = () => {
                         "0 0 0 4px rgba(37, 99, 235, 0.1)";
                     }}
                     onBlur={(e) => {
-                      e.target.style.borderColor = "#f0f2f5";
+                      e.target.style.borderColor = "rgba(148, 163, 184, 0.2)";
                       e.target.style.boxShadow = "none";
                     }}
                   >
@@ -632,7 +633,7 @@ const QuickQuoteForm = () => {
                   style={{
                     fontSize: "1.5rem",
                     fontWeight: "700",
-                    color: "#1a2129",
+                    color: "#e2e8f0",
                     marginBottom: "0.75rem",
                   }}
                 >
