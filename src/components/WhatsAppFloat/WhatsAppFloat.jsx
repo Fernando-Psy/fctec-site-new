@@ -3,6 +3,42 @@ import { useState, useEffect } from 'react';
 const WhatsAppFloat = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [isVerySmallScreen, setIsVerySmallScreen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return undefined;
+    }
+
+    const touchMediaQuery = window.matchMedia('(hover: none), (pointer: coarse)');
+    const verySmallMediaQuery = window.matchMedia('(max-width: 480px)');
+    const updateTouchMode = () => setIsTouchDevice(touchMediaQuery.matches);
+    const updateVerySmallMode = () =>
+      setIsVerySmallScreen(verySmallMediaQuery.matches);
+
+    updateTouchMode();
+    updateVerySmallMode();
+
+    if (
+      typeof touchMediaQuery.addEventListener === 'function' &&
+      typeof verySmallMediaQuery.addEventListener === 'function'
+    ) {
+      touchMediaQuery.addEventListener('change', updateTouchMode);
+      verySmallMediaQuery.addEventListener('change', updateVerySmallMode);
+      return () => {
+        touchMediaQuery.removeEventListener('change', updateTouchMode);
+        verySmallMediaQuery.removeEventListener('change', updateVerySmallMode);
+      };
+    }
+
+    touchMediaQuery.addListener(updateTouchMode);
+    verySmallMediaQuery.addListener(updateVerySmallMode);
+    return () => {
+      touchMediaQuery.removeListener(updateTouchMode);
+      verySmallMediaQuery.removeListener(updateVerySmallMode);
+    };
+  }, []);
 
   useEffect(() => {
     let showTooltipTimer;
@@ -44,10 +80,19 @@ const WhatsAppFloat = () => {
           cursor: 'pointer',
           transform: isVisible ? 'scale(1)' : 'scale(0)',
           transition: 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-          animation: isVisible ? 'pulse 2s infinite' : 'none',
+          animation: isVisible
+            ? isTouchDevice
+              ? isVerySmallScreen
+                ? 'pulseTiny 5.4s ease-in-out infinite'
+                : 'pulseSoft 4.8s ease-in-out infinite'
+              : 'pulse 2s infinite'
+            : 'none',
+          willChange: 'transform',
+          backfaceVisibility: 'hidden',
+          WebkitTapHighlightColor: 'transparent',
         }}
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
+        onMouseEnter={!isTouchDevice ? () => setShowTooltip(true) : undefined}
+        onMouseLeave={!isTouchDevice ? () => setShowTooltip(false) : undefined}
       >
         {/* Círculo de Fundo com Pulso */}
         <div
@@ -60,7 +105,11 @@ const WhatsAppFloat = () => {
             height: '76px',
             background: 'rgba(34, 211, 238, 0.22)',
             borderRadius: '50%',
-            animation: 'ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+            animation: isTouchDevice
+              ? isVerySmallScreen
+                ? 'pingTiny 4.6s cubic-bezier(0.22, 1, 0.36, 1) infinite'
+                : 'pingSoft 3.6s cubic-bezier(0.22, 1, 0.36, 1) infinite'
+              : 'ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite',
           }}
         />
 
@@ -116,7 +165,11 @@ const WhatsAppFloat = () => {
               fontSize: '10px',
               fontWeight: '700',
               color: '#0f172a',
-              animation: 'bounce 1s infinite',
+              animation: isTouchDevice
+                ? isVerySmallScreen
+                  ? 'bounceTiny 3s ease-in-out infinite'
+                  : 'bounceSoft 2.4s ease-in-out infinite'
+                : 'bounce 1s infinite',
             }}
           >
             1
@@ -270,6 +323,72 @@ const WhatsAppFloat = () => {
           }
           50% {
             transform: translateY(-5px);
+          }
+        }
+
+        @keyframes pulseSoft {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.017);
+          }
+        }
+
+        @keyframes pingSoft {
+          0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.35;
+          }
+          70% {
+            transform: translate(-50%, -50%) scale(1.15);
+            opacity: 0.08;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(1.18);
+            opacity: 0;
+          }
+        }
+
+        @keyframes bounceSoft {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-1.7px);
+          }
+        }
+
+        @keyframes pulseTiny {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.012);
+          }
+        }
+
+        @keyframes pingTiny {
+          0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.3;
+          }
+          70% {
+            transform: translate(-50%, -50%) scale(1.12);
+            opacity: 0.07;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(1.15);
+            opacity: 0;
+          }
+        }
+
+        @keyframes bounceTiny {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-1.2px);
           }
         }
 

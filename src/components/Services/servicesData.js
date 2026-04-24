@@ -1,7 +1,7 @@
-import googleMapsImage from "../../assets/images/google_maps.jpeg";
-import site1Image from "../../assets/images/site1.jpeg";
-import siteManutencao from "../../assets/images/manutencao.jpg";
-import siteImage from "../../assets/images/site.jpg";
+import googleMapsImage from "../../assets/images/google_maps.webp";
+import site1Image from "../../assets/images/site1.webp";
+import siteManutencao from "../../assets/images/manutencao.webp";
+import siteImage from "../../assets/images/site.webp";
 
 export const servicesData = [
   {

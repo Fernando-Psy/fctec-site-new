@@ -1,0 +1,121 @@
+.soro-blog-section {
+    position: relative;
+    padding: 72px 0;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.12), transparent 34%),
+        radial-gradient(circle at 85% 18%, rgba(16, 185, 129, 0.12), transparent 36%),
+        linear-gradient(180deg, #040b1a 0%, #07152c 100%);
+}
+
+.soro-blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.fctec-blog-page-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.fctec-blog-page-eyebrow {
+    margin: 0;
+    color: #7dd3fc;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.fctec-blog-page-title {
+    margin: 8px 0 0;
+    font-size: clamp(32px, 4vw, 44px);
+    color: #f4f7fb;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.fctec-blog-page-subtitle {
+    margin: 12px auto 0;
+    max-width: 720px;
+    color: #b9cbe6;
+    line-height: 1.6;
+}
+
+.soro-blog-shell {
+    border-radius: 16px;
+    border: 1px solid rgba(103, 212, 255, 0.18);
+    background: rgba(7, 21, 44, 0.65);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    min-height: 620px;
+}
+
+.soro-blog-placeholder {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c2d3ee;
+    padding: 24px;
+    text-align: center;
+}
+
+.soro-blog-content {
+    min-height: 620px;
+    padding: 14px;
+}
+
+/*
+ * Isolamento de tipografia e contraste para o embed de terceiros.
+ * Evita que estilos globais do site reduzam a legibilidade dentro do blog.
+ */
+.soro-blog-content,
+.soro-blog-content * {
+    color: #dbeafe;
+}
+
+.soro-blog-content :is(h1, h2, h3, h4, h5, h6) {
+    color: #f8fbff !important;
+    font-weight: 700;
+}
+
+.soro-blog-content p,
+.soro-blog-content li,
+.soro-blog-content small,
+.soro-blog-content time,
+.soro-blog-content span {
+    color: #c8d8f4 !important;
+}
+
+.soro-blog-content a {
+    color: #67d4ff !important;
+    text-decoration: none;
+}
+
+.soro-blog-content a:hover,
+.soro-blog-content a:focus-visible {
+    color: #a8e8ff !important;
+    text-decoration: underline;
+}
+
+/* Realce sutil para o texto principal em cards sem interferir no layout. */
+.soro-blog-content :is(article, [role='article']) {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+    .soro-blog-section {
+        padding: 56px 0;
+    }
+
+    .soro-blog-shell,
+    .soro-blog-placeholder,
+    .soro-blog-content {
+        min-height: 520px;
+    }
+
+    .soro-blog-content {
+        padding: 10px;
+    }
+}

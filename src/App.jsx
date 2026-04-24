@@ -36,6 +36,7 @@ const BenefitsResults = lazy(
 const FreeResources = lazy(
   () => import('./components/FreeResources/FreeResources')
 );
+const SoroBlog = lazy(() => import('./components/SoroBlog/SoroBlog'));
 const ContactForm = lazy(() => import('./components/ContactForm/ContactForm'));
 const FAQ = lazy(() => import('./components/FAQ/FAQ'));
 const Location = lazy(() => import('./components/Location/Location'));
@@ -135,6 +136,21 @@ function App() {
                 <main>
                   <Suspense fallback={<LoadingFallback />}>
                     <ServiceDetails />
+                  </Suspense>
+                </main>
+              </>
+            }
+          />
+
+          {/* Blog */}
+          <Route
+            path="/blog"
+            element={
+              <>
+                <SEO {...SEOPages.blog} />
+                <main>
+                  <Suspense fallback={<LoadingFallback />}>
+                    <SoroBlog />
                   </Suspense>
                 </main>
               </>

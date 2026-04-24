@@ -12,6 +12,11 @@ const Header = () => {
 
   const handleNavClick = () => setExpanded(false);
 
+  const goToBlog = () => {
+    navigate('/blog');
+    handleNavClick();
+  };
+
   const scrollToSection = (sectionId) => {
     // Se não estiver na home, navegar primeiro
     if (location.pathname !== '/') {
@@ -97,6 +102,10 @@ const Header = () => {
                 onClick={() => scrollToSection('location')}
               >
                 <span className="nav-text">Contato</span>
+              </Nav.Link>
+
+              <Nav.Link className="nav-link-custom" onClick={goToBlog}>
+                <span className="nav-text">Blog</span>
               </Nav.Link>
 
               <div className="nav-cta-wrapper">
