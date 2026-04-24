@@ -89,7 +89,7 @@ const ServiceDetails = () => {
                   alt={service.title}
                   loading="lazy"
                   decoding="async"
-                  fetchPriority="low"
+                  fetchpriority="low"
                   style={{
                     width: '100%',
                     height: 'auto',
