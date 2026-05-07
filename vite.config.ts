@@ -108,7 +108,7 @@ export default defineConfig({
     cssCodeSplit: true,
     cssMinify: true,
   },
-  base: './',
+  base: '/',
   // Otimizações de dependências
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
