@@ -1,5 +1,10 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom';
 
 // CSS Crítico (carregado imediatamente)
 import './styles/bootstrap-critical.css'; // Bootstrap mínimo para Hero/Header
@@ -37,6 +42,7 @@ const FreeResources = lazy(
   () => import('./components/FreeResources/FreeResources')
 );
 const SoroBlog = lazy(() => import('./components/SoroBlog/SoroBlog'));
+const AdminBlog = lazy(() => import('./components/AdminBlog/AdminBlog'));
 const ContactForm = lazy(() => import('./components/ContactForm/ContactForm'));
 const FAQ = lazy(() => import('./components/FAQ/FAQ'));
 const Location = lazy(() => import('./components/Location/Location'));
@@ -63,9 +69,11 @@ const LoadingFallback = () => (
   </div>
 );
 
-function App() {
+function AppContent() {
   // Detectar conexão lenta para otimizações adaptativas
   const isSlowConnection = useIsSlowConnection();
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
 
   // Carregar Bootstrap CSS de forma assíncrona após renderização inicial
   useEffect(() => {
@@ -88,10 +96,10 @@ function App() {
   }, [isSlowConnection]);
 
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="App">
-        <Header />
+        {!isAdminRoute ? <Header /> : null}
         <Routes>
           {/* Página Principal */}
           <Route
@@ -157,6 +165,31 @@ function App() {
             }
           />
 
+          <Route
+            path="/blog/:slug"
+            element={
+              <>
+                <SEO {...SEOPages.blog} />
+                <main>
+                  <Suspense fallback={<LoadingFallback />}>
+                    <SoroBlog />
+                  </Suspense>
+                </main>
+              </>
+            }
+          />
+
+          <Route
+            path="/admin"
+            element={
+              <main>
+                <Suspense fallback={<LoadingFallback />}>
+                  <AdminBlog />
+                </Suspense>
+              </main>
+            }
+          />
+
           {/* Política de Privacidade */}
           <Route
             path="/politica-privacidade"
@@ -193,11 +226,23 @@ function App() {
             }
           />
         </Routes>
-        <Suspense fallback={<LoadingFallback />}>
-          <Footer />
-        </Suspense>
-        <WhatsAppFloat />
+        {!isAdminRoute ? (
+          <>
+            <Suspense fallback={<LoadingFallback />}>
+              <Footer />
+            </Suspense>
+            <WhatsAppFloat />
+          </>
+        ) : null}
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

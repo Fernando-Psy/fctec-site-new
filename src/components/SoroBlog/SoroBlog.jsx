@@ -1,96 +1,195 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import './SoroBlog.css';
+import { hasFirebaseConfig } from '../../lib/firebase';
+import { fetchPostBySlug, fetchPublishedPosts } from '../../services/firebaseBlog';
+import { renderRichText } from '../../utils/renderRichText';
 
-const SORO_SCRIPT_SRC =
-  'https://app.trysoro.com/api/embed/c3d7b215-0541-483d-822d-6e4914f17a0f';
-const SORO_CONTAINER_ID = 'soro-blog';
-const SORO_SCRIPT_SELECTOR = 'script[data-soro-embed="fctec-blog"]';
+const formatDate = (date) => {
+  if (!date) {
+    return 'Rascunho';
+  }
+
+  return new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  }).format(date);
+};
 
 const SoroBlog = () => {
-  const sectionRef = useRef(null);
-  const [shouldLoadEmbed, setShouldLoadEmbed] = useState(false);
+  const { slug } = useParams();
+  const [posts, setPosts] = useState([]);
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [status, setStatus] = useState('idle');
+  const [error, setError] = useState('');
+
+  const isDetailPage = Boolean(slug);
+  const headerText = useMemo(
+    () => ({
+      eyebrow: isDetailPage ? 'Artigo' : 'Conteudo pratico para negocios locais',
+      title: isDetailPage ? selectedPost?.title || 'Carregando artigo' : 'Blog da FCBJ',
+      subtitle: isDetailPage
+        ? selectedPost?.excerpt ||
+          'Insights sobre site, Google e operacao comercial para negocios locais.'
+        : 'Guias diretos sobre site, Google, CRM e captacao para ajudar voce a crescer com mais previsibilidade.',
+    }),
+    [isDetailPage, selectedPost]
+  );
 
   useEffect(() => {
-    if (shouldLoadEmbed) {
+    if (!hasFirebaseConfig) {
+      setStatus('error');
+      setError(
+        'Firebase ainda nao foi configurado neste ambiente. Preencha as variaveis VITE_FIREBASE_* para publicar e listar posts.'
+      );
       return undefined;
     }
 
-    const section = sectionRef.current;
-    if (!section) {
-      return undefined;
-    }
+    let isMounted = true;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          setShouldLoadEmbed(true);
-          observer.disconnect();
+    const loadBlog = async () => {
+      try {
+        setStatus('loading');
+        setError('');
+
+        if (slug) {
+          const post = await fetchPostBySlug(slug);
+
+          if (!isMounted) {
+            return;
+          }
+
+          if (!post) {
+            setSelectedPost(null);
+            setStatus('empty');
+            return;
+          }
+
+          setSelectedPost(post);
+          setStatus('success');
+          return;
         }
-      },
-      {
-        rootMargin: '300px 0px',
-        threshold: 0,
+
+        const publishedPosts = await fetchPublishedPosts();
+
+        if (!isMounted) {
+          return;
+        }
+
+        setPosts(publishedPosts);
+        setStatus(publishedPosts.length ? 'success' : 'empty');
+      } catch (loadError) {
+        if (!isMounted) {
+          return;
+        }
+
+        setError(
+          loadError.message || 'Nao foi possivel carregar os artigos agora.'
+        );
+        setStatus('error');
       }
-    );
+    };
 
-    observer.observe(section);
-
-    return () => observer.disconnect();
-  }, [shouldLoadEmbed]);
-
-  useEffect(() => {
-    if (!shouldLoadEmbed) {
-      return undefined;
-    }
-
-    const container = document.getElementById(SORO_CONTAINER_ID);
-    if (!container) {
-      return undefined;
-    }
-
-    // Em navegação SPA, o script pode já existir e não reinicializar no novo mount.
-    // Remove instâncias antigas para forçar bootstrap limpo do embed.
-    document.querySelectorAll(SORO_SCRIPT_SELECTOR).forEach((scriptNode) => {
-      scriptNode.remove();
-    });
-
-    container.innerHTML = '';
-
-    const script = document.createElement('script');
-    script.src = SORO_SCRIPT_SRC;
-    script.defer = true;
-    script.async = true;
-    script.setAttribute('data-soro-embed', 'fctec-blog');
-    document.body.appendChild(script);
+    loadBlog();
 
     return () => {
-      script.remove();
-      container.innerHTML = '';
+      isMounted = false;
     };
-  }, [shouldLoadEmbed]);
+  }, [slug]);
 
   return (
-    <section id="blog" className="soro-blog-section" ref={sectionRef}>
+    <section id="blog" className="soro-blog-section">
       <div className="soro-blog-container">
         <header className="fctec-blog-page-header">
-          <p className="fctec-blog-page-eyebrow">Conteudo pratico para negocios locais</p>
-          <h1 className="fctec-blog-page-title">Blog da FCBJ</h1>
-          <p className="fctec-blog-page-subtitle">
-            Guias diretos sobre site, Google, CRM e captacao para ajudar voce a
-            crescer com mais previsibilidade.
-          </p>
+          <p className="fctec-blog-page-eyebrow">{headerText.eyebrow}</p>
+          <h1 className="fctec-blog-page-title">{headerText.title}</h1>
+          <p className="fctec-blog-page-subtitle">{headerText.subtitle}</p>
         </header>
 
         <div className="soro-blog-shell">
-          {shouldLoadEmbed ? (
-            <div id={SORO_CONTAINER_ID} className="soro-blog-content" />
-          ) : (
-            <div className="soro-blog-placeholder">
-              O blog sera carregado automaticamente quando esta secao entrar na
-              tela.
+          {status === 'loading' ? (
+            <div className="soro-blog-placeholder">Carregando conteudo...</div>
+          ) : null}
+
+          {status === 'error' ? (
+            <div className="soro-blog-placeholder soro-blog-feedback">
+              <p>{error}</p>
+              <p>
+                Configure o Firebase e acesse <Link to="/admin">/admin</Link>{' '}
+                para publicar artigos.
+              </p>
             </div>
-          )}
+          ) : null}
+
+          {status === 'empty' && isDetailPage ? (
+            <div className="soro-blog-placeholder soro-blog-feedback">
+              <p>Este artigo nao foi encontrado ou ainda nao foi publicado.</p>
+              <Link className="soro-blog-back-link" to="/blog">
+                Voltar para a lista de artigos
+              </Link>
+            </div>
+          ) : null}
+
+          {status === 'empty' && !isDetailPage ? (
+            <div className="soro-blog-placeholder soro-blog-feedback">
+              <p>O blog ainda nao tem artigos publicados.</p>
+              <p>Use o painel admin para criar o primeiro post.</p>
+            </div>
+          ) : null}
+
+          {status === 'success' && isDetailPage && selectedPost ? (
+            <article className="soro-blog-post">
+              {selectedPost.coverImage ? (
+                <img
+                  className="soro-blog-post-cover"
+                  src={selectedPost.coverImage}
+                  alt={selectedPost.title}
+                />
+              ) : null}
+
+              <div className="soro-blog-post-meta">
+                <span>{formatDate(selectedPost.publishedAt || selectedPost.updatedAt)}</span>
+                <span>{selectedPost.author || 'Equipe FCBJ'}</span>
+              </div>
+
+              <div className="soro-blog-post-content">
+                {renderRichText(selectedPost.content)}
+              </div>
+
+              <Link className="soro-blog-back-link" to="/blog">
+                Voltar para todos os artigos
+              </Link>
+            </article>
+          ) : null}
+
+          {status === 'success' && !isDetailPage ? (
+            <div className="soro-blog-grid">
+              {posts.map((post) => (
+                <article key={post.id} className="soro-blog-card">
+                  {post.coverImage ? (
+                    <img
+                      className="soro-blog-card-image"
+                      src={post.coverImage}
+                      alt={post.title}
+                    />
+                  ) : null}
+
+                  <div className="soro-blog-card-body">
+                    <div className="soro-blog-card-meta">
+                      <span>{formatDate(post.publishedAt || post.updatedAt)}</span>
+                      <span>{post.author || 'Equipe FCBJ'}</span>
+                    </div>
+                    <h2>{post.title}</h2>
+                    <p>{post.excerpt}</p>
+                    <Link className="soro-blog-card-link" to={`/blog/${post.slug}`}>
+                      Ler artigo
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
