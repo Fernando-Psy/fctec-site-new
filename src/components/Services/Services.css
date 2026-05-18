@@ -18,6 +18,27 @@
   animation: fadeInUp 0.6s ease-out;
 }
 
+/* ===== GRUPOS DE CATEGORIA (Firestore) ===== */
+.services-category-group {
+  margin-bottom: 4rem;
+}
+
+.services-category-title {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  color: #e2e8f0;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.services-category-desc {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
 .services-badge {
   display: inline-flex;
   align-items: center;

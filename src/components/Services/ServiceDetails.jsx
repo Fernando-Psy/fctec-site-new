@@ -3,6 +3,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import ContactModal from './ContactModal';
 import { servicesData } from './servicesData';
+import { hasFirebaseConfig } from '../../lib/firebase';
+import { fetchServiceBySlug } from '../../services/firebaseServices';
 import { scrollToElement } from '../../utils/scrollUtils';
 import './ServiceDetails.css';
 
@@ -13,16 +15,36 @@ const ServiceDetails = () => {
   const [service, setService] = useState(null);
 
   useEffect(() => {
-    const foundService = servicesData.find((s) => s.id === serviceId);
-    if (foundService) {
-      setService(foundService);
-      // Usar requestAnimationFrame para evitar reflow forçado após setState
-      requestAnimationFrame(() => {
-        window.scrollTo({ top: 0, behavior: 'auto' });
-      });
-    } else {
-      navigate('/');
-    }
+    const loadService = async () => {
+      // 1. Tenta buscar no Firestore
+      if (hasFirebaseConfig) {
+        try {
+          const firestoreService = await fetchServiceBySlug(serviceId);
+          if (firestoreService) {
+            setService(firestoreService);
+            requestAnimationFrame(() => {
+              window.scrollTo({ top: 0, behavior: 'auto' });
+            });
+            return;
+          }
+        } catch {
+          // fallback silencioso para dados estáticos
+        }
+      }
+
+      // 2. Fallback para dados estáticos
+      const foundService = servicesData.find((s) => s.id === serviceId);
+      if (foundService) {
+        setService(foundService);
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: 0, behavior: 'auto' });
+        });
+      } else {
+        navigate('/');
+      }
+    };
+
+    loadService();
   }, [serviceId, navigate]);
 
   if (!service) return null;

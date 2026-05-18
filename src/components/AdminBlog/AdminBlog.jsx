@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import './AdminBlog.css';
+import '../AdminServices/AdminServices.css';
+import AdminServices from '../AdminServices/AdminServices';
 import { hasFirebaseConfig } from '../../lib/firebase';
 import {
   deleteBlogPostWithAssets,
@@ -52,6 +54,7 @@ const AdminBlog = () => {
   const [statusMessage, setStatusMessage] = useState('');
   const [loadError, setLoadError] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [activeSection, setActiveSection] = useState('blog');
   const editorRef = useRef(null);
 
   const formTitle = useMemo(
@@ -376,6 +379,26 @@ const AdminBlog = () => {
 
   return (
     <section className="admin-blog-page">
+      <div className="admin-section-tab-bar">
+        <button
+          type="button"
+          className={`admin-section-tab${activeSection === 'blog' ? ' active' : ''}`}
+          onClick={() => setActiveSection('blog')}
+        >
+          Blog
+        </button>
+        <button
+          type="button"
+          className={`admin-section-tab${activeSection === 'services' ? ' active' : ''}`}
+          onClick={() => setActiveSection('services')}
+        >
+          Serviços
+        </button>
+      </div>
+
+      {activeSection === 'services' ? (
+        <AdminServices user={user} onLogout={handleLogout} />
+      ) : (
       <div className="admin-blog-shell">
         <aside className="admin-blog-sidebar">
           <div>
@@ -613,6 +636,7 @@ const AdminBlog = () => {
           </form>
         </div>
       </div>
+      )}
     </section>
   );
 };

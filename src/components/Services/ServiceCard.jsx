@@ -8,7 +8,7 @@ const ServiceCard = ({ service }) => {
   const { id, image, title, description, features = [], icon } = service;
 
   const handleClick = () => {
-    navigate(`/servicos/${id}`);
+    navigate(`/servicos/${service.slug || service.id}`);
   };
 
   return (
