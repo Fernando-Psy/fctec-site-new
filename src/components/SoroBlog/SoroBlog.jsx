@@ -27,12 +27,12 @@ const SoroBlog = () => {
   const isDetailPage = Boolean(slug);
   const headerText = useMemo(
     () => ({
-      eyebrow: isDetailPage ? 'Artigo' : 'Conteudo pratico para negocios locais',
+      eyebrow: isDetailPage ? 'Artigo' : 'Conteúdo prático para negócios locais',
       title: isDetailPage ? selectedPost?.title || 'Carregando artigo' : 'Blog da FCBJ',
       subtitle: isDetailPage
         ? selectedPost?.excerpt ||
-          'Insights sobre site, Google e operacao comercial para negocios locais.'
-        : 'Guias diretos sobre site, Google, CRM e captacao para ajudar voce a crescer com mais previsibilidade.',
+          'Insights sobre site, Google e operação comercial para negócios locais.'
+        : 'Guias diretos sobre site, Google, CRM e captação para ajudar você a crescer com mais previsibilidade.',
     }),
     [isDetailPage, selectedPost]
   );
@@ -41,7 +41,7 @@ const SoroBlog = () => {
     if (!hasFirebaseConfig) {
       setStatus('error');
       setError(
-        'Firebase ainda nao foi configurado neste ambiente. Preencha as variaveis VITE_FIREBASE_* para publicar e listar posts.'
+        'Firebase ainda não foi configurado neste ambiente. Preencha as variáveis VITE_FIREBASE_* para publicar e listar posts.'
       );
       return undefined;
     }
@@ -85,7 +85,7 @@ const SoroBlog = () => {
         }
 
         setError(
-          loadError.message || 'Nao foi possivel carregar os artigos agora.'
+          loadError.message || 'Não foi possível carregar os artigos agora.'
         );
         setStatus('error');
       }
@@ -109,7 +109,7 @@ const SoroBlog = () => {
 
         <div className="soro-blog-shell">
           {status === 'loading' ? (
-            <div className="soro-blog-placeholder">Carregando conteudo...</div>
+            <div className="soro-blog-placeholder">Carregando conteúdo...</div>
           ) : null}
 
           {status === 'error' ? (
@@ -124,7 +124,7 @@ const SoroBlog = () => {
 
           {status === 'empty' && isDetailPage ? (
             <div className="soro-blog-placeholder soro-blog-feedback">
-              <p>Este artigo nao foi encontrado ou ainda nao foi publicado.</p>
+              <p>Este artigo não foi encontrado ou ainda não foi publicado.</p>
               <Link className="soro-blog-back-link" to="/blog">
                 Voltar para a lista de artigos
               </Link>
@@ -133,7 +133,7 @@ const SoroBlog = () => {
 
           {status === 'empty' && !isDetailPage ? (
             <div className="soro-blog-placeholder soro-blog-feedback">
-              <p>O blog ainda nao tem artigos publicados.</p>
+              <p>O blog ainda não tem artigos publicados.</p>
               <p>Use o painel admin para criar o primeiro post.</p>
             </div>
           ) : null}

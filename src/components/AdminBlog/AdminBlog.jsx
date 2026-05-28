@@ -68,7 +68,7 @@ const AdminBlog = () => {
       const allPosts = await fetchAllPosts();
       setPosts(allPosts);
     } catch (error) {
-      setLoadError(error.message || 'Nao foi possivel carregar os posts.');
+      setLoadError(error.message || 'Não foi possível carregar os posts.');
     }
   };
 
@@ -167,7 +167,7 @@ const AdminBlog = () => {
     try {
       await loginAdmin(loginData.email, loginData.password);
     } catch (error) {
-      setLoginError('Login invalido. Confirme email e senha cadastrados no Firebase Auth.');
+      setLoginError('Login inválido. Confirme e-mail e senha cadastrados no Firebase Auth.');
     } finally {
       setBusy(false);
     }
@@ -177,7 +177,7 @@ const AdminBlog = () => {
     event.preventDefault();
 
     if (!form.title.trim() || !form.content.trim()) {
-      setStatusMessage('Preencha titulo e conteudo antes de salvar.');
+      setStatusMessage('Preencha título e conteúdo antes de salvar.');
       return;
     }
 
@@ -190,7 +190,7 @@ const AdminBlog = () => {
       resetForm();
       setStatusMessage('Artigo salvo com sucesso.');
     } catch (error) {
-      setStatusMessage(error.message || 'Nao foi possivel salvar o artigo.');
+      setStatusMessage(error.message || 'Não foi possível salvar o artigo.');
     } finally {
       setBusy(false);
     }
@@ -230,9 +230,9 @@ const AdminBlog = () => {
         resetForm();
       }
 
-      setStatusMessage('Artigo excluido com sucesso.');
+      setStatusMessage('Artigo excluído com sucesso.');
     } catch (error) {
-      setStatusMessage(error.message || 'Nao foi possivel excluir o artigo.');
+      setStatusMessage(error.message || 'Não foi possível excluir o artigo.');
     } finally {
       setBusy(false);
     }
@@ -257,7 +257,7 @@ const AdminBlog = () => {
       }));
       setStatusMessage('Imagem de capa enviada com sucesso.');
     } catch (error) {
-      setStatusMessage(error.message || 'Nao foi possivel enviar a imagem.');
+      setStatusMessage(error.message || 'Não foi possível enviar a imagem.');
     } finally {
       target.value = '';
       setUploadingImage(false);
@@ -284,7 +284,7 @@ const AdminBlog = () => {
       }));
       setStatusMessage('Imagem de capa removida. Salve o artigo para persistir a troca.');
     } catch (error) {
-      setStatusMessage(error.message || 'Nao foi possivel remover a imagem.');
+      setStatusMessage(error.message || 'Não foi possível remover a imagem.');
     } finally {
       setUploadingImage(false);
     }
@@ -471,7 +471,7 @@ const AdminBlog = () => {
             </div>
 
             <a href="/blog" target="_blank" rel="noreferrer" className="admin-blog-text-link">
-              Ver blog publico
+              Ver blog público
             </a>
           </div>
 
@@ -518,7 +518,7 @@ const AdminBlog = () => {
                 name="excerpt"
                 value={form.excerpt}
                 onChange={handleFormChange}
-                placeholder="Se deixar vazio, o sistema gera um resumo a partir do conteudo."
+                placeholder="Se deixar vazio, o sistema gera um resumo a partir do conteúdo."
                 rows="3"
               />
             </label>
@@ -567,10 +567,10 @@ const AdminBlog = () => {
             ) : null}
 
             <label>
-              Conteudo
+              Conteúdo
               <div className="admin-blog-editor-toolbar">
                 <button type="button" onClick={() => applySnippet(editorSnippets.heading)}>
-                  Titulo
+                  Título
                 </button>
                 <button type="button" onClick={() => applySnippet(editorSnippets.bold)}>
                   Negrito
@@ -582,7 +582,7 @@ const AdminBlog = () => {
                   Passos
                 </button>
                 <button type="button" onClick={() => applySnippet(editorSnippets.quote)}>
-                  Citacao
+                  Citação
                 </button>
                 <button type="button" onClick={() => applySnippet(editorSnippets.link)}>
                   Link
@@ -593,7 +593,7 @@ const AdminBlog = () => {
                 name="content"
                 value={form.content}
                 onChange={handleFormChange}
-                placeholder="Escreva em Markdown simples. Use linhas em branco para separar paragrafos."
+                placeholder="Escreva em Markdown simples. Use linhas em branco para separar parágrafos."
                 rows="16"
                 required
               />
@@ -602,13 +602,13 @@ const AdminBlog = () => {
             <div className="admin-blog-preview-panel">
               <div className="admin-blog-preview-header">
                 <p className="admin-blog-eyebrow">Preview</p>
-                <span className="admin-blog-muted">Como o artigo sera exibido no blog</span>
+                <span className="admin-blog-muted">Como o artigo será exibido no blog</span>
               </div>
               <div className="admin-blog-preview-body">
                 {form.content.trim() ? (
                   renderRichText(form.content)
                 ) : (
-                  <p className="admin-blog-muted">O preview aparece assim que voce comecar a escrever.</p>
+                  <p className="admin-blog-muted">O preview aparece assim que você começar a escrever.</p>
                 )}
               </div>
             </div>
@@ -630,7 +630,7 @@ const AdminBlog = () => {
                 {busy ? 'Salvando...' : 'Salvar artigo'}
               </button>
               <button type="button" className="admin-blog-secondary-button" onClick={resetForm}>
-                Limpar formulario
+                Limpar formulário
               </button>
             </div>
           </form>

@@ -6,14 +6,7 @@
   "description": "Modern, high-performance website for FCBJ Desenvolvimento",
   "author": "FCBJ Desenvolvimento",
   "license": "UNLICENSED",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yourusername/fctec-site.git"
-  },
-  "bugs": {
-    "url": "https://github.com/yourusername/fctec-site/issues"
-  },
-  "homepage": "https://github.com/yourusername/fctec-site#readme",
+  "homepage": "https://fctec.dev.br",
   "keywords": [
     "react",
     "vite",

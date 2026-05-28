@@ -95,6 +95,17 @@
 
 .service-col {
   animation: fadeInUp 0.6s ease-out backwards;
+  display: flex;
+}
+
+.service-col > * {
+  width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .services-grid {
+    --bs-gutter-x: 2rem;
+  }
 }
 
 /* ===== CTA SECTION ===== */

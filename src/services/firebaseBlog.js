@@ -29,7 +29,7 @@ const STORAGE_BLOG_PATH = import.meta.env.VITE_FIREBASE_STORAGE_BLOG_PATH || 'bl
 const assertFirebase = () => {
     if (!hasFirebaseConfig || !db || !auth) {
         throw new Error(
-            'Firebase nao configurado. Defina as variaveis VITE_FIREBASE_* antes de usar o blog admin.'
+            'Firebase não configurado. Defina as variáveis VITE_FIREBASE_* antes de usar o blog admin.'
         );
     }
 };
@@ -39,7 +39,7 @@ const assertStorage = () => {
 
     if (!storage) {
         throw new Error(
-            'Firebase Storage nao esta disponivel neste projeto. Use uma URL manual para a capa ou habilite o Storage.'
+            'Firebase Storage não está disponível neste projeto. Use uma URL manual para a capa ou habilite o Storage.'
         );
     }
 };
@@ -191,7 +191,7 @@ export const uploadCoverImage = async (file, currentPath = '') => {
         try {
             await deleteObject(ref(storage, currentPath));
         } catch {
-            // Ignora imagem antiga ausente para nao bloquear a troca da capa.
+            // Ignora imagem antiga ausente para não bloquear a troca da capa.
         }
     }
 
@@ -228,7 +228,7 @@ export const deleteBlogPostWithAssets = async (post) => {
         try {
             await removeCoverImage(post.coverImagePath);
         } catch {
-            // Se a imagem nao existir mais, a exclusao do post continua.
+            // Se a imagem não existir mais, a exclusão do post continua.
         }
     }
 

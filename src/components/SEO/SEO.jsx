@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
 const SEO = ({
-  title = "FCBJ Desenvolvimento - Soluções Web em Belford Roxo RJ",
-  description = "Desenvolvimento web profissional em Belford Roxo RJ: sites institucionais, sistemas personalizados, Google Meu Negócio e manutenção. Transforme sua presença digital.",
-  keywords = "desenvolvimento web belford roxo, criação de sites rj, sistema web para clínicas, site com cms, google meu negócio, manutenção de sites, desenvolvedor web rio de janeiro",
+  title = "Desenvolvimento Web no Brasil com Base em Belford Roxo RJ | FCBJ",
+  description = "Criação de sites, sistemas web e estrutura digital para empresas de todo o Brasil, com base em Belford Roxo RJ e foco em cidades do Rio de Janeiro.",
+  keywords = "desenvolvimento web belford roxo, criação de sites rio de janeiro, sistema web sob medida brasil, google meu negócio rj, desenvolvedor web rio de janeiro",
   author = "FCBJ Desenvolvimento",
   url = window.location.href,
   image = "/logo.png", // Coloque uma imagem 1200x630px em public/
@@ -78,51 +78,88 @@ const SEO = ({
     canonical.setAttribute('href', url);
 
     // ===== SCHEMA.ORG (JSON-LD) =====
+    const areaServed = [
+      { "@type": "Country", name: "Brasil" },
+      { "@type": "City", name: "Belford Roxo" },
+      { "@type": "City", name: "Nova Iguacu" },
+      { "@type": "City", name: "Duque de Caxias" },
+      { "@type": "City", name: "Sao Joao de Meriti" },
+      { "@type": "City", name: "Nilopolis" },
+      { "@type": "City", name: "Rio de Janeiro" },
+      { "@type": "AdministrativeArea", name: "Rio de Janeiro" },
+    ];
+
     const schemaData = {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "FCBJ Desenvolvimento",
-      "image": image,
-      "description": description,
-      "url": "https://fctec.dev.br",
-      "telephone": "+5521968810478",
-      "email": "fernando.cbj.tec@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Rua João Fernandes Neto, 1166",
-        "addressLocality": "Belford Roxo",
-        "addressRegion": "RJ",
-        "postalCode": "26100-000",
-        "addressCountry": "BR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "-22.754321",
-        "longitude": "-43.4123456"
-      },
-      "openingHoursSpecification": [
+      "@graph": [
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Wednesday", "Thursday", "Friday"],
-          "opens": "09:00",
-          "closes": "18:00"
+          "@type": "ProfessionalService",
+          "@id": "https://fctec.dev.br/#professional-service",
+          "name": "FCBJ Desenvolvimento",
+          "image": image,
+          "description": description,
+          "url": "https://fctec.dev.br",
+          "telephone": "+5521968810478",
+          "email": "fernando.cbj.tec@gmail.com",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Rua Joao Fernandes Neto, 1166",
+            "addressLocality": "Belford Roxo",
+            "addressRegion": "RJ",
+            "postalCode": "26100-000",
+            "addressCountry": "BR"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-22.754321",
+            "longitude": "-43.4123456"
+          },
+          "areaServed": areaServed,
+          "serviceType": [
+            "Criação de sites institucionais",
+            "Desenvolvimento de sistemas web",
+            "Google Meu Negócio",
+            "Manutenção de sites e sistemas"
+          ],
+          "knowsAbout": [
+            "SEO local",
+            "Desenvolvimento web",
+            "Sistemas sob medida",
+            "React",
+            "Python",
+            "Django"
+          ],
+          "availableLanguage": ["pt-BR"],
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Wednesday", "Thursday", "Friday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Saturday",
+              "opens": "09:00",
+              "closes": "13:00"
+            }
+          ],
+          "sameAs": [
+            "https://www.instagram.com/fcbj.dev",
+            "https://www.facebook.com/share/1CC9521Qrs/"
+          ]
         },
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "09:00",
-          "closes": "13:00"
+          "@type": "WebSite",
+          "@id": "https://fctec.dev.br/#website",
+          "url": "https://fctec.dev.br",
+          "name": "FCBJ Desenvolvimento",
+          "inLanguage": "pt-BR",
+          "publisher": {
+            "@id": "https://fctec.dev.br/#professional-service"
+          }
         }
-      ],
-      "priceRange": "$$",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "24"
-      },
-      "sameAs": [
-        "https://www.instagram.com/fcbj.dev",
-        "https://www.facebook.com/share/1CC9521Qrs/"
       ]
     };
 

@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import ContactModal from './ContactModal';
+import SEO from '../SEO/SEO';
 import { servicesData } from './servicesData';
 import { hasFirebaseConfig } from '../../lib/firebase';
 import { fetchServiceBySlug } from '../../services/firebaseServices';
@@ -49,8 +50,27 @@ const ServiceDetails = () => {
 
   if (!service) return null;
 
+  const pageTitle = `${service.title} | FCBJ Desenvolvimento`;
+  const pageDescription =
+    service.detailedDescription ||
+    service.description ||
+    `Conheça o serviço ${service.title} da FCBJ Desenvolvimento.`;
+  const pageKeywords = [
+    service.title.toLowerCase(),
+    `${service.title.toLowerCase()} belford roxo`,
+    `${service.title.toLowerCase()} rio de janeiro`,
+    'desenvolvimento web rj',
+    'fcbj desenvolvimento',
+  ].join(', ');
+
   return (
     <>
+      <SEO
+        title={pageTitle}
+        description={pageDescription}
+        keywords={pageKeywords}
+        image={service.image}
+      />
       <section
         style={{
           padding: '6rem 2rem 4rem',

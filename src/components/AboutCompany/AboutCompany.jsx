@@ -13,12 +13,12 @@ const AboutCompany = () => {
 
           <h2 className="about-title">
             Engenharia Digital com{' '}
-            <span className="title-highlight">Visao de Negocio</span>
+            <span className="title-highlight">Visão de Negócio</span>
           </h2>
 
           <p className="about-description">
             Somos uma equipe de desenvolvimento web voltada para construir
-            presenca digital solida, segura e alinhada aos objetivos da empresa.
+            presença digital sólida, segura e alinhada aos objetivos da empresa.
           </p>
         </div>
 
@@ -63,9 +63,9 @@ const AboutCompany = () => {
               }}
             >
               Desenvolver soluções web de alta qualidade que impulsionam o
-              crescimento sustentavel dos nossos clientes. Trabalhamos com{' '}
-              <strong>foco em estrutura, confiabilidade e evolucao continua</strong>,
-              entregando produtos que fortalecem a operacao digital da empresa.
+              crescimento sustentável dos nossos clientes. Trabalhamos com{' '}
+              <strong>foco em estrutura, confiabilidade e evolução contínua</strong>,
+              entregando produtos que fortalecem a operação digital da empresa.
             </p>
           </div>
         </div>
@@ -103,7 +103,7 @@ const AboutCompany = () => {
                 lineHeight: '1.6',
               }}
             >
-              Solucoes com stack atual, escalabilidade e padroes tecnicos robustos
+              Soluções com stack atual, escalabilidade e padrões técnicos robustos
             </p>
           </div>
 
@@ -122,7 +122,7 @@ const AboutCompany = () => {
                 marginBottom: '0.5rem',
               }}
             >
-              Parceria Proxima
+              Parceria Próxima
             </h4>
             <p
               style={{
@@ -131,7 +131,7 @@ const AboutCompany = () => {
                 lineHeight: '1.6',
               }}
             >
-              Acompanhamento continuo para ajustes, duvidas e evolucao do produto
+              Acompanhamento contínuo para ajustes, dúvidas e evolução do produto
             </p>
           </div>
 
@@ -150,7 +150,7 @@ const AboutCompany = () => {
                 marginBottom: '0.5rem',
               }}
             >
-              Seguranca Aplicada
+              Segurança Aplicada
             </h4>
             <p
               style={{
@@ -159,7 +159,7 @@ const AboutCompany = () => {
                 lineHeight: '1.6',
               }}
             >
-              Dados protegidos com praticas de seguranca e manutencao preventiva
+              Dados protegidos com práticas de segurança e manutenção preventiva
             </p>
           </div>
         </div>

@@ -62,7 +62,7 @@ const WhatsAppFloat = () => {
 
   const handleClick = () => {
     window.open(
-      'https://wa.me/5521968810478?text=Ola! Vim pelo site e gostaria de conversar sobre as solucoes da empresa.',
+      'https://wa.me/5521968810478?text=Olá! Vim pelo site e gostaria de conversar sobre as soluções da empresa.',
       '_blank'
     );
   };
@@ -247,7 +247,7 @@ const WhatsAppFloat = () => {
                 marginBottom: '0.25rem',
               }}
             >
-              Ola! Quer falar com a equipe?
+              Olá! Quer falar com a equipe?
             </div>
             <div
               style={{
@@ -256,7 +256,7 @@ const WhatsAppFloat = () => {
                 lineHeight: '1.4',
               }}
             >
-              Atendimento para duvidas e contato institucional.
+              Atendimento para dúvidas e contato institucional.
             </div>
           </div>
         </div>

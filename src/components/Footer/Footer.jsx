@@ -1,6 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { scrollToElement } from "../../utils/scrollUtils";
+import { regionalPages } from "../RegionalPages/regionalPages";
 import "./Footer.css";
 
 const Footer = () => {
@@ -59,6 +60,11 @@ const Footer = () => {
     { label: "Contato", href: "#location" },
   ];
 
+  const regionalLinks = regionalPages.map((page) => ({
+    label: page.city,
+    to: `/${page.slug}`,
+  }));
+
   const socialLinks = [
     {
       name: "Instagram",
@@ -100,8 +106,8 @@ const Footer = () => {
                   <div className="brand-tagline">Soluções Digitais Premium</div>
                 </div>
                 <p className="footer-description">
-                  Construimos experiencias digitais com engenharia moderna,
-                  foco em confiabilidade e evolucao continua.
+                  Construímos experiências digitais com engenharia moderna,
+                  foco em confiabilidade e evolução contínua.
                 </p>
                 {/* Social Links */}
                 <div className="footer-social">
@@ -145,8 +151,24 @@ const Footer = () => {
               </div>
             </Col>
 
+            <Col lg={2} md={6}>
+              <div className="footer-section">
+                <h4 className="footer-title">Atendimento no RJ</h4>
+                <ul className="footer-links">
+                  {regionalLinks.map((link) => (
+                    <li key={link.to}>
+                      <Link to={link.to} className="footer-link">
+                        <span className="link-icon">→</span>
+                        <span className="link-text">{link.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Col>
+
             {/* Contact Info */}
-            <Col lg={3} md={6}>
+            <Col lg={2} md={6}>
               <div className="footer-section">
                 <h4 className="footer-title">Contato</h4>
                 <ul className="footer-contact">
@@ -174,11 +196,11 @@ const Footer = () => {
             </Col>
 
             {/* CTA */}
-            <Col lg={3} md={6}>
+            <Col lg={2} md={6}>
               <div className="footer-section">
                 <h4 className="footer-title">Vamos conversar?</h4>
                 <p className="cta-text">
-                  Entre em contato para conhecer nossa atuacao e possibilidades
+                  Entre em contato para conhecer nossa atuação e possibilidades
                   para sua empresa.
                 </p>
                 <a

@@ -3,15 +3,15 @@ const BenefitsResults = () => {
   const benefits = [
     {
       icon: '🧠',
-      title: 'Estrutura Tecnica Confiavel',
+      title: 'Estrutura Técnica Confiável',
       description:
-        'Arquitetura planejada para estabilidade, seguranca e evolucao continua.',
+        'Arquitetura planejada para estabilidade, segurança e evolução contínua.',
       color: '#38bdf8',
       bgColor: '#e0f2fe',
       results: [
-        'Padrao de codigo consistente',
+        'Padrão de código consistente',
         'Base preparada para crescimento',
-        'Boas praticas de seguranca',
+        'Boas práticas de segurança',
       ],
     },
     {
@@ -23,19 +23,19 @@ const BenefitsResults = () => {
       bgColor: '#ccfbf1',
       results: [
         'Fluxos mais organizados',
-        'Informacao centralizada',
-        'Operacao com menos atrito',
+        'Informação centralizada',
+        'Operação com menos atrito',
       ],
     },
     {
       icon: '🚀',
-      title: 'Acompanhamento e Evolucao',
+      title: 'Acompanhamento e Evolução',
       description:
-        'Atuacao proxima para manter a plataforma atualizada e alinhada aos objetivos.',
+        'Atuação próxima para manter a plataforma atualizada e alinhada aos objetivos.',
       color: '#818cf8',
       bgColor: '#e0e7ff',
       results: [
-        'Roadmap tecnico claro',
+        'Roadmap técnico claro',
         'Melhoria continua orientada por dados',
         'Suporte para novas demandas',
       ],
@@ -78,7 +78,7 @@ const BenefitsResults = () => {
               }}
             >
               <span>💻</span>
-              <span>Capacidade Tecnologica e Operacional</span>
+              <span>Capacidade Tecnológica e Operacional</span>
             </div>
 
             <h2
@@ -111,7 +111,7 @@ const BenefitsResults = () => {
                 lineHeight: '1.7',
               }}
             >
-              Apresentamos solucoes digitais com foco em estrutura, confiabilidade
+              Apresentamos soluções digitais com foco em estrutura, confiabilidade
               e continuidade. Mantemos um canal direto de contato para entender
               cada contexto com profundidade.
             </p>

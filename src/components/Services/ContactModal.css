@@ -13,6 +13,42 @@
   background: transparent;
 }
 
+.contact-modal input,
+.contact-modal select,
+.contact-modal textarea {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.78) !important;
+  color: #e2e8f0 !important;
+  caret-color: #e2e8f0;
+  border: 2px solid rgba(148, 163, 184, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.contact-modal input::placeholder,
+.contact-modal select::placeholder,
+.contact-modal textarea::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1;
+}
+
+.contact-modal input:focus,
+.contact-modal select:focus,
+.contact-modal textarea:focus {
+  background: rgba(15, 23, 42, 0.9) !important;
+  color: #f8fafc !important;
+}
+
+.contact-modal input:-webkit-autofill,
+.contact-modal input:-webkit-autofill:hover,
+.contact-modal input:-webkit-autofill:focus,
+.contact-modal select:-webkit-autofill,
+.contact-modal textarea:-webkit-autofill {
+  -webkit-text-fill-color: #e2e8f0;
+  -webkit-box-shadow: 0 0 0 1000px rgba(15, 23, 42, 0.92) inset;
+  transition: background-color 9999s ease-in-out 0s;
+  border: 2px solid rgba(148, 163, 184, 0.2);
+}
+
 /* Grid responsivo: stacked em mobile */
 .contact-modal .modal-body>div>div:first-child {
   display: grid;

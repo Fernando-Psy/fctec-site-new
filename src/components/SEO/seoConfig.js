@@ -1,8 +1,8 @@
 export const SEOPages = {
   home: {
-    title: "FCBJ Desenvolvimento - Soluções Web em Belford Roxo RJ",
-    description: "Desenvolvimento web profissional em Belford Roxo: sites, sistemas personalizados e Google Meu Negócio. 50+ projetos entregues, 98% de satisfação.",
-    keywords: "desenvolvimento web belford roxo, criação de sites rj, desenvolvedor web rio de janeiro, fcbj desenvolvimento"
+    title: "Desenvolvimento Web no Brasil com Base em Belford Roxo RJ | FCBJ",
+    description: "Criação de sites, sistemas web e estrutura digital para empresas de todo o Brasil, com base em Belford Roxo RJ e foco em cidades como Nova Iguaçu, Duque de Caxias, São João de Meriti, Nilópolis e Rio de Janeiro.",
+    keywords: "desenvolvimento web belford roxo, criação de sites rio de janeiro, desenvolvedor web rj, sistema web sob medida brasil, site institucional belford roxo, desenvolvimento web nova iguaçu, desenvolvimento web duque de caxias, fcbj desenvolvimento"
   },
 
   googleMeuNegocio: {

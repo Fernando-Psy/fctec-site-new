@@ -23,6 +23,7 @@ import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import WhatsAppFloat from './components/WhatsAppFloat/WhatsAppFloat';
 import ScrollToTop from './components/ScrollToTop';
+import { regionalPages } from './components/RegionalPages/regionalPages';
 
 // Lazy loading para componentes pesados
 const AboutCompany = lazy(
@@ -34,9 +35,6 @@ const ServiceDetails = lazy(
 );
 const ClientsShowcase = lazy(
   () => import('./components/ClientsShowcase/ClientsShowcase')
-);
-const BenefitsResults = lazy(
-  () => import('./components/BenefitsResults/BenefitsResults')
 );
 const FreeResources = lazy(
   () => import('./components/FreeResources/FreeResources')
@@ -52,6 +50,9 @@ const PrivacyPolicy = lazy(
 );
 const TermsOfService = lazy(
   () => import('./components/TermsOfService/TermsOfService')
+);
+const RegionalLandingPage = lazy(
+  () => import('./components/RegionalPages/RegionalLandingPage')
 );
 
 // Loading component
@@ -116,9 +117,6 @@ function AppContent() {
                     <Services />
                   </Suspense>
                   <Suspense fallback={<LoadingFallback />}>
-                    <BenefitsResults />
-                  </Suspense>
-                  <Suspense fallback={<LoadingFallback />}>
                     <FAQ />
                   </Suspense>
                   <Suspense fallback={<LoadingFallback />}>
@@ -139,16 +137,34 @@ function AppContent() {
           <Route
             path="/servicos/:serviceId"
             element={
-              <>
-                <SEO {...SEOPages.services} />
-                <main>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <ServiceDetails />
-                  </Suspense>
-                </main>
-              </>
+              <main>
+                <Suspense fallback={<LoadingFallback />}>
+                  <ServiceDetails />
+                </Suspense>
+              </main>
             }
           />
+
+          {regionalPages.map((page) => (
+            <Route
+              key={page.slug}
+              path={`/${page.slug}`}
+              element={
+                <>
+                  <SEO
+                    title={page.title}
+                    description={page.description}
+                    keywords={page.keywords}
+                  />
+                  <main>
+                    <Suspense fallback={<LoadingFallback />}>
+                      <RegionalLandingPage />
+                    </Suspense>
+                  </main>
+                </>
+              }
+            />
+          ))}
 
           {/* Blog */}
           <Route

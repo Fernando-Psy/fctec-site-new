@@ -81,7 +81,7 @@ const HeroImproved = () => {
                   borderRadius: '50%',
                 }}
               />
-              <span>Desenvolvimento Web Profissional</span>
+              <span>FCBJ Desenvolvimento</span>
             </div>
 
             {/* Título Institucional */}
@@ -95,7 +95,7 @@ const HeroImproved = () => {
                 letterSpacing: '-0.02em',
               }}
             >
-              Soluções Digitais que{' '}
+              Desenvolvimento de Sites e Sistemas para{' '}
               <span
                 style={{
                   background:
@@ -106,7 +106,7 @@ const HeroImproved = () => {
                   fontWeight: '700',
                 }}
               >
-                Impulsionam Negócios
+                Empresas de Todo o Brasil
               </span>
             </h1>
 
@@ -120,9 +120,11 @@ const HeroImproved = () => {
                 fontWeight: '400',
               }}
             >
-              Desenvolvemos sistemas web, sites institucionais e plataformas
-              digitais com tecnologias modernas e foco em qualidade, segurança e
-              performance.
+              Criamos sites institucionais, sistemas web e estruturas digitais
+              para empresas em todo o Brasil, com forte atuação em Belford Roxo,
+              Nova Iguaçu, Duque de Caxias, São João de Meriti, Nilópolis e Rio
+              de Janeiro. Entregamos com foco em performance, segurança e
+              posicionamento no Google.
             </p>
 
             {/* Tech Stack */}

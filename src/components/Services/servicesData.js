@@ -9,9 +9,9 @@ export const servicesData = [
     image: googleMapsImage,
     title: "Google Meu Negócio",
     description:
-      "Configuracao tecnica completa do Google Meu Negocio para fortalecer a presenca local da sua empresa.",
+      "Configuração técnica completa do Google Meu Negócio para fortalecer a presença local da sua empresa.",
     detailedDescription:
-      "Estruturamos seu perfil no Google com boas praticas de organizacao, categorizacao e consistencia de informacoes para ampliar sua relevancia local.",
+      "Estruturamos seu perfil no Google com boas práticas de organização, categorização e consistência de informações para ampliar sua relevância local.",
     features: [
       "Otimização completa do perfil no Google",
       "Landing Page profissional integrada",
@@ -32,9 +32,9 @@ export const servicesData = [
       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop",
     title: "Capacitação Digital Gratuita",
     description:
-      "Encontro presencial gratuito para organizar LinkedIn profissional e criar curriculo em HTML/CSS.",
+      "Encontro presencial gratuito para organizar LinkedIn profissional e criar currículo em HTML/CSS.",
     detailedDescription:
-      "Sessao presencial guiada para empreendedores e profissionais que buscam consolidar sua marca pessoal no ambiente digital com LinkedIn otimizado e curriculo responsivo.",
+      "Sessão presencial guiada para empreendedores e profissionais que buscam consolidar sua marca pessoal no ambiente digital com LinkedIn otimizado e currículo responsivo.",
     features: [
       "Encontro presencial com especialista",
       "Checklist para perfil completo no LinkedIn",
@@ -53,9 +53,9 @@ export const servicesData = [
     image: site1Image,
     title: "Sistema Web Personalizado",
     description:
-      "Desenvolvemos sistemas sob medida com tecnologias modernas para organizacao e automacao de processos.",
+      "Desenvolvemos sistemas sob medida com tecnologias modernas para organização e automação de processos.",
     detailedDescription:
-      "Criamos solucoes personalizadas com foco em seguranca, escalabilidade e usabilidade para atender necessidades especificas do seu contexto.",
+      "Criamos soluções personalizadas com foco em segurança, escalabilidade e usabilidade para atender necessidades específicas do seu contexto.",
     features: [
       "Backend robusto com Python + Django",
       "Frontend moderno e responsivo com React",
@@ -79,9 +79,9 @@ export const servicesData = [
     image: siteImage,
     title: "Site Institucional com CMS",
     description:
-      "Desenvolvemos sites institucionais com CMS para facilitar atualizacoes de conteudo com autonomia.",
+      "Desenvolvemos sites institucionais com CMS para facilitar atualizações de conteúdo com autonomia.",
     detailedDescription:
-      "Estruturamos sites institucionais com painel administrativo intuitivo, design responsivo e base tecnica preparada para manutencao continua.",
+      "Estruturamos sites institucionais com painel administrativo intuitivo, design responsivo e base técnica preparada para manutenção contínua.",
     features: [
       "Design moderno e responsivo",
       "Painel de administração intuitivo (CMS)",
@@ -94,7 +94,7 @@ export const servicesData = [
       "Certificado SSL/HTTPS",
       "Hospedagem em servidores seguros",
       "Domínio personalizado",
-      "Emails profissionais",
+      "E-mails profissionais",
       "Treinamento para uso do CMS",
       "Suporte técnico",
     ],
@@ -107,9 +107,9 @@ export const servicesData = [
     image: siteManutencao,
     title: "Manutenção e Suporte Técnico",
     description:
-      "Suporte tecnico especializado para manutencao e evolucao continua de sistemas web.",
+      "Suporte técnico especializado para manutenção e evolução contínua de sistemas web.",
     detailedDescription:
-      "Nossa equipe atua com manutencoes preventivas e corretivas, registrando intervencoes e orientando melhorias tecnicas ao longo do tempo.",
+      "Nossa equipe atua com manutenções preventivas e corretivas, registrando intervenções e orientando melhorias técnicas ao longo do tempo.",
     features: [
       "Atualizações de segurança",
       "Correção de bugs e erros",
@@ -132,9 +132,9 @@ export const servicesData = [
       "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
     title: "E-commerce",
     description:
-      "Desenvolvemos plataformas de comercio eletronico seguras, com foco em estabilidade operacional.",
+      "Desenvolvemos plataformas de comércio eletrônico seguras, com foco em estabilidade operacional.",
     detailedDescription:
-      "Criamos lojas virtuais com infraestrutura para gestao de produtos, pagamentos, estoque e logistica de forma integrada.",
+      "Criamos lojas virtuais com infraestrutura para gestão de produtos, pagamentos, estoque e logística de forma integrada.",
     features: [
       "Catálogo de produtos",
       "Carrinho de compras",
@@ -161,9 +161,9 @@ export const servicesData = [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
     title: "Landing Page",
     description:
-      "Criamos paginas com foco em clareza de comunicacao, experiencia do usuario e performance.",
+      "Criamos páginas com foco em clareza de comunicação, experiência do usuário e performance.",
     detailedDescription:
-      "Desenvolvemos landing pages com estrutura tecnica otimizada, carregamento rapido e responsividade para diferentes dispositivos.",
+      "Desenvolvemos landing pages com estrutura técnica otimizada, carregamento rápido e responsividade para diferentes dispositivos.",
     features: [
       "Design estratégico",
       "Conteúdo otimizado",
@@ -189,9 +189,9 @@ export const servicesData = [
     image: googleMapsImage,
     title: "CRM Psicologias",
     description:
-      "CRM especializado com gestao de pacientes, agendamento, prontuario eletronico e comunicacao integrada.",
+      "CRM especializado com gestão de pacientes, agendamento, prontuário eletrônico e comunicação integrada.",
     detailedDescription:
-      "CRM especializado para psicologas e psicologos, com funcionalidades completas para organizar a rotina clinica e padronizar atendimentos.",
+      "CRM especializado para psicólogas e psicólogos, com funcionalidades completas para organizar a rotina clínica e padronizar atendimentos.",
     features: [
       "Gestão de pacientes",
       "Agendamento de consultas",

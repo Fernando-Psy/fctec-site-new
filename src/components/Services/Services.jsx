@@ -34,15 +34,15 @@ const Services = () => {
     <div className="services-header">
       <div className="services-badge">
         <span className="badge-dot"></span>
-        <span className="badge-text">Atuacao Tecnologica</span>
+        <span className="badge-text">Atuação Tecnológica</span>
       </div>
       <h2 className="services-title">
-        Solucoes Digitais Para Estruturar Sua{' '}
-        <span className="title-highlight">Operacao</span>
+        Soluções Digitais Para Estruturar Sua{' '}
+        <span className="title-highlight">Operação</span>
       </h2>
       <p className="services-description">
-        Conheca como atuamos em desenvolvimento, integracoes e suporte.
-        Mantemos canais diretos para tirar duvidas e iniciar conversas.
+        Conheça como atuamos em desenvolvimento, integrações e suporte.
+        Mantemos canais diretos para tirar dúvidas e iniciar conversas.
       </p>
     </div>
   );
@@ -66,10 +66,12 @@ const Services = () => {
                   {cat.description && (
                     <p className="services-category-desc">{cat.description}</p>
                   )}
-                  <Row className="g-4 services-grid">
+                  <Row className="g-4 justify-content-center services-grid">
                     {catServices.map((service, index) => (
                       <Col
                         key={service.id}
+                        xxl={4}
+                        xl={5}
                         lg={6}
                         md={6}
                         className="service-col"
@@ -84,10 +86,12 @@ const Services = () => {
             })
           ) : (
             /* Sem categorias, lista plana */
-            <Row className="g-4 services-grid">
+            <Row className="g-4 justify-content-center services-grid">
               {firestoreServices.map((service, index) => (
                 <Col
                   key={service.id}
+                  xxl={4}
+                  xl={5}
                   lg={6}
                   md={6}
                   className="service-col"
@@ -100,10 +104,12 @@ const Services = () => {
           )
         ) : (
           /* ── Fallback: dados estáticos ── */
-          <Row className="g-4 services-grid">
+          <Row className="g-4 justify-content-center services-grid">
             {servicesData.map((service, index) => (
               <Col
                 key={service.id}
+                xxl={4}
+                xl={5}
                 lg={6}
                 md={6}
                 className="service-col"
