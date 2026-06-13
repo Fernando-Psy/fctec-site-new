@@ -5,6 +5,7 @@ import {
   Routes,
   useLocation,
 } from 'react-router-dom';
+import { ClientAuthProvider } from './components/ClientPortal/ClientAuthContext';
 
 import './styles/bootstrap-critical.css';
 import './styles/neumorphism.css';
@@ -38,6 +39,8 @@ const TermsOfService = lazy(() => import('./components/TermsOfService/TermsOfSer
 const RegionalLandingPage = lazy(() => import('./components/RegionalPages/RegionalLandingPage'));
 const AppointmentButton = lazy(() => import('./components/AppointmentForm/AppointmentButton'));
 const DynamicLandingPage = lazy(() => import('./components/DynamicLanding/DynamicLandingPage'));
+const ClientLogin = lazy(() => import('./components/ClientPortal/ClientLogin'));
+const ClientDashboard = lazy(() => import('./components/ClientPortal/ClientDashboard'));
 
 const LoadingFallback = () => (
   <div
@@ -58,6 +61,7 @@ function AppContent() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
   const isLandingRoute = location.pathname.startsWith('/lp/');
+  const isClienteRoute = location.pathname.startsWith('/cliente');
 
   useEffect(() => {
     captureUtmParams();
@@ -80,9 +84,34 @@ function AppContent() {
     <>
       <ScrollToTop />
       <div className="App">
-        {/* Header e WhatsApp float omitidos nas landing pages dinâmicas (têm layout próprio) */}
-        {!isAdminRoute && !isLandingRoute ? <Header /> : null}
+        {!isAdminRoute && !isLandingRoute && !isClienteRoute ? <Header /> : null}
         <Routes>
+          {/* ── Área do Cliente ── */}
+          <Route
+            path="/cliente"
+            element={
+              <Suspense fallback={<LoadingFallback />}>
+                <ClientLogin />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/cliente/definir-senha"
+            element={
+              <Suspense fallback={<LoadingFallback />}>
+                <ClientLogin />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/cliente/dashboard"
+            element={
+              <Suspense fallback={<LoadingFallback />}>
+                <ClientDashboard />
+              </Suspense>
+            }
+          />
+
           {/* ── Landing Pages Dinâmicas do CRM ── */}
           <Route
             path="/lp/:slug"
@@ -190,7 +219,7 @@ function AppContent() {
           />
         </Routes>
 
-        {!isAdminRoute && !isLandingRoute ? (
+        {!isAdminRoute && !isLandingRoute && !isClienteRoute ? (
           <>
             <Suspense fallback={<LoadingFallback />}><Footer /></Suspense>
             <WhatsAppFloat />
@@ -205,7 +234,9 @@ function AppContent() {
 function App() {
   return (
     <Router>
-      <AppContent />
+      <ClientAuthProvider>
+        <AppContent />
+      </ClientAuthProvider>
     </Router>
   );
 }
