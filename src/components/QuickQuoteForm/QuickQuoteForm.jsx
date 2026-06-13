@@ -1,5 +1,18 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { getServices, createPublicLead } from "../../services/api";
 import "./QuickQuoteForm.css";
+
+const FALLBACK_SERVICES = [
+  { id: "site-institucional", nome: "Site Institucional" },
+  { id: "e-commerce", nome: "E-commerce" },
+  { id: "landing-page", nome: "Landing Page" },
+  { id: "sistema-web", nome: "Sistema Web" },
+  { id: "app-mobile", nome: "Aplicativo Mobile" },
+  { id: "design-grafico", nome: "Design Gráfico" },
+  { id: "marketing-digital", nome: "Marketing Digital" },
+  { id: "consultoria", nome: "Consultoria" },
+  { id: "outro", nome: "Outro" },
+];
 
 const QuickQuoteForm = () => {
   const [formData, setFormData] = useState({
@@ -8,38 +21,30 @@ const QuickQuoteForm = () => {
     business: "",
     service: "",
   });
+  const [services, setServices] = useState(FALLBACK_SERVICES);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const timeoutRefs = useRef([]);
 
-  // Lista de serviços diretamente no componente
-  const services = [
-    { id: "1", nome: "Site Institucional" },
-    { id: "2", nome: "E-commerce" },
-    { id: "3", nome: "Landing Page" },
-    { id: "4", nome: "Sistema Web" },
-    { id: "5", nome: "Aplicativo Mobile" },
-    { id: "6", nome: "Design Gráfico" },
-    { id: "7", nome: "Marketing Digital" },
-    { id: "8", nome: "Consultoria" },
-    { id: "9", nome: "Outro" },
-  ];
+  useEffect(() => {
+    getServices().then((result) => {
+      if (result.success && Array.isArray(result.data) && result.data.length > 0) {
+        setServices(result.data);
+      }
+    });
+  }, []);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setShowError(false);
 
-    // Validação básica
     if (!formData.name || !formData.phone || !formData.service) {
       setShowError(true);
       setErrorMessage("Por favor, preencha todos os campos obrigatórios");
@@ -47,46 +52,44 @@ const QuickQuoteForm = () => {
       return;
     }
 
-    try {
-      // Encontrar nome do serviço selecionado
-      const selectedService = services.find((s) => s.id === formData.service);
+    const selectedService = services.find(
+      (s) => String(s.id) === String(formData.service)
+    );
+    const serviceName = selectedService?.nome || formData.service;
 
-      // Montar mensagem para WhatsApp
-      const message =
-        `🎯 *Novo Pedido de Orçamento*\n\n` +
-        `👤 *Nome:* ${formData.name}\n` +
-        `📱 *Telefone:* ${formData.phone}\n` +
-        `🏢 *Negócio:* ${formData.business || "Não informado"}\n` +
-        `💼 *Serviço:* ${selectedService?.nome || "Não especificado"}`;
+    // Registra lead no CRM (fire-and-forget - não bloqueia o fluxo)
+    createPublicLead({
+      nome: formData.name,
+      telefone: formData.phone,
+      empresa: formData.business || undefined,
+      servico_interesse: serviceName,
+      origem: "site",
+    });
 
-      const whatsappURL = `https://wa.me/5521968810478?text=${encodeURIComponent(message)}`;
+    const message =
+      `🎯 *Novo Pedido de Orçamento*\n\n` +
+      `👤 *Nome:* ${formData.name}\n` +
+      `📱 *Telefone:* ${formData.phone}\n` +
+      `🏢 *Negócio:* ${formData.business || "Não informado"}\n` +
+      `💼 *Serviço:* ${serviceName}`;
 
-      setIsSubmitting(false);
-      setShowSuccess(true);
+    const whatsappURL = `https://wa.me/5521968810478?text=${encodeURIComponent(message)}`;
 
-      // Abrir WhatsApp após pequeno delay
-      const openTimeout = setTimeout(() => {
-        window.open(whatsappURL, "_blank", "noopener,noreferrer");
+    setIsSubmitting(false);
+    setShowSuccess(true);
 
-        // Resetar formulário após 3 segundos
-        const resetTimeout = setTimeout(() => {
-          setFormData({ name: "", phone: "", business: "", service: "" });
-          setShowSuccess(false);
-        }, 3000);
+    const openTimeout = setTimeout(() => {
+      window.open(whatsappURL, "_blank", "noopener,noreferrer");
 
-        timeoutRefs.current.push(resetTimeout);
-      }, 500);
+      const resetTimeout = setTimeout(() => {
+        setFormData({ name: "", phone: "", business: "", service: "" });
+        setShowSuccess(false);
+      }, 3000);
 
-      timeoutRefs.current.push(openTimeout);
-    } catch (error) {
-      setIsSubmitting(false);
-      setShowError(true);
-      setErrorMessage("Erro ao abrir WhatsApp. Tente novamente.");
+      timeoutRefs.current.push(resetTimeout);
+    }, 500);
 
-      // Esconder erro após 5 segundos
-      const errorTimeout = setTimeout(() => setShowError(false), 5000);
-      timeoutRefs.current.push(errorTimeout);
-    }
+    timeoutRefs.current.push(openTimeout);
   };
 
   return (
@@ -144,7 +147,6 @@ const QuickQuoteForm = () => {
         >
           {/* Left Column - Info */}
           <div style={{ color: "white" }}>
-            {/* Badge */}
             <div
               style={{
                 display: "inline-flex",
@@ -164,7 +166,6 @@ const QuickQuoteForm = () => {
               <span>Resposta em até 2 horas</span>
             </div>
 
-            {/* Title */}
             <h2
               style={{
                 fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -200,31 +201,14 @@ const QuickQuoteForm = () => {
               em minutos. Sem compromisso!
             </p>
 
-            {/* Benefits List */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-              }}
-            >
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               {[
                 { icon: "✓", text: "Consultoria gratuita incluída" },
                 { icon: "✓", text: "Orçamento detalhado e transparente" },
-                {
-                  icon: "✓",
-                  text: "Sugestões personalizadas para seu negócio",
-                },
+                { icon: "✓", text: "Sugestões personalizadas para seu negócio" },
                 { icon: "✓", text: "Sem compromisso ou taxas escondidas" },
               ].map((benefit, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "1rem",
-                  }}
-                >
+                <div key={idx} style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
                   <div
                     style={{
                       width: "28px",
@@ -243,19 +227,13 @@ const QuickQuoteForm = () => {
                   >
                     {benefit.icon}
                   </div>
-                  <span
-                    style={{
-                      fontSize: "0.95rem",
-                      color: "#f0f2f5",
-                    }}
-                  >
+                  <span style={{ fontSize: "0.95rem", color: "#f0f2f5" }}>
                     {benefit.text}
                   </span>
                 </div>
               ))}
             </div>
 
-            {/* Trust Indicators */}
             <div
               style={{
                 marginTop: "2rem",
@@ -290,13 +268,7 @@ const QuickQuoteForm = () => {
                     >
                       {stat.value}
                     </div>
-                    <div
-                      style={{
-                        fontSize: "0.75rem",
-                        color: "#cbd5e1",
-                        fontWeight: "500",
-                      }}
-                    >
+                    <div style={{ fontSize: "0.75rem", color: "#cbd5e1", fontWeight: "500" }}>
                       {stat.label}
                     </div>
                   </div>
@@ -328,7 +300,6 @@ const QuickQuoteForm = () => {
                   Solicite Seu Orçamento
                 </h3>
 
-                {/* Mensagem de Erro */}
                 {showError && (
                   <div
                     style={{
@@ -349,17 +320,11 @@ const QuickQuoteForm = () => {
                   </div>
                 )}
 
-                {/* Name Input */}
+                {/* Name */}
                 <div style={{ marginBottom: "1.25rem" }}>
                   <label
                     htmlFor="qq-name"
-                    style={{
-                      display: "block",
-                      fontSize: "0.875rem",
-                      fontWeight: "600",
-                      color: "#94a3b8",
-                      marginBottom: "0.5rem",
-                    }}
+                    style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", color: "#94a3b8", marginBottom: "0.5rem" }}
                   >
                     Seu Nome *
                   </label>
@@ -372,38 +337,21 @@ const QuickQuoteForm = () => {
                     required
                     placeholder="João Silva"
                     style={{
-                      width: "100%",
-                      padding: "0.875rem 1rem",
+                      width: "100%", padding: "0.875rem 1rem",
                       border: "2px solid rgba(148, 163, 184, 0.2)",
-                      borderRadius: "10px",
-                      fontSize: "0.95rem",
-                      color: "#e2e8f0",
-                      transition: "all 0.2s ease",
-                      outline: "none",
+                      borderRadius: "10px", fontSize: "0.95rem",
+                      color: "#e2e8f0", transition: "all 0.2s ease", outline: "none",
                     }}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = "#4e83af";
-                      e.target.style.boxShadow =
-                        "0 0 0 4px rgba(37, 99, 235, 0.1)";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = "rgba(148, 163, 184, 0.2)";
-                      e.target.style.boxShadow = "none";
-                    }}
+                    onFocus={(e) => { e.target.style.borderColor = "#4e83af"; e.target.style.boxShadow = "0 0 0 4px rgba(37, 99, 235, 0.1)"; }}
+                    onBlur={(e) => { e.target.style.borderColor = "rgba(148, 163, 184, 0.2)"; e.target.style.boxShadow = "none"; }}
                   />
                 </div>
 
-                {/* Phone Input */}
+                {/* Phone */}
                 <div style={{ marginBottom: "1.25rem" }}>
                   <label
                     htmlFor="qq-phone"
-                    style={{
-                      display: "block",
-                      fontSize: "0.875rem",
-                      fontWeight: "600",
-                      color: "#94a3b8",
-                      marginBottom: "0.5rem",
-                    }}
+                    style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", color: "#94a3b8", marginBottom: "0.5rem" }}
                   >
                     WhatsApp *
                   </label>
@@ -416,38 +364,21 @@ const QuickQuoteForm = () => {
                     required
                     placeholder="(21) 98888-8888"
                     style={{
-                      width: "100%",
-                      padding: "0.875rem 1rem",
+                      width: "100%", padding: "0.875rem 1rem",
                       border: "2px solid rgba(148, 163, 184, 0.2)",
-                      borderRadius: "10px",
-                      fontSize: "0.95rem",
-                      color: "#e2e8f0",
-                      transition: "all 0.2s ease",
-                      outline: "none",
+                      borderRadius: "10px", fontSize: "0.95rem",
+                      color: "#e2e8f0", transition: "all 0.2s ease", outline: "none",
                     }}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = "#4e83af";
-                      e.target.style.boxShadow =
-                        "0 0 0 4px rgba(37, 99, 235, 0.1)";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = "rgba(148, 163, 184, 0.2)";
-                      e.target.style.boxShadow = "none";
-                    }}
+                    onFocus={(e) => { e.target.style.borderColor = "#4e83af"; e.target.style.boxShadow = "0 0 0 4px rgba(37, 99, 235, 0.1)"; }}
+                    onBlur={(e) => { e.target.style.borderColor = "rgba(148, 163, 184, 0.2)"; e.target.style.boxShadow = "none"; }}
                   />
                 </div>
 
-                {/* Business Input */}
+                {/* Business */}
                 <div style={{ marginBottom: "1.25rem" }}>
                   <label
                     htmlFor="qq-business"
-                    style={{
-                      display: "block",
-                      fontSize: "0.875rem",
-                      fontWeight: "600",
-                      color: "#94a3b8",
-                      marginBottom: "0.5rem",
-                    }}
+                    style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", color: "#94a3b8", marginBottom: "0.5rem" }}
                   >
                     Tipo de Negócio
                   </label>
@@ -459,24 +390,13 @@ const QuickQuoteForm = () => {
                     onChange={handleChange}
                     placeholder="Ex: Clínica de Estética, Restaurante..."
                     style={{
-                      width: "100%",
-                      padding: "0.875rem 1rem",
+                      width: "100%", padding: "0.875rem 1rem",
                       border: "2px solid rgba(148, 163, 184, 0.2)",
-                      borderRadius: "10px",
-                      fontSize: "0.95rem",
-                      color: "#e2e8f0",
-                      transition: "all 0.2s ease",
-                      outline: "none",
+                      borderRadius: "10px", fontSize: "0.95rem",
+                      color: "#e2e8f0", transition: "all 0.2s ease", outline: "none",
                     }}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = "#4e83af";
-                      e.target.style.boxShadow =
-                        "0 0 0 4px rgba(37, 99, 235, 0.1)";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = "rgba(148, 163, 184, 0.2)";
-                      e.target.style.boxShadow = "none";
-                    }}
+                    onFocus={(e) => { e.target.style.borderColor = "#4e83af"; e.target.style.boxShadow = "0 0 0 4px rgba(37, 99, 235, 0.1)"; }}
+                    onBlur={(e) => { e.target.style.borderColor = "rgba(148, 163, 184, 0.2)"; e.target.style.boxShadow = "none"; }}
                   />
                 </div>
 
@@ -484,13 +404,7 @@ const QuickQuoteForm = () => {
                 <div style={{ marginBottom: "1.5rem" }}>
                   <label
                     htmlFor="qq-service"
-                    style={{
-                      display: "block",
-                      fontSize: "0.875rem",
-                      fontWeight: "600",
-                      color: "#94a3b8",
-                      marginBottom: "0.5rem",
-                    }}
+                    style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", color: "#94a3b8", marginBottom: "0.5rem" }}
                   >
                     Serviço de Interesse *
                   </label>
@@ -501,26 +415,15 @@ const QuickQuoteForm = () => {
                     onChange={handleChange}
                     required
                     style={{
-                      width: "100%",
-                      padding: "0.875rem 1rem",
+                      width: "100%", padding: "0.875rem 1rem",
                       border: "2px solid rgba(148, 163, 184, 0.2)",
-                      borderRadius: "10px",
-                      fontSize: "0.95rem",
-                      color: "#e2e8f0",
-                      transition: "all 0.2s ease",
-                      outline: "none",
-                      cursor: "pointer",
+                      borderRadius: "10px", fontSize: "0.95rem",
+                      color: "#e2e8f0", transition: "all 0.2s ease",
+                      outline: "none", cursor: "pointer",
                       backgroundColor: "rgba(7, 21, 44, 0.98)",
                     }}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = "#4e83af";
-                      e.target.style.boxShadow =
-                        "0 0 0 4px rgba(37, 99, 235, 0.1)";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = "rgba(148, 163, 184, 0.2)";
-                      e.target.style.boxShadow = "none";
-                    }}
+                    onFocus={(e) => { e.target.style.borderColor = "#4e83af"; e.target.style.boxShadow = "0 0 0 4px rgba(37, 99, 235, 0.1)"; }}
+                    onBlur={(e) => { e.target.style.borderColor = "rgba(148, 163, 184, 0.2)"; e.target.style.boxShadow = "none"; }}
                   >
                     <option value="">Selecione um serviço...</option>
                     {services.map((service) => (
@@ -531,36 +434,26 @@ const QuickQuoteForm = () => {
                   </select>
                 </div>
 
-                {/* Submit Button */}
+                {/* Submit */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
                   style={{
-                    width: "100%",
-                    padding: "1rem",
+                    width: "100%", padding: "1rem",
                     background: isSubmitting
                       ? "#cbd5e1"
                       : "linear-gradient(135deg, #4e83af 0%, #3a5f7d 100%)",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "10px",
-                    fontSize: "1rem",
-                    fontWeight: "600",
+                    color: "white", border: "none", borderRadius: "10px",
+                    fontSize: "1rem", fontWeight: "600",
                     cursor: isSubmitting ? "not-allowed" : "pointer",
                     transition: "all 0.3s ease",
-                    boxShadow: isSubmitting
-                      ? "none"
-                      : "0 4px 12px rgba(37, 99, 235, 0.3)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "0.75rem",
+                    boxShadow: isSubmitting ? "none" : "0 4px 12px rgba(37, 99, 235, 0.3)",
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem",
                   }}
                   onMouseOver={(e) => {
                     if (!isSubmitting) {
                       e.currentTarget.style.transform = "translateY(-2px)";
-                      e.currentTarget.style.boxShadow =
-                        "0 8px 20px rgba(37, 99, 235, 0.4)";
+                      e.currentTarget.style.boxShadow = "0 8px 20px rgba(37, 99, 235, 0.4)";
                     }
                   }}
                   onMouseOut={(e) => {
@@ -574,12 +467,9 @@ const QuickQuoteForm = () => {
                     <>
                       <span
                         style={{
-                          display: "inline-block",
-                          width: "20px",
-                          height: "20px",
+                          display: "inline-block", width: "20px", height: "20px",
                           border: "3px solid rgba(255, 255, 255, 0.3)",
-                          borderTop: "3px solid white",
-                          borderRadius: "50%",
+                          borderTop: "3px solid white", borderRadius: "50%",
                           animation: "spin 1s linear infinite",
                         }}
                       />
@@ -593,61 +483,33 @@ const QuickQuoteForm = () => {
                   )}
                 </button>
 
-                {/* Privacy Note */}
                 <p
                   style={{
-                    fontSize: "0.75rem",
-                    color: "#94a3b8",
-                    textAlign: "center",
-                    marginTop: "1rem",
-                    lineHeight: "1.5",
+                    fontSize: "0.75rem", color: "#94a3b8",
+                    textAlign: "center", marginTop: "1rem", lineHeight: "1.5",
                   }}
                 >
                   🔒 Seus dados estão seguros. Não compartilhamos com terceiros.
                 </p>
               </form>
             ) : (
-              <div
-                style={{
-                  textAlign: "center",
-                  padding: "2rem 0",
-                }}
-              >
+              <div style={{ textAlign: "center", padding: "2rem 0" }}>
                 <div
                   style={{
-                    width: "80px",
-                    height: "80px",
-                    background:
-                      "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-                    borderRadius: "50%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    margin: "0 auto 1.5rem",
-                    fontSize: "3rem",
+                    width: "80px", height: "80px",
+                    background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                    borderRadius: "50%", display: "flex",
+                    alignItems: "center", justifyContent: "center",
+                    margin: "0 auto 1.5rem", fontSize: "3rem",
                   }}
                 >
                   ✓
                 </div>
-                <h3
-                  style={{
-                    fontSize: "1.5rem",
-                    fontWeight: "700",
-                    color: "#e2e8f0",
-                    marginBottom: "0.75rem",
-                  }}
-                >
+                <h3 style={{ fontSize: "1.5rem", fontWeight: "700", color: "#e2e8f0", marginBottom: "0.75rem" }}>
                   Solicitação Enviada!
                 </h3>
-                <p
-                  style={{
-                    fontSize: "1rem",
-                    color: "#7a8a99",
-                    lineHeight: "1.6",
-                  }}
-                >
-                  Abrimos o WhatsApp para você. Já estamos preparando seu
-                  orçamento personalizado!
+                <p style={{ fontSize: "1rem", color: "#7a8a99", lineHeight: "1.6" }}>
+                  Abrimos o WhatsApp para você. Já estamos preparando seu orçamento personalizado!
                 </p>
               </div>
             )}
@@ -655,7 +517,6 @@ const QuickQuoteForm = () => {
         </div>
       </div>
 
-      {/* CSS Animation */}
       <style>{`
         @keyframes spin {
           to { transform: rotate(360deg); }

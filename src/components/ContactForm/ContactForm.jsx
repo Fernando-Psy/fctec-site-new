@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPublicLead } from "../../services/api";
 import "./ContactForm.css";
 
 const ContactForm = () => {
@@ -19,17 +20,13 @@ const ContactForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ submitting: true, success: false, error: false, message: "" });
 
-    // Validação básica
     if (!formData.name || !formData.email || !formData.message) {
       setStatus({
         submitting: false,
@@ -40,7 +37,6 @@ const ContactForm = () => {
       return;
     }
 
-    // Validação de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setStatus({
@@ -52,51 +48,40 @@ const ContactForm = () => {
       return;
     }
 
-    try {
-      // Montar mensagem para WhatsApp
-      const whatsappMessage =
-        `📨 *Nova Mensagem de Contato*\n\n` +
-        `👤 *Nome:* ${formData.name}\n` +
-        `📧 *Email:* ${formData.email}\n` +
-        `📱 *Telefone:* ${formData.phone || "Não informado"}\n` +
-        `🏢 *Empresa:* ${formData.company || "Não informada"}\n\n` +
-        `💬 *Mensagem:*\n${formData.message}`;
+    // Registra lead no CRM (fire-and-forget)
+    createPublicLead({
+      nome: formData.name,
+      email: formData.email,
+      telefone: formData.phone || undefined,
+      empresa: formData.company || undefined,
+      mensagem: formData.message,
+      origem: "site-contato",
+    });
 
-      const whatsappURL = `https://wa.me/5521968810478?text=${encodeURIComponent(
-        whatsappMessage
-      )}`;
+    const whatsappMessage =
+      `📨 *Nova Mensagem de Contato*\n\n` +
+      `👤 *Nome:* ${formData.name}\n` +
+      `📧 *Email:* ${formData.email}\n` +
+      `📱 *Telefone:* ${formData.phone || "Não informado"}\n` +
+      `🏢 *Empresa:* ${formData.company || "Não informada"}\n\n` +
+      `💬 *Mensagem:*\n${formData.message}`;
 
-      // Abrir WhatsApp
-      window.open(whatsappURL, "_blank", "noopener,noreferrer");
+    const whatsappURL = `https://wa.me/5521968810478?text=${encodeURIComponent(whatsappMessage)}`;
 
-      setStatus({
-        submitting: false,
-        success: true,
-        error: false,
-        message: "Redirecionando para o WhatsApp! Complete o envio por lá.",
-      });
+    window.open(whatsappURL, "_blank", "noopener,noreferrer");
 
-      // Limpar formulário
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        message: "",
-      });
+    setStatus({
+      submitting: false,
+      success: true,
+      error: false,
+      message: "Redirecionando para o WhatsApp! Complete o envio por lá.",
+    });
 
-      // Limpar mensagem de sucesso após 5 segundos
-      setTimeout(() => {
-        setStatus((prev) => ({ ...prev, success: false, message: "" }));
-      }, 5000);
-    } catch (error) {
-      setStatus({
-        submitting: false,
-        success: false,
-        error: true,
-        message: "Não foi possível abrir o WhatsApp. Tente novamente.",
-      });
-    }
+    setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+
+    setTimeout(() => {
+      setStatus((prev) => ({ ...prev, success: false, message: "" }));
+    }, 5000);
   };
 
   return (
@@ -236,7 +221,6 @@ const ContactForm = () => {
                 />
               </div>
 
-              {/* Status Messages */}
               {status.success && (
                 <div className="alert alert-success">
                   <span className="alert-icon">✓</span>
@@ -273,7 +257,6 @@ const ContactForm = () => {
         </div>
       </div>
 
-      {/* Background Decorations */}
       <div className="contact-bg-element contact-bg-1" />
       <div className="contact-bg-element contact-bg-2" />
     </section>

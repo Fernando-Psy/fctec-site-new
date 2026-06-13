@@ -3,13 +3,11 @@ import { createLogger } from '../utils/logger';
 
 const logger = createLogger('API');
 
-// URL base da API - usa variável de ambiente
 const API_BASE_URL =
   import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
 
 logger.info('API URL configured:', API_BASE_URL);
 
-// Criar instância do axios
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -18,7 +16,6 @@ const api = axios.create({
   timeout: 10000,
 });
 
-// Interceptor para debug
 api.interceptors.request.use(
   (config) => {
     logger.request(config.method || 'GET', config.url || '', config.data);
@@ -30,7 +27,6 @@ api.interceptors.request.use(
   }
 );
 
-// Interceptor de resposta
 api.interceptors.response.use(
   (response) => {
     logger.response(response.status, response.data);
@@ -47,31 +43,53 @@ api.interceptors.response.use(
 );
 
 /**
- * Criar um novo lead público
+ * Captura parâmetros UTM da URL atual e os armazena em sessionStorage.
+ * Chame esta função uma vez no carregamento da página (ex: App.jsx).
+ */
+export const captureUtmParams = () => {
+  const params = new URLSearchParams(window.location.search);
+  const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  utmKeys.forEach((key) => {
+    const value = params.get(key);
+    if (value) sessionStorage.setItem(key, value);
+  });
+};
+
+/**
+ * Retorna os UTM params armazenados (capturados no primeiro acesso).
+ */
+const getStoredUtmParams = () => {
+  const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  return keys.reduce((acc, key) => {
+    const value = sessionStorage.getItem(key);
+    if (value) acc[key] = value;
+    return acc;
+  }, {});
+};
+
+/**
+ * Criar um novo lead público (envia junto UTM params capturados).
  */
 export const createPublicLead = async (leadData) => {
   try {
-    logger.info('Creating lead:', leadData);
-    const response = await api.post('/lead-publico/', leadData);
+    const payload = { ...leadData, ...getStoredUtmParams() };
+    logger.info('Creating lead:', payload);
+    const response = await api.post('/lead-publico/', payload);
     return { success: true, data: response.data };
   } catch (error) {
     logger.error('Error creating lead:', error);
-
-    // Tratamento de erro detalhado
-    const errorDetail = {
+    return {
       success: false,
       error: error.response?.data || {
         message: error.message || 'Erro ao criar lead',
         status: error.response?.status,
       },
     };
-
-    return errorDetail;
   }
 };
 
 /**
- * Listar serviços disponíveis
+ * Listar serviços disponíveis.
  */
 export const getServices = async () => {
   try {
@@ -87,7 +105,7 @@ export const getServices = async () => {
 };
 
 /**
- * Obter um serviço específico
+ * Obter um serviço específico.
  */
 export const getServiceById = async (serviceId) => {
   try {
@@ -98,6 +116,24 @@ export const getServiceById = async (serviceId) => {
     return {
       success: false,
       error: error.response?.data || 'Erro ao buscar serviço',
+    };
+  }
+};
+
+/**
+ * Criar um agendamento público.
+ */
+export const createAppointment = async (appointmentData) => {
+  try {
+    const payload = { ...appointmentData, ...getStoredUtmParams() };
+    logger.info('Creating appointment:', payload);
+    const response = await api.post('/agenda/publico/', payload);
+    return { success: true, data: response.data };
+  } catch (error) {
+    logger.error('Error creating appointment:', error);
+    return {
+      success: false,
+      error: error.response?.data || 'Erro ao criar agendamento',
     };
   }
 };
