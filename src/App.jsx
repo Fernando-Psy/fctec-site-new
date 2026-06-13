@@ -6,16 +6,13 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-// CSS Crítico (carregado imediatamente)
-import './styles/bootstrap-critical.css'; // Bootstrap mínimo para Hero/Header
+import './styles/bootstrap-critical.css';
 import './styles/neumorphism.css';
 import './App.css';
 
-// Utilitário para carregar CSS não bloqueante
 import { loadCSSIdle } from './utils/loadCSS';
-
-// Hook para detecção de conexão lenta
 import { useIsSlowConnection } from './hooks/useNetworkStatus';
+import { captureUtmParams } from './services/api';
 
 import SEO from './components/SEO/SEO';
 import { SEOPages } from './components/SEO/seoConfig';
@@ -25,7 +22,6 @@ import WhatsAppFloat from './components/WhatsAppFloat/WhatsAppFloat';
 import ScrollToTop from './components/ScrollToTop';
 import { regionalPages } from './components/RegionalPages/regionalPages';
 
-// Lazy loading para componentes pesados
 const AboutCompany = lazy(
   () => import('./components/AboutCompany/AboutCompany')
 );
@@ -55,7 +51,6 @@ const RegionalLandingPage = lazy(
   () => import('./components/RegionalPages/RegionalLandingPage')
 );
 
-// Loading component
 const LoadingFallback = () => (
   <div
     style={{
@@ -71,19 +66,16 @@ const LoadingFallback = () => (
 );
 
 function AppContent() {
-  // Detectar conexão lenta para otimizações adaptativas
   const isSlowConnection = useIsSlowConnection();
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
 
-  // Carregar Bootstrap CSS de forma assíncrona após renderização inicial
   useEffect(() => {
-    // Carregar Bootstrap de forma idle para não bloquear LCP
-    // Usar maior delay em dispositivos mobile e conexões lentas
+    // Captura UTM params da URL na primeira visita e armazena em sessionStorage
+    captureUtmParams();
+
     const isMobile = window.innerWidth < 768;
     const baseDelay = isMobile ? 800 : 400;
-
-    // Aumentar delay em conexões lentas para priorizar conteúdo crítico
     const delay = isSlowConnection ? baseDelay * 1.5 : baseDelay;
 
     const timeoutId = setTimeout(() => {
@@ -102,7 +94,6 @@ function AppContent() {
       <div className="App">
         {!isAdminRoute ? <Header /> : null}
         <Routes>
-          {/* Página Principal */}
           <Route
             path="/"
             element={
@@ -133,7 +124,6 @@ function AppContent() {
             }
           />
 
-          {/* Páginas de Serviços Individuais */}
           <Route
             path="/servicos/:serviceId"
             element={
@@ -166,7 +156,6 @@ function AppContent() {
             />
           ))}
 
-          {/* Blog */}
           <Route
             path="/blog"
             element={
@@ -206,7 +195,6 @@ function AppContent() {
             }
           />
 
-          {/* Política de Privacidade */}
           <Route
             path="/politica-privacidade"
             element={
@@ -224,7 +212,6 @@ function AppContent() {
             }
           />
 
-          {/* Termos de Uso */}
           <Route
             path="/termos-de-uso"
             element={
