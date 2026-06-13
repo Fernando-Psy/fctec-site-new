@@ -22,37 +22,22 @@ import WhatsAppFloat from './components/WhatsAppFloat/WhatsAppFloat';
 import ScrollToTop from './components/ScrollToTop';
 import { regionalPages } from './components/RegionalPages/regionalPages';
 
-const AboutCompany = lazy(
-  () => import('./components/AboutCompany/AboutCompany')
-);
+const AboutCompany = lazy(() => import('./components/AboutCompany/AboutCompany'));
 const Services = lazy(() => import('./components/Services/Services'));
-const ServiceDetails = lazy(
-  () => import('./components/Services/ServiceDetails')
-);
-const ClientsShowcase = lazy(
-  () => import('./components/ClientsShowcase/ClientsShowcase')
-);
-const FreeResources = lazy(
-  () => import('./components/FreeResources/FreeResources')
-);
+const ServiceDetails = lazy(() => import('./components/Services/ServiceDetails'));
+const ClientsShowcase = lazy(() => import('./components/ClientsShowcase/ClientsShowcase'));
+const FreeResources = lazy(() => import('./components/FreeResources/FreeResources'));
 const SoroBlog = lazy(() => import('./components/SoroBlog/SoroBlog'));
 const AdminBlog = lazy(() => import('./components/AdminBlog/AdminBlog'));
 const ContactForm = lazy(() => import('./components/ContactForm/ContactForm'));
 const FAQ = lazy(() => import('./components/FAQ/FAQ'));
 const Location = lazy(() => import('./components/Location/Location'));
 const Footer = lazy(() => import('./components/Footer/Footer'));
-const PrivacyPolicy = lazy(
-  () => import('./components/PrivacyPolicy/PrivacyPolicy')
-);
-const TermsOfService = lazy(
-  () => import('./components/TermsOfService/TermsOfService')
-);
-const RegionalLandingPage = lazy(
-  () => import('./components/RegionalPages/RegionalLandingPage')
-);
-const AppointmentButton = lazy(
-  () => import('./components/AppointmentForm/AppointmentButton')
-);
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy/PrivacyPolicy'));
+const TermsOfService = lazy(() => import('./components/TermsOfService/TermsOfService'));
+const RegionalLandingPage = lazy(() => import('./components/RegionalPages/RegionalLandingPage'));
+const AppointmentButton = lazy(() => import('./components/AppointmentForm/AppointmentButton'));
+const DynamicLandingPage = lazy(() => import('./components/DynamicLanding/DynamicLandingPage'));
 
 const LoadingFallback = () => (
   <div
@@ -72,6 +57,7 @@ function AppContent() {
   const isSlowConnection = useIsSlowConnection();
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
+  const isLandingRoute = location.pathname.startsWith('/lp/');
 
   useEffect(() => {
     captureUtmParams();
@@ -94,8 +80,20 @@ function AppContent() {
     <>
       <ScrollToTop />
       <div className="App">
-        {!isAdminRoute ? <Header /> : null}
+        {/* Header e WhatsApp float omitidos nas landing pages dinâmicas (têm layout próprio) */}
+        {!isAdminRoute && !isLandingRoute ? <Header /> : null}
         <Routes>
+          {/* ── Landing Pages Dinâmicas do CRM ── */}
+          <Route
+            path="/lp/:slug"
+            element={
+              <Suspense fallback={<LoadingFallback />}>
+                <DynamicLandingPage />
+              </Suspense>
+            }
+          />
+
+          {/* ── Página Principal ── */}
           <Route
             path="/"
             element={
@@ -103,24 +101,12 @@ function AppContent() {
                 <SEO {...SEOPages.home} />
                 <main>
                   <Hero />
-                  <Suspense fallback={<LoadingFallback />}>
-                    <AboutCompany />
-                  </Suspense>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <Services />
-                  </Suspense>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <FAQ />
-                  </Suspense>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <ClientsShowcase />
-                  </Suspense>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <ContactForm />
-                  </Suspense>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <Location />
-                  </Suspense>
+                  <Suspense fallback={<LoadingFallback />}><AboutCompany /></Suspense>
+                  <Suspense fallback={<LoadingFallback />}><Services /></Suspense>
+                  <Suspense fallback={<LoadingFallback />}><FAQ /></Suspense>
+                  <Suspense fallback={<LoadingFallback />}><ClientsShowcase /></Suspense>
+                  <Suspense fallback={<LoadingFallback />}><ContactForm /></Suspense>
+                  <Suspense fallback={<LoadingFallback />}><Location /></Suspense>
                 </main>
               </>
             }
@@ -130,9 +116,7 @@ function AppContent() {
             path="/servicos/:serviceId"
             element={
               <main>
-                <Suspense fallback={<LoadingFallback />}>
-                  <ServiceDetails />
-                </Suspense>
+                <Suspense fallback={<LoadingFallback />}><ServiceDetails /></Suspense>
               </main>
             }
           />
@@ -143,15 +127,9 @@ function AppContent() {
               path={`/${page.slug}`}
               element={
                 <>
-                  <SEO
-                    title={page.title}
-                    description={page.description}
-                    keywords={page.keywords}
-                  />
+                  <SEO title={page.title} description={page.description} keywords={page.keywords} />
                   <main>
-                    <Suspense fallback={<LoadingFallback />}>
-                      <RegionalLandingPage />
-                    </Suspense>
+                    <Suspense fallback={<LoadingFallback />}><RegionalLandingPage /></Suspense>
                   </main>
                 </>
               }
@@ -163,11 +141,7 @@ function AppContent() {
             element={
               <>
                 <SEO {...SEOPages.blog} />
-                <main>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <SoroBlog />
-                  </Suspense>
-                </main>
+                <main><Suspense fallback={<LoadingFallback />}><SoroBlog /></Suspense></main>
               </>
             }
           />
@@ -177,11 +151,7 @@ function AppContent() {
             element={
               <>
                 <SEO {...SEOPages.blog} />
-                <main>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <SoroBlog />
-                  </Suspense>
-                </main>
+                <main><Suspense fallback={<LoadingFallback />}><SoroBlog /></Suspense></main>
               </>
             }
           />
@@ -189,11 +159,7 @@ function AppContent() {
           <Route
             path="/admin"
             element={
-              <main>
-                <Suspense fallback={<LoadingFallback />}>
-                  <AdminBlog />
-                </Suspense>
-              </main>
+              <main><Suspense fallback={<LoadingFallback />}><AdminBlog /></Suspense></main>
             }
           />
 
@@ -205,11 +171,7 @@ function AppContent() {
                   title="Política de Privacidade | FCBJ Desenvolvimento"
                   description="Conheça nossa política de privacidade e como protegemos seus dados em conformidade com a LGPD."
                 />
-                <main>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <PrivacyPolicy />
-                  </Suspense>
-                </main>
+                <main><Suspense fallback={<LoadingFallback />}><PrivacyPolicy /></Suspense></main>
               </>
             }
           />
@@ -222,24 +184,17 @@ function AppContent() {
                   title="Termos de Uso | FCBJ Desenvolvimento"
                   description="Conheça os termos e condições de uso dos nossos serviços e site."
                 />
-                <main>
-                  <Suspense fallback={<LoadingFallback />}>
-                    <TermsOfService />
-                  </Suspense>
-                </main>
+                <main><Suspense fallback={<LoadingFallback />}><TermsOfService /></Suspense></main>
               </>
             }
           />
         </Routes>
-        {!isAdminRoute ? (
+
+        {!isAdminRoute && !isLandingRoute ? (
           <>
-            <Suspense fallback={<LoadingFallback />}>
-              <Footer />
-            </Suspense>
+            <Suspense fallback={<LoadingFallback />}><Footer /></Suspense>
             <WhatsAppFloat />
-            <Suspense fallback={null}>
-              <AppointmentButton />
-            </Suspense>
+            <Suspense fallback={null}><AppointmentButton /></Suspense>
           </>
         ) : null}
       </div>
