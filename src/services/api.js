@@ -43,8 +43,8 @@ api.interceptors.response.use(
 );
 
 /**
- * Captura parâmetros UTM da URL atual e os armazena em sessionStorage.
- * Chame esta função uma vez no carregamento da página (ex: App.jsx).
+ * Captura parâmetros UTM da URL atual e armazena em sessionStorage.
+ * Chame no carregamento inicial da página (App.jsx).
  */
 export const captureUtmParams = () => {
   const params = new URLSearchParams(window.location.search);
@@ -55,9 +55,6 @@ export const captureUtmParams = () => {
   });
 };
 
-/**
- * Retorna os UTM params armazenados (capturados no primeiro acesso).
- */
 const getStoredUtmParams = () => {
   const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
   return keys.reduce((acc, key) => {
@@ -68,7 +65,7 @@ const getStoredUtmParams = () => {
 };
 
 /**
- * Criar um novo lead público (envia junto UTM params capturados).
+ * Criar lead público (formulários do site principal).
  */
 export const createPublicLead = async (leadData) => {
   try {
@@ -84,6 +81,45 @@ export const createPublicLead = async (leadData) => {
         message: error.message || 'Erro ao criar lead',
         status: error.response?.status,
       },
+    };
+  }
+};
+
+/**
+ * Buscar configuração de uma landing page pública pelo slug.
+ */
+export const getLandingPage = async (slug) => {
+  try {
+    const response = await api.get(`/public/landing/${slug}`);
+    return { success: true, data: response.data };
+  } catch (error) {
+    logger.error('Error fetching landing page:', error);
+    return {
+      success: false,
+      status: error.response?.status,
+      error: error.response?.data || 'Erro ao buscar landing page',
+    };
+  }
+};
+
+/**
+ * Criar lead via landing page pública.
+ */
+export const createLandingLead = async (slug, leadData) => {
+  try {
+    const payload = {
+      ...leadData,
+      ...getStoredUtmParams(),
+      page_path: `/lp/${slug}`,
+    };
+    logger.info('Creating landing lead:', payload);
+    const response = await api.post(`/public/landing/${slug}/lead`, payload);
+    return { success: true, data: response.data };
+  } catch (error) {
+    logger.error('Error creating landing lead:', error);
+    return {
+      success: false,
+      error: error.response?.data || 'Erro ao enviar dados',
     };
   }
 };
@@ -121,13 +157,13 @@ export const getServiceById = async (serviceId) => {
 };
 
 /**
- * Criar um agendamento público.
+ * Criar agendamento público (site → CRM agenda).
  */
 export const createAppointment = async (appointmentData) => {
   try {
     const payload = { ...appointmentData, ...getStoredUtmParams() };
     logger.info('Creating appointment:', payload);
-    const response = await api.post('/agenda/publico/', payload);
+    const response = await api.post('/agenda/publico', payload);
     return { success: true, data: response.data };
   } catch (error) {
     logger.error('Error creating appointment:', error);
