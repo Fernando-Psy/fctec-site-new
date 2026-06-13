@@ -50,6 +50,9 @@ const TermsOfService = lazy(
 const RegionalLandingPage = lazy(
   () => import('./components/RegionalPages/RegionalLandingPage')
 );
+const AppointmentButton = lazy(
+  () => import('./components/AppointmentForm/AppointmentButton')
+);
 
 const LoadingFallback = () => (
   <div
@@ -71,7 +74,6 @@ function AppContent() {
   const isAdminRoute = location.pathname.startsWith('/admin');
 
   useEffect(() => {
-    // Captura UTM params da URL na primeira visita e armazena em sessionStorage
     captureUtmParams();
 
     const isMobile = window.innerWidth < 768;
@@ -235,6 +237,9 @@ function AppContent() {
               <Footer />
             </Suspense>
             <WhatsAppFloat />
+            <Suspense fallback={null}>
+              <AppointmentButton />
+            </Suspense>
           </>
         ) : null}
       </div>
