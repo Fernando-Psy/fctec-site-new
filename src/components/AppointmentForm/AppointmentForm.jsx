@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getServices, createAppointment } from "../../services/api";
+import { getServices, createAppointment, createPublicLead } from "../../services/api";
 import "./AppointmentForm.css";
 
 const FALLBACK_SERVICES = [
@@ -42,6 +42,14 @@ const AppointmentForm = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStep("loading");
+
+    createPublicLead({
+      nome: formData.nome,
+      telefone: formData.telefone,
+      servico_interesse: formData.servico_interesse || undefined,
+      observacoes: formData.observacoes || undefined,
+      origem: "site-agendamento",
+    });
 
     const dataHora = `${formData.data_preferida}T${formData.horario_preferido || "09:00"}:00`;
 

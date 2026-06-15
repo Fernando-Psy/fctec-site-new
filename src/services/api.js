@@ -71,7 +71,7 @@ export const createPublicLead = async (leadData) => {
   try {
     const payload = { ...leadData, ...getStoredUtmParams() };
     logger.info('Creating lead:', payload);
-    const response = await api.post('/lead-publico/', payload);
+    const response = await api.post('/leads/public', payload);
     return { success: true, data: response.data };
   } catch (error) {
     logger.error('Error creating lead:', error);

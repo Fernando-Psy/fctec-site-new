@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useIsDesktop } from '../../hooks/useWindowSize';
+import { createPublicLead } from '../../services/api';
 
 const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
   const isDesktop = useIsDesktop(); // Hook otimizado para evitar reflow forçado
@@ -50,6 +51,14 @@ const QuickQuoteModal = ({ show, onHide, planName = '' }) => {
     setIsSubmitting(true);
 
     const serviceLabel = services.find(s => s.value === formData.service)?.label || formData.service;
+
+    createPublicLead({
+      nome: formData.name,
+      telefone: formData.phone,
+      empresa: formData.business || undefined,
+      servico_interesse: serviceLabel,
+      origem: 'site-modal',
+    });
 
     const message = `🎯 *Novo Pedido de Orçamento*\n\n` +
       `👤 *Nome:* ${formData.name}\n` +
