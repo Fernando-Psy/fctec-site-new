@@ -1,18 +1,52 @@
+import { useState, useEffect, useRef } from 'react';
 import { scrollToElement } from '../../utils/scrollUtils';
 import './Hero.css';
 
+function useCountUp(target, duration = 1800, start = false) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!start) return;
+    let startTime = null;
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [target, duration, start]);
+  return count;
+}
+
 const HeroImproved = () => {
-  const stats = [
-    { icon: '⚡', value: '10+', label: 'Anos de Experiência' },
-    { icon: '✓', value: '50+', label: 'Projetos Concluídos' },
-    { icon: '🏆', value: '98%', label: 'Taxa de Sucesso' },
-  ];
+  const [statsVisible, setStatsVisible] = useState(false);
+  const statsRef = useRef(null);
+
+  const years = useCountUp(10, 1600, statsVisible);
+  const projects = useCountUp(50, 2000, statsVisible);
+  const success = useCountUp(98, 1400, statsVisible);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setStatsVisible(true); },
+      { threshold: 0.3 }
+    );
+    if (statsRef.current) observer.observe(statsRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const techStack = [
     { name: 'React', icon: '⚛️' },
     { name: 'Python', icon: '🐍' },
     { name: 'Node.js', icon: '🟢' },
     { name: 'AWS', icon: '☁️' },
+  ];
+
+  const stats = [
+    { icon: '⚡', value: years + '+', label: 'Anos de Experiência' },
+    { icon: '✓', value: projects + '+', label: 'Projetos Concluídos' },
+    { icon: '🏆', value: success + '%', label: 'Taxa de Sucesso' },
   ];
 
   return (
@@ -54,9 +88,7 @@ const HeroImproved = () => {
             alignItems: 'center',
           }}
         >
-          {/* Coluna de Conteúdo */}
           <div>
-            {/* Badge Institucional */}
             <div
               style={{
                 display: 'inline-flex',
@@ -79,12 +111,12 @@ const HeroImproved = () => {
                   height: '6px',
                   background: '#22d3ee',
                   borderRadius: '50%',
+                  animation: 'pulse-dot 2s ease-in-out infinite',
                 }}
               />
-              <span>FCBJ Desenvolvimento</span>
+              <span>FCTEC Desenvolvimento Web</span>
             </div>
 
-            {/* Título Institucional */}
             <h1
               style={{
                 fontSize: 'clamp(2.25rem, 5vw, 3.5rem)',
@@ -95,7 +127,7 @@ const HeroImproved = () => {
                 letterSpacing: '-0.02em',
               }}
             >
-              Desenvolvimento de Sites e Sistemas para{' '}
+              Criação de Sites e Sistemas para{' '}
               <span
                 style={{
                   background:
@@ -110,7 +142,6 @@ const HeroImproved = () => {
               </span>
             </h1>
 
-            {/* Subtítulo com Proposta de Valor */}
             <p
               style={{
                 fontSize: '1.125rem',
@@ -120,14 +151,9 @@ const HeroImproved = () => {
                 fontWeight: '400',
               }}
             >
-              Criamos sites institucionais, sistemas web e estruturas digitais
-              para empresas em todo o Brasil, com forte atuação em Belford Roxo,
-              Nova Iguaçu, Duque de Caxias, São João de Meriti, Nilópolis e Rio
-              de Janeiro. Entregamos com foco em performance, segurança e
-              posicionamento no Google.
+              Desenvolvemos sites institucionais, sistemas web personalizados e configuramos o Google Meu Negócio para empresas em Belford Roxo, Nova Iguaçu, Duque de Caxias e todo o Rio de Janeiro. Entregamos com foco em performance, segurança e posicionamento no Google.
             </p>
 
-            {/* Tech Stack */}
             <div
               style={{
                 background: 'rgba(15, 23, 42, 0.72)',
@@ -161,7 +187,6 @@ const HeroImproved = () => {
               </div>
             </div>
 
-            {/* CTAs Institucionais */}
             <div
               style={{
                 display: 'flex',
@@ -170,7 +195,6 @@ const HeroImproved = () => {
                 marginBottom: '2.5rem',
               }}
             >
-              {/* CTA Primário */}
               <button
                 onClick={() =>
                   window.open(
@@ -198,24 +222,19 @@ const HeroImproved = () => {
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow =
-                    '0 0 22px rgba(34, 211, 238, 0.38)';
+                  e.currentTarget.style.boxShadow = '0 0 28px rgba(34, 211, 238, 0.45)';
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow =
-                    '0 8px 20px rgba(37, 99, 235, 0.35)';
+                  e.currentTarget.style.boxShadow = '0 8px 20px rgba(37, 99, 235, 0.35)';
                 }}
               >
                 <span>💬</span>
-                <span>Falar com Nossa Equipe</span>
+                <span>Solicitar Orçamento Gratuito</span>
               </button>
 
-              {/* CTA Secundário */}
               <button
-                onClick={() =>
-                  scrollToElement('products', { behavior: 'smooth' })
-                }
+                onClick={() => scrollToElement('products', { behavior: 'smooth' })}
                 style={{
                   background: 'rgba(15, 23, 42, 0.75)',
                   border: '1.5px solid rgba(34, 211, 238, 0.35)',
@@ -236,8 +255,7 @@ const HeroImproved = () => {
                 onMouseOver={(e) => {
                   e.currentTarget.style.borderColor = 'rgba(96, 165, 250, 0.8)';
                   e.currentTarget.style.background = 'rgba(30, 41, 59, 0.9)';
-                  e.currentTarget.style.boxShadow =
-                    '0 0 18px rgba(96, 165, 250, 0.35)';
+                  e.currentTarget.style.boxShadow = '0 0 18px rgba(96, 165, 250, 0.35)';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseOut={(e) => {
@@ -252,8 +270,8 @@ const HeroImproved = () => {
               </button>
             </div>
 
-            {/* Stats */}
             <div
+              ref={statsRef}
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
@@ -296,7 +314,6 @@ const HeroImproved = () => {
             </div>
           </div>
 
-          {/* Coluna de Imagem */}
           <div style={{ position: 'relative' }}>
             <div
               style={{
@@ -307,7 +324,6 @@ const HeroImproved = () => {
                 border: '1px solid rgba(34, 211, 238, 0.35)',
               }}
             >
-              {/* Imagem otimizada com WebP, aspect-ratio fixo para evitar CLS */}
               <div className="hero-image-container">
                 <picture>
                   <source
@@ -322,23 +338,18 @@ const HeroImproved = () => {
                   />
                   <img
                     src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=75"
-                    alt="Desenvolvimento de software profissional"
+                    alt="Desenvolvedor web profissional criando site para empresa em Belford Roxo RJ"
                     loading="eager"
                     decoding="async"
                     fetchpriority="high"
                     width="800"
                     height="600"
                     sizes="(max-width: 767px) 600px, 800px"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                    }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </picture>
               </div>
 
-              {/* Overlay de destaque */}
               <div
                 style={{
                   position: 'absolute',
@@ -353,13 +364,7 @@ const HeroImproved = () => {
                   border: '1px solid rgba(34, 211, 238, 0.25)',
                 }}
               >
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.75rem',
-                  }}
-                >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <div
                     style={{
                       width: '48px',
@@ -370,6 +375,7 @@ const HeroImproved = () => {
                       alignItems: 'center',
                       justifyContent: 'center',
                       fontSize: '1.5rem',
+                      flexShrink: 0,
                     }}
                   >
                     🚀
@@ -383,24 +389,46 @@ const HeroImproved = () => {
                         marginBottom: '0.25rem',
                       }}
                     >
-                      Código Limpo & Escalável
+                      Sites que Aparecem no Google
                     </div>
-                    <div
-                      style={{
-                        fontSize: '0.75rem',
-                        color: '#cbd5e1',
-                        lineHeight: '1.4',
-                      }}
-                    >
-                      Seguimos as melhores práticas da engenharia de software
+                    <div style={{ fontSize: '0.75rem', color: '#cbd5e1', lineHeight: '1.4' }}>
+                      SEO técnico e conteúdo otimizado desde a entrega
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Floating trust badge */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '-1rem',
+                right: '-1rem',
+                background: 'linear-gradient(135deg, #06b6d4, #6366f1)',
+                borderRadius: '12px',
+                padding: '0.875rem 1.25rem',
+                boxShadow: '0 8px 24px rgba(6, 182, 212, 0.4)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                minWidth: '110px',
+              }}
+            >
+              <span style={{ fontSize: '1.5rem' }}>⭐</span>
+              <span style={{ fontSize: '1.125rem', fontWeight: '800', color: 'white', lineHeight: '1' }}>5.0</span>
+              <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>no Google</span>
+            </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes pulse-dot {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.5; transform: scale(1.5); }
+        }
+      `}</style>
     </section>
   );
 };
