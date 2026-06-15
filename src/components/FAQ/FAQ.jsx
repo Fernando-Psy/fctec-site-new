@@ -1,88 +1,117 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [showAll, setShowAll] = useState(false);
 
-  // Top 5 most critical questions - combate ao efeito porta mostrando menos inicialmente
   const topFaqs = [
     {
-      question: 'Quanto tempo leva para desenvolver um site?',
+      question: 'Quanto tempo leva para desenvolver um site profissional?',
       answer:
-        'Google Meu Negócio: 3-5 dias • Site Institucional: 10-15 dias • Sistema Web: 30-60 dias. Cronograma detalhado fornecido antes de iniciar.',
+        'Depende do tipo de projeto: Google Meu Negócio leva 3 a 5 dias úteis, um Site Institucional completo fica pronto em 10 a 15 dias, e um Sistema Web personalizado (com painel, agendamento ou relatórios) leva entre 30 e 60 dias. Antes de começar, fornecemos um cronograma detalhado sem surpresas.',
     },
     {
-      question: 'Qual a diferença entre site e sistema web?',
+      question: 'Qual a diferença entre site institucional e sistema web?',
       answer:
-        'Site é para divulgação (portfólio, serviços). Sistema web tem funcionalidades como agendamento, relatórios e gestão de dados.',
+        'O site institucional é voltado para divulgação: apresenta seus serviços, portfólio e contato — ideal para empresas que querem ter presença digital e aparecer no Google. Já o sistema web tem funcionalidades dinâmicas como agendamento online, controle de clientes, relatórios e gestão de dados. Cada solução tem um propósito diferente e trabalhamos com as duas.',
     },
     {
-      question: 'O que está incluso no preço?',
+      question: 'O que está incluso no preço do site?',
       answer:
-        'Design, desenvolvimento, domínio (1 ano), hospedagem (1 ano), SSL, mobile, treinamento e 30 dias de suporte.',
+        'Nossos projetos incluem: design responsivo personalizado, desenvolvimento completo, domínio por 1 ano, hospedagem por 1 ano, certificado SSL (HTTPS), adaptação para celular e tablet, treinamento para uso do painel, e 30 dias de suporte técnico pós-entrega. Sem cobranças ocultas.',
     },
     {
-      question: 'O site funciona em celulares?',
+      question: 'O site funciona bem em celulares e tablets?',
       answer:
-        '100% responsivo. Otimizado para desktop, tablet e celular. Testado em todos os navegadores principais.',
+        'Sim! Todos os nossos sites são 100% responsivos e testados em dispositivos móveis, tablets e navegadores modernos (Chrome, Safari, Firefox, Edge). Seguimos as diretrizes do Google para Mobile First Indexing, o que também melhora o posicionamento nos resultados de busca.',
     },
     {
-      question: 'Como funciona o início do projeto?',
+      question: 'Como funciona o início de um projeto comigo?',
       answer:
-        'Reunião gratuita → Proposta detalhada → Aprovação → Início. Sem surpresas, sem cobranças ocultas.',
+        'O processo é simples: 1) Reunião gratuita de diagnóstico para entender seu negócio e objetivos; 2) Envio de proposta detalhada com prazo, escopo e valor; 3) Aprovação e assinatura do contrato; 4) Início do desenvolvimento com atualizações periódicas. Você participa ativamente e aprova cada etapa.',
     },
   ];
 
-  // Additional questions (shown when "Ver mais" is clicked)
   const additionalFaqs = [
     {
-      question: 'Preciso ter conhecimento técnico?',
+      question: 'Preciso ter conhecimento técnico para gerenciar o site?',
       answer:
-        'Não! Painel de administração intuitivo + treinamento completo. Você atualiza conteúdo sem programar.',
+        'Não! Entregamos um painel de administração intuitivo e realizamos treinamento completo. Você consegue atualizar textos, imagens, blog e informações de contato sem precisar saber programar. E se tiver dúvidas, nossa equipe de suporte está disponível.',
     },
     {
-      question: 'O que acontece se eu cancelar?',
+      question: 'O que acontece se eu quiser cancelar o contrato?',
       answer:
-        'Exportamos todos os seus dados em formato aberto. Domínio e contas permanecem suas. Sem multas ou retenção.',
+        'Você fica com tudo. Exportamos seus dados em formato aberto (sem bloqueio proprietário), o domínio fica registrado em seu nome ou CNPJ, e as contas de hospedagem são transferidas para você. Sem multas ou retenção de dados.',
     },
     {
-      question: 'Quais são as formas de pagamento?',
+      question: 'Quais são as formas de pagamento aceitas?',
       answer:
-        'PIX, cartão (até 3x), transferência. Projetos acima de R$ 5.000: parcelamento direto até 5x sem juros.',
+        'Aceitamos PIX, cartão de crédito (até 3x sem juros) e transferência bancária. Para projetos acima de R$ 5.000 oferecemos parcelamento direto em até 5x sem juros. O pagamento é dividido em entrada e entrega para maior segurança.',
     },
     {
-      question: 'Quem fica com o domínio e redes sociais?',
+      question: 'Quem fica com o domínio e redes sociais após o projeto?',
       answer:
-        'Você! Domínio registrado em seu nome/CNPJ. Redes sociais vinculadas à sua conta. Nós configuramos, você controla.',
+        'Você! Sempre registramos o domínio em seu CPF ou CNPJ e criamos as contas de redes sociais vinculadas ao seu e-mail. Nós configuramos tudo do zero, mas o controle é 100% seu desde o início.',
     },
     {
-      question: 'Existe algum custo adicional depois?',
+      question: 'Existe custo adicional depois da entrega do site?',
       answer:
-        'Após 1 ano: renovação de domínio (~R$ 50/ano) e hospedagem (R$ 20+/mês). Manutenção opcional: R$ 350/mês.',
+        'Após o primeiro ano, há renovação de domínio (em torno de R$ 50/ano) e hospedagem (a partir de R$ 20/mês, dependendo do plano). A manutenção mensal é opcional e custa R$ 350/mês, incluindo atualizações de segurança, backups e suporte prioritário.',
     },
     {
-      question: 'Vocês fazem integração com WhatsApp?',
+      question: 'Vocês integram o site com WhatsApp e redes sociais?',
       answer:
-        'Sim! Botão flutuante, links para redes sociais e APIs do WhatsApp Business para mensagens automáticas.',
+        'Sim! Todos os projetos incluem botão flutuante do WhatsApp, links para redes sociais e integração com o WhatsApp Business. Para sistemas mais avançados, oferecemos automações via API do WhatsApp para mensagens automáticas e atendimento digital.',
     },
     {
-      question: 'Meu site pode sair do ar?',
+      question: 'O site pode sair do ar? Como funciona a hospedagem?',
       answer:
-        'Usamos servidores confiáveis (AWS, DigitalOcean) com 99.9% uptime. Backups diários automáticos.',
+        'Utilizamos servidores profissionais (AWS e DigitalOcean) com 99,9% de uptime garantido e backups diários automáticos. Em caso de qualquer instabilidade, somos notificados automaticamente e agimos de imediato para restaurar o serviço.',
     },
     {
-      question: 'Por que a manutenção é importante?',
+      question: 'Por que a manutenção mensal é importante?',
       answer:
-        'Garante segurança, correção de bugs, performance, backups e suporte prioritário. Evita 90% dos problemas.',
+        'Um site sem manutenção fica vulnerável a ataques, plugins desatualizados e quedas de performance. A manutenção mensal garante: segurança contínua, correção de bugs, melhorias de velocidade, backups e suporte prioritário — evitando 90% dos problemas comuns.',
     },
     {
-      question: 'Posso cancelar a manutenção quando quiser?',
+      question: 'Posso cancelar a manutenção mensal quando quiser?',
       answer:
-        'Sim, sem fidelidade. Recomendamos manter nos primeiros 6 meses para garantir estabilidade.',
+        'Sim, sem fidelidade ou multa. O plano de manutenção é mensal e pode ser cancelado a qualquer momento. Recomendamos manter nos primeiros 6 meses para garantir a estabilidade do projeto após o lançamento.',
     },
   ];
 
   const displayedFaqs = showAll ? [...topFaqs, ...additionalFaqs] : topFaqs;
+  const allFaqs = [...topFaqs, ...additionalFaqs];
+
+  // FAQPage Schema for Google Rich Results
+  useEffect(() => {
+    const schemaFAQ = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: allFaqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    };
+
+    let script = document.getElementById('schema-faq');
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'schema-faq';
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(schemaFAQ);
+
+    return () => {
+      const el = document.getElementById('schema-faq');
+      if (el) el.remove();
+    };
+  }, []);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -90,6 +119,7 @@ const FAQ = () => {
 
   return (
     <section
+      id="faq"
       style={{
         padding: '6rem 2rem',
         background:
@@ -98,13 +128,7 @@ const FAQ = () => {
       }}
     >
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-        {/* Header - More Spacious */}
-        <div
-          style={{
-            textAlign: 'center',
-            marginBottom: '4rem',
-          }}
-        >
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <div
             style={{
               display: 'inline-flex',
@@ -136,7 +160,8 @@ const FAQ = () => {
             Tire Suas{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #22d3ee 0%, #60a5fa 45%, #a78bfa 100%)',
+                background:
+                  'linear-gradient(135deg, #22d3ee 0%, #60a5fa 45%, #a78bfa 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -155,35 +180,34 @@ const FAQ = () => {
               lineHeight: '1.7',
             }}
           >
-            Respostas rápidas e diretas para as perguntas mais comuns
+            Respostas completas para as perguntas mais comuns sobre desenvolvimento web, prazos e valores
           </p>
         </div>
 
-        {/* FAQ List - Cleaner Design */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1rem',
-          }}
-        >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {displayedFaqs.map((faq, index) => (
             <div
               key={index}
               style={{
-                background: 'rgba(15, 23, 42, 0.84)',
-                border: '1px solid rgba(148, 163, 184, 0.24)',
+                background:
+                  openIndex === index
+                    ? 'rgba(20, 30, 55, 0.95)'
+                    : 'rgba(15, 23, 42, 0.84)',
+                border: openIndex === index
+                  ? '1px solid rgba(34, 211, 238, 0.45)'
+                  : '1px solid rgba(148, 163, 184, 0.24)',
                 borderRadius: '12px',
                 overflow: 'hidden',
                 transition: 'all 0.3s ease',
                 boxShadow:
                   openIndex === index
-                    ? '0 14px 26px rgba(2, 6, 23, 0.45)'
+                    ? '0 14px 26px rgba(2, 6, 23, 0.45), 0 0 0 1px rgba(34,211,238,0.1)'
                     : 'none',
               }}
             >
               <button
                 onClick={() => toggleFAQ(index)}
+                aria-expanded={openIndex === index}
                 style={{
                   width: '100%',
                   padding: '1.5rem',
@@ -195,7 +219,6 @@ const FAQ = () => {
                   border: 'none',
                   cursor: 'pointer',
                   textAlign: 'left',
-                  transition: 'all 0.3s ease',
                 }}
               >
                 <span
@@ -204,17 +227,17 @@ const FAQ = () => {
                     fontWeight: '600',
                     color: openIndex === index ? '#67e8f9' : '#e2e8f0',
                     transition: 'color 0.3s ease',
+                    lineHeight: '1.4',
                   }}
                 >
                   {faq.question}
                 </span>
                 <span
                   style={{
-                    fontSize: '1.5rem',
+                    fontSize: '1.25rem',
                     color: '#67e8f9',
-                    transform:
-                      openIndex === index ? 'rotate(180deg)' : 'rotate(0)',
-                    transition: 'transform 0.3s ease',
+                    transform: openIndex === index ? 'rotate(180deg)' : 'rotate(0)',
+                    transition: 'transform 0.35s ease',
                     flexShrink: 0,
                   }}
                 >
@@ -222,32 +245,32 @@ const FAQ = () => {
                 </span>
               </button>
 
-              {openIndex === index && (
+              <div
+                style={{
+                  maxHeight: openIndex === index ? '500px' : '0',
+                  overflow: 'hidden',
+                  transition: 'max-height 0.4s ease',
+                }}
+              >
                 <div
                   style={{
-                    padding: '0 1.5rem 1.5rem',
+                    padding: '0 1.5rem 1.75rem',
                     color: '#cbd5e1',
-                    fontSize: '0.95rem',
-                    lineHeight: '1.7',
-                    animation: 'fadeIn 0.3s ease',
+                    fontSize: '0.975rem',
+                    lineHeight: '1.8',
                     borderTop: '1px solid rgba(148, 163, 184, 0.2)',
+                    paddingTop: '1.25rem',
                   }}
                 >
                   {faq.answer}
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Show More Button */}
         {!showAll && (
-          <div
-            style={{
-              textAlign: 'center',
-              marginTop: '3rem',
-            }}
-          >
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <button
               onClick={() => setShowAll(true)}
               style={{
@@ -279,7 +302,6 @@ const FAQ = () => {
           </div>
         )}
 
-        {/* CTA Section */}
         <div
           style={{
             marginTop: '4rem',
@@ -310,7 +332,7 @@ const FAQ = () => {
               margin: '0 auto 2rem',
             }}
           >
-            Fale conosco no WhatsApp. Responderemos rapidamente!
+            Fale conosco no WhatsApp. Respondemos rapidamente e sem compromisso!
           </p>
           <a
             href="https://wa.me/5521968810478?text=Oi, tenho algumas dúvidas sobre os serviços."
@@ -321,7 +343,8 @@ const FAQ = () => {
               alignItems: 'center',
               gap: '0.75rem',
               padding: '1rem 2rem',
-              background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 55%, #6366f1 100%)',
+              background:
+                'linear-gradient(135deg, #06b6d4 0%, #3b82f6 55%, #6366f1 100%)',
               color: 'white',
               textDecoration: 'none',
               borderRadius: '12px',
@@ -332,13 +355,11 @@ const FAQ = () => {
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow =
-                '0 0 22px rgba(34, 211, 238, 0.35)';
+              e.currentTarget.style.boxShadow = '0 0 22px rgba(34, 211, 238, 0.35)';
             }}
             onMouseOut={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow =
-                '0 8px 20px rgba(37, 99, 235, 0.36)';
+              e.currentTarget.style.boxShadow = '0 8px 20px rgba(37, 99, 235, 0.36)';
             }}
           >
             <span>💬</span>
@@ -346,20 +367,6 @@ const FAQ = () => {
           </a>
         </div>
       </div>
-
-      {/* Add fadeIn animation */}
-      <style>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </section>
   );
 };
