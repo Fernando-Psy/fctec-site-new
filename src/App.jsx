@@ -25,6 +25,7 @@ import { regionalPages } from './components/RegionalPages/regionalPages';
 
 const AboutCompany = lazy(() => import('./components/AboutCompany/AboutCompany'));
 const Services = lazy(() => import('./components/Services/Services'));
+const SaasPlatforms = lazy(() => import('./components/SaasPlatforms/SaasPlatforms'));
 const ServiceDetails = lazy(() => import('./components/Services/ServiceDetails'));
 const ClientsShowcase = lazy(() => import('./components/ClientsShowcase/ClientsShowcase'));
 const FreeResources = lazy(() => import('./components/FreeResources/FreeResources'));
@@ -132,6 +133,7 @@ function AppContent() {
                   <Hero />
                   <Suspense fallback={<LoadingFallback />}><AboutCompany /></Suspense>
                   <Suspense fallback={<LoadingFallback />}><Services /></Suspense>
+                  <Suspense fallback={<LoadingFallback />}><SaasPlatforms /></Suspense>
                   <Suspense fallback={<LoadingFallback />}><FAQ /></Suspense>
                   <Suspense fallback={<LoadingFallback />}><ClientsShowcase /></Suspense>
                   <Suspense fallback={<LoadingFallback />}><ContactForm /></Suspense>

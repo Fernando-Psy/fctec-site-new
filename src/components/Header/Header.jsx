@@ -99,6 +99,13 @@ const Header = () => {
 
               <Nav.Link
                 className="nav-link-custom"
+                onClick={() => scrollToSection('plataformas-saas')}
+              >
+                <span className="nav-text">Plataformas SaaS</span>
+              </Nav.Link>
+
+              <Nav.Link
+                className="nav-link-custom"
                 onClick={() => scrollToSection('location')}
               >
                 <span className="nav-text">Contato</span>

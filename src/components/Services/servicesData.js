@@ -184,25 +184,4 @@ export const servicesData = [
       "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre Landing Page.",
     icon: "📄",
   },
-  {
-    id: "assinatura-crm-psicologias",
-    image: googleMapsImage,
-    title: "CRM Psicologias",
-    description:
-      "CRM especializado com gestão de pacientes, agendamento, prontuário eletrônico e comunicação integrada.",
-    detailedDescription:
-      "CRM especializado para psicólogas e psicólogos, com funcionalidades completas para organizar a rotina clínica e padronizar atendimentos.",
-    features: [
-      "Gestão de pacientes",
-      "Agendamento de consultas",
-      "Prontuário eletrônico",
-      "Comunicação integrada",
-      "Relatórios detalhados",
-      "Atendimento flexível",
-      "Suporte técnico especializado",
-    ],
-    whatsappLink:
-      "https://wa.me/5521968810478?text=Oi, gostaria de informações sobre CRM Psicologias.",
-    icon: "🧠",
-  },
 ];
