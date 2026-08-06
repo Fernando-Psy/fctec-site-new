@@ -1,10 +1,20 @@
 import { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { servicesData } from "./servicesData";
+import { createPublicLead } from "../../services/api";
 import "./ContactModal.css";
 
-const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
-  const serviceOptions = servicesData || [];
+const ContactModal = ({
+  show,
+  onHide,
+  serviceName,
+  serviceId,
+  options = servicesData,
+  interestLabel = "Serviço de Interesse",
+  selectedLabel = "Serviço Selecionado",
+  leadOrigem = "site-servico-sob-medida",
+}) => {
+  const serviceOptions = options || [];
 
   const [formData, setFormData] = useState({
     name: "",
@@ -83,6 +93,16 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
     setShowError(false);
 
     try {
+      // Registra lead no CRM (fire-and-forget)
+      createPublicLead({
+        nome: formData.name,
+        email: formData.email,
+        telefone: formData.phone,
+        servico_interesse: serviceName,
+        fonte: "site",
+        origem: leadOrigem,
+      });
+
       // Montar mensagem para WhatsApp
       const message =
         `🎯 *Nova Solicitação de Contato*\n\n` +
@@ -208,7 +228,7 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
                     letterSpacing: "0.05em",
                   }}
                 >
-                  Serviço Selecionado
+                  {selectedLabel}
                 </div>
                 <div
                   style={{
@@ -528,7 +548,7 @@ const ContactModal = ({ show, onHide, serviceName, serviceId }) => {
                         marginBottom: "0.5rem",
                       }}
                     >
-                      Serviço de Interesse *
+                      {interestLabel} *
                     </label>
                     <select
                       id="contact-service"
